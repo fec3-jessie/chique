@@ -3,6 +3,8 @@
 }
 .reviews-list {
   background-color: rgb(139, 69, 185);
+  height: 300px;
+  overflow-y: scroll;
 }
 .review-tile {
   background-color: rgb(163, 107, 216);
@@ -13,3 +15,4 @@
 .user-time-tile {
   background-color: rgb(246, 181, 82);
 }
+

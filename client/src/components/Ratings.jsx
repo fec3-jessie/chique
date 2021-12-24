@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import ReviewsList from '../components/RatingsComponents/ReviewsList.jsx';
 
+
+
 function Ratings () {
 
   return (
