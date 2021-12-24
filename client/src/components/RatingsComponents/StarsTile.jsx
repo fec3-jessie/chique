@@ -7,8 +7,7 @@ function StarsTile () {
 
   return (
     <div className='stars-tile'>
-      <h2>this is the stars for tile.</h2>
-      <FontAwesomeIcon icon={faStar} />
+      <p><FontAwesomeIcon icon={faStar} /> this is the stars for tile.</p>
     </div>
   )
 }

@@ -7,12 +7,31 @@
   overflow-y: scroll;
 }
 .review-tile {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(163, 107, 216);
 }
+
+.header-tile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .stars-tile {
+
   background-color: rgb(221, 181, 50);
 }
 .user-time-tile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items:baseline;
   background-color: rgb(246, 181, 82);
+  max-height: fit-content;
 }
 
+/* .check-icon {
+  padding: 0% 5%;
+} */
