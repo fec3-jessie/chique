@@ -5,7 +5,7 @@ import ReviewTile from './ReviewTile.jsx';
 function ReviewsList () {
 
   return (
-    <div className='review-list'>
+    <div className='reviews-list'>
       <h3>This is the reviews list.</h3>
       <ReviewTile />
     </div>

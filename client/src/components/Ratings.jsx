@@ -5,7 +5,7 @@ import ReviewsList from '../components/RatingsComponents/ReviewsList.jsx';
 function Ratings () {
 
   return (
-    <div className='review-list'>
+    <div className='reviews'>
       <h3>This is the reviews module.</h3>
       <ReviewsList />
     </div>
