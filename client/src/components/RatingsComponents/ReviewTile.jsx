@@ -7,7 +7,7 @@ function ReviewTile () {
 
   return (
     <div className='review-tile'>
-      <h2>this is a single review tile.</h2>
+      <h3>this is a single review tile.</h3>
       <div className='header-tile'>
         <StarsTile />
         <UserTimeTile />

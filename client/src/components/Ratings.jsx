@@ -8,7 +8,7 @@ function Ratings () {
 
   return (
     <div className='reviews'>
-      <h3>This is the reviews module.</h3>
+      <h3>{`Ratings & Reviews`}</h3>
       <ReviewsList />
     </div>
   )
