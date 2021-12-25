@@ -9,6 +9,7 @@ import ReviewsList from '../components/RatingsComponents/ReviewsList.jsx';
 
 function Ratings () {
   const [reviewsNum, setReviewsNum] = useState(null);
+  const [productReviews, setProductReviews] = useState({});
 
   useEffect(() => {
     const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40350';
@@ -19,7 +20,8 @@ function Ratings () {
         }
       });
       const reviews = await getReviews.data;
-      console.log(reviews);
+      setProductReviews(reviews);
+      setReviewsNum(reviews.count);
     };
     fetchReviews();
   }, []);
@@ -27,7 +29,7 @@ function Ratings () {
   return (
     <div className='reviews'>
       <h3>{`Ratings & Reviews`}</h3>
-      <label htmlFor='filter-select'>{`${248} reviews, sorted by `}</label>
+      <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
       <select id='filter-select'>
         <option defaultValue>relevance</option>
         <option>newest</option>
