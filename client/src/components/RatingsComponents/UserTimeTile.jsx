@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 
-let user = 'username ';
+
 let time = 'time';
 
-function UserTimeTile () {
+function UserTimeTile ({user}) {
 
   return (
     <div className='user-time-tile'>

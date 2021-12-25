@@ -9,15 +9,15 @@ import Response from './Response.jsx';
 
 //eventually make rec/ response conditional etc...
 
-function ReviewTile ({rating}) {
+function ReviewTile (props) {
 
 
   return (
     <div className='review-tile'>
       <h3>this is a single review tile.</h3>
       <div className='header-tile'>
-        <StarsTile stars={rating}/>
-        <UserTimeTile />
+        <StarsTile stars={props.rating}/>
+        <UserTimeTile user={props.user}/>
       </div>
         <ReviewBody />
         <Recommendation />
