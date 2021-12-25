@@ -23,6 +23,9 @@
   justify-content: space-between;
   align-items: baseline;
 }
+.body-tile {
+  color: rgb(12, 12, 12);
+}
 .stars-tile {
   order:1;
   color: rgb(15, 15, 14);
