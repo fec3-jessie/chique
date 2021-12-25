@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 
-const starRating = 3.45; // eventaully switch to dynamic
-const starPercent = (starRating / 5) * 100;
-const roundedPercent = `${(Math.round(starPercent / 10) * 10)}%`;
 
 
-function StarsTile () {
+function StarsTile ({stars}) {
+   // eventaully switch to dynamic
+  const starPercent = (stars / 5) * 100;
+  const roundedPercent = `${(Math.round(starPercent / 10) * 10)}%`;
 
   return (
     <div className='stars-tile' >

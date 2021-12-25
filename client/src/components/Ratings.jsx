@@ -26,17 +26,21 @@ function Ratings () {
     fetchReviews();
   }, []);
 
+  // const ReviewsContext = React.createContext(productReviews);
+
   return (
-    <div className='reviews'>
-      <h3>{`Ratings & Reviews`}</h3>
-      <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
-      <select id='filter-select'>
-        <option defaultValue>relevance</option>
-        <option>newest</option>
-        <option>helpful</option>
-      </select>
-      <ReviewsList />
-    </div>
+    // <ReviewsContext.Provider value={productReviews}>
+      <div className='reviews'>
+        <h3>{`Ratings & Reviews`}</h3>
+        <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
+        <select id='filter-select'>
+          <option defaultValue>relevance</option>
+          <option>newest</option>
+          <option>helpful</option>
+        </select>
+        <ReviewsList reviews={productReviews}/>
+      </div>
+    // </ReviewsContext.Provider>
   )
 }
 
