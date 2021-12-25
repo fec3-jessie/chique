@@ -9,9 +9,9 @@ function Ratings () {
   return (
     <div className='reviews'>
       <h3>{`Ratings & Reviews`}</h3>
-      <label for='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
+      <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
       <select id='filter-select'>
-        <option selected>relevance</option>
+        <option defaultValue>relevance</option>
         <option>newest</option>
         <option>helpful</option>
       </select>

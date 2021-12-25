@@ -25,6 +25,30 @@
 }
 .stars-tile {
   order:1;
+  color: rgb(15, 15, 14);
+  /* display: flex;
+  font-size: 20px; */
+}
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  /* font-family: FontAwesome; */
+}
+.stars-outer::before {
+  content: "☆ ☆ ☆ ☆ ☆";
+
+}
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width:0;
+}
+.stars-inner::before {
+  content: "★ ★ ★ ★ ★";
+  color: black;
 }
 .user-time-tile {
   order:2;
