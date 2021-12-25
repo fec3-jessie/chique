@@ -8,9 +8,11 @@ function ReviewsList ({reviews}) {
     <div className='reviews-list'>
       {console.log(reviews)}
       {reviews?.results?.map((review) => {
-        return <ReviewTile rating={review.rating}
+        return <ReviewTile
+          rating={review.rating}
           key={review.review_id}
-          user={review.reviewer_name}/>
+          user={review.reviewer_name}
+          time={review.date}/>
       })}
     </div>
   )

@@ -17,7 +17,7 @@ function ReviewTile (props) {
       <h3>this is a single review tile.</h3>
       <div className='header-tile'>
         <StarsTile stars={props.rating}/>
-        <UserTimeTile user={props.user}/>
+        <UserTimeTile user={props.user} time={props.time}/>
       </div>
         <ReviewBody />
         <Recommendation />

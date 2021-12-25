@@ -2,13 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 
 
-let time = 'time';
+// let time = 'time';
 
-function UserTimeTile ({user}) {
 
+function UserTimeTile ({user, time}) {
+  // console.log(time);
+  let date = new Date(time).toLocaleString('default', {month: 'long', day: 'numeric', year: 'numeric'});
   return (
     <div className='user-time-tile'>
-      <p>{`☑ ${user} ${time}`}</p>
+      <p>{`☑ ${user} ${date}`}</p>
     </div>
   )
 }
