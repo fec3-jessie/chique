@@ -5,8 +5,9 @@ import UserTimeTile from './UserTimeTile.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import HelpfulTile from './HelpfulTile.jsx';
 import Recommendation from './Recommendation.jsx';
+import Response from './Response.jsx';
 
-//eventually make rec conditional etc...
+//eventually make rec/ response conditional etc...
 
 function ReviewTile () {
 
@@ -19,6 +20,7 @@ function ReviewTile () {
       </div>
         <ReviewBody />
         <Recommendation />
+        <Response />
         <HelpfulTile />
     </div>
   )
