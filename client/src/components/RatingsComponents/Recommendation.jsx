@@ -6,7 +6,7 @@ function Recommendation () {
 
   return (
     <div className='recommendation'>
-      <p><FontAwesomeIcon icon={faCheck} className='check'/>I recommend this product</p>
+      <p> ✔ I recommend this product</p>
     </div>
   )
 }
