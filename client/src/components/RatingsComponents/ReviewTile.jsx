@@ -2,6 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import StarsTile from './StarsTile.jsx';
 import UserTimeTile from './UserTimeTile.jsx';
+import ReviewBody from './ReviewBody.jsx';
+import HelpfulTile from './HelpfulTile.jsx';
+import Recommendation from './Recommendation.jsx';
+
+//eventually make rec conditional etc...
 
 function ReviewTile () {
 
@@ -12,6 +17,9 @@ function ReviewTile () {
         <StarsTile />
         <UserTimeTile />
       </div>
+        <ReviewBody />
+        <Recommendation />
+        <HelpfulTile />
     </div>
   )
 }
