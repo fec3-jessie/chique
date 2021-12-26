@@ -24,7 +24,12 @@
   align-items: baseline;
 }
 .body-tile {
+  text-align:justify;
+  text-justify: distribute-all-lines;
   color: rgb(12, 12, 12);
+}
+.body-summary-tile {
+  font-weight: bold;
 }
 .stars-tile {
   order:1;

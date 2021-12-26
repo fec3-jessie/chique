@@ -12,7 +12,10 @@ function ReviewsList ({reviews}) {
           rating={review.rating}
           key={review.review_id}
           user={review.reviewer_name}
-          time={review.date}/>
+          time={review.date}
+          body={review.body}
+          summary={review.summary}
+          recommend={review.recommend}/>
       })}
     </div>
   )

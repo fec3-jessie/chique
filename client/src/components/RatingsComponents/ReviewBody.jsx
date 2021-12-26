@@ -1,11 +1,11 @@
 import React from 'react';
 
-function ReviewBody () {
+function ReviewBody ({body, summary}) {
 
   return (
     <div className='body-tile'>
-      <p>This is the Review Summary </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Senectus et netus et malesuada fames. In tellus integer feugiat scelerisque varius morbi.</p>
+      <p className='body-summary-tile'>{summary} </p>
+      <p>{body}</p>
     </div>
   )
 }
