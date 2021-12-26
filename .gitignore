@@ -8,6 +8,7 @@ bin-release/
 .settings/
 node_modules
 token.jsx
+bundle.js
 # Executables
 *.swf
 *.air
