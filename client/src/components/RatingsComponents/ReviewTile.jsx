@@ -23,7 +23,8 @@ function ReviewTile (props) {
       </div>
         <ReviewBody
           body={props.body}
-          summary={props.summary}/>
+          summary={props.summary}
+          photos={props.photos}/>
         {props.recommend === true ?
         <Recommendation rec={props.recommend}/> : null}
         {props.response !== null ?
