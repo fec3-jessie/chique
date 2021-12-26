@@ -465,7 +465,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Token = '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';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Token);\n\n//# sourceURL=webpack://fec3/./client/src/components/Token.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Token = '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';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Token);\n\n//# sourceURL=webpack://fec3/./client/src/components/Token.jsx?");
 
 /***/ }),
 
