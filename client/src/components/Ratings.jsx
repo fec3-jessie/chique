@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import "regenerator-runtime/runtime";
 import ReviewsList from '../components/RatingsComponents/ReviewsList.jsx';
-
+import Token from './Token.jsx';
 
 // let reviewsNum = 248; // eventually change these vars to be dynamic
 
@@ -16,7 +16,7 @@ function Ratings () {
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
-          'Authorization': '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'
+          'Authorization': Token
         }
       });
       const reviews = await getReviews.data;
