@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ThumbnailModal from './ThumbnailModal.jsx';
 
 function ReviewBody ({body, summary, photos}) {
+  const [showModal, setShowModal] = useState(false);
+  const [modalPhoto, setModalPhoto] = useState("");
+  const openPhotoModal = (url) => {
+    setShowModal(true);
+    setModalPhoto(url);
+  };
 
   return (
     <div className='body-tile'>
@@ -10,6 +17,7 @@ function ReviewBody ({body, summary, photos}) {
       photos.map((photo) => {
         return <div className='review-thumbnail' key={photo.id}>
           <img
+          onClick={() => openPhotoModal(photo.url)}
           className='img-container'
           src={photo.url}
           key={photo.id}
@@ -17,6 +25,7 @@ function ReviewBody ({body, summary, photos}) {
           </img>
             </div>
       }) : null}
+      {showModal ? <ThumbnailModal setShowModal={setShowModal} photo={modalPhoto}/> : null}
     </div>
   )
 }
