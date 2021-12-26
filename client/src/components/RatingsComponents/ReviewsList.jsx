@@ -15,7 +15,8 @@ function ReviewsList ({reviews}) {
           time={review.date}
           body={review.body}
           summary={review.summary}
-          recommend={review.recommend}/>
+          recommend={review.recommend}
+          response={review.response}/>
       })}
     </div>
   )

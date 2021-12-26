@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Response () {
+function Response ({response}) {
 
   return (
     <div className='response-tile'>
       <p className='response-title'>Response:</p>
-      <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>{response}</p>
     </div>
   )
 }

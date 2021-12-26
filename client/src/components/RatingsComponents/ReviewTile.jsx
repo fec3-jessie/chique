@@ -14,7 +14,6 @@ function ReviewTile (props) {
 
   return (
     <div className='review-tile'>
-      <h3>this is a single review tile.</h3>
       <div className='header-tile'>
         <StarsTile
           stars={props.rating}/>
@@ -27,7 +26,8 @@ function ReviewTile (props) {
           summary={props.summary}/>
         {props.recommend === true ?
         <Recommendation rec={props.recommend}/> : null}
-        <Response />
+        {props.response !== null ?
+        <Response response={props.response}/> : null}
         <HelpfulTile />
     </div>
   )
