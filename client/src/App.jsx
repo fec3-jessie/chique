@@ -1,4 +1,5 @@
 import React from 'react';
+import QandA from './components/QandA.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,10 +9,10 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Overview />
+        {/* <Overview /> */}
         <QandA />
-        <Ratings />
-        <Related />
+        {/* <Ratings /> */}
+        {/* <Related /> */}
       </div>
     )
   }
