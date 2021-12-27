@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-import "regenerator-runtime/runtime";
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
-import Token from './Token.jsx';
+import Token from './token.jsx';
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});
