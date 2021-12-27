@@ -28,7 +28,9 @@ function ReviewTile (props) {
         <Recommendation rec={props.recommend}/> : null}
         {props.response !== null ?
         <Response response={props.response}/> : null}
-        <HelpfulTile helpfulnessCount={props.helpfulness}/>
+        <HelpfulTile
+          helpfulnessCount={props.helpfulness}
+          reviewId={props.reviewId}/>
     </div>
   )
 }

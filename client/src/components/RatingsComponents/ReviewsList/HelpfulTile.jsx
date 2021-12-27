@@ -5,18 +5,32 @@ import Token from '../../token.jsx';
 // switch to dynamic data after testing...
 
 
-function HelpfulTile ({helpfulnessCount}) {
+function HelpfulTile ({helpfulnessCount, reviewId}) {
   const [yesCount, setYesCount] = useState(helpfulnessCount);
   const [yesClicked, setYesClicked] = useState(false);
-  const handleClick = () => {
+  const reviewUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/helpful?review_id=${reviewId}`;
+
+  const postYesVote = async () => {
+    const body = {
+      'helpfulness': yesCount
+    };
+    const postHelpfullness = await Axios.put(reviewUrl, body, {
+      headers: {
+        'Authorization': Token
+      }
+    });
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
     if (yesClicked === false) {
       setYesCount(yesCount => yesCount + 1);
       setYesClicked(true);
+      postYesVote();
     }
   }
 
 
-  // make Yes a post button
   return (
     <div className='helpful-tile'>
       <p>{`Helpful?`}</p>

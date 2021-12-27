@@ -19,7 +19,8 @@ function ReviewsList ({reviews}) {
             recommend={review.recommend}
             response={review.response}
             photos={review.photos}
-            helpfulness={review.helpfulness}/>
+            helpfulness={review.helpfulness}
+            reviewId={review.review_id}/>
         })}
       </div>
     </div>
