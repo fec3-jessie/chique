@@ -7,22 +7,30 @@ const headers = {
   'Authorization': `${config.TOKEN}`
 };
 
-const QuestionsList = () => {
-  const [questions, setQuestions] = useState({product_id: '', results: []});
+const QuestionsList = (props) => {
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    axios.get(host + '/qa/questions?product_id=40356', { headers })
+    axios.get(host + `/qa/questions?product_id=${props.product_id}`, { headers })
       .then(returnedQuestions => {
-        console.log(returnedQuestions.data.results);
-        setQuestions(returnedQuestions.data);
+        setQuestions(returnedQuestions.data.results);
       })
       .catch(err => console.error('Get request error (QuestionsList.jsx): ', err))
   }, []);
 
   return (
     <>
-      These are the questions for this product:
-      {questions.results.length}
+      {questions.map(item => {
+        <QuestionCard
+          answers={item.answers}
+          asker={item.asker_name}
+          qBody={item.question_body}
+          qDate={item.question_date}
+          qHelpful={item.question_helpfulness}
+          qID={item.question_id}
+          qReported={item.reported}
+        />
+      })}
     </>
   );
 }
