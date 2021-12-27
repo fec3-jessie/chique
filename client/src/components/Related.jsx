@@ -1,4 +1,6 @@
 import React from 'react';
+import RelatedProducts from './Related/RelatedProducts.jsx'
+import YourOutfit from './Related/YourOutfit.jsx';
 
 class Related extends React.Component {
   constructor(props) {
@@ -6,7 +8,10 @@ class Related extends React.Component {
   }
 
   render () {
-    return null;
+    return (<div>
+      <RelatedProducts />
+      <YourOutfit />
+    </div>);
   }
 }
 
