@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../../../config.js';
+import QuestionCard from './QuestionCard.jsx';
 
 const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 const headers = {
@@ -20,17 +21,17 @@ const QuestionsList = (props) => {
 
   return (
     <>
-      {questions.map(item => {
+      {questions.map(item =>
         <QuestionCard
           answers={item.answers}
           asker={item.asker_name}
-          qBody={item.question_body}
-          qDate={item.question_date}
-          qHelpful={item.question_helpfulness}
-          qID={item.question_id}
-          qReported={item.reported}
+          body={item.question_body}
+          date={item.question_date}
+          helpful={item.question_helpfulness}
+          ID={item.question_id}
+          reported={item.reported}
         />
-      })}
+      )}
     </>
   );
 }
