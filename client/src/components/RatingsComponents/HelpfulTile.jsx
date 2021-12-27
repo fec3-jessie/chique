@@ -10,7 +10,8 @@ function HelpfulTile ({helpfulnessCount}) {
   return (
     <div className='helpful-tile'>
       <p>{`Helpful?`}</p>
-      <button>Yes</button>
+      <button className='yes-button'>
+        Yes</button>
       <p>{`(${helpfulnessCount}) |  Report`}</p>
     </div>
   )
