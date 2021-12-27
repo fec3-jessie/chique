@@ -2,8 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 
 
-// let time = 'time';
-
 
 function UserTimeTile ({user, time}) {
   // console.log(time);

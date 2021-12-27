@@ -2,13 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import "regenerator-runtime/runtime";
-import ReviewsList from '../components/RatingsComponents/ReviewsList.jsx';
+import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
 import Token from './Token.jsx';
 
-// let reviewsNum = 248; // eventually change these vars to be dynamic
-
 function Ratings () {
-  const [reviewsNum, setReviewsNum] = useState(null);
   const [productReviews, setProductReviews] = useState({});
 
   useEffect(() => {
@@ -21,7 +18,6 @@ function Ratings () {
       });
       const reviews = await getReviews.data;
       setProductReviews(reviews);
-      setReviewsNum(reviews.count);
     };
     fetchReviews();
   }, []);
@@ -30,14 +26,6 @@ function Ratings () {
   return (
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
-        <div className='sorted-drop-down'>
-          <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
-          <select id='filter-select'>
-            <option defaultValue>relevance</option>
-            <option>newest</option>
-            <option>helpful</option>
-          </select>
-        </div>
         <ReviewsList reviews={productReviews}/>
       </div>
   )
