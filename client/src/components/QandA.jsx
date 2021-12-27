@@ -8,7 +8,7 @@ const QandA = (props) => {
     <div>
       <p>Questions & Answers</p>
       <SearchBar />
-      <QuestionsList />
+      <QuestionsList product_id={40356}/>
     </div>
   );
 }
