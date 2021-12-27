@@ -7,7 +7,6 @@ import HelpfulTile from './HelpfulTile.jsx';
 import Recommendation from './Recommendation.jsx';
 import Response from './Response.jsx';
 
-//eventually make rec/ response conditional etc...
 
 function ReviewTile (props) {
 
@@ -29,7 +28,7 @@ function ReviewTile (props) {
         <Recommendation rec={props.recommend}/> : null}
         {props.response !== null ?
         <Response response={props.response}/> : null}
-        <HelpfulTile />
+        <HelpfulTile helpfulnessCount={props.helpfulness}/>
     </div>
   )
 }

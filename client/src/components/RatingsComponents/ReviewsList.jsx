@@ -17,7 +17,8 @@ function ReviewsList ({reviews}) {
           summary={review.summary}
           recommend={review.recommend}
           response={review.response}
-          photos={review.photos}/>
+          photos={review.photos}
+          helpfulness={review.helpfulness}/>
       })}
     </div>
   )

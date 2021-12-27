@@ -147,6 +147,9 @@
 }
 .helpful-tile {
   order: 5;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 .check {
   padding: 0% 1%;
