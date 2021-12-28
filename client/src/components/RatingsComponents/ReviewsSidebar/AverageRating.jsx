@@ -11,9 +11,10 @@ function AverageRating ({ratings}) {
       totalVotes+= currVal;
       result+= (currVal * currKey);
     }
-    return result/totalVotes;
+    let roundedResult = Math.round((result/totalVotes) * 10) / 10;
+    return roundedResult;
   }
-  // create function to only include first decimal of result
+
   return (
     <div>this is an average</div>
   )
