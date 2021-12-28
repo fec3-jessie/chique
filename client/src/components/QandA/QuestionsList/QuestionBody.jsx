@@ -2,7 +2,7 @@ import React from 'react';
 
 const QuestionBody = ({ body }) => {
   return (
-    <>{body}</>
+    <div>Q: {body}</div>
   );
 }
 

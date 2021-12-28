@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import AnswerBody from './Answers/AnswerBody.jsx';
+import AnswerDetails from './Answers/AnswerDetails.jsx';
+import AnswerImages from './Answers/AnswerImages.jsx';
 
 const Answers = ({ answers }) => {
   let answersArray = Object.values(answers);
@@ -15,9 +18,28 @@ const Answers = ({ answers }) => {
   }
   sortedAnswers = sortedAnswers.concat(temp);
   temp = [];
+  console.log('Sorted answers: ', sortedAnswers);
 
   return (
-    <></>
+    <>
+      A:
+      {sortedAnswers.map(ans =>
+        <div>
+          <AnswerBody
+            body={ans.body}
+          />
+          <AnswerDetails
+            name={ans.answerer_name}
+            date={ans.date}
+            helpfulness={ans.helpfulness}
+            ID={ans.id}
+          />
+          <AnswerImages
+            photos={ans.photos}
+          />
+        </div>
+      )}
+    </>
   );
 }
 
