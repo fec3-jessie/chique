@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 // import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
 import Token from './token.jsx';
+import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.jsx';
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});
@@ -17,6 +18,7 @@ function Ratings () {
       });
       const reviews = await getReviews.data;
       setProductReviews(reviews);
+      // console.log(reviews.count);
     };
     fetchReviews();
   }, []);
@@ -25,7 +27,8 @@ function Ratings () {
   return (
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
-        {/* <ReviewsList reviews={productReviews}/> */}
+        <ReviewsSidebar productId={productReviews.product}/>
+        {/* <ReviewsList reviews={productReviews.count}/> */}
       </div>
   )
 }
