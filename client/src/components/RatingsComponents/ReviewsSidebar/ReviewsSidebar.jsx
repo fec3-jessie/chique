@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import AverageRating from './AverageRating.jsx';
 import Token from '../../token.jsx';
+import PercentRecommended from './PercentRecommended.jsx';
 
 function ReviewsSidebar ({productId}) {
   const [productMetaData, setProductMetaData] = useState({});
@@ -24,11 +25,20 @@ function ReviewsSidebar ({productId}) {
     fetchMeta();
   }, []);
 
+    const renderComponents = () => {
+      return (
+        <div className='sidebar-components'>
+          <AverageRating ratings={productMetaData.ratings}/>
+          <PercentRecommended recommended={productMetaData.recommended}/>
+        </div>
+      )
+    };
+
   return (
     <div className='reviews-sidebar'>
       {/* <h5>This is the main sidebar</h5> */}
       {productMetaData.ratings !== undefined ?
-        <AverageRating ratings={productMetaData.ratings}/> : null}
+        renderComponents() : null}
     </div>
   )
 }
