@@ -1,0 +1,13 @@
+.clickable {
+  cursor: pointer;
+}
+
+#Image-Answer {
+  height: 10%;
+  width: 10%;
+}
+
+#Question-Card {
+  border: 2px solid orange;
+  width: 60%;
+}

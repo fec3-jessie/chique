@@ -34,9 +34,10 @@ const Answers = ({ answers }) => {
             helpfulness={ans.helpfulness}
             ID={ans.id}
           />
-          <AnswerImages
-            photos={ans.photos}
-          />
+          {ans.photos.length !== 0
+            ? <AnswerImages photos={ans.photos} />
+            : <></>
+          }
         </div>
       )}
     </>

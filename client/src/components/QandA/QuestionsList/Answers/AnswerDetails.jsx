@@ -8,7 +8,7 @@ const AnswerDetails = ({ name, date, helpfulness, ID }) => {
 
   return (
     <section>
-        by {name}, {newDate} | Helpful? <span>Yes ({helpfulness})</span> | <span>Report</span>
+        by {name}, {newDate} | Helpful? <span class='clickable'>Yes</span> ({helpfulness}) | <span class='clickable'>Report</span>
     </section>
   );
 }
