@@ -18,7 +18,6 @@ function Ratings () {
       });
       const reviews = await getReviews.data;
       setProductReviews(reviews);
-      // console.log(reviews.count);
     };
     fetchReviews();
   }, []);
@@ -27,8 +26,9 @@ function Ratings () {
   return (
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
-        <ReviewsSidebar productId={productReviews.product}/>
-        {/* <ReviewsList reviews={productReviews.count}/> */}
+        {productReviews.product !== undefined ?
+        <ReviewsSidebar productId={productReviews.product}/> : null}
+
       </div>
   )
 }

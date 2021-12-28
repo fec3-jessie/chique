@@ -2,11 +2,11 @@ import React from 'react';
 
 function AverageRating ({ratings}) {
 
-  const calculateRating = (ratings) => {
+  const calculateRating = (ratingsObj) => {
     let result = 0;
     let totalVotes = 0;
-    for (const key in ratings) {
-      let currVal = parseInt(ratings[key]);
+    for (const key in ratingsObj) {
+      let currVal = parseInt(ratingsObj[key]);
       let currKey = parseInt(key);
       totalVotes+= currVal;
       result+= (currVal * currKey);
@@ -16,7 +16,10 @@ function AverageRating ({ratings}) {
   }
 
   return (
-    <div>this is an average</div>
+    <div className='average-rating-container'>
+      <div className='numerical-rating'>{`${calculateRating(ratings)}`}</div>
+      <div className='stars-average'>Average Stars will go here</div>
+    </div>
   )
 }
 
