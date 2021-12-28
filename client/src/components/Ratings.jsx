@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 // import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
-// import Token from './token.jsx';
+import Token from './token.jsx';
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});
@@ -12,7 +12,7 @@ function Ratings () {
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
-          // 'Authorization': Token
+          'Authorization': Token
         }
       });
       const reviews = await getReviews.data;
