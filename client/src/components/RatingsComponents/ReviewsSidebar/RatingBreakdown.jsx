@@ -2,10 +2,7 @@ import React from 'react';
 import StarBar from './StarBar.jsx';
 
 function RatingBreakdown ({ratings}) {
-  let starsCounts = [];
-  for (const key in ratings) {
-    starsCounts.push(key);
-  }
+  let starsCounts = ['1', '2', '3', '4', '5'];
   return (
     <div>
       {starsCounts.map((star) => {
