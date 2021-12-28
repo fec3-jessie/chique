@@ -1,4 +1,5 @@
 import React from 'react';
+import StarBar from './StarBar.jsx';
 
 function RatingBreakdown ({ratings}) {
   let starsCounts = [];
@@ -7,15 +8,16 @@ function RatingBreakdown ({ratings}) {
   }
   return (
     <div>
-      {/* <h4>THis is the breakdown container</h4> */}
       {starsCounts.map((star) => {
         return (
-          <div className='stars-bar-container'>
-            <p>{`${star} stars`}</p>
-            <p>---this will be a stars bar</p>
+          <div key={star} className='stars-bar-container'>
+            <p className='stars-bar-label' key={star}>{`${star}`}</p>
+            <p className='stars-bar-label'>{`stars`}</p>
+            <StarBar className='stars-bar' ratings={ratings} key={-star} star={star}/>
           </div>
         )
       })}
+
     </div>
   )
 }

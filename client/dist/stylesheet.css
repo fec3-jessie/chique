@@ -253,6 +253,8 @@
 .stars-bar-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  gap: 10px;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
 }
+
