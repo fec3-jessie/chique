@@ -1,20 +1,7 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
-    },
-    "extends": "hackreactor",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 13,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
+    extends: 'hackreactor',
+    rules: {
+      // Rules here will override the 'hackreactor' configuration
+      // http://eslint.org/docs/rules/
     }
-};
+  };
