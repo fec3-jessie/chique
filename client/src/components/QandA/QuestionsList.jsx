@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import config from '../../../../config.js';
 import QuestionCard from './QuestionsList/QuestionCard.jsx';
+import AddQuestionOrAnswer from './QuestionsList/QuestionCard/AddQuestionOrAnswer.jsx';
 
 const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 const headers = {
@@ -33,6 +34,8 @@ const QuestionsList = (props) => {
           reported={item.reported}
         />
       )}
+      <button>More Answered Questions</button>
+      <AddQuestionOrAnswer usage={'addQuestion'} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddAnswer from './AddAnswer.jsx';
+import AddQuestionOrAnswer from './AddQuestionOrAnswer.jsx';
 
 const options = { month: 'long', day: 'numeric', year: 'numeric' };
 
@@ -10,7 +10,7 @@ const QuestionDetails = ({ asker, date, helpful, reported }) => {
     <section>
       Helpful? <span className='clickable'>Yes</span> ({helpful}) &nbsp;
       | &nbsp;
-      <AddAnswer />
+      <AddQuestionOrAnswer usage={'addAnswer'}/>
     </section>
   );
 }

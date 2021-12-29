@@ -18,7 +18,6 @@ const Answers = ({ answers }) => {
   }
   sortedAnswers = sortedAnswers.concat(temp);
   temp = [];
-  console.log('Sorted answers: ', sortedAnswers);
 
   return (
     <>
