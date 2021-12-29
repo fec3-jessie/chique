@@ -26,10 +26,10 @@ class StarRating extends React.Component {
     var wholeStars = Math.floor(roundedRating);
     var filledStars = 0;
     var output = [];
-    while(filledStars < roundedRating) {
-      // output.push(<FontAwesomeIcon className = "star" icon={faStar} />)
-      output.push(<img id = 'star' src = {star}/>)
 
+    // push corresponding number of stars to "output" variable
+    while(filledStars < roundedRating) {
+      output.push(<img id = 'star' src = {star}/>)
       filledStars++;
       if (filledStars === Math.floor(roundedRating)){
         if (roundedRating.toString().slice(-2) === '25') {
@@ -48,9 +48,6 @@ class StarRating extends React.Component {
     }
 
     console.log(output)
-
-
-
 
     return (
       <div>

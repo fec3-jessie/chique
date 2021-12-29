@@ -8,44 +8,25 @@ class StyleSelector extends React.Component {
   constructor(props) {
     super(props);
 
-
-    this.state = {
-
-    }
-
   }
-
-  componentDidMount() {
-
-
-
-  }
-
 
   render () {
 
+
+    // render thumbnail images of different styles
     var output = [];
-
-
     for (var i = 0; i < this.props.thumbnails.length; i++) {
 
       var element;
 
+      // if style is selected, then add a checkmark to DOM. Else, don't add
       if (this.props.selectedStyle.toString() === i.toString()) {
-
         element = [<div id = 'image-container'> <img id = {this.props.thumbnails[i].index} className = 'thumbnail-image' onClick = {this.props.handleStyleClick} src = {this.props.thumbnails[i].url} /> <i class="fas fa-check"></i> </div>]
       } else {
         element = [<div id = 'image-container'> <img id = {this.props.thumbnails[i].index} className = 'thumbnail-image' onClick = {this.props.handleStyleClick} src = {this.props.thumbnails[i].url} /> </div>]
-
       }
-
-
       output.push(element[0])
     }
-
-    // console.log('test', this.props.results[Number(this.props.selectedStyle)].name)
-
-    // {this.props.results[Number(this.props.selectedStyle)].name}
 
     return (
       <>
@@ -59,9 +40,6 @@ class StyleSelector extends React.Component {
     )
   }
 }
-
-
-
 
 export default StyleSelector;
 

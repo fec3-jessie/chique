@@ -74,7 +74,11 @@ class Overview extends React.Component {
     .then(res => {
 
 
-      // initialize size
+      // maintain styles API results in state, so that I can use it later in lifecycle
+      this.setState({results: res.data.results})
+
+
+      // initialize available sizes of default style
       var style = res.data.results[0]
       var styleSkus = style.skus;
       var sizesArr = [];
@@ -87,7 +91,7 @@ class Overview extends React.Component {
       this.setState({sizes: sizesArr})
 
 
-      // initialize quantity
+      // initialize quantity of default style and selected size
       var style = res.data.results[0]
       var styleSkus = style.skus
       console.log('styleSkus', styleSkus)
@@ -96,28 +100,14 @@ class Overview extends React.Component {
         console.log('state',this.state.selectedSize)
         console.log(styleSkus[sku].size)
         if (styleSkus[sku].size === this.state.selectedSize) {
-          // console.log('a',styleSkus[sku].quantity)
-          // console.log(styleSkus[sku].quantity)
           quantity += styleSkus[sku].quantity
-          // console.log(quantity)
         }
       }
       this.setState({quantity:quantity})
 
-      var styles = [];
-      res.data.results.forEach(style => {
-        styles.push(style['style_id'])
-      })
-      this.setState({styles:styles})
-    })
 
+      // render thuumbnails and available sizes of default style
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
-      headers: {
-        authorization: token
-      }
-    })
-    .then(res => {
       var urls = [];
       console.log(res.data.results[0])
 
@@ -128,65 +118,12 @@ class Overview extends React.Component {
     })
 
 
-
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
-      headers: {
-        authorization: token
-      }
-    })
-    .then(res => {
-      this.setState({results: res.data.results})
-      // var sizesArr = [];
-      // // if (this.state.res)
-      // // var style = res.data.results[this.state.]
-      // res.data.results.forEach(style => {
-      //   var styleSkus = style.skus
-      //   for (var sku in styleSkus) {
-      //     if (!sizesArr.includes(styleSkus[sku].size)) {
-      //       sizesArr.push(styleSkus[sku].size)
-      //     }
-      //   }
-
-      // })
-      // console.log(sizesArr)
-      // this.setState({sizes: sizesArr})
-
-    })
-
-
-    var quantity = 0;
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles`, {
-      headers: {
-        authorization: token
-      }
-    })
-    .then(res => {
-      res.data.results.forEach(style => {
-        if (style.style_id === this.state.selectedStyle) {
-          var styleSkus = style.skus
-          console.log(styleSkus)
-          for (var sku in styleSkus) {
-            if (styleSkus[sku].size === this.state.selectedSize) {
-              // console.log('a',styleSkus[sku].quantity)
-              // console.log(styleSkus[sku].quantity)
-              quantity += styleSkus[sku].quantity
-              // console.log(quantity)
-            }
-          }
-        }
-
-      })
-
-
-      // this.setState({quantity: quantity})
-
-
-    })
-
   }
 
 
   handleStyleClick(e) {
+
+    // update available sizes upon clicking new style
     this.setState({selectedStyle : event.target.getAttribute("id")}, () => {
     var style = this.state.results[Number(this.state.selectedStyle)];
     var styleSkus = style.skus;
@@ -199,38 +136,32 @@ class Overview extends React.Component {
     console.log(sizesArr)
     this.setState({sizes: sizesArr})
 
+
+    // toggle "outOfStock" boolean if quantity of currently selected style === 0
+
     var quantity = 0;
       for (var sku in styleSkus) {
-
-
-        console.log('state',this.state.selectedSize)
-        console.log('bbbbbbbbb', sku)
         quantity += styleSkus[sku].quantity
       }
-
-      console.log('aaaaaa', quantity)
-
       if (quantity === 0) {
         this.setState({outOfStock : true})
       } else {
         this.setState({outOfStock : null})
-
       }
-
-
     })
-
-
-
   }
 
 
   handleSizeSelect(e) {
     console.log(e.target.value)
+
+    // update selectedSize state back to null if user presses "Select Size"
     if (e.target.value === 'Select Size') {
       this.setState({selectedSize: null})
       return;
     }
+
+    // update selectedSize state and render quantity of given style/size combination selected
     this.setState({selectedSize: e.target.value}, () => {
       var style = this.state.results[this.state.selectedStyle]
       var styleSkus = style.skus
@@ -240,10 +171,7 @@ class Overview extends React.Component {
         console.log('state',this.state.selectedSize)
         console.log(styleSkus[sku].size)
         if (styleSkus[sku].size === this.state.selectedSize) {
-          // console.log('a',styleSkus[sku].quantity)
-          // console.log(styleSkus[sku].quantity)
           quantity += styleSkus[sku].quantity
-          // console.log(quantity)
         }
       }
       this.setState({quantity:quantity})
@@ -255,6 +183,7 @@ class Overview extends React.Component {
 
 
     handleAddToCart() {
+      // check for invalid add to cart (ATC)
       if (this.state.selectedSize === null || this.state.selectedStyle === null) {
         this.setState({validATC: false})
       } else {

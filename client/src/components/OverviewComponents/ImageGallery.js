@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-import checkmark from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/checkmark.png'
+// import checkmark from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/checkmark.png'
 
 class StyleSelector extends React.Component {
   constructor(props) {
