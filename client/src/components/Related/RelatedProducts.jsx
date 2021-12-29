@@ -7,15 +7,12 @@ const RelatedProducts = (props) => {
 
   const [products, setProducts] = useState([]);
   const productId = '40344';
-  console.log(productId);
 
   useEffect(() =>{
-    console.log('getting related products...')
     axios.get(`${url}/products/${productId}/related`, {
       headers: { 'Authorization': token }
     })
     .then(res => {
-      console.log(res.data);
       axios.get(`${url}/products/`, {
         headers: { 'Authorization': token }
       })
