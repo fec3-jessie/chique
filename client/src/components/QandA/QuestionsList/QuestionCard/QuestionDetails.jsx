@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import AddAnswer from './AddAnswer.jsx';
 
 const options = { month: 'long', day: 'numeric', year: 'numeric' };
 
 const QuestionDetails = ({ asker, date, helpful, reported }) => {
-  const convertDate = new Date(date);
-  const newDate = convertDate.toLocaleDateString('default', options);
+  const newDate = new Date(date).toLocaleDateString('default', options);
 
   return (
     <section>
-      Helpful? <span class='clickable'>Yes</span> ({helpful})  |  <span class='clickable'>Add Answer</span>
+      Helpful? <span className='clickable'>Yes</span> ({helpful}) &nbsp;
+      | &nbsp;
+      <AddAnswer />
     </section>
   );
 }

@@ -22,7 +22,6 @@ const Answers = ({ answers }) => {
 
   return (
     <>
-      A:
       {sortedAnswers.map(ans =>
         <div>
           <AnswerBody

@@ -21,14 +21,15 @@ const QuestionsList = (props) => {
 
   return (
     <>
-      {questions.map(item =>
+      {questions.map((item, index) =>
         <QuestionCard
+          key={index}
           answers={item.answers}
           asker={item.asker_name}
           body={item.question_body}
           date={item.question_date}
           helpful={item.question_helpfulness}
-          key={item.question_id}
+          ID={item.question_id}
           reported={item.reported}
         />
       )}
