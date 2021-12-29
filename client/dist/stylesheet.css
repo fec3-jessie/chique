@@ -263,11 +263,13 @@
   gap: 5px;
 }
 .factors-breakdown-container {
-  /* padding-bottom: 3%; */
+  padding-bottom: 2%;
   padding-right: 4%;
+  margin-top: 3%;;
 }
 .factor {
   font-weight: 600;
+
 }
 
 .factor-arrow {
@@ -281,6 +283,8 @@
 }
 .factor-low-mid-high p {
   /* line-height: 0.2em; */
-  vertical-align: text-top;
+  /* vertical-align: text-top; */
+  margin-top: 1px;
+  margin-bottom: 5%;
 }
 
