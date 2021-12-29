@@ -52,14 +52,14 @@ class AddToCart extends React.Component {
 
 
       {output}
-      {/* <option value="Brooklyn">1</option>
+      {/* <option value="Brooklyn">button-13</option>
       <option value="Manhattan">Manhattan</option>
       <option value="Queens">Queens</option> */}
     </select>
   </div>
 
 
-<button onClick = {this.props.handleAddToCart} /*handleAddToCart = {this.handleAddToCart.bind(this)} */className="button-13" role="button">Add To Cart</button>
+<button onClick = {this.props.handleAddToCart} /*handleAddToCart = {this.handleAddToCart.bind(this)} */className="ATCButton" role="button">Add To Cart</button>
 
 {this.props.validATC === false ? ATCMessage[0] : ''}
 

@@ -135,7 +135,7 @@ img .quarter{
 
 
 /* CSS */
-.button-13 {
+.ATCButton {
   margin-top: 27.5px;
   background-color: #fff;
   border: 1px solid #d5d9d9;
@@ -159,11 +159,11 @@ img .quarter{
   width: 100px;
 }
 
-.button-13:hover {
+.ATCButton:hover {
   background-color: #f7fafa;
 }
 
-.button-13:focus {
+.ATCButton:focus {
   border-color: #008296;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   outline: 0;
