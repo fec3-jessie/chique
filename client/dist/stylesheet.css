@@ -1,0 +1,212 @@
+.thumbnail-image {
+	margin-right: 5px;
+	border-style: solid;
+	position: relative;
+  display: block;
+  max-width: 100%;
+  clip-path: circle();
+
+
+
+}
+
+.fa-check {
+  position: absolute;
+  top: 3%;
+  left: 90%;
+  width:100px;
+  color:green;
+}
+
+div #styles-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+div #image-container {
+  position: relative;
+  width: 50px;
+  margin-right: 15px;
+
+
+
+
+}
+
+/* div #image-container ::after {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: url(https://lh3.googleusercontent.com/proxy/VnKekpthZDmb9CA-8cqw-8vzAmlB3olqarAbbcHJjTbRKnM-gFKtqtCjRtXRseTmUCfrEdooSxgK-hIFWx5pJ7tiaLbMi4Gujute0H0COfYfDk-eNL7S7uKG0y1NlGvaNO6i402Qi_xVbaqEc68mSDP8is3heQ);
+
+
+} */
+
+
+
+#checkmark {
+	position: absolute;
+}
+
+
+#img-container {
+	display: flex;
+	justify-content: flex-start;
+
+}
+
+#gray {
+  width: 50px;
+  border-radius: 90%;
+  margin-right: 15px;
+}
+
+#styles-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+
+}
+
+
+#product-name-overview {
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  font-size: xx-large;
+}
+
+#selected-style {
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: larger;
+}
+
+
+#category-overview {
+  font-family: 'Raleway', sans-serif;
+
+}
+
+#reviews-overview {
+  font-size: small;
+  text-decoration: underline;
+  color: #007185;
+}
+
+
+#atc {
+  color: red;
+  font-size: smaller;
+}
+
+
+#star {
+  width: 25px;
+}
+
+
+img .quarter{
+  height: 75px;
+}
+
+
+.star {
+  display: inline-block;
+  position: relative;
+  font-size: 100px;
+  color: #ddd;
+}
+
+.star::after {
+  font-family: FontAwesome;
+  content: "\f005";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  overflow: hidden;
+  color: #f80;
+}
+
+
+
+
+/* CSS */
+.button-13 {
+  margin-top: 27.5px;
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: block;
+  font-family: "Amazon Ember",sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.button-13:hover {
+  background-color: #f7fafa;
+}
+
+.button-13:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+
+
+.select-dropdown {
+  margin-top: 25px;
+  position: relative;
+  background-color: #ffffff;
+  width: auto;
+  float: left;
+  max-width: 100%;
+  border-radius: 8px;
+	border-width: 1px;
+	border-style: solid;
+	margin-right: 15px;
+}
+.select-dropdown select {
+  font-family: "helvetica neue", helvetica;
+  font-size: 1rem;
+  font-weight: 200;
+  max-width: 100%;
+  padding: 8px 24px 8px 10px;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+  outline: none;
+  box-shadow: none;
+}
+.select-dropdown:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  right: 8px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #aaa;
+}
