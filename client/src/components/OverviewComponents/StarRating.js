@@ -3,11 +3,11 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-regular-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import quarter from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/quarter.png'
-import star from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/star.png'
-import half from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/half.png'
-import threeQuarter from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/stars/threeQuarter.png'
-import token from '/Users/danielghaly/Desktop/Hack Reactor/fec3/config.js'
+import quarter from './/stars/quarter.png'
+import star from './stars/star.png'
+import half from './stars/half.png'
+import threeQuarter from './stars/threeQuarter.png'
+import token from '../../../../config.js'
 
 // import { faThin } from '@fortawesome/free-solid-svg-icons'
 
