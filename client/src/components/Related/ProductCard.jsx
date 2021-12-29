@@ -34,7 +34,7 @@ const ProductCard = (props) => {
   }, [])
 
 
-  return (<div>
+  return (<div class="product-card">
     <img src = {defaultStyle.photos?.[0].thumbnail_url || 'image-unavailable'}/>
     <br></br>
     {item.category}: {item.name}
