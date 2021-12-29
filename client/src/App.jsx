@@ -9,10 +9,10 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <Overview />
-        <QandA />
+        {/* <Overview /> */}
+        {/* <QandA /> */}
         <Ratings />
-        <Related />
+        {/* <Related /> */}
       </div>
     )
   }
