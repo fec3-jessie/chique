@@ -6,10 +6,9 @@ bin-release/
 
 # Other files and folders
 .settings/
-bundle.js
-
 node_modules
 token.jsx
+bundle.js
 # Executables
 *.swf
 *.air

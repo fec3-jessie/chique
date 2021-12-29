@@ -1,4 +1,5 @@
 import React from 'react';
+import Ratings from './components/Ratings.jsx';
 
 class App extends React.Component {
   constructor(props) {
