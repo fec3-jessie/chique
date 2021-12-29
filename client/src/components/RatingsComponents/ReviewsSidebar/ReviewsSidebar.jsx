@@ -5,6 +5,7 @@ import AverageRating from './AverageRating.jsx';
 import Token from '../../token.jsx';
 import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
+import RatingFactors from './RatingFactors.jsx';
 
 function ReviewsSidebar ({productId}) {
   const [productMetaData, setProductMetaData] = useState({});
@@ -32,6 +33,7 @@ function ReviewsSidebar ({productId}) {
           <AverageRating ratings={productMetaData.ratings}/>
           <PercentRecommended recommended={productMetaData.recommended}/>
           <RatingBreakdown ratings={productMetaData.ratings}/>
+          <RatingFactors characteristics={productMetaData.characteristics} />
         </div>
       )
     };

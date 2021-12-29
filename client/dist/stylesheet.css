@@ -249,6 +249,11 @@
 }
 .percent-recommendation {
   padding-top: 3%;
+  padding-bottom: 3%;
+}
+.stars-breakdown-container {
+  padding-bottom: 5%;
+  padding-right: .05%;
 }
 .stars-bar-container {
   display: flex;
@@ -256,5 +261,26 @@
   align-items: baseline;
   justify-content: center;
   gap: 5px;
+}
+.factors-breakdown-container {
+  /* padding-bottom: 3%; */
+  padding-right: 4%;
+}
+.factor {
+  font-weight: 600;
+}
+
+.factor-arrow {
+  float: right;
+}
+.factor-low-mid-high {
+  /* padding-top: 1px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.factor-low-mid-high p {
+  /* line-height: 0.2em; */
+  vertical-align: text-top;
 }
 

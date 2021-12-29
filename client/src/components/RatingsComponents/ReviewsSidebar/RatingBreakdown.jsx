@@ -1,10 +1,11 @@
 import React from 'react';
 import StarBar from './StarBar.jsx';
 
+
 function RatingBreakdown ({ratings}) {
   let starsCounts = ['1', '2', '3', '4', '5'];
   return (
-    <div>
+    <div className='stars-breakdown-container'>
       {starsCounts.map((star) => {
         return (
           <div key={star} className='stars-bar-container'>
@@ -14,7 +15,6 @@ function RatingBreakdown ({ratings}) {
           </div>
         )
       })}
-
     </div>
   )
 }
