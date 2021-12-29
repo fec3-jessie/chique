@@ -24,7 +24,7 @@ function ReviewsList ({reviews}) {
         })}
       </div>
       <div className='review-list-buttons-container'>
-        <button>Add Review</button>
+        <button>More Reviews</button>
         <button>Add Review</button>
       </div>
     </div>

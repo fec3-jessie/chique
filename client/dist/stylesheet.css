@@ -89,6 +89,8 @@ max-width: 64%;
 .review-list-buttons-container{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  padding-top:5%;
 }
 
 /* -------------------------
@@ -220,17 +222,18 @@ max-width: 64%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-content: flex-start;
+  /* align-content: flex-start; */
 }
 .numerical-rating {
-  /* align-self: flex-start; */
+  order:1;
+  align-self: flex-start;
   padding-right: 5px;
   font-weight:600;
   font-size: 6em;
 }
 .stars-average {
-  padding-left: 5px;
-  align-self: center;
+  order: 2;
+  align-content: center;
 }
 .percent-recommendation {
   padding-top: 3%;
