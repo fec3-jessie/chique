@@ -8,8 +8,7 @@ bin-release/
 .settings/
 node_modules
 bundle.js
-token.jsx
-/client/dist/bundle.js
+config.js
 
 token.jsx
 bundle.js

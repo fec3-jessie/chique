@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import AverageRating from './AverageRating.jsx';
-import Token from '../../token.jsx';
+import token from '../../../../../config.js';
 import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
@@ -17,7 +17,7 @@ function ReviewsSidebar ({productId}) {
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {
         headers: {
-          'Authorization': Token
+          'Authorization': token
         }
       });
       const data = await getMetaData.data;
