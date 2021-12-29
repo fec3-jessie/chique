@@ -34,14 +34,12 @@ const ProductCard = (props) => {
   }, [])
 
 
-  return (<div class="product-card">
-    <img src = {defaultStyle.photos?.[0].thumbnail_url || 'image-unavailable'}/>
-    <br></br>
-    {item.category}: {item.name}
-    <br></br>
-    ${defaultStyle.original_price}
-    <br></br>
-    {starAverage} stars
+  return (<div className='product-card'>
+    <img className='related-img' src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}/><br></br>
+    <span className='card-details'>{item.category}</span><br></br>
+    <span className='product-name'>{item.name}</span><br></br>
+    <span className='related-price'>${defaultStyle.original_price}</span><br></br>
+    <span className='related-stars'>{starAverage} stars</span>
   </div>)
 }
 

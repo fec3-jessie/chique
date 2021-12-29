@@ -6,7 +6,7 @@ import ProductCard from './ProductCard.jsx';
 const RelatedProducts = (props) => {
 
   const [products, setProducts] = useState([]);
-  const productId = '40344';
+  const productId = '40345';
 
   useEffect(() =>{
     axios.get(`${url}/products/${productId}/related`, {
@@ -23,9 +23,11 @@ const RelatedProducts = (props) => {
 
   return (<div>
     <h3>Related Products</h3>
-    {products.length !== 0 ?
-      products.map(product => (<ProductCard product = {product} key = {product.id}/>))
-      : null}
+    <div className='related-products'>
+      {products.length !== 0 ?
+        products.map(product => (<ProductCard product = {product} key = {product.id}/>))
+        : null}
+    </div>
   </div>)
 }
 
