@@ -7,7 +7,7 @@ bin-release/
 # Other files and folders
 .settings/
 node_modules
-token.jsx
+config.js
 bundle.js
 # Executables
 *.swf
