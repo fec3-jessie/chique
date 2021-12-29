@@ -3,7 +3,14 @@ import React from 'react';
 function FactorBar ({characteristics, factor}) {
   let factorPercent = Math.round((Number(characteristics[factor].value) / 5) * 100);
 
-  // console.log('this is the factor value;::::', factor, characteristics[factor].value, test);
+  const factorGrades = {
+    'Size': ['A size too small', 'Perfect', 'A size too big'],
+    'Width': ['Too narrow', 'Perfect', 'Too Wide'],
+    'Comfort': ['Uncomfortable', 'Ok', 'Perfect'],
+    'Quality': ['Poor', 'What I expected', 'Perfect'],
+    'Length' : ['Runs short', 'Perfect', 'Runs long'],
+    'Fit': ['Runs tight', 'Perfect', 'Runs long']
+  };
 
 
   // let bgc = '#124B3A'; // to see inner bar uncomment
@@ -37,9 +44,9 @@ function FactorBar ({characteristics, factor}) {
         </div>
       </div>
       <div className='factor-low-mid-high'>
-        <p>low</p>
-        <p>mid</p>
-        <p>high</p>
+        <p>{factorGrades[factor][0]}</p>
+        <p>{factorGrades[factor][1]}</p>
+        <p>{factorGrades[factor][2]}</p>
       </div>
     </>
   )
