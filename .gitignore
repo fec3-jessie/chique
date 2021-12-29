@@ -11,6 +11,8 @@ bundle.js
 token.jsx
 /client/dist/bundle.js
 
+token.jsx
+bundle.js
 # Executables
 *.swf
 *.air
