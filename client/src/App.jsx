@@ -1,5 +1,8 @@
 import React from 'react';
-import QandA from './components/QandA.jsx';
+import Overview from './components/Overview.jsx'
+import QandA from './components/QandA.jsx'
+import Ratings from './components/Ratings.jsx'
+import Related from './components/Related.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -9,10 +12,14 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        {/* <Overview /> */}
+        <h1>Overview</h1>
+        <Overview />
+        <h1>QandA</h1>
         <QandA />
-        {/* <Ratings /> */}
-        {/* <Related /> */}
+        <h1>Ratings</h1>
+        <Ratings />
+        <h1>Related</h1>
+        <Related />
       </div>
     )
   }

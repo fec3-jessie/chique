@@ -7,14 +7,20 @@ bin-release/
 # Other files and folders
 .settings/
 node_modules
-config.js
 bundle.js
+config.js
 
+token.jsx
+bundle.js
 # Executables
 *.swf
 *.air
 *.ipa
 *.apk
+
+# Security
+config.js
+bundle.js*
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
