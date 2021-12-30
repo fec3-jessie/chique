@@ -2,8 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
 
 function ReviewsList ({reviews}) {
+  const [showModal, setShowModal] = useState(false);
+  const openFormModal = () => {
+    setShowModal(true);
+  };
   return (
     <div className='reviews-list'>
       <ReviewsListSorting reviewsNum={reviews.count}/>
@@ -25,7 +30,10 @@ function ReviewsList ({reviews}) {
       </div>
       <div className='review-list-buttons-container'>
         <button>More Reviews</button>
-        <button>Add Review</button>
+        <button
+          onClick={() => openFormModal()}
+          >Add Review</button>
+          {showModal ? <NewReviewModal setShowModal={setShowModal} /> : null}
       </div>
     </div>
   )

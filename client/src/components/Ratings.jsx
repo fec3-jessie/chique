@@ -5,11 +5,10 @@ import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.js
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
 import token from '../../../config.js';
 
-function Ratings () {
+function Ratings (props) {
   const [productReviews, setProductReviews] = useState({});
-
   useEffect(() => {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358';
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=${props.product_Id}`;
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {

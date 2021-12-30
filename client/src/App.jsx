@@ -4,6 +4,9 @@ import Ratings from './components/Ratings.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      product_Id: 40358
+    };
   }
 
   render () {
@@ -11,10 +14,10 @@ class App extends React.Component {
       <div>
         {/* <Overview /> */}
         {/* <QandA /> */}
-        <Ratings />
+        <Ratings product_Id={this.state.product_Id}/>
         {/* <Related /> */}
       </div>
-    )
+    );
   }
 }
 
