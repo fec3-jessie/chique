@@ -2,7 +2,7 @@ import React from 'react';
 import StarRating from './OverviewComponents/StarRating.js';
 import Reviews from './OverviewComponents/Reviews.js';
 import axios from 'axios'
-import token from '../../../config.js'
+import {token} from '../../../config.js'
 import StyleSelector from './OverviewComponents/StyleSelector.js'
 // import ImageGallery from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/ImageGallery.js'
 import AddToCart from './OverviewComponents/AddToCart.js'

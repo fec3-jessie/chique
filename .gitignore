@@ -29,3 +29,4 @@ bundle.js*
 config.js
 client/dist/bundle.js
 bundle.js
+client/dist/bundle.js.LICENSE.txt:
