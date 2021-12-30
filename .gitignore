@@ -8,7 +8,7 @@ bin-release/
 .settings/
 node_modules
 config.js
-client/dist/bundle.js
+bundle.js
 
 # Executables
 *.swf
