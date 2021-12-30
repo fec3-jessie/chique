@@ -1,3 +1,65 @@
+.clickable {
+  cursor: pointer;
+}
+
+#Image-Answer {
+  height: 10%;
+  width: 10%;
+}
+
+#Question-Card {
+  border: 2px solid orange;
+  width: 60%;
+}
+
+/* ---------- Add Answer Modal ---------- */
+.container-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.container-modal .modal-answer {
+  z-index: 1;
+  width: 35%;
+  height: 70%;
+  background: white;
+  padding: 5px 10px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+}
+
+.modal-answer button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 3px 5px;
+  background: crimson;
+  color: white;
+  font-weight: bold;
+  /* border: none;
+  outline: none;
+  border-radius: 2px; */
+  cursor: pointer;
+}
+
+#answer-disclaimer {
+  font-size: smaller;
+  margin: 0;
+}
+
+
 /* Ratings & Reviews Styles */
 
 
@@ -11,12 +73,23 @@
   padding-left: 5px;
   padding-top: 5px;
 }
+.reviews-features{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.reviews-sidebar {
+max-width: 36%;
+}
+.reviews-list {
+max-width: 64%;
+}
 .sorted-drop-down{
   padding-bottom: 10px;
   padding-left: 5px;
 }
 .reviews-list-tiles {
-  height: 500px;
+  max-height: 700px;
   overflow-y: scroll;
 }
 .review-tile {
@@ -24,7 +97,6 @@
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* background-color: rgb(248, 246, 237); */
 }
 .header-tile {
   display: flex;
@@ -73,6 +145,15 @@
 }
 
 /* -------------------------
+    ReviewList Buttons
+--------------------------- */
+
+.review-list-buttons-container{
+  display: flex;
+  flex-direction: row;
+}
+
+/* -------------------------
     Thumbnail & Modal
 --------------------------- */
 
@@ -103,6 +184,7 @@
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .pic-modal-container .pic-modal {
   z-index: 1;
   width:auto;
@@ -132,6 +214,7 @@
   border-radius: 2px;
   cursor: pointer;
 }
+
 @keyframes animate {
   from {
     transform: scale(0.5);
@@ -148,13 +231,10 @@
 .stars-tile {
   order:1;
   color: rgb(15, 15, 14);
-  /* display: flex;
-  font-size: 20px; */
 }
 .stars-outer {
   display: inline-block;
   position: relative;
-  /* font-family: FontAwesome; */
 }
 .stars-outer::before {
   content: "☆ ☆ ☆ ☆ ☆";
@@ -197,32 +277,105 @@
 }
 
 /* -------------------------
-  Possible Styling for module main buttons
+    Ratings & Reviews SideBar
 --------------------------- */
 
-/* .yes-button {
-  display: inline-block;
-  border: none;
-  padding: 1rem 2rem;
-  margin: 0;
-  text-decoration: none;
-  background: #3700ed;
-  color: #ffffff;
-  font-family: sans-serif;
-  font-size: 1rem;
+.average-rating-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+.numerical-rating {
+  /* align-self: flex-start; */
+  padding-right: 5px;
+  font-weight:600;
+  font-size: 6em;
+}
+.stars-average {
+  padding-left: 5px;
+  align-self: center;
+}
+.percent-recommendation {
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+.stars-breakdown-container {
+  padding-bottom: 5%;
+  padding-right: .05%;
+}
+.stars-bar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.factors-breakdown-container {
+  padding-bottom: 2%;
+  padding-right: 4%;
+  margin-top: 3%;;
+}
+.factor {
+  font-weight: 600;
+}
+.factor-arrow {
+  float: right;
+}
+.factor-low-mid-high {
+  /* padding-top: 1px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.factor-low-mid-high p {
+  /* line-height: 0.2em; */
+  /* vertical-align: text-top; */
+  margin-top: 1px;
+  margin-bottom: 5%;
+}
+
+/* ------------------------------------
+    Ratings & Reviews SideBar Buttons
+-------------------------------------- */
+
+.stars-bar-label {
+    letter-spacing: 0;
+    margin-right: 3px;
+}
+.star-span {
+  margin-left: 10px;
+}
+.stars-bar-label:hover,
+.stars-bar-label:active {
+  letter-spacing: 5px;
   cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out,
-              transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-.yes-button:hover,
-.yes-button:focus {
-  background: #0053ba;
+.stars-bar-label:after,
+.stars-bar-label:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
 }
 
-.yes-button:active {
-  transform: scale(0.99);
-} */
+.stars-bar-label:hover:after,
+.stars-bar-label:hover:before {
+  backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.stars-bar-label:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
