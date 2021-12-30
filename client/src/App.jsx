@@ -4,7 +4,6 @@ import QandA from './components/QandA.jsx'
 import Ratings from './components/Ratings.jsx'
 import Related from './components/Related.jsx'
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
