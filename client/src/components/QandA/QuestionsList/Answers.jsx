@@ -24,17 +24,22 @@ const Answers = ({ answers }) => {
       {sortedAnswers.map(ans =>
         <div>
           <AnswerBody
+            key={ans.id * 2}
             body={ans.body}
           />
           <AnswerDetails
             name={ans.answerer_name}
             date={ans.date}
             helpfulness={ans.helpfulness}
-            ID={ans.id}
+            key={ans.id}
           />
           {ans.photos.length !== 0
-            ? <AnswerImages photos={ans.photos} />
-            : <></>
+            ? <AnswerImages
+              photos={ans.photos}
+              key={-ans.id}
+              ID={ans.id}
+            />
+            : null
           }
         </div>
       )}

@@ -1,15 +1,15 @@
 const axios = require('axios');
-const config = require('../config.js');
+const { token, url } = require('../config.js');
 
-const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
+// const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 const headers = {
   'User-Agent': 'request',
-  'Authorization': `token ${config.TOKEN}`
+  'Authorization': token
 };
 
 var getDataByPath = (path) => {
   let options = {
-    url: host + path,
+    url: url + path,
     headers: headers
   }
 
@@ -18,7 +18,7 @@ var getDataByPath = (path) => {
 
 var postDataByPath = (path, data) => {
   let options = {
-    url: host + path,
+    url: url + path,
     headers: headers
   }
 
@@ -27,7 +27,7 @@ var postDataByPath = (path, data) => {
 
 var putDataByPath = (path, data) => {
   let options = {
-    url: host + path,
+    url: url + path,
     headers: headers
   }
 

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import config from '../../../../config.js';
+import { token, url } from '../../../../config.js';
 import QuestionCard from './QuestionsList/QuestionCard.jsx';
 import AddQuestionOrAnswer from './QuestionsList/QuestionCard/AddQuestionOrAnswer.jsx';
 
-const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
+// const host = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp';
 const headers = {
-  'Authorization': `${config.TOKEN}`
+  'Authorization': token
 };
 
 const QuestionsList = (props) => {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    axios.get(host + `/qa/questions?product_id=${props.product_id}`, { headers })
+    axios.get(url + `/qa/questions?product_id=${props.product_id}`, { headers })
       .then(returnedQuestions => {
         setQuestions(returnedQuestions.data.results);
       })
@@ -22,20 +22,22 @@ const QuestionsList = (props) => {
 
   return (
     <>
-      {questions.map((item, index) =>
+      {questions.map(item =>
         <QuestionCard
-          key={index}
           answers={item.answers}
           asker={item.asker_name}
           body={item.question_body}
           date={item.question_date}
           helpful={item.question_helpfulness}
-          ID={item.question_id}
+          key={item.question_id}
           reported={item.reported}
+          ID={item.question_id}
         />
       )}
-      <button>More Answered Questions</button>
-      <AddQuestionOrAnswer usage={'addQuestion'} />
+      <div>
+        <button>More Answered Questions</button>
+        <AddQuestionOrAnswer usage={'addQuestion'} />
+      </div>
     </>
   );
 }

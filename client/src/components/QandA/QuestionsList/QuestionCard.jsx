@@ -20,7 +20,7 @@ const QuestionCard = ({ answers, asker, body, date, helpful, reported, ID }) => 
       <div className='symbol question-symbol'>Q:</div>
       <QuestionBody body={body}/>
       <div className='symbol answer-symbol'>A:</div>
-      <Answers answers={answers}/>
+      <Answers answers={answers} key={ID * 3}/>
       {Object.keys(answers).length > 2
         ? <button onClick={onSeeMoreAnswersClick}>See more answers</button>
         : <></>

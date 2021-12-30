@@ -1,10 +1,14 @@
 import React from 'react';
 
-const AnswerImages = ({ photos }) => {
+const AnswerImages = ({ photos, ID }) => {
   return (
     <div>
-      {photos.map(image =>
-        <img id='Image-Answer' src={image} />
+      {photos.map((image, index) =>
+        <img
+          id='Image-Answer'
+          key={ID * -2 + index}
+          src={image}
+        />
       )}
     </div>
   );
