@@ -3,7 +3,7 @@ import React from 'react';
 const YourOutfit = (props) => {
   return (<div>
     <h3>
-    Your outfit goes here.
+    Your YourOutfit
     </h3>
   </div>)
 }

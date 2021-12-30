@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {url, token} from '/config.js';
+import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
 
 const ProductCard = (props) => {
   const item = props.product;
@@ -36,10 +37,13 @@ const ProductCard = (props) => {
 
   return (<div className='product-card'>
     <img className='related-img' src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}/><br></br>
-    <span className='card-details'>{item.category}</span><br></br>
-    <span className='product-name'>{item.name}</span><br></br>
-    <span className='related-price'>${defaultStyle.original_price}</span><br></br>
-    <span className='related-stars'>{starAverage} stars</span>
+
+    <div className='card-details'>
+      <span className='card-category'>{item.category}</span><br></br>
+      <span className='card-name'>{item.name}</span><br></br>
+      <span className='card-price'>${defaultStyle.original_price}</span><br></br>
+      <StarsTile stars ={starAverage} />
+    </div>
   </div>)
 }
 
