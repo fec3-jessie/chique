@@ -1,8 +1,9 @@
 import React from 'react';
-// import Overview from './components/Overview.jsx';
+import Overview from './components/Overview.jsx'
+import Ratings from './components/Ratings.jsx'
+import Related from './components/Related.jsx'
 import QandA from './components/QandA.jsx';
-import Ratings from './components/Ratings.jsx';
-import Related from './components/Related.jsx';
+// import QandA from './components/QandA.jsx';
 import axios from 'axios';
 import { token, url } from '../../config.js';
 
@@ -31,6 +32,8 @@ class App extends React.Component {
   //       });
   //     })
   //     .catch(err => console.error('Error getting reviewsData: ', err));
+
+    }
 
   //   this.axiosGet(`/products/${this.state.product_Id}`)
   //     .then(returnedData => {
@@ -86,16 +89,11 @@ class App extends React.Component {
 
 
         <h1>Overview</h1>
-        {/* <Overview
+        <Overview
           product_Id={this.state.product_Id}
           reviewsData={this.state.reviewsData}
           productData={this.state.productData}
           stylesData={this.state.stylesData}
-        /> */}
-        <h1>Related</h1>
-        <Related
-          product_Id={this.state.product_Id}
-          relatedItems={this.state.relatedItems}
         />
         <h1>QandA</h1>
         <QandA
@@ -107,9 +105,20 @@ class App extends React.Component {
           product_Id={this.state.product_Id}
           // metaData={this.state.metaData}
         />
+
+        />
+        <h1>Related</h1>
+        <Related
+          product_Id={this.state.product_Id}
+          relatedItems={this.state.relatedItems}
+        />
+
+
       </div>
     );
   }
+
+
 }
 
 export default App;
