@@ -15,6 +15,7 @@ class QuestionsList extends React.Component {
       questions: [],
       questionCounter: 0
     }
+    this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,18 @@ class QuestionsList extends React.Component {
         })
       })
       .catch(err => console.error('Get request error (QuestionsList.jsx): ', err))
+  }
+
+  onMoreQuestionsClick() {
+    if (this.state.questions.length - this.state.questionCounter <= 2) {
+      this.setState({
+        questionCounter: this.state.questions.length
+      })
+    } else {
+      this.setState({
+        questionCounter: this.state.questionCounter + 2
+      })
+    }
   }
 
   render() {
@@ -50,7 +63,7 @@ class QuestionsList extends React.Component {
         {(this.state.questions.length <= 2 ||
         this.state.questions.length === this.state.questionCounter)
         ? null :
-          <button>More Answered Questions</button>
+          <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
         }
         <AddQuestionOrAnswer usage={'addQuestion'} />
       </>
