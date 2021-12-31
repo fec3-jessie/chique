@@ -106,6 +106,9 @@ div #image-container {
   font-weight: bold;
   padding-bottom: 10px;
   font-size: larger;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
 }
 
 
@@ -120,6 +123,9 @@ div #image-container {
   color: #007185;
 }
 
+#atc-container {
+  margin-top: 5px;
+ }
 
 #atc {
   color: red;
@@ -160,7 +166,6 @@ img .quarter{
 
 /* CSS */
 .ATCButton {
-  margin-top: 27.5px;
   background-color: #fff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
@@ -195,7 +200,6 @@ img .quarter{
 
 
 .select-dropdown {
-  margin-top: 25px;
   position: relative;
   background-color: #ffffff;
   width: auto;

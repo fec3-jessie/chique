@@ -32,23 +32,27 @@ class AddToCart extends React.Component {
     return (
       <>
 
-  <div className="select-dropdown">
-    <select onChange = {this.props.handleSizeSelect}>
+  <div id = 'atc-container'>
 
-    {this.props.outOfStock ? <option >OUT OF STOCK</option> : <option >Select Size</option>}
-    {!this.props.outOfStock ? this.props.sizes.map(size => <option >{size}</option>) : '' }
+      <div className="select-dropdown">
+        <select onChange = {this.props.handleSizeSelect}>
 
-    </select>
-  </div>
+        {this.props.outOfStock ? <option >OUT OF STOCK</option> : <option >Select Size</option>}
+        {!this.props.outOfStock ? this.props.sizes.map(size => <option >{size}</option>) : '' }
 
- <div className="select-dropdown">
-    <select>
-      {output}
-    </select>
-  </div>
+        </select>
+      </div>
 
-<button onClick = {this.props.handleAddToCart} className="ATCButton" role="button">Add To Cart</button>
-{this.props.validATC === false ? ATCMessage[0] : ''}
+    <div className="select-dropdown">
+        <select>
+          {output}
+        </select>
+      </div>
+
+    <button onClick = {this.props.handleAddToCart} className="ATCButton" role="button">Add To Cart</button>
+    {this.props.validATC === false ? ATCMessage[0] : ''}
+
+</div>
 
       </>
     )
