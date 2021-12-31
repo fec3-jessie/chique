@@ -5,26 +5,15 @@
   display: block;
   max-width: 100%;
   clip-path: circle();
-  width:  100px;
-  height: 100px;
-  object-fit: cover;
 }
-
 
 #product-description-container {
   margin-left: 30%;
 }
 
-#product-description {
-  max-width: 40%;
-  font-size: larger;
-  font-family: 'Oswald', sans-serif;
-
-}
-
 .fa-check {
   position: absolute;
-  top: 3%;
+  top: 15%;
   left: 90%;
   width:100px;
   color:green;
@@ -33,6 +22,15 @@
 div #styles-container {
   display: flex;
   justify-content: flex-start;
+}
+
+
+div #image-container {
+  position: relative;
+  width: 50px;
+  margin-right: 15px;
+  margin-top: -30px;
+
 }
 
 
