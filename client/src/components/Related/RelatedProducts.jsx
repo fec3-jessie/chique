@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {url, token} from '/config.js';
+import {token} from '/config.js';
 import ProductCard from './ProductCard.jsx';
+const url = 'http://localhost:3000';
+
 
 const RelatedProducts = (props) => {
 
@@ -9,10 +11,9 @@ const RelatedProducts = (props) => {
   const productId = '40345';
 
   useEffect(() =>{
-    // axios.get(`${url}/products/${productId}/related`, {
-    //   headers: { 'Authorization': token }
-    // })
-    axios.get(`http://localhost:3000/products/${productId}/related`)
+    axios.get(`${url}/products/${productId}/related`, {
+      headers: { 'Authorization': token }
+    })
     .then(res => {
       axios.get(`${url}/products/`, {
         headers: { 'Authorization': token }

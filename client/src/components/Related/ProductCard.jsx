@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {url, token} from '/config.js';
+import {token} from '/config.js';
 import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
+const url = 'http://localhost:3000';
 
 const ProductCard = (props) => {
   const item = props.product;
