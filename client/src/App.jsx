@@ -96,7 +96,7 @@ class App extends React.Component {
         <h1>Ratings</h1>
         <Ratings
           product_Id={this.state.product_Id}
-          metaData={this.state.metaData}
+          // metaData={this.state.metaData}
         />
         <h1>QandA</h1>
         <QandA
