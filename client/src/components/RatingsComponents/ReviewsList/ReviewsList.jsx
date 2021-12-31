@@ -23,6 +23,10 @@ function ReviewsList ({reviews}) {
             reviewId={review.review_id}/>
         })}
       </div>
+      <div className='review-list-buttons-container'>
+        <button>Add Review</button>
+        <button>Add Review</button>
+      </div>
     </div>
   )
 }

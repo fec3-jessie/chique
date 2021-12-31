@@ -1,18 +1,19 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
+import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.jsx';
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
-import Token from './token.jsx';
+import {token} from '../../../config.js';
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});
-
+  const holder = 40358
   useEffect(() => {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40357';
+    const url = `http://127.0.0.1:3000/reviews?product_id=${holder}`;
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
-          'Authorization': Token
+          'Authorization': token
         }
       });
       const reviews = await getReviews.data;
@@ -25,7 +26,11 @@ function Ratings () {
   return (
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
-        <ReviewsList reviews={productReviews}/>
+        <div className='reviews-features'>
+          {productReviews.product !== undefined ?
+          <ReviewsSidebar className='reviews-sidebar' productId={productReviews.product}/> : null}
+          <ReviewsList className='reviews-list' reviews={productReviews}/>
+        </div>
       </div>
   )
 }

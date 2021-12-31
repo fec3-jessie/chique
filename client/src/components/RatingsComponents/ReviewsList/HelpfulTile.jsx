@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-import Token from '../../token.jsx';
+import {token} from '../../../../../config.js';
 // switch to dynamic data after testing...
 
 
@@ -16,7 +16,7 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
     };
     const postHelpfullness = await Axios.put(reviewUrl, body, {
       headers: {
-        'Authorization': Token
+        'Authorization': token
       }
     });
   };
