@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       product_Id: 40348,
       product_name: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -28,43 +28,43 @@ class App extends React.Component {
       .then(returnedData => {
         this.setState({
           reviewsData: returnedData.data
-        })
+        });
       })
-      .catch(err => console.error('Error getting reviewsData: ', err))
+      .catch(err => console.error('Error getting reviewsData: ', err));
 
-  //   this.axiosGet(`/products/${this.state.product_Id}`)
-  //     .then(returnedData => {
-  //       this.setState({
-  //         productData: returnedData.data
-  //       })
-  //     })
-  //     .catch(err => console.error('Error getting productData: ', err))
+    //   this.axiosGet(`/products/${this.state.product_Id}`)
+    //     .then(returnedData => {
+    //       this.setState({
+    //         productData: returnedData.data
+    //       })
+    //     })
+    //     .catch(err => console.error('Error getting productData: ', err))
 
-  //   this.axiosGet(`/products/${this.state.product_Id}/styles`)
-  //     .then(returnedData => {
-  //       this.setState({
-  //         stylesData: returnedData.data
-  //       })
-  //     })
-  //     .catch(err => console.error('Error getting stylesData: ', err))
+    //   this.axiosGet(`/products/${this.state.product_Id}/styles`)
+    //     .then(returnedData => {
+    //       this.setState({
+    //         stylesData: returnedData.data
+    //       })
+    //     })
+    //     .catch(err => console.error('Error getting stylesData: ', err))
 
-  //   // ----------- RATINGS ----------
-  //   this.axiosGet(`/reviews/meta?product_id=${this.state.product_Id}`)
-  //     .then(returnedData => {
-  //       this.setState({
-  //         metaData: returnedData.data
-  //       })
-  //     })
-  //     .catch(err => console.error('Error getting metaData: ', err))
+    //   // ----------- RATINGS ----------
+    //   this.axiosGet(`/reviews/meta?product_id=${this.state.product_Id}`)
+    //     .then(returnedData => {
+    //       this.setState({
+    //         metaData: returnedData.data
+    //       })
+    //     })
+    //     .catch(err => console.error('Error getting metaData: ', err))
 
-  //   // ----------- QUESTIONS & ANSWERS ----------
-  //   this.axiosGet(`/qa/questions?product_id=${this.state.product_Id}`)
-  //     .then(returnedData => {
-  //       this.setState({
-  //         questionsData: returnedData.data.results
-  //       })
-  //     })
-  //     .catch(err => console.error('Error getting questionsData: ', err))
+    //   // ----------- QUESTIONS & ANSWERS ----------
+    //   this.axiosGet(`/qa/questions?product_id=${this.state.product_Id}`)
+    //     .then(returnedData => {
+    //       this.setState({
+    //         questionsData: returnedData.data.results
+    //       })
+    //     })
+    //     .catch(err => console.error('Error getting questionsData: ', err))
 
   //   // ---------- RELATED ITEMS ----------
   //   this.axiosGet(`/products/${this.state.product_Id}/related`)
@@ -74,7 +74,7 @@ class App extends React.Component {
   //       })
   //     })
   //     .catch(err => console.error('Error getting relatedItems: ', err))
-  // }
+  }
 
   // axiosGet(endpoint) {
   //   return axios.get(url + endpoint, { headers })
@@ -83,6 +83,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
+
+
         <h1>Overview</h1>
         {/* <Overview
           product_Id={this.state.product_Id}
@@ -106,7 +108,7 @@ class App extends React.Component {
           // metaData={this.state.metaData}
         />
       </div>
-    )
+    );
   }
 }
 

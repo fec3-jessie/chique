@@ -1,5 +1,5 @@
 import React from 'react';
-
+import StarsTile from '../ReviewsList/StarsTile.jsx';
 function AverageRating ({ratings}) {
 
   const calculateRating = (ratingsObj) => {
@@ -14,11 +14,12 @@ function AverageRating ({ratings}) {
     let roundedResult = Math.round((result/totalVotes) * 10) / 10;
     return roundedResult;
   }
-
+  const average = calculateRating(ratings);
   return (
     <div className='average-rating-container'>
-      <div className='numerical-rating'>{`${calculateRating(ratings)}`}</div>
-      <div className='stars-average'>Average Stars will go here</div>
+      <div className='numerical-rating'>{average}</div>
+      {/* <div className='stars-average'>Average Stars will go here</div> */}
+      <StarsTile className='average-stars' stars={average} />
     </div>
   )
 }
