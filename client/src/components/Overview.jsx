@@ -27,7 +27,8 @@ class Overview extends React.Component {
       quantity: null,
       results: null,
       validATC: null,
-      productDescription: null
+      productDescription: null,
+      productSlogan: null
 
     }
   }
@@ -62,6 +63,7 @@ class Overview extends React.Component {
       this.setState({productName: res.data.name})
       this.setState({productCategory: res.data.category})
       this.setState({productDescription: res.data.description})
+      this.setState({productSlogan: res.data.slogan})
       this.setState({productPrice: res.data.default_price})
 
     })
@@ -206,10 +208,26 @@ class Overview extends React.Component {
         <div id = 'category-overview'>{this.state.productCategory}</div>
         <div id = 'product-name-overview'>{this.state.productName}</div>
         <div id = 'price-overview'>${this.state.productPrice}</div>
+
+        {/* {this.state.results.sale_price ?
+        <>
+        <div id = 'price-overview'>${this.state.productPrice}</div>
+        <div id = 'price-overview'>${this.state.results[Number(selectedStyle)].sale_price}</div>
+        </>
+
+        : '' } */}
+
         <StyleSelector results = {this.state.results}  selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
         {/* <ImageGallery/> */}
         <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
-        <ProductDescription productDescription = {this.state.productDescription}/>
+
+        <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
+        <div id = 'social-container'>
+          <i class="fab fa-2x fa-facebook"></i>
+          <i class="fab fa-2x fa-twitter"></i>
+          <i class="fab fa-2x fa-pinterest"></i>
+        </div>
+
       </>
 
     )

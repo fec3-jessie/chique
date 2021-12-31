@@ -111,6 +111,12 @@ div #image-container {
 
 }
 
+#product-slogan {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: -10px;
+}
+
 
 #category-overview {
   font-family: 'Raleway', sans-serif;
@@ -160,6 +166,28 @@ img .quarter{
   overflow: hidden;
   color: #f80;
 }
+
+i {
+  margin-left: 25px;
+}
+
+#social-container {
+  margin-left: 32.5%
+}
+
+.fa-facebook {
+  color: #3b5998
+
+}
+
+.fa-twitter {
+  color: #00acee
+}
+
+.fa-pinterest {
+  color: #E60023
+}
+
 
 
 
