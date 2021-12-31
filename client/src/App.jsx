@@ -3,7 +3,6 @@ import Overview from './components/Overview.jsx'
 import Ratings from './components/Ratings.jsx'
 import Related from './components/Related.jsx'
 import QandA from './components/QandA.jsx';
-// import QandA from './components/QandA.jsx';
 import axios from 'axios';
 import { token, url } from '../../config.js';
 
@@ -45,7 +44,6 @@ class App extends React.Component {
         <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
-          relatedItems={this.state.relatedItems}
         />
 
 
