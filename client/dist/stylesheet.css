@@ -16,6 +16,15 @@
 
 }
 
+#product-description {
+
+  font-family: 'Oswald', sans-serif;
+  max-width: 40%;
+  font-size: larger;
+
+
+}
+
 .fa-check {
   position: absolute;
   top: 15%;
