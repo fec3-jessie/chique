@@ -1,11 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-<<<<<<< HEAD
 import { token } from '/config.js';
-=======
-import {token} from '../../../../../config.js';
->>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
 // switch to dynamic data after testing...
 
 

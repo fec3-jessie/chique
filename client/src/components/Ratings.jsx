@@ -3,11 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.jsx';
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
-<<<<<<< HEAD
 import { token } from '/config.js';
-=======
-import {token} from '../../../config.js';
->>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});

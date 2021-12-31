@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-/* Overall styles*/
-
-body {
-=======
 .thumbnail-image {
 	margin-right: 5px;
 	border-style: solid;
@@ -215,7 +210,6 @@ i {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: middle;
   width: 100px;
 }
 
@@ -271,7 +265,6 @@ i {
 }
 
 html {
->>>>>>> 10a8164517bbcd79ffa483c81b12dd417a51ac9c
   background-image: linear-gradient(0, rgba(168, 227, 245, .5), rgba(245, 189, 242, 0.5));
   font-family: 'Raleway', sans-serif;
 }
@@ -396,10 +389,7 @@ img {
 --------------------------- */
 
 .reviews {
-<<<<<<< HEAD
-=======
   font-family: 'Raleway', sans-serif;
->>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
   padding-left: 5px;
   padding-top: 5px;
 }
