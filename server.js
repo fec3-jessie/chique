@@ -1,3 +1,21 @@
+// import express from 'express';
+// import { token } from './config.js';
+// const router = require('express').Router();
+
+// const app = express();
+
+// const headers = {
+//   'Authorization': token
+// };
+
+// // Middleware
+
+// // Routing
+
+
+// app.listen(3000, () => {
+//   console.log('Server listening on port 3000...')
+// });
 // const express = require('express');
 // const path = require('path');
 // const PORT = process.env.PORT || 3000;
