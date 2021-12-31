@@ -1,7 +1,6 @@
 html {
   background-image: linear-gradient(0, rgba(168, 227, 245, .5), rgba(245, 189, 242, 0.5));
   background-size:auto;
-  height:100%;
   font-family: 'Raleway', sans-serif;
 }
 .clickable {
@@ -372,6 +371,7 @@ button.modal-close {
 .container__label {
   font-weight: 600;
   margin-bottom: 2%;
+  font-size: 18px;
 }
 .container__input {
   background-color: transparent;
@@ -427,7 +427,24 @@ button.modal-close {
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
 }
-
+.factor-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.factor-radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.factor-title {
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.factor__label {
+  margin-right: 5px;
+}
 
 /* -------------------------
     Ratings & Reviews SideBar

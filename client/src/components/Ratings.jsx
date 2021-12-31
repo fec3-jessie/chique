@@ -26,7 +26,7 @@ function Ratings ({product_Id}) {
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${props.product_Id}`;
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${product_Id}`;
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {

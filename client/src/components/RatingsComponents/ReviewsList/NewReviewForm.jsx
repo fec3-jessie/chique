@@ -4,12 +4,12 @@ import Axios from 'axios';
 
 function NewReviewForm ({factors}) {
   const factorGrades = {
-    'Size': ['A size too small', 'Perfect', 'A size too big'],
-    'Width': ['Too narrow', 'Perfect', 'Too Wide'],
-    'Comfort': ['Uncomfortable', 'Ok', 'Perfect'],
-    'Quality': ['Poor', 'What I expected', 'Perfect'],
-    'Length': ['Runs short', 'Perfect', 'Runs long'],
-    'Fit': ['Runs tight', 'Perfect', 'Runs long']
+    'Size': ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
+    'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too Wide'],
+    'Comfort': ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+    'Quality': ['Poor', 'Below average', 'What I expected', 'Pretty great', 'Perfect'],
+    'Length': ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+    'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
   };
 
   console.log(factors);
@@ -121,9 +121,33 @@ function NewReviewForm ({factors}) {
         </div>
         <div className='form-row-container'>
           <p className='container__label'>Characteristics</p>
-          {/* {factors.map((factor, i) => {
-            return <h6 key={i}>{factor}</h6>;
-          })} */}
+          {factors.map((factor, i) => {
+            let grades = factorGrades[factor];
+            return (
+              <div key={i} className='factor-container'>
+                <p className='factor-title'>{factor}</p>
+                <div className='factor-radio-container'>
+                  {grades.map((grade) => {
+                    return (
+                      <div>
+                        <input
+                          type='radio'
+                          id={grade}
+                          name={factor}
+                          value={grade}>
+                        </input>
+                        <label
+                          htmlFor={grade}
+                          className='factor__label'>
+                          {grade}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div id='form-buttons-container'>
           <button className="form__photo" id="submit-photo" type="button" value="submit-photo">Upload Your Photos</button>
