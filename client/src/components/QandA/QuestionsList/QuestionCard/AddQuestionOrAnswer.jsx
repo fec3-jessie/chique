@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import ModalAnswer from './ModalAnswer.jsx';
-import ModalQuestion from '../ModalQuestion.jsx';
+import Modal from './Modal.jsx';
 
 var displayElement, component;
 
@@ -13,10 +12,10 @@ const AddQuestionOrAnswer = ({ usage }) => {
 
   if (usage === 'addAnswer') {
     displayElement = <span className='clickable' onClick={openModal}>Add Answer</span>;
-    component = <ModalAnswer setShowModal={setShowModal} />;
+    component = <Modal setShowModal={setShowModal} usage={usage} product_name='TBD (PLACEHOLDER)' />;
   } else {
     displayElement = <button onClick={openModal}>Add a Question +</button>;
-    component = <ModalQuestion setShowModal={setShowModal} />;
+    component = <Modal setShowModal={setShowModal} usage={usage} product_name='TBD (PLACEHOLDER)' />;
   }
 
   return (
