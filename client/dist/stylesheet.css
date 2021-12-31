@@ -5,7 +5,11 @@
   display: block;
   max-width: 100%;
   clip-path: circle();
+  width:  100px;
+  height: 100px;
+  object-fit: cover;
 }
+
 
 #product-description-container {
   margin-left: 30%;
