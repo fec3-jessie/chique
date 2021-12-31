@@ -104,10 +104,10 @@ class App extends React.Component {
           questions={this.state.questionsData}
         />
         <h1>Related</h1>
-        <Related
+        {/* <Related
           product_Id={this.state.product_Id}
           relatedItems={this.state.relatedItems}
-        />
+        /> */}
       </div>
     )
   }

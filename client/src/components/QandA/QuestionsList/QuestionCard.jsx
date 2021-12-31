@@ -73,13 +73,20 @@ class QuestionCard extends React.Component {
         date={this.props.date}
         helpful={this.props.helpful}
         reported={this.props.reported}
+        ID={this.props.ID}
       />
       <div className='symbol question-symbol'>Q:</div>
       <QuestionBody body={this.props.body}/>
       {Object.keys(this.props.answers).length > 0 ?
       <>
         <div className='symbol answer-symbol'>A:</div>
-        <Answers answers={this.props.answers} key={this.props.ID * 3} answerCounter={this.state.answerCounter} showMore={this.state.showMoreBtn} collapse={this.state.showCollapseBtn}/>
+        <Answers
+          answers={this.props.answers}
+          key={this.props.ID * 3}
+          answerCounter={this.state.answerCounter}
+          showMore={this.state.showMoreBtn}
+          collapse={this.state.showCollapseBtn}
+        />
         {
           !this.state.showMoreBtn ? null
             : !this.state.showCollapseBtn

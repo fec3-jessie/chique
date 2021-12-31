@@ -32,6 +32,7 @@ const Answers = ({ answers, answerCounter }) => {
             date={ans.date}
             helpfulness={ans.helpfulness}
             key={ans.id}
+            ID={ans.id}
           />
           {ans.photos.length !== 0
             ? <AnswerImages

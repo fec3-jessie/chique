@@ -1,4 +1,5 @@
 import React from 'react';
+import HelpfulTracker from '../HelpfulTracker.jsx';
 
 const options = { month: 'long', day: 'numeric', year: 'numeric' };
 
@@ -9,9 +10,10 @@ const AnswerDetails = ({ name, date, helpfulness, ID }) => {
     <section>
       by {name}, {newDate} &nbsp;
       |&nbsp;
-      Helpful? <span className='clickable'>Yes</span> ({helpfulness}) &nbsp;
+      <HelpfulTracker ID={ID} helpful={helpfulness} usage='answer'/>
+      {/* Helpful? <span className='clickable'>Yes</span> ({helpfulness}) &nbsp;
       |
-      &nbsp;<span className='clickable'>Report</span>
+      &nbsp;<span className='clickable'>Report</span> */}
     </section>
   );
 }
