@@ -1,5 +1,4 @@
 module.exports = {
-<<<<<<< HEAD
   env: {
     'es6': true
   },
@@ -41,31 +40,3 @@ module.exports = {
     'quotes': [1, 'single']
   }
 };
-=======
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-    }
-};
->>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
