@@ -93,20 +93,20 @@ class App extends React.Component {
           productData={this.state.productData}
           stylesData={this.state.stylesData}
         /> */}
-        <h1>Ratings</h1>
-        <Ratings
+        <h1>Related</h1>
+        <Related
           product_Id={this.state.product_Id}
-          // metaData={this.state.metaData}
+          relatedItems={this.state.relatedItems}
         />
         <h1>QandA</h1>
         <QandA
           product_Id={this.state.product_Id}
           questions={this.state.questionsData}
         />
-        <h1>Related</h1>
-        <Related
+        <h1>Ratings</h1>
+        <Ratings
           product_Id={this.state.product_Id}
-          relatedItems={this.state.relatedItems}
+          // metaData={this.state.metaData}
         />
       </div>
     )
