@@ -30,7 +30,7 @@ class AddToCart extends React.Component {
 
 
     return (
-      <>
+      <div>
 
   <div id = 'atc-container'>
 
@@ -54,7 +54,7 @@ class AddToCart extends React.Component {
 
 </div>
 
-      </>
+      </div>
     )
   }
 }

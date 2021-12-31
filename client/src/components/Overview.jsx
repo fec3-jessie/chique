@@ -1,12 +1,12 @@
 import React from 'react';
 import StarRating from './OverviewComponents/StarRating.js';
 import Reviews from './OverviewComponents/Reviews.js';
-import axios from 'axios'
-import {token} from '../../../config.js'
-import StyleSelector from './OverviewComponents/StyleSelector.js'
+import axios from 'axios';
+import {token} from '../../../config.js';
+import StyleSelector from './OverviewComponents/StyleSelector.js';
 // import ImageGallery from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/ImageGallery.js'
-import AddToCart from './OverviewComponents/AddToCart.js'
-import ProductDescription from './OverviewComponents/ProductDescription.js'
+import AddToCart from './OverviewComponents/AddToCart.js';
+import ProductDescription from './OverviewComponents/ProductDescription.js';
 
 
 class Overview extends React.Component {
@@ -30,7 +30,7 @@ class Overview extends React.Component {
       productDescription: null,
       productSlogan: null
 
-    }
+    };
   }
 
   componentDidMount() {
@@ -43,30 +43,30 @@ class Overview extends React.Component {
         authorization: token
       }
     })
-    .then(res => {
-      this.setState({numberOfReviews: res.data.results.length})
+      .then(res => {
+        this.setState({numberOfReviews: res.data.results.length});
 
-      var sum = 0;
-      res.data.results.forEach(item => {
-        sum += item.rating
-      })
-      var rating = sum/(res.data.results.length)
-      this.setState({rating: rating})
-    })
+        var sum = 0;
+        res.data.results.forEach(item => {
+          sum += item.rating;
+        });
+        var rating = sum / (res.data.results.length);
+        this.setState({rating: rating});
+      });
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344', {
       headers: {
         authorization: token
       }
     })
-    .then(res => {
-      this.setState({productName: res.data.name})
-      this.setState({productCategory: res.data.category})
-      this.setState({productDescription: res.data.description})
-      this.setState({productSlogan: res.data.slogan})
-      this.setState({productPrice: res.data.default_price})
+      .then(res => {
+        this.setState({productName: res.data.name});
+        this.setState({productCategory: res.data.category});
+        this.setState({productDescription: res.data.description});
+        this.setState({productSlogan: res.data.slogan});
+        this.setState({productPrice: res.data.default_price});
 
-    })
+      });
 
 
 
@@ -75,51 +75,46 @@ class Overview extends React.Component {
         authorization: token
       }
     })
-    .then(res => {
+      .then(res => {
 
 
-      // maintain styles API results in state, so that I can use it later in lifecycle
-      this.setState({results: res.data.results})
+        // maintain styles API results in state, so that I can use it later in lifecycle
+        this.setState({results: res.data.results});
 
 
-      // initialize available sizes of default style
-      var style = res.data.results[0]
-      var styleSkus = style.skus;
-      var sizesArr = [];
-      for (var sku in styleSkus) {
-        if (!sizesArr.includes(styleSkus[sku].size)) {
-          sizesArr.push(styleSkus[sku].size)
+        // initialize available sizes of default style
+        var style = res.data.results[0];
+        var styleSkus = style.skus;
+        var sizesArr = [];
+        for (var sku in styleSkus) {
+          if (!sizesArr.includes(styleSkus[sku].size)) {
+            sizesArr.push(styleSkus[sku].size);
+          }
         }
-      }
-      console.log(sizesArr)
-      this.setState({sizes: sizesArr})
+        this.setState({sizes: sizesArr});
 
 
-      // initialize quantity of default style and selected size
-      var style = res.data.results[0]
-      var styleSkus = style.skus
-      console.log('styleSkus', styleSkus)
-      var quantity = 0;
-      for (var sku in styleSkus) {
-        console.log('state',this.state.selectedSize)
-        console.log(styleSkus[sku].size)
-        if (styleSkus[sku].size === this.state.selectedSize) {
-          quantity += styleSkus[sku].quantity
+        // initialize quantity of default style and selected size
+        var style = res.data.results[0];
+        var styleSkus = style.skus;
+        var quantity = 0;
+        for (var sku in styleSkus) {
+          if (styleSkus[sku].size === this.state.selectedSize) {
+            quantity += styleSkus[sku].quantity;
+          }
         }
-      }
-      this.setState({quantity:quantity})
+        this.setState({quantity: quantity});
 
 
-      // render thuumbnails and available sizes of default style
+        // render thuumbnails and available sizes of default style
 
-      var urls = [];
-      console.log(res.data.results[0])
+        var urls = [];
 
-      res.data.results.forEach( (style, i) => {
-        urls.push(   {url: style.photos[0]['thumbnail_url'], index: i})
-      })
-      this.setState({thumbnails: urls})
-    })
+        res.data.results.forEach( (style, i) => {
+          urls.push( {url: style.photos[0]['thumbnail_url'], index: i});
+        });
+        this.setState({thumbnails: urls});
+      });
 
 
   }
@@ -128,72 +123,67 @@ class Overview extends React.Component {
   handleStyleClick(e) {
 
     // update available sizes upon clicking new style
-    this.setState({selectedStyle : event.target.getAttribute("id")}, () => {
-    var style = this.state.results[Number(this.state.selectedStyle)];
-    var styleSkus = style.skus;
-    var sizesArr = [];
-    for (var sku in styleSkus) {
-      if (!sizesArr.includes(styleSkus[sku].size)) {
-        sizesArr.push(styleSkus[sku].size)
-      }
-    }
-    console.log(sizesArr)
-    this.setState({sizes: sizesArr})
-
-
-    // toggle "outOfStock" boolean if quantity of currently selected style === 0
-
-    var quantity = 0;
+    this.setState({selectedStyle: event.target.getAttribute('id')}, () => {
+      var style = this.state.results[Number(this.state.selectedStyle)];
+      var styleSkus = style.skus;
+      var sizesArr = [];
       for (var sku in styleSkus) {
-        quantity += styleSkus[sku].quantity
+        if (!sizesArr.includes(styleSkus[sku].size)) {
+          sizesArr.push(styleSkus[sku].size);
+        }
+      }
+      this.setState({sizes: sizesArr});
+
+
+      // toggle "outOfStock" boolean if quantity of currently selected style === 0
+
+      var quantity = 0;
+      for (var sku in styleSkus) {
+        quantity += styleSkus[sku].quantity;
       }
       if (quantity === 0) {
-        this.setState({outOfStock : true})
+        this.setState({outOfStock: true});
       } else {
-        this.setState({outOfStock : null})
+        this.setState({outOfStock: null});
       }
-    })
+    });
   }
 
 
   handleSizeSelect(e) {
-    console.log(e.target.value)
 
     // update selectedSize state back to null if user presses "Select Size"
     if (e.target.value === 'Select Size') {
-      this.setState({selectedSize: null})
+      this.setState({selectedSize: null});
       return;
     }
 
     // update selectedSize state and render quantity of given style/size combination selected
     this.setState({selectedSize: e.target.value}, () => {
-      var style = this.state.results[this.state.selectedStyle]
-      var styleSkus = style.skus
-      console.log('styleSkus', styleSkus)
+      var style = this.state.results[this.state.selectedStyle];
+      var styleSkus = style.skus;
       var quantity = 0;
       for (var sku in styleSkus) {
-        console.log('state',this.state.selectedSize)
-        console.log(styleSkus[sku].size)
         if (styleSkus[sku].size === this.state.selectedSize) {
-          quantity += styleSkus[sku].quantity
+          quantity += styleSkus[sku].quantity;
         }
       }
-      this.setState({quantity:quantity})
-      })
+      this.setState({quantity: quantity});
+    });
 
 
 
+  }
+
+
+  handleAddToCart() {
+    // check for invalid add to cart (ATC)
+    if (this.state.selectedSize === null || this.state.selectedStyle === null) {
+      this.setState({validATC: false});
+    } else {
+      this.setState({validATC: true});
     }
-
-
-    handleAddToCart() {
-      // check for invalid add to cart (ATC)
-      if (this.state.selectedSize === null || this.state.selectedStyle === null) {
-        this.setState({validATC: false})
-      } else {
-        this.setState({validATC: true})
-      }
-    }
+  }
 
 
 
@@ -202,7 +192,7 @@ class Overview extends React.Component {
 
 
     return (
-      <>
+      <div>
         <StarRating rating ={this.state.rating}/>
         <Reviews numberOfReviews = {this.state.numberOfReviews} />
         <div id = 'category-overview'>{this.state.productCategory}</div>
@@ -217,7 +207,7 @@ class Overview extends React.Component {
 
         : '' } */}
 
-        <StyleSelector results = {this.state.results}  selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
+        <StyleSelector results = {this.state.results} selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
         {/* <ImageGallery/> */}
         <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
 
@@ -228,9 +218,9 @@ class Overview extends React.Component {
           <i class="fab fa-2x fa-pinterest"></i>
         </div>
 
-      </>
+      </div>
 
-    )
+    );
   }
 }
 
