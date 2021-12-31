@@ -10,8 +10,6 @@ node_modules
 bundle.js
 config.js
 
-token.jsx
-bundle.js
 # Executables
 *.swf
 *.air
