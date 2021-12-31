@@ -8,7 +8,7 @@ function FactorBar ({characteristics, factor}) {
     'Width': ['Too narrow', 'Perfect', 'Too Wide'],
     'Comfort': ['Uncomfortable', 'Ok', 'Perfect'],
     'Quality': ['Poor', 'What I expected', 'Perfect'],
-    'Length' : ['Runs short', 'Perfect', 'Runs long'],
+    'Length': ['Runs short', 'Perfect', 'Runs long'],
     'Fit': ['Runs tight', 'Perfect', 'Runs long']
   };
 
@@ -29,18 +29,18 @@ function FactorBar ({characteristics, factor}) {
     width: `${factorPercent}%`,
     backgroundColor: bgc,
     borderRadius: 'inherit',
-  }
+  };
 
   const arrowStyles = {
     padding: 5,
     color: 'black',
     fontWeight: 'bold'
-  }
+  };
 
   return (
     <>
       <div style={barStyles}>
-        <div style={barFillerStyles}><span className='factor-arrow' style={arrowStyles}>{`▼`}</span>
+        <div style={barFillerStyles}><span className='factor-arrow' style={arrowStyles}>{'▼'}</span>
         </div>
       </div>
       <div className='factor-low-mid-high'>
@@ -49,7 +49,7 @@ function FactorBar ({characteristics, factor}) {
         <p>{factorGrades[factor][2]}</p>
       </div>
     </>
-  )
+  );
 }
 
 export default FactorBar;

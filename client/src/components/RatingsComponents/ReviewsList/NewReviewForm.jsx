@@ -1,6 +1,22 @@
-import React, {useRef} from 'react';
+import React, {useState, useEffect} from 'react';
+import {token} from '../../../../../config.js';
+import Axios from 'axios';
 
-function NewReviewForm () {
+function NewReviewForm ({factors}) {
+  const factorGrades = {
+    'Size': ['A size too small', 'Perfect', 'A size too big'],
+    'Width': ['Too narrow', 'Perfect', 'Too Wide'],
+    'Comfort': ['Uncomfortable', 'Ok', 'Perfect'],
+    'Quality': ['Poor', 'What I expected', 'Perfect'],
+    'Length': ['Runs short', 'Perfect', 'Runs long'],
+    'Fit': ['Runs tight', 'Perfect', 'Runs long']
+  };
+
+  console.log(factors);
+  // const createFactors = () => {
+
+  // }
+
 
   return (
     <div className='review-form-container'>
@@ -75,19 +91,44 @@ function NewReviewForm () {
         </div>
         <div className='form-row-container'>
           <p className='container__label'>Do you recommend this product? *</p>
-          <input
-            type='radio'
-            id='review-yes'
-            name='review-yes'>
-          </input>
-          <label
-            id='yesLabel'
-            htmlFor='review-yes'
-            className='container__label'>
-            Yes
-          </label>
+          <div className='recommend-options-container'>
+            <input
+              type='radio'
+              id='review-yes'
+              name='review-recommend'
+              value='yes'
+              defaultChecked>
+            </input>
+            <label
+              id='yesLabel'
+              htmlFor='review-yes'
+              className='container__label'>
+              Yes
+            </label>
+            <input
+              type='radio'
+              id='review-no'
+              name='review-recommend'
+              value='no'>
+            </input>
+            <label
+              id='noLabel'
+              htmlFor='review-no'
+              className='container__label'>
+              No
+            </label>
+          </div>
         </div>
-        <button className="form__submit" id="submit review" type="button" value="submit">Submit</button>
+        <div className='form-row-container'>
+          <p className='container__label'>Characteristics</p>
+          {/* {factors.map((factor, i) => {
+            return <h6 key={i}>{factor}</h6>;
+          })} */}
+        </div>
+        <div id='form-buttons-container'>
+          <button className="form__photo" id="submit-photo" type="button" value="submit-photo">Upload Your Photos</button>
+          <button className="form__submit" id="submit-review" type="button" value="submit">Submit</button>
+        </div>
       </form>
     </div>
   );

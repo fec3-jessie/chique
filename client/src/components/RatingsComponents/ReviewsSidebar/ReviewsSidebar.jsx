@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import AverageRating from './AverageRating.jsx';
-import token from '../../../../../config.js';
+import {token} from '../../../../../config.js';
 import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
@@ -10,7 +10,6 @@ import RatingFactors from './RatingFactors.jsx';
 function ReviewsSidebar ({productId}) {
   const [productMetaData, setProductMetaData] = useState({});
 
-  // eventually pull in stars component here and give its own classname for styles
   useEffect(() => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${productId}`;
 
@@ -22,7 +21,6 @@ function ReviewsSidebar ({productId}) {
       });
       const data = await getMetaData.data;
       setProductMetaData(data);
-      console.log(data);
     };
     fetchMeta();
   }, []);

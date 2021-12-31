@@ -4,7 +4,7 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews}) {
+function ReviewsList ({reviews, factors}) {
   const [showModal, setShowModal] = useState(false);
   const openFormModal = () => {
     setShowModal(true);
@@ -33,7 +33,7 @@ function ReviewsList ({reviews}) {
         <button
           onClick={() => openFormModal()}
           >Add Review</button>
-          {showModal ? <NewReviewModal setShowModal={setShowModal} /> : null}
+          {showModal ? <NewReviewModal setShowModal={setShowModal} factors={factors}/> : null}
       </div>
     </div>
   )
