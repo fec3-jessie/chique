@@ -7,9 +7,9 @@ import { token } from '../../../config.js';
 
 function Ratings () {
   const [productReviews, setProductReviews] = useState({});
-
+  const holder = 40358
   useEffect(() => {
-    const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358';
+    const url = `http://127.0.0.1:3000/reviews?product_id=${holder}`;
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
