@@ -9,9 +9,10 @@ const RelatedProducts = (props) => {
   const productId = '40345';
 
   useEffect(() =>{
-    axios.get(`${url}/products/${productId}/related`, {
-      headers: { 'Authorization': token }
-    })
+    // axios.get(`${url}/products/${productId}/related`, {
+    //   headers: { 'Authorization': token }
+    // })
+    axios.get(`http://localhost:3000/products/${productId}/related`)
     .then(res => {
       axios.get(`${url}/products/`, {
         headers: { 'Authorization': token }

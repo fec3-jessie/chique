@@ -22,7 +22,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1>Overview</h1>
+        {/* <h1>Overview</h1>
         <Overview
           product_Id={this.state.product_Id}
           reviewsData={this.state.reviewsData}
@@ -38,9 +38,7 @@ class App extends React.Component {
         <Ratings
           product_Id={this.state.product_Id}
           // metaData={this.state.metaData}
-        />
-
-        />
+        /> */}
         <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
