@@ -41,14 +41,11 @@
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
-<<<<<<< HEAD
     "eslint": "^8.5.0",
     "eslint-plugin-react": "^7.28.0",
-=======
     "css-loader": "^6.5.1",
     "eslint": "^8.5.0",
     "style-loader": "^3.3.1",
->>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
     "webpack-cli": "^4.9.1"
   }
 }
