@@ -2,7 +2,11 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import AverageRating from './AverageRating.jsx';
+<<<<<<< HEAD
 import { token } from '/config.js';
+=======
+import {token} from '../../../../../config.js';
+>>>>>>> 51c4163b7bfaacc1d8c703a701ed3b6507acbd70
 import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
