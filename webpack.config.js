@@ -29,12 +29,12 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|)$/i,
         use: {
-            loader: "file-loader"
+            loader: 'file-loader'
         }
       }
     ]
