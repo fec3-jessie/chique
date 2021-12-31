@@ -74,11 +74,12 @@ class App extends React.Component {
   //       })
   //     })
   //     .catch(err => console.error('Error getting relatedItems: ', err))
-  // }
+  }
 
-  // axiosGet(endpoint) {
-  //   return axios.get(url + endpoint, { headers })
-  // }
+  axiosGet(endpoint) {
+    return axios.get(url + endpoint, { headers })
+  }
+
 
   render () {
     return (
@@ -90,21 +91,21 @@ class App extends React.Component {
           productData={this.state.productData}
           stylesData={this.state.stylesData}
         /> */}
-        <h1>Related</h1>
+        {/* <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
           relatedItems={this.state.relatedItems}
-        />
+        /> */}
         <h1>QandA</h1>
         <QandA
           product_Id={this.state.product_Id}
           questions={this.state.questionsData}
         />
-        <h1>Ratings</h1>
+        {/* <h1>Ratings</h1>
         <Ratings
           product_Id={this.state.product_Id}
           // metaData={this.state.metaData}
-        />
+        /> */}
       </div>
     )
   }

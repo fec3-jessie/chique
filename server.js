@@ -4,6 +4,7 @@ const router = require('express').Router();
 const path = require('path');
 const atelierAPI = require('./helpers/atelierAPI.js');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 
 const headers = {
@@ -16,6 +17,7 @@ const headers = {
 
 
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

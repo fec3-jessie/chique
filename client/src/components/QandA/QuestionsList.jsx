@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { token, url } from '../../../../config.js';
+import { token, url } from '/config.js';
 import QuestionCard from './QuestionsList/QuestionCard.jsx';
 import AddQuestionOrAnswer from './QuestionsList/QuestionCard/AddQuestionOrAnswer.jsx';
 
@@ -19,7 +19,15 @@ class QuestionsList extends React.Component {
   }
 
   componentDidMount() {
-    this.axiosGet(url + `/qa/questions?product_id=${this.props.product_id}`)
+    // this.axiosGet(url + `/qa/questions?product_id=${this.props.product_id}`)
+    axios.get('http://127.0.0.1:3000/qa/questions', {params: {product_id:40356}})
+      .then(returnedQuestions => {
+        this.setState({
+          questions: returnedQuestions.data.results,
+          questionCounter: 2
+        })
+      })
+      .catch(err => console.error('Get request error (QuestionsList.jsx): ', err))
   }
 
   axiosGet(target) {
