@@ -11,12 +11,28 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .product-card {
-  margin-left: 5px;
-  margin-top: 5px;
+  /* display: flex;
+  flex-direction: column;
+  flex: 0 1 auto; */
+  /* height: 80%; */
+  margin-left: 1%;
+  margin-top: 10px;
   border: 1px solid black;
+}
+
+/* .card-frame {
+  height: 20%;
+} */
+
+img {
+  float: left;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
 
 .card-details {
