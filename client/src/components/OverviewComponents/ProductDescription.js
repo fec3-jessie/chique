@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 
 class ProductDescription extends React.Component {
@@ -11,13 +11,13 @@ class ProductDescription extends React.Component {
   render () {
 
     return (
-      <>
+      <div>
         <div id = 'product-description-container'>
           <h3 id = 'product-slogan'>{this.props.productSlogan}</h3>
           <p id = 'product-description'>{this.props.productDescription}</p>
         </div>
-      </>
-    )
+      </div>
+    );
   }
 }
 
