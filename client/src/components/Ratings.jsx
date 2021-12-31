@@ -5,11 +5,11 @@ import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.js
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
 import {token} from '../../../config.js';
 
-function Ratings () {
+function Ratings ({product_Id}) {
   const [productReviews, setProductReviews] = useState({});
   const holder = 40358
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews?product_id=${holder}`;
+    const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}`;
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
