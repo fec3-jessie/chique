@@ -16,7 +16,7 @@ function NewReviewModal ({setShowModal}) {
       onClick={() => setShowModal(false)}>
       <div className='form-modal'
         onClick={(e) => e.stopPropagation()}>
-        <button onClick={() => setShowModal(false)}>X</button>
+        <button className='modal-close' onClick={() => setShowModal(false)}>X</button>
         <NewReviewForm />
       </div>
     </div>,

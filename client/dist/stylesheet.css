@@ -251,8 +251,6 @@ max-width: 64%;
 }
 .form-modal button {
   position:relative;
-  top: 7px;
-  right: 7px;
   padding: 8px 11px;
   background: crimson;
   color: white;
@@ -269,6 +267,11 @@ max-width: 64%;
   to {
     transform: scale(1);
   }
+}
+button.modal-close {
+  position: absolute;
+  top: 7px;
+  right: 7px;
 }
 
 .form {
@@ -288,6 +291,7 @@ max-width: 64%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .form__title {
   font-size: 40px;
@@ -318,8 +322,25 @@ max-width: 64%;
 .container__input::placeholder {
   color:rgb(49, 61, 61);
   font-size: 14px;
-  justify-content: start;
-
+  text-align: center;
+  justify-items: center;
+}
+.form-row-container-nickName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#review-nickName.container__input {
+  margin-bottom: 2px;
+}
+#review-email.container__input {
+  margin-bottom: 2px;
+}
+.privacy-statement {
+  margin-top:2px;
+  margin-bottom: 25px;
+  font-size: 12px;
 }
 
 

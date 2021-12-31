@@ -7,12 +7,12 @@ function NewReviewForm () {
       <form className='form' id='form'>
         <h2 className="form__title">Write Your Review</h2>
         <h4 className="form__subtitle">{`About the ${'[Product Name Here]'}`}</h4>
-        <div className="form-row-container">
+        <div className="form-row-container-nickName">
           <label
             id="nickNameLabel"
             htmlFor="review-nickName"
             className="container__label">
-            What is your nickname
+            What is your nickname *
           </label>
           <input
             className="container__input"
@@ -20,7 +20,26 @@ function NewReviewForm () {
             id="review-nickName"
             name='review-nickName'
             placeholder='Example: jackson11!'
-            maxLength='60'/>
+            maxLength='60'
+            required/>
+          <div className='privacy-statement'>For privacy reasons, do not use your full name or email address</div>
+        </div>
+        <div className="form-row-container-nickName">
+          <label
+            id="emailLabel"
+            htmlFor="review-email"
+            className="container__label">
+            Your email *
+          </label>
+          <input
+            className="container__input"
+            type='email'
+            id="review-email"
+            name='review-email'
+            placeholder='Example: jackson11@email.com'
+            maxLength='60'
+            required/>
+          <div className='privacy-statement'>For authentication reasons, you will not be emailed</div>
         </div>
         <div className="form-row-container">
           <label
@@ -53,6 +72,20 @@ function NewReviewForm () {
             placeholder='Why did you like the product or not?'
             required>
           </textarea>
+        </div>
+        <div className='form-row-container'>
+          <p className='container__label'>Do you recommend this product? *</p>
+          <input
+            type='radio'
+            id='review-yes'
+            name='review-yes'>
+          </input>
+          <label
+            id='yesLabel'
+            htmlFor='review-yes'
+            className='container__label'>
+            Yes
+          </label>
         </div>
         <button className="form__submit" id="submit review" type="button" value="submit">Submit</button>
       </form>
