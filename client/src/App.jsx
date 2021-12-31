@@ -14,18 +14,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_Id: 40344,
-      reviewsData: {},
-      productData: {},
-      stylesData: {},
-      metaData: {},
-      questionsData: [],
-      relatedItems: []
+      product_Id: 40348,
+      product_name: null
     }
   }
 
   componentDidMount() {
     // Axios Get Calls
+
+
     // ----------OVERVIEW ----------
     this.axiosGet(`/reviews/?product_id=${this.state.product_Id}`)
       .then(returnedData => {
@@ -35,53 +32,53 @@ class App extends React.Component {
       })
       .catch(err => console.error('Error getting reviewsData: ', err))
 
-    this.axiosGet(`/products/${this.state.product_Id}`)
-      .then(returnedData => {
-        this.setState({
-          productData: returnedData.data
-        })
-      })
-      .catch(err => console.error('Error getting productData: ', err))
+  //   this.axiosGet(`/products/${this.state.product_Id}`)
+  //     .then(returnedData => {
+  //       this.setState({
+  //         productData: returnedData.data
+  //       })
+  //     })
+  //     .catch(err => console.error('Error getting productData: ', err))
 
-    this.axiosGet(`/products/${this.state.product_Id}/styles`)
-      .then(returnedData => {
-        this.setState({
-          stylesData: returnedData.data
-        })
-      })
-      .catch(err => console.error('Error getting stylesData: ', err))
+  //   this.axiosGet(`/products/${this.state.product_Id}/styles`)
+  //     .then(returnedData => {
+  //       this.setState({
+  //         stylesData: returnedData.data
+  //       })
+  //     })
+  //     .catch(err => console.error('Error getting stylesData: ', err))
 
-    // ----------- RATINGS ----------
-    this.axiosGet(`/reviews/meta?product_id=${this.state.product_Id}`)
-      .then(returnedData => {
-        this.setState({
-          metaData: returnedData.data
-        })
-      })
-      .catch(err => console.error('Error getting metaData: ', err))
+  //   // ----------- RATINGS ----------
+  //   this.axiosGet(`/reviews/meta?product_id=${this.state.product_Id}`)
+  //     .then(returnedData => {
+  //       this.setState({
+  //         metaData: returnedData.data
+  //       })
+  //     })
+  //     .catch(err => console.error('Error getting metaData: ', err))
 
-    // ----------- QUESTIONS & ANSWERS ----------
-    this.axiosGet(`/qa/questions?product_id=${this.state.product_Id}`)
-      .then(returnedData => {
-        this.setState({
-          questionsData: returnedData.data.results
-        })
-      })
-      .catch(err => console.error('Error getting questionsData: ', err))
+  //   // ----------- QUESTIONS & ANSWERS ----------
+  //   this.axiosGet(`/qa/questions?product_id=${this.state.product_Id}`)
+  //     .then(returnedData => {
+  //       this.setState({
+  //         questionsData: returnedData.data.results
+  //       })
+  //     })
+  //     .catch(err => console.error('Error getting questionsData: ', err))
 
-    // ---------- RELATED ITEMS ----------
-    this.axiosGet(`/products/${this.state.product_Id}/related`)
-      .then(returnedData => {
-        this.setState({
-          relatedItems: returnedData.data
-        })
-      })
-      .catch(err => console.error('Error getting relatedItems: ', err))
-  }
+  //   // ---------- RELATED ITEMS ----------
+  //   this.axiosGet(`/products/${this.state.product_Id}/related`)
+  //     .then(returnedData => {
+  //       this.setState({
+  //         relatedItems: returnedData.data
+  //       })
+  //     })
+  //     .catch(err => console.error('Error getting relatedItems: ', err))
+  // }
 
-  axiosGet(endpoint) {
-    return axios.get(url + endpoint, { headers })
-  }
+  // axiosGet(endpoint) {
+  //   return axios.get(url + endpoint, { headers })
+  // }
 
   render () {
     return (
