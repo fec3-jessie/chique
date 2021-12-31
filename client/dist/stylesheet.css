@@ -5,8 +5,16 @@
   display: block;
   max-width: 100%;
   clip-path: circle();
+}
 
+#product-description-container {
+  margin-left: 30%;
+}
 
+#product-description {
+  max-width: 40%;
+  font-size: larger;
+  font-family: 'Oswald', sans-serif;
 
 }
 

@@ -6,6 +6,7 @@ import {token} from '../../../config.js'
 import StyleSelector from './OverviewComponents/StyleSelector.js'
 // import ImageGallery from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/ImageGallery.js'
 import AddToCart from './OverviewComponents/AddToCart.js'
+import ProductDescription from './OverviewComponents/ProductDescription.js'
 
 
 class Overview extends React.Component {
@@ -25,7 +26,8 @@ class Overview extends React.Component {
       selectedSize: null,
       quantity: null,
       results: null,
-      validATC: null
+      validATC: null,
+      productDescription: null
 
     }
   }
@@ -59,7 +61,7 @@ class Overview extends React.Component {
     .then(res => {
       this.setState({productName: res.data.name})
       this.setState({productCategory: res.data.category})
-      this.setState({productCategory: res.data.category})
+      this.setState({productDescription: res.data.description})
       this.setState({productPrice: res.data.default_price})
 
     })
@@ -207,7 +209,9 @@ class Overview extends React.Component {
         <StyleSelector results = {this.state.results}  selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
         {/* <ImageGallery/> */}
         <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
+        <ProductDescription productDescription = {this.state.productDescription}/>
       </>
+
     )
   }
 }
