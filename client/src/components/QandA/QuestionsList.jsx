@@ -16,6 +16,7 @@ class QuestionsList extends React.Component {
       questionCounter: 0
     }
     this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
+    this.onCollapseQuestionsClick = this.onCollapseQuestionsClick.bind(this);
   }
 
   componentDidMount() {
@@ -41,10 +42,19 @@ class QuestionsList extends React.Component {
     }
   }
 
+  onCollapseQuestionsClick() {
+    this.setState({
+      questionCounter: 2
+    })
+  }
+
   render() {
+    let sortedQuestions = this.state.questions.sort((a, b) =>
+      b.question_helpfulness - a.question_helpfulness);
+
     return (
       <>
-        {this.state.questions.slice(0, this.state.questionCounter).map(item =>
+        {sortedQuestions.slice(0, this.state.questionCounter).map(item =>
           <QuestionCard
             answers={item.answers}
             asker={item.asker_name}
@@ -56,10 +66,12 @@ class QuestionsList extends React.Component {
             ID={item.question_id}
           />
         )}
-        {(this.state.questions.length <= 2 ||
-        this.state.questions.length === this.state.questionCounter)
+        {this.state.questions.length <= 2
+        // || this.state.questions.length === this.state.questionCounter)
         ? null :
-          <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
+          this.state.questions.length === this.state.questionCounter
+          ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
+          : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
         }
         <AddQuestionOrAnswer usage={'addQuestion'} />
       </>
