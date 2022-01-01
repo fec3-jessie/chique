@@ -183,7 +183,6 @@ i {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: middle;
   width: 100px;
 }
 
@@ -243,6 +242,61 @@ html {
   background-size:auto;
   font-family: 'Raleway', sans-serif;
 }
+
+/* Related Products Styles */
+
+.related-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.product-card {
+  /* display: flex;
+  flex-direction: column;
+  flex: 0 1 auto; */
+  /* height: 80%; */
+  margin-left: 1%;
+  margin-top: 10px;
+  border: 1px solid black;
+}
+
+img {
+  float: left;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-details {
+  padding-left: 5px;
+}
+
+.card-category {
+  font-size: 75%;
+  text-transform: uppercase;
+}
+
+.card-name {
+  font-size: 125%;
+  font-weight: 600;
+  text-transform: initial;
+}
+
+.card-price {
+  font-size: 75%;
+  text-transform: uppercase;
+}
+
+.slashed {
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: red;
+}
+
 .clickable {
   cursor: pointer;
 }
