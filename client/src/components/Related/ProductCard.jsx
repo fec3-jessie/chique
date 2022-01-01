@@ -43,7 +43,7 @@ const ProductCard = (props) => {
     <div className='card-details'>
       <span className='card-category'>{item.category}</span><br></br>
       <span className='card-name'>{item.name}</span><br></br>
-      <span className='card-price'>${defaultStyle.original_price}</span><br></br>
+      <PriceLine salePrice={defaultStyle.sale_price}/></><br></br>
       <StarsTile stars ={starAverage} />
     </div>
   </div>)
