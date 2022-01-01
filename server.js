@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routing
 
+
 // ---------- API GET REQUESTS ---------- //
 // ----- Products ----- //
 app.get('/products', (req, res) => {
@@ -49,15 +50,42 @@ app.get('/reviews/meta', (req, res) => {
 // ----- Questions ----- //
 app.get('/qa/questions', (req, res) => {
   axiosGet(req.url, res);
-})
+});
 // ---------- END OF GET REQUESTS ---------- //
 
-// Helper Function
+
+// ---------- API PUT REQUESTS ---------- //
+// ----- Questions & Answers ----- //
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+// ---------- END OF PUT REQUESTS ---------- //
+
+
+// ----- Helper Functions ----- //
 const axiosGet = (path, response) => {
   axios.get(`${url}${path}`, { headers })
     .then(results => { response.send(results.data); })
     .catch(err => console.error('Error executing Axios GET from API: ', err))
 }
+
+const axiosPut = (path, body) => {
+  axios.put(`${url}${path}`, body, { headers })
+    .catch(err => console.error('Error submitting Put req (server.js): ', err))
+}
+// ----- End of Helper Functions ----- //
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000...')

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { token, url } from '../../../../../config.js';
+import { token, url } from '/config.js';
 import axios from 'axios';
+const localHost = 'http://127.0.0.1:3000'
 
 // class HelpfulTracker extends React.Component {
 //   constructor(props) {
@@ -19,23 +20,26 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
   const [reportClicked, setReportClicked] = useState(reported);
 
   const updateYesOrReport = (endpoint, body) => {
-    axios.put(url + endpoint, body, { headers: { 'Authorization': token }})
-      .catch(err => console.error('Error updating Yes or Report status: ', err))
+    // axios.put(url + endpoint, body, { headers: { 'Authorization': token }})
+    axios.put(localHost + endpoint, body)
+      .then(results => console.log('Put request submitted (HelpfulTracker.jsx)!'))
+      .catch(err => console.error('Error submitting PUT req (HelpfulTracker.jsx): ', err))
   };
 
   const onYesClick = () => {
     let endpoint, body;
     if (yesClicked === false) {
-      setYesCount(prevYesCount => prevYesCount + 1);
-      setYesClicked(true);
+      // setYesCount(prevYesCount => prevYesCount + 1);
+      // setYesClicked(true);
       if (usage === 'answer') {
         endpoint = `/qa/answers/${ID}/helpful`;
-        body = { helpfulness: yesCount };
-        console.log('Endpoint: ', endpoint);
+        body = { helpfulness: yesCount + 1 };
       } else if (usage === 'question') {
         endpoint = `/qa/questions/${ID}/helpful`;
-        body = { question_helpfulness: yesCount };
+        body = { question_helpfulness: yesCount + 1 };
       }
+      setYesCount(prevYesCount => prevYesCount + 1);
+      setYesClicked(true);
       updateYesOrReport(endpoint, body);
     }
   };
@@ -43,12 +47,14 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
   const onReportClick = () => {
     let endpoint, body;
     if (reportClicked === false) {
-      setReportState('Reported');
-      setReportClicked(true);
+      // setReportState('Reported');
+      // setReportClicked(true);
       if (usage === 'question') {
         endpoint = `/qa/questions/${ID}/report`;
-        body = { reported: reportState };
+        body = { reported: 'Reported' };
       }
+      setReportState('Reported');
+      setReportClicked(true);
       updateYesOrReport(endpoint, body);
     }
   };
