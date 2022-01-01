@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {token} from '../../../../../config.js';
 import Axios from 'axios';
 
-function NewReviewForm ({factors}) {
+function NewReviewForm ({factors, productName}) {
   const factorGrades = {
     'Size': ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
     'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too Wide'],
@@ -25,7 +25,7 @@ function NewReviewForm ({factors}) {
     <div className='review-form-container'>
       <form className='form' id='form'>
         <h2 className="form__title">Write Your Review</h2>
-        <h4 className="form__subtitle">{`About the ${'[Product Name Here]'}`}</h4>
+        <h4 className="form__subtitle">{`About the ${productName}`}</h4>
         <div className="form-row-container-nickName">
           <label
             id="nickNameLabel"
@@ -222,8 +222,19 @@ function NewReviewForm ({factors}) {
           })}
         </div>
         <div id='form-buttons-container'>
-          <button className="form__photo" id="submit-photo" type="button" value="submit-photo">Upload Your Photos</button>
-          <button className="form__submit" id="submit-review" type="button" value="submit">Submit</button>
+          <button className="form__photo"
+            id="submit-photo"
+            type="button"
+            value="submit-photo">
+            Upload Your Photos
+          </button>
+          <button className="form__submit"
+            id="submit-review"
+            type="button"
+            value="submit"
+            data-stars={starsCount}>
+            Submit
+          </button>
         </div>
       </form>
     </div>
@@ -231,3 +242,5 @@ function NewReviewForm ({factors}) {
 }
 
 export default NewReviewForm;
+
+//for form submission will need to use : e.target.getAttribute("data-stars"); to send star vote to api

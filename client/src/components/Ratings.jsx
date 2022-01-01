@@ -5,7 +5,7 @@ import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.js
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
 import { token } from '/config.js';
 
-function Ratings ({product_Id}) {
+function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
 
   useEffect(() => {
@@ -49,8 +49,14 @@ function Ratings ({product_Id}) {
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>
           {productReviews.product !== undefined ?
-          <ReviewsSidebar className='reviews-sidebar' productId={productReviews.product}/> : null}
-          <ReviewsList className='reviews-list' reviews={productReviews} factors={factors}/>
+          <ReviewsSidebar
+            className='reviews-sidebar'
+            productId={productReviews.product}/> : null}
+          <ReviewsList
+            className='reviews-list'
+            reviews={productReviews}
+            factors={factors}
+            productName={productName}/>
         </div>
       </div>
   )

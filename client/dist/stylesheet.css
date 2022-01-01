@@ -173,7 +173,7 @@ i {
   color: #0f1111;
   cursor: pointer;
   display: block;
-  font-family: "Amazon Ember",sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 13px;
   line-height: 29px;
   padding: 0 10px 0 11px;
@@ -209,7 +209,7 @@ i {
 	margin-right: 15px;
 }
 .select-dropdown select {
-  font-family: "helvetica neue", helvetica;
+  font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   font-weight: 200;
   max-width: 100%;
@@ -387,6 +387,19 @@ flex-grow: 3;
   padding-bottom: 10px;
   padding-left: 5px;
 }
+div.sorted-drop-down label {
+  font-weight: 700;
+  font-size: 18px;
+}
+#filter-select {
+  border-radius: 0.6em;
+  margin: 15px;
+  width: 125px;
+  padding: 5px 5px 5px 5px;
+  font-size: 16px;
+  border: transparent;
+  height: 34px;
+}
 .reviews-list-tiles {
   max-height: 700px;
   overflow-y: scroll;
@@ -430,7 +443,6 @@ flex-grow: 3;
   order:3;
 }
 .response-tile {
-  /* background-color: rgb(118, 103, 133); */
   order: 4;
 }
 .response-title {
@@ -452,6 +464,46 @@ flex-grow: 3;
   flex-direction: row;
   justify-content: space-around;
   padding-top:5%;
+}
+.btn {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid #131212;
+  border-radius: 0.6em;
+  color: #131111;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1em 2.3em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.reviews {
+  -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.reviews .btn:hover {
+  box-shadow: 0 0 40px 40px #421510 inset;
 }
 
 /* -------------------------
@@ -486,26 +538,27 @@ flex-grow: 3;
   background: rgba(0, 0, 0, 0.7);
 }
 
-.pic-modal-container .pic-modal {
-  z-index: 1;
-  width:auto;
-  height:75%;
-  /* background: white; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* border-radius: 5px; */
+.pic-modal-container {
+  z-index: 2;
+  height:100%;
+  /* display: flex; */
   position: relative;
   animation: animate 0.3s;
 }
-.pic-modal-container .pic-modal img {
-  position: relative;
-  width: 70%;
+.pic-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pic-modal img {
+  min-height: 550px;
+  min-width: 550px;
+
 }
 .pic-modal button {
   position:absolute;
-  top: 7px;
-  right: 7px;
+  top: 23%;
+  right: 23%;
   padding: 8px 11px;
   background: crimson;
   color: white;
@@ -559,20 +612,26 @@ flex-grow: 3;
 --------------------------- */
 
 .yes-button {
-  background-color: rgba(239, 239, 243, 0.25);
+  /*
   border-radius: 10%;
   padding-right: 5px;
   padding-left: 5px;
-  font-family: 'Raleway', sans-serif;
   margin-right: 3px;
   margin-left: 3px;
-  font-weight:600;
-
+  font-weight:600; */
+  background-color: rgba(255, 255, 255, 0.90);
+  border-radius: 0.6em;
+  font-family: 'Raleway', sans-serif;
+  margin: 10px;
+  width: 45px;
+  padding: 3px 3px 3px 3px;
+  font-size: 16px;
+  border: transparent;
+  height: 24px;
 }
 .yes-button:hover {
   cursor: pointer;
 }
-
 .check {
   padding: 0% 1%;
 }
@@ -601,15 +660,14 @@ flex-grow: 3;
   align-items: center;
   justify-content: center;
   /* border-radius: 5px; */
-  position: relative;
+  /* position: relative; */
   animation: animate 0.3s;
 }
 .form-modal-container .form-modal img {
-  position: relative;
   width: 70%;
 }
 .form-modal button {
-  position:relative;
+  /* position:relative; */
   padding: 8px 11px;
   background: crimson;
   color: white;
@@ -629,8 +687,8 @@ flex-grow: 3;
 }
 button.modal-close {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 5px;
+  right: 5px;
 }
 
 #form {
