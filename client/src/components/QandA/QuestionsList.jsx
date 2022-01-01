@@ -19,26 +19,14 @@ class QuestionsList extends React.Component {
   }
 
   componentDidMount() {
-    // this.axiosGet(url + `/qa/questions?product_id=${this.props.product_id}`)
-    axios.get('http://127.0.0.1:3000/qa/questions', {params: {product_id:40356}})
+    axios.get('http://127.0.0.1:3000/qa/questions', {params: { product_id: this.props.product_id }})
       .then(returnedQuestions => {
         this.setState({
           questions: returnedQuestions.data.results,
           questionCounter: 2
         })
       })
-      .catch(err => console.error('Get request error (QuestionsList.jsx): ', err))
-  }
-
-  axiosGet(target) {
-    axios.get(target, { headers: { 'Authorization': token } })
-      .then(returnedQuestions => {
-        this.setState({
-          questions: returnedQuestions.data.results,
-          questionCounter: 2
-        })
-      })
-      .catch(err => console.error('Get request error (QuestionsList.jsx): ', err))
+      .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err))
   }
 
   onMoreQuestionsClick() {
