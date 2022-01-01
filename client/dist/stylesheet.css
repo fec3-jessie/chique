@@ -667,6 +667,13 @@ button.modal-close {
 .recommend-options-container .container__label{
   padding-right: 10px;
 }
+#review-body.container__input {
+  margin-bottom:3px;
+  text-justify: inherit;
+}
+#char-count {
+  margin-top:0;
+}
 #form-buttons-container {
   display: flex;
   flex-direction: row;

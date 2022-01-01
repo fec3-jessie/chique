@@ -17,6 +17,7 @@ function NewReviewForm ({factors}) {
   const [starFill3, setStarFill3] = useState(false);
   const [starFill4, setStarFill4] = useState(false);
   const [starFill5, setStarFill5] = useState(false);
+  const [charCount, setCharCount] = useState(0);
 
   let starsCount = 0;
 
@@ -185,8 +186,10 @@ function NewReviewForm ({factors}) {
             minLength='50'
             maxLength='1000'
             placeholder='Why did you like the product or not?'
-            required>
+            required
+            onChange={(e) => setCharCount(e.target.value.length)}>
           </textarea>
+          <p id='char-count'>{`( ${charCount} )`}</p>
         </div>
         <div className='form-row-container'>
           <p className='container__label'>Characteristics</p>
