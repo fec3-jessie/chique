@@ -288,10 +288,6 @@ html {
   border: 1px solid black;
 }
 
-/* .card-frame {
-  height: 20%;
-} */
-
 img {
   float: left;
   width: 250px;
@@ -317,6 +313,14 @@ img {
 .card-price {
   font-size: 75%;
   text-transform: uppercase;
+}
+
+.slashed {
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: red;
 }
 
 .clickable {
