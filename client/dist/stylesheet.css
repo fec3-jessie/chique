@@ -626,6 +626,7 @@ button.modal-close {
   border-radius: 5px;
 }
 .container__input::placeholder {
+  padding-top: 5px;
   color:rgb(49, 61, 61);
   font-size: 14px;
   text-align: center;
@@ -645,8 +646,23 @@ button.modal-close {
 }
 .privacy-statement {
   margin-top:2px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   font-size: 12px;
+}
+#buttons-container-stars-vote {
+  display: flex;
+  flex-direction: row;
+}
+.star-div {
+  background: transparent;
+  font-size: 26px;
+  padding:1em;
+}
+.star-div:hover {
+  cursor: pointer;
+}
+.recommend-options-container {
+  padding-bottom: 15px;
 }
 .recommend-options-container .container__label{
   padding-right: 10px;

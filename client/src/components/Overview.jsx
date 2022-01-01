@@ -213,9 +213,9 @@ class Overview extends React.Component {
 
         <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
         <div id = 'social-container'>
-          <i class="fab fa-2x fa-facebook"></i>
-          <i class="fab fa-2x fa-twitter"></i>
-          <i class="fab fa-2x fa-pinterest"></i>
+          <i className="fab fa-2x fa-facebook"></i>
+          <i className="fab fa-2x fa-twitter"></i>
+          <i className="fab fa-2x fa-pinterest"></i>
         </div>
 
       </div>
