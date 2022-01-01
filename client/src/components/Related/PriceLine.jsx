@@ -4,13 +4,16 @@ const PriceLine = (props) => {
 
   if (props.salePrice) {
     return (
-      <span className='card-price slashed'>${defaultStyle.original_price}</span>
-      <span className='sale-price'>${props.salePrice}</span>
+      <div>
+        <span className='card-price slashed'>${props.originalPrice}</span>
+        <span className='sale-price'>${props.salePrice}</span>
+      </div>
     )
   } else {
     return (
-      <span className='card-price'>${defaultStyle.original_price}</span>
+      <span className='card-price'>${props.originalPrice}</span>
     )
   }
-
 }
+
+export default PriceLine;
