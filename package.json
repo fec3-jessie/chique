@@ -25,6 +25,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "axios": "^0.24.0",
+    "cors": "^2.8.5",
     "css-loader": "^6.5.1",
     "express": "^4.17.2",
     "file-loader": "^6.2.0",

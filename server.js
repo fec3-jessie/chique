@@ -2,9 +2,9 @@ const express = require('express');
 const { url, token } = require('./config.js');
 const router = require('express').Router();
 const path = require('path');
-const atelierAPI = require('./helpers/atelierAPI.js');
 const axios = require('axios');
 const app = express();
+const cors = require('cors');
 
 const headers = {
   'Authorization': token
@@ -14,21 +14,12 @@ const headers = {
 
 // Routing
 
-
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-
-// app.get('/qa/questions/:product_id', (req, res) => {
-//   atelierAPI.getDataByPath('/qa/questions/:product_id')
-//   .then(returnedData => {
-//     console.log('Returned Data: ', returnedData.data);
-//     res.send(returnedData.data);
-//   })
-//   .catch(err => console.error('Improper request'))
-// })
-
+//Products API//
 app.get('/products', (req, res) => {
   axios.get(`${url}/products`, {
     headers: headers
@@ -73,7 +64,8 @@ app.get('/products/:product_id/related', (req, res) => {
   .catch(err => console.error('Improper request', err))
 });
 
-// Reviews Api //
+// Reviews API//
+
 app.get('/reviews', (req, res) => {
   axios.get(`${url}/reviews?product_id=${req.query.product_id}`, {
     headers: headers
