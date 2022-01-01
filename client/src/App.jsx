@@ -4,7 +4,7 @@ import QandA from './components/QandA.jsx';
 import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
 import axios from 'axios';
-import { token, url } from '../../config.js';
+import { token, url } from '/config.js';
 
 const headers = {
   'Authorization': token
