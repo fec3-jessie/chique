@@ -11,7 +11,7 @@ const AddQuestionOrAnswer = ({ usage }) => {
   };
 
   if (usage === 'addAnswer') {
-    displayElement = <span className='clickable' onClick={openModal}>Add Answer</span>;
+    displayElement = <span className='clickable' onClick={openModal}><u>Add Answer</u></span>;
     component = <Modal setShowModal={setShowModal} usage={usage} product_name='TBD (PLACEHOLDER)' />;
   } else {
     displayElement = <button onClick={openModal}>Add a Question +</button>;

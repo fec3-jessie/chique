@@ -15,7 +15,7 @@ import axios from 'axios';
 const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
   const [yesCount, setYesCount] = useState(helpful);
   const [yesClicked, setYesClicked] = useState(false);
-  const [reportState, setReportState] = useState('Report');
+  const [reportState, setReportState] = useState(<u>Report</u>);
   const [reportClicked, setReportClicked] = useState(reported);
 
   const updateYesOrReport = (endpoint, body) => {
@@ -56,7 +56,7 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
   return (
     <div>
       Helpful?&nbsp;
-      <span onClick={onYesClick} className='clickable'>Yes</span> ({ yesCount })
+      <span onClick={onYesClick} className='clickable'><u>Yes</u></span> ({ yesCount })
       {usage === 'answer' ? null :
       <>
         &nbsp; | &nbsp;
