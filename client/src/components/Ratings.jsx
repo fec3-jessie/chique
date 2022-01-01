@@ -7,7 +7,7 @@ import {token} from '/config.js';
 
 function Ratings ({product_Id}) {
   const [productReviews, setProductReviews] = useState({});
-  const holder = 40358
+
   useEffect(() => {
     const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}`;
     const fetchReviews = async () => {
@@ -26,7 +26,7 @@ function Ratings ({product_Id}) {
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${product_Id}`;
+    const url = `http://127.0.0.1:3000/reviews/meta?product_id=${product_Id}`;
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {

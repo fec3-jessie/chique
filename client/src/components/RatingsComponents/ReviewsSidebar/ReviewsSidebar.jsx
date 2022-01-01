@@ -11,7 +11,7 @@ function ReviewsSidebar ({productId}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta?product_id=${productId}`;
+    const url = `http://127.0.0.1:3000/reviews/meta?product_id=${productId}`;
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {

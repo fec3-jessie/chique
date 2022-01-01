@@ -13,7 +13,7 @@ function FactorBar ({characteristics, factor}) {
   };
 
 
-  // let bgc = '#124B3A'; // to see inner bar uncomment
+  // let bgc = '#124B3A'; // to see inner bar uncomment this line,  and comment out line 17
   let bgc = '#FFFFFF';
 
   const barStyles = {

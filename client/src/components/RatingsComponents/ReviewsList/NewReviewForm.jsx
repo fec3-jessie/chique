@@ -12,11 +12,6 @@ function NewReviewForm ({factors}) {
     'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
   };
 
-  console.log(factors);
-  // const createFactors = () => {
-
-  // }
-
 
   return (
     <div className='review-form-container'>

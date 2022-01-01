@@ -8,20 +8,21 @@ function AverageRating ({ratings}) {
     for (const key in ratingsObj) {
       let currVal = parseInt(ratingsObj[key]);
       let currKey = parseInt(key);
-      totalVotes+= currVal;
-      result+= (currVal * currKey);
+      totalVotes += currVal;
+      result += (currVal * currKey);
     }
-    let roundedResult = Math.round((result/totalVotes) * 10) / 10;
+    let roundedResult = Math.round((result / totalVotes) * 10) / 10;
     return roundedResult;
-  }
+  };
+
   const average = calculateRating(ratings);
+
   return (
     <div className='average-rating-container'>
       <div className='numerical-rating'>{average}</div>
-      {/* <div className='stars-average'>Average Stars will go here</div> */}
       <StarsTile className='average-stars' stars={average} />
     </div>
-  )
+  );
 }
 
 export default AverageRating;
