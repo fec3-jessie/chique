@@ -51,7 +51,7 @@ const Modal = ({ setShowModal, usage, product_name }) => {
         <form onSubmit={handleSubmit}>
           <label htmlFor='answer-text'>{title_body}<span id='required-input'>*</span></label><br/>
           <textarea
-            id='answer-text' maxLength='1000'
+            id='answer-text' maxLength='1000' required
             rows='12' cols='50'
           ></textarea>
 
@@ -60,14 +60,14 @@ const Modal = ({ setShowModal, usage, product_name }) => {
 
           <label htmlFor='answer-nickname'>What is your nickname?<span id='required-input'>*</span></label><br/>
           <input type='text' id='answer-nickname' maxLength='60'
-            placeholder='Example: jack543!' size='30'
+            placeholder='Example: jack543!' size='30' required
             onChange={onNicknameChange}/>
           <p id='answer-disclaimer'>For privacy reasons, do not use your full name or email address</p>
 
           <br/>
 
           <label htmlFor='answer-email'>Your email:<span id='required-input'>*</span></label><br/>
-          <input type='email' id='answer-email' maxLength='60'
+          <input type='email' id='answer-email' maxLength='60' required
             placeholder='jack@email.com' size='30'
             onChange={onEmailChange}/>
           <p id='answer-disclaimer'>For authentication reasons, you will not be emailed</p>
