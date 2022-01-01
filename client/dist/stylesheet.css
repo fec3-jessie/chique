@@ -680,15 +680,19 @@ button.modal-close {
   justify-content: space-around;
 }
 #submit-review {
-  margin-top: 5%;
+  margin-top: 8%;
   margin-left: 4%;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
 }
 #submit-photo {
-  margin-top: 5%;
+  margin-top: 8%;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
+}
+#characteristics {
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 .factor-container {
   display: flex;

@@ -192,7 +192,7 @@ function NewReviewForm ({factors}) {
           <p id='char-count'>{`( ${charCount} )`}</p>
         </div>
         <div className='form-row-container'>
-          <p className='container__label'>Characteristics</p>
+          <p id='characteristics'className='container__label'>Characteristics</p>
           {factors.map((factor, i) => {
             let grades = factorGrades[factor];
             return (
