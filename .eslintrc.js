@@ -1,3 +1,10 @@
+// module.exports = {
+//   extends: 'hackreactor',
+//   rules: {
+//     // Rules here will override the 'hackreactor' configuration
+//     // http://eslint.org/docs/rules/
+//   }
+// };
 module.exports = {
   env: {
     'es6': true

@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './OverviewComponents/StarRating.js';
+// import StarRating from './OverviewComponents/StarRating.js';
 import Reviews from './OverviewComponents/Reviews.js';
 import axios from 'axios';
 import {token} from '../../../config.js';
@@ -193,7 +193,7 @@ class Overview extends React.Component {
 
     return (
       <div>
-        <StarRating rating ={this.state.rating}/>
+        {/* <StarRating rating ={this.state.rating}/> */}
         <Reviews numberOfReviews = {this.state.numberOfReviews} />
         <div id = 'category-overview'>{this.state.productCategory}</div>
         <div id = 'product-name-overview'>{this.state.productName}</div>
