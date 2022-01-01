@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {token} from '../../../../../config.js';
+import {token} from '/config.js';
 import Axios from 'axios';
 
-function NewReviewForm ({factors, productName}) {
+function NewReviewForm ({factors, productName, closeModalOnSubmit}) {
   const factorGrades = {
     'Size': ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
     'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too Wide'],
@@ -12,18 +12,41 @@ function NewReviewForm ({factors, productName}) {
     'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
   };
 
+
   const [starFill, setStarFill] = useState(false);
   const [starFill2, setStarFill2] = useState(false);
   const [starFill3, setStarFill3] = useState(false);
   const [starFill4, setStarFill4] = useState(false);
   const [starFill5, setStarFill5] = useState(false);
   const [charCount, setCharCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(1);
+  const [recommend, setRecommend] = useState(true);
 
-  let starsCount = 0;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log('You are trying to submit a form::::', e.target);
+    console.log('form data nickname::::', e.target.reviewNickName.value);
+    console.log('form data email::::', e.target.reviewEmail.value);
+    console.log('form data stars::::', starsCount);
+    console.log('form data review summary::::', e.target.reviewSummary.value);
+    console.log('form data review body::::', e.target.reviewBody.value);
+    console.log('form data recomendded::::', recommend);
+    console.log('form data factors::::', factors);
+    factors.forEach((factor) => console.log(e.target[factor].value, `rating for factor ${factor}`));
+    let characteristics = {};
+    let photoUrls = [];
+  };
 
   return (
     <div className='review-form-container'>
-      <form className='form' id='form'>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+          closeModalOnSubmit(false);
+        }}
+        className='form'
+        id='form'>
         <h2 className="form__title">Write Your Review</h2>
         <h4 className="form__subtitle">{`About the ${productName}`}</h4>
         <div className="form-row-container-nickName">
@@ -37,7 +60,7 @@ function NewReviewForm ({factors, productName}) {
             className="container__input"
             type='text'
             id="review-nickName"
-            name='review-nickName'
+            name='reviewNickName'
             placeholder='Example: jackson11!'
             maxLength='60'
             required/>
@@ -54,7 +77,7 @@ function NewReviewForm ({factors, productName}) {
             className="container__input"
             type='email'
             id="review-email"
-            name='review-email'
+            name='reviewEmail'
             placeholder='Example: jackson11@email.com'
             maxLength='60'
             required/>
@@ -69,13 +92,8 @@ function NewReviewForm ({factors, productName}) {
                 setStarFill3(false);
                 setStarFill4(false);
                 setStarFill5(false);
-                starsCount = 1;
-              } else if (starFill === true && starFill2 === false) {
-                setStarFill(false);
-                starsCount = 0;
               } else {
                 setStarFill(true);
-                starsCount = 1;
               }
             }} className='star-div' id='1'>{starFill === true ? '★' : '☆'}</div>
             <div onClick={() => {
@@ -83,11 +101,12 @@ function NewReviewForm ({factors, productName}) {
                 setStarFill3(false);
                 setStarFill4(false);
                 setStarFill5(false);
+                setStarsCount(2);
               } else {
                 setStarFill(true);
                 setStarFill2(true);
+                setStarsCount(2);
               }
-              starsCount = 2;
             }} className='star-div'
             id='2'>{starFill2 === true ? '★' : '☆'}
             </div>
@@ -95,25 +114,27 @@ function NewReviewForm ({factors, productName}) {
               if (starFill3 === true) {
                 setStarFill4(false);
                 setStarFill5(false);
+                setStarsCount(3);
               } else {
                 setStarFill(true);
                 setStarFill2(true);
                 setStarFill3(true);
                 setStarFill4(false);
                 setStarFill5(false);
+                setStarsCount(3);
               }
-              starsCount = 3;
             }} className='star-div' id='3'>{starFill3 === true ? '★' : '☆'}</div>
             <div onClick={() => {
               if (starFill4 === true && starFill5 === true) {
                 setStarFill5(false);
+                setStarsCount(4);
               } else {
                 setStarFill(true);
                 setStarFill2(true);
                 setStarFill3(true);
                 setStarFill4(true);
+                setStarsCount(4);
               }
-              starsCount = 4;
             }} className='star-div' id='4'>{starFill4 === true ? '★' : '☆'}</div>
             <div onClick={() => {
               if (starFill5 === false) {
@@ -122,7 +143,7 @@ function NewReviewForm ({factors, productName}) {
                 setStarFill3(true);
                 setStarFill4(true);
                 setStarFill5(true);
-                starsCount = 5;
+                setStarsCount(5);
               }
             }} className='star-div' id='5'>{starFill5 === true ? '★' : '☆'}</div>
           </div>
@@ -135,7 +156,8 @@ function NewReviewForm ({factors, productName}) {
               id='review-yes'
               name='review-recommend'
               value='yes'
-              defaultChecked>
+              defaultChecked
+              onClick={() => setRecommend(true)}>
             </input>
             <label
               id='yesLabel'
@@ -147,7 +169,8 @@ function NewReviewForm ({factors, productName}) {
               type='radio'
               id='review-no'
               name='review-recommend'
-              value='no'>
+              value='no'
+              onClick={() => setRecommend(false)}>
             </input>
             <label
               id='noLabel'
@@ -168,7 +191,7 @@ function NewReviewForm ({factors, productName}) {
             className="container__input"
             type='text'
             id="review-summary"
-            name='review-summary'
+            name='reviewSummary'
             placeholder='Example: Best purchase ever!'
             maxLength='60'/>
         </div>
@@ -182,7 +205,7 @@ function NewReviewForm ({factors, productName}) {
           <textarea
             className="container__input"
             id='review-body'
-            name='review-body'
+            name='reviewBody'
             minLength='50'
             maxLength='1000'
             placeholder='Why did you like the product or not?'
@@ -199,14 +222,14 @@ function NewReviewForm ({factors, productName}) {
               <div key={i} className='factor-container'>
                 <p className='factor-title'>{factor}</p>
                 <div className='factor-radio-container'>
-                  {grades.map((grade) => {
+                  {grades.map((grade, i) => {
                     return (
                       <div>
                         <input
                           type='radio'
                           id={grade}
                           name={factor}
-                          value={grade}>
+                          value={i + 1}>
                         </input>
                         <label
                           htmlFor={grade}
@@ -230,7 +253,7 @@ function NewReviewForm ({factors, productName}) {
           </button>
           <button className="form__submit"
             id="submit-review"
-            type="button"
+            type='submit'
             value="submit"
             data-stars={starsCount}>
             Submit

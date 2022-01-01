@@ -19,7 +19,9 @@ function NewReviewModal ({setShowModal, factors, productName}) {
         <button className='modal-close' onClick={() => setShowModal(false)}>X</button>
         <NewReviewForm
           factors={factors}
-          productName={productName}/>
+          productName={productName}
+          closeModalOnSubmit={setShowModal}
+        />
       </div>
     </div>,
     document.getElementById('thumbnail-portal')

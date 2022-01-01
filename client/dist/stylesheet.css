@@ -643,6 +643,7 @@ div.sorted-drop-down label {
 
 #thumbnail-portal .form-modal-container {
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   left: 0;
   bottom: 0;
@@ -691,7 +692,9 @@ button.modal-close {
   top: 5px;
   right: 5px;
 }
+.review-form-container {
 
+}
 #form {
   font-family: 'Raleway', sans-serif;
   background-image: linear-gradient(0, rgba(168, 227, 245, .95), rgba(245, 189, 242, 0.95));
@@ -701,7 +704,6 @@ button.modal-close {
   height: auto;
   flex-shrink: auto;
   padding: 40px;
-  overflow: scroll;
   justify-content: center;
   align-items: center;
 }
