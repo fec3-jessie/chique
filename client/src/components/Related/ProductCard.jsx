@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {token} from '/config.js';
 import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
+import PriceLine from './PriceLine.jsx';
 const url = 'http://localhost:3000';
 
 const ProductCard = (props) => {
@@ -43,7 +44,10 @@ const ProductCard = (props) => {
     <div className='card-details'>
       <span className='card-category'>{item.category}</span><br></br>
       <span className='card-name'>{item.name}</span><br></br>
-      <PriceLine salePrice={defaultStyle.sale_price}/></><br></br>
+      <PriceLine
+        originalPrice = {defaultStyle.original_price}
+        salePrice={defaultStyle.sale_price}
+      /><br></br>
       <StarsTile stars ={starAverage} />
     </div>
   </div>)
