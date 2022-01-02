@@ -66,14 +66,6 @@
   height: 400px;
 }
 
-.image-gallery-container {
-
-}
-
-.info-container {
-}
-
-
 
 .thumbnail-image {
   cursor: pointer;
@@ -89,8 +81,9 @@
 
 }
 
-.thumbnail-image::hover {
-  color:pink;
+.thumbnail-image:hover {
+  background-color: pink;
+  opacity: .5;
 }
 
 #product-description-container {
@@ -122,6 +115,11 @@ div #image-container {
   margin-right: 15px;
   margin-top: -30px;
 
+
+}
+
+#image-container:hover {
+  /* background-color: pink; */
 }
 
 

@@ -11,7 +11,7 @@ class AddToCart extends React.Component {
     // if quantity of style/size combo >15, dropdown should allow user to select from 1-15;
     // Else if <15, user selects from 1 to the quantity in stock
     var output = [];
-    if (!this.props.selectedStyle) {
+    if (!this.props.quantity) {
       output.push(<option>—</option>);
     } else if (this.props.quantity >= 15) {
       for (var i = 1; i <= 15; i++) {
