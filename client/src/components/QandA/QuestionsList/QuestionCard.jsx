@@ -10,7 +10,7 @@ class QuestionCard extends React.Component {
       answerCounter: 0,
       showMoreBtn: false,
       showCollapseBtn: false
-    }
+    };
     this.onSeeMoreClick = this.onSeeMoreClick.bind(this);
     this.onCollapseClick = this.onCollapseClick.bind(this);
   }
@@ -23,12 +23,12 @@ class QuestionCard extends React.Component {
     if (Object.keys(this.props.answers).length <= 2) {
       this.setState({
         answerCounter: Object.keys(this.props.answers).length
-      })
+      });
     } else {
       this.setState({
         answerCounter: 2,
         showMoreBtn: true
-      })
+      });
     }
   }
 
@@ -36,16 +36,16 @@ class QuestionCard extends React.Component {
     if (Object.keys(this.props.answers).length - this.state.answerCounter === 0) {
       this.setState({
         showCollapseBtn: true
-      })
+      });
     } else if (Object.keys(this.props.answers).length - this.state.answerCounter <= 2) {
       this.setState({
         answerCounter: Object.keys(this.props.answers).length,
         showCollapseBtn: true
-      })
+      });
     } else {
       this.setState({
         answerCounter: this.state.answerCounter + 2
-      })
+      });
     }
   }
 
@@ -55,48 +55,48 @@ class QuestionCard extends React.Component {
       this.setState({
         answerCounter: Object.keys(this.props.answers).length,
         showCollapseBtn: false
-      })
+      });
     } else {
       this.setState({
         answerCounter: 2,
         showMoreBtn: true,
         showCollapseBtn: false
-      })
+      });
     }
   }
 
   render() {
     return (
       <div id='Question-Card'>
-      <QuestionDetails
-        asker={this.props.asker}
-        date={this.props.date}
-        helpful={this.props.helpful}
-        reported={this.props.reported}
-        question_id={this.props.question_id}
-      />
-      <div className='symbol question-symbol'>Q:</div>
-      <QuestionBody body={this.props.body}/>
-      {Object.keys(this.props.answers).length > 0 ?
-      <>
-        <div className='symbol answer-symbol'>A:</div>
-        <Answers
-          answers={this.props.answers}
-          key={this.props.question_id * 3}
-          answerCounter={this.state.answerCounter}
-          showMore={this.state.showMoreBtn}
-          collapse={this.state.showCollapseBtn}
+        <QuestionDetails
+          asker={this.props.asker}
+          date={this.props.date}
+          helpful={this.props.helpful}
+          reported={this.props.reported}
+          question_id={this.props.question_id}
         />
-        {
-          !this.state.showMoreBtn ? null
-            : !this.state.showCollapseBtn
-              ? <button onClick={this.onSeeMoreClick}>See more answers</button>
-              : <button onClick={this.onCollapseClick}>Collapse answers</button>
+        <div className='symbol question-symbol'>Q:</div>
+        <QuestionBody body={this.props.body}/>
+        {Object.keys(this.props.answers).length > 0 ?
+          <>
+            <div className='symbol answer-symbol'>A:</div>
+            <Answers
+              answers={this.props.answers}
+              key={this.props.question_id * 3}
+              answerCounter={this.state.answerCounter}
+              showMore={this.state.showMoreBtn}
+              collapse={this.state.showCollapseBtn}
+            />
+            {
+              !this.state.showMoreBtn ? null
+                : !this.state.showCollapseBtn
+                  ? <button onClick={this.onSeeMoreClick}>See more answers</button>
+                  : <button onClick={this.onCollapseClick}>Collapse answers</button>
+            }
+          </>
+          : null
         }
-      </> :
-        null
-      }
-    </div>
+      </div>
     );
   }
 }

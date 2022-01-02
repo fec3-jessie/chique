@@ -14,7 +14,7 @@ class QuestionsList extends React.Component {
     this.state = {
       questions: [],
       questionCounter: 0
-    }
+    };
     this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
     this.onCollapseQuestionsClick = this.onCollapseQuestionsClick.bind(this);
   }
@@ -25,27 +25,27 @@ class QuestionsList extends React.Component {
         this.setState({
           questions: returnedQuestions.data.results,
           questionCounter: 2
-        })
+        });
       })
-      .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err))
+      .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err));
   }
 
   onMoreQuestionsClick() {
     if (this.state.questions.length - this.state.questionCounter <= 2) {
       this.setState({
         questionCounter: this.state.questions.length
-      })
+      });
     } else {
       this.setState({
         questionCounter: this.state.questionCounter + 2
-      })
+      });
     }
   }
 
   onCollapseQuestionsClick() {
     this.setState({
       questionCounter: 2
-    })
+    });
   }
 
   render() {
@@ -68,10 +68,10 @@ class QuestionsList extends React.Component {
         )}
         {this.state.questions.length <= 2
         // || this.state.questions.length === this.state.questionCounter)
-        ? null :
+          ? null :
           this.state.questions.length === this.state.questionCounter
-          ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
-          : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
+            ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
+            : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
         }
         <AddQuestionOrAnswer
           questionOrProduct_id={this.props.product_id}

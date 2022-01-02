@@ -3,7 +3,9 @@ import ReactDom from 'react-dom';
 import axios from 'axios';
 const localHost = 'http://127.0.0.1:3000';
 
-let title, subtitle, title_body;
+let title;
+let subtitle;
+let title_body;
 
 const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
   const [bodyTextValue, setBodyTextValue] = useState('');
@@ -28,33 +30,41 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
     title_body = 'Your Question';
   }
 
+  const postModalInput = (endpoint, body) => {
+    axios.post(localHost + endpoint, body)
+      .catch(err => console.error('Error posting Modal PUT req: ', err));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    let endpoint, body;
+    let endpoint;
+    let body = {
+      body: document.getElementById('QA-modal-body').value,
+      name: document.getElementById('QA-modal-nickname').value,
+      email: document.getElementById('QA-modal-email').value
+    };
 
     if (usage === 'addAnswer') {
       endpoint = `/qa/questions/${questionOrProduct_id}/answers`;
-      body = {
-        body: bodyTextValue,
-        answerer_name: nicknameValue,
-        // answerer_email: emailValue,
-        helpfulness: 0,
-        photos: []
-      };
+      body.photos = [];
+      // body = {
+      //   body: bodyTextValue,
+      //   answerer_name: nicknameValue,
+      //   // answerer_email: emailValue,
+      //   helpfulness: 0,
+      //   photos: []
+      // };
     }
 
     if (usage === 'addQuestion') {
       endpoint = '/qa/questions';
-      body = {
-        question_body: bodyTextValue,
-        asker_name: nicknameValue,
-        // asker_email: emailValue,
-        product_id: questionOrProduct_id,
-        question_helpfulness: 0,
-        reported: false,
-        answers: []
-      };
+      // body = {
+      //   body: bodyTextValue,
+      //   name: nicknameValue,
+      //   email: emailValue,
+      //   product_id: questionOrProduct_id
+      // };
       body.product_id = questionOrProduct_id;
     }
 
@@ -79,11 +89,6 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
     setEmailValue(entry);
   };
 
-  const postModalInput = (endpoint, body) => {
-    axios.post(localHost + endpoint, body)
-      .catch(err => console.error('Error posting Modal PUT req: ', err))
-  };
-
   // Render the modal JSX in the portal div
   return ReactDom.createPortal(
     <div className='QA-modal-container' ref={modalRef} onClick={closeModal}>
@@ -100,16 +105,16 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
           <br/>
           <br/>
 
-          <label htmlFor='answer-nickname'>What is your nickname?<span id='required-input'>*</span></label><br/>
-          <input type='text' id='answer-nickname' maxLength='60'
+          <label htmlFor='QA-modal-nickname'>What is your nickname?<span id='required-input'>*</span></label><br/>
+          <input type='text' id='QA-modal-nickname' maxLength='60'
             placeholder='Example: jack543!' size='30' required
             onChange={onNicknameChange}/>
           <p id='QA-modal-disclaimer'>For privacy reasons, do not use your full name or email address</p>
 
           <br/>
 
-          <label htmlFor='answer-email'>Your email:<span id='required-input'>*</span></label><br/>
-          <input type='email' id='answer-email' maxLength='60' required
+          <label htmlFor='QA-modal-email'>Your email:<span id='required-input'>*</span></label><br/>
+          <input type='email' id='QA-modal-email' maxLength='60' required
             placeholder='jack@email.com' size='30'
             onChange={onEmailChange}/>
           <p id='QA-modal-disclaimer'>For authentication reasons, you will not be emailed</p>
