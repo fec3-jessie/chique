@@ -3,7 +3,7 @@ import AnswerBody from './Answers/AnswerBody.jsx';
 import AnswerDetails from './Answers/AnswerDetails.jsx';
 import AnswerImages from './Answers/AnswerImages.jsx';
 
-const Answers = ({ answers }) => {
+const Answers = ({ answers, answerCounter }) => {
   let answersArray = Object.values(answers);
   let sortedAnswers = [];
   let temp = [];
@@ -21,7 +21,7 @@ const Answers = ({ answers }) => {
 
   return (
     <>
-      {sortedAnswers.map(ans =>
+      {sortedAnswers.slice(0, answerCounter).map(ans =>
         <div>
           <AnswerBody
             key={ans.id * 2}
@@ -32,6 +32,7 @@ const Answers = ({ answers }) => {
             date={ans.date}
             helpfulness={ans.helpfulness}
             key={ans.id}
+            ID={ans.id}
           />
           {ans.photos.length !== 0
             ? <AnswerImages

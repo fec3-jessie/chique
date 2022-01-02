@@ -1,14 +1,14 @@
 import React from 'react';
 
-function ReviewsListSorting ({reviewsNum}) {
+function ReviewsListSorting ({reviewsNum, handleChangeSort}) {
   return (
     <div className='sorted-drop-down'>
       <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
       <select id='filter-select'
         onChange={(e) => {
-          console.log('you clicked:::', e.target.value);
+          handleChangeSort(e.target.value);
         }}>
-        <option defaultValue>relevance</option>
+        <option defaultValue>relevant</option>
         <option>newest</option>
         <option>helpful</option>
       </select>
