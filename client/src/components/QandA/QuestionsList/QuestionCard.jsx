@@ -50,7 +50,6 @@ class QuestionCard extends React.Component {
   }
 
   onCollapseClick() {
-    // this.initialSetter();
     if (Object.keys(this.props.answers).length <= 2) {
       this.setState({
         answerCounter: Object.keys(this.props.answers).length,
@@ -101,66 +100,5 @@ class QuestionCard extends React.Component {
     );
   }
 }
-
-// const QuestionCard = ({ answers, asker, body, date, helpful, reported, ID }) => {
-//   const answerCounter = useRef(0);
-//   const showMoreBtn = useRef(false);
-//   const showCollapseBtn = useRef(false);
-//   // const [showMoreBtn, setShowMoreBtn] = useState(false);
-//   // const [showCollapseBtn, setShowCollapseBtn] = useState(false);
-//   // const [answerCounter, setAnswerCounter] = useState(0);
-
-//   useEffect(() => {
-//     if (Object.keys(answers).length <= 2) {
-//       answerCounter.current = Object.keys(answers).length;
-//       // setAnswerCounter(Object.keys(answers).length);
-//     } else {
-//       answerCounter.current = 2;
-//       // setAnswerCounter(2);
-//       // setShowMoreBtn(true);
-//       showMoreBtn.current = true;
-//     }
-//   });
-
-
-//   const onSeeMoreClick = () => {
-//     if (Object.keys(answers).length - answerCounter === 0) {
-//       showCollapseBtn.current = true;
-//       // setShowCollapseBtn(true);
-//     } else if (Object.keys(answers).length - answerCounter <= 2) {
-//       answerCounter.current = Object.keys(answers).length;
-//       // setAnswerCounter(Object.keys(answers).length);
-//       showCollapseBtn.current = true;
-//     } else {
-//       answerCounter.current = answerCounter.current + 2;
-//       // setAnswerCounter(prevAnswerCounter => prevAnswerCounter + 2);
-//     }
-//   }
-
-//   const onCollapseClick = () => {
-
-//   }
-
-//   return (
-//     <div id='Question-Card'>
-//       <QuestionDetails
-//         asker={asker}
-//         date={date}
-//         helpful={helpful}
-//         reported={reported}
-//       />
-//       <div className='symbol question-symbol'>Q:</div>
-//       <QuestionBody body={body}/>
-//       <div className='symbol answer-symbol'>A:</div>
-//       <Answers answers={answers} key={ID * 3} answerCounter={answerCounter} a={showMoreBtn} b={showCollapseBtn}/>
-//       {
-//         !showMoreBtn ? null
-//           : !showCollapseBtn
-//             ? <button onClick={onSeeMoreClick}>See more answers</button>
-//             : <button onClick={onCollapseClick}>Collapse answers</button>
-//       }
-//     </div>
-//   );
-// }
 
 export default QuestionCard;
