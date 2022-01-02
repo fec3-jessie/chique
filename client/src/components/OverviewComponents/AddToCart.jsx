@@ -11,7 +11,9 @@ class AddToCart extends React.Component {
     // if quantity of style/size combo >15, dropdown should allow user to select from 1-15;
     // Else if <15, user selects from 1 to the quantity in stock
     var output = [];
-    if (this.props.quantity >= 15) {
+    if (!this.props.selectedStyle) {
+      output.push(<option>—</option>);
+    } else if (this.props.quantity >= 15) {
       for (var i = 1; i <= 15; i++) {
         output.push(<option>{i}</option>);
       }
@@ -48,14 +50,14 @@ class AddToCart extends React.Component {
               {output}
             </select>
           </div>
-
-
-
         </div>
-
-        <button onClick = {this.props.handleAddToCart} className="ATCButton" role="button">Add To Cart</button>
+        <button onClick = {this.props.handleAddToCart} className="ATCButton" >Add To Cart</button>
         <div id = 'atc-text-container'>
-          {this.props.validATC === false ? ATCMessage[0] : ''}
+          {this.props.validATC === false ? ATCMessage[0]
+            :
+            /*<div id = 'added-to-cart'> Added To Cart </div>*/
+            ''
+          }
         </div>
 
       </div>

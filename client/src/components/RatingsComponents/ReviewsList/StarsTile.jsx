@@ -13,7 +13,7 @@ function StarsTile ({stars}) {
         <div className='stars-inner' style={{width: roundedPercent}}></div>
       </div>
     </div>
-  )
+  );
 }
 
 

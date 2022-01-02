@@ -24,7 +24,7 @@ class StyleSelector extends React.Component {
         element = [<div id = 'image-container'> <img id = {this.props.thumbnails[i].index}
           className = 'thumbnail-image'
           onClick = {this.props.handleStyleClick} src = {this.props.thumbnails[i].url} />
-        <i class="fas fa-check"></i> </div>];
+        <i class="fas fa-check fa-lg"></i> </div>];
       } else {
         element = [<div id = 'image-container'>
           <img id = {this.props.thumbnails[i].index}
@@ -37,7 +37,7 @@ class StyleSelector extends React.Component {
     return (
       <div>
         <div id = 'style-container'>
-          <div id = 'selected-style'>Style: </div>
+          <div id = 'selected-style'>Style: {this.props.results ? this.props.results[Number(this.props.selectedStyle)].name : '' } </div>
           <div id = 'styles-container'>
             {output}
           </div>
