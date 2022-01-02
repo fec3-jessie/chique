@@ -11,14 +11,13 @@ function Ratings ({product_Id, productName}) {
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=newest
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=relevant
   // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=helpful
-
+  const sort = 'relevant'
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}&count=50&sort=relevant`;
+    const url = `http://127.0.0.1:3000/reviews`;
+    const params = {product_id: product_Id, count: 50, sort : sort};
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+        params: params
       });
       const reviews = await getReviews.data;
       setProductReviews(reviews);
