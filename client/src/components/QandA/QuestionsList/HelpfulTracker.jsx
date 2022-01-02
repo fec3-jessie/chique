@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { token, url } from '/config.js';
+// import { token, url } from '/config.js';
 import axios from 'axios';
-const localHost = 'http://127.0.0.1:3000'
+const localHost = 'http://127.0.0.1:3000';
 
 // class HelpfulTracker extends React.Component {
 //   constructor(props) {
@@ -13,7 +13,7 @@ const localHost = 'http://127.0.0.1:3000'
 //   }
 // }
 
-const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
+const HelpfulTracker = ({ question_id, helpful, usage, reported }) => {
   const [yesCount, setYesCount] = useState(helpful);
   const [yesClicked, setYesClicked] = useState(false);
   const [reportState, setReportState] = useState(<u>Report</u>);
@@ -22,7 +22,6 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
   const updateYesOrReport = (endpoint, body) => {
     // axios.put(url + endpoint, body, { headers: { 'Authorization': token }})
     axios.put(localHost + endpoint, body)
-      .then(results => console.log('Put request submitted (HelpfulTracker.jsx)!'))
       .catch(err => console.error('Error submitting PUT req (HelpfulTracker.jsx): ', err))
   };
 
@@ -32,10 +31,10 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
       // setYesCount(prevYesCount => prevYesCount + 1);
       // setYesClicked(true);
       if (usage === 'answer') {
-        endpoint = `/qa/answers/${ID}/helpful`;
+        endpoint = `/qa/answers/${question_id}/helpful`;
         body = { helpfulness: yesCount + 1 };
       } else if (usage === 'question') {
-        endpoint = `/qa/questions/${ID}/helpful`;
+        endpoint = `/qa/questions/${question_id}/helpful`;
         body = { question_helpfulness: yesCount + 1 };
       }
       setYesCount(prevYesCount => prevYesCount + 1);
@@ -50,7 +49,7 @@ const HelpfulTracker = ({ ID, helpful, usage, reported }) => {
       // setReportState('Reported');
       // setReportClicked(true);
       if (usage === 'question') {
-        endpoint = `/qa/questions/${ID}/report`;
+        endpoint = `/qa/questions/${question_id}/report`;
         body = { reported: 'Reported' };
       }
       setReportState('Reported');

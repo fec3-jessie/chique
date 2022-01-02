@@ -2,6 +2,7 @@ html {
   background-image: linear-gradient(0, rgba(168, 227, 245, .5), rgba(245, 189, 242, 0.5));
   font-family: 'Raleway', sans-serif;
 }
+
 .clickable {
   cursor: pointer;
 }
@@ -17,7 +18,7 @@ html {
 }
 
 /* ---------- Add Answer Modal ---------- */
-.container-modal {
+.QA-modal-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,7 +31,7 @@ html {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.container-modal .modal-answer {
+.QA-modal-content {
   z-index: 1;
   width: 35%;
   height: 70%;
@@ -44,7 +45,7 @@ html {
   animation: animate 0.3s;
 }
 
-.modal-answer button {
+.QA-modal-content button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -58,7 +59,7 @@ html {
   cursor: pointer;
 }
 
-#answer-disclaimer {
+#QA-modal-disclaimer {
   font-size: smaller;
   margin: 0;
 }

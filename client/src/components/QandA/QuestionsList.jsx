@@ -63,7 +63,7 @@ class QuestionsList extends React.Component {
             helpful={item.question_helpfulness}
             key={item.question_id}
             reported={item.reported}
-            ID={item.question_id}
+            question_id={item.question_id}
           />
         )}
         {this.state.questions.length <= 2
@@ -73,7 +73,10 @@ class QuestionsList extends React.Component {
           ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
           : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
         }
-        <AddQuestionOrAnswer usage={'addQuestion'} />
+        <AddQuestionOrAnswer
+          questionOrProduct_id={this.props.product_id}
+          usage={'addQuestion'}
+        />
       </>
     );
   }
