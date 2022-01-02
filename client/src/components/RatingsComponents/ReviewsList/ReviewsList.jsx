@@ -2,8 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
+import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews}) {
+function ReviewsList ({reviews, factors, productName, characteristics, product_Id}) {
+  const [showModal, setShowModal] = useState(false);
+  const openFormModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div className='reviews-list'>
       <ReviewsListSorting reviewsNum={reviews.count}/>
@@ -24,8 +30,16 @@ function ReviewsList ({reviews}) {
         })}
       </div>
       <div className='review-list-buttons-container'>
-        <button>Add Review</button>
-        <button>Add Review</button>
+        <button className='btn reviews'>More Reviews</button>
+        <button className='btn reviews'
+          onClick={() => openFormModal()}
+          >Add Review</button>
+          {showModal ? <NewReviewModal
+            setShowModal={setShowModal}
+            productName={productName}
+            characteristics={characteristics}
+            factors={factors}
+            product_Id={product_Id}/> : null}
       </div>
     </div>
   )

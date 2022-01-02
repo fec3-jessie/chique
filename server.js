@@ -2,7 +2,6 @@ const express = require('express');
 const { url, token } = require('./config.js');
 const router = require('express').Router();
 const path = require('path');
-const atelierAPI = require('./helpers/atelierAPI.js');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
@@ -17,7 +16,24 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routing
+
+// ----- HELPER FUNCTIONS ----- //
+const axiosGet = (path, response) => {
+  axios.get(`${url}${path}`, { headers })
+    .then(results => { response.send(results.data); })
+    .catch(err => console.error('Error executing Axios GET from API: ', err));
+};
+
+const axiosPut = (path, body) => {
+  axios.put(`${url}${path}`, body, { headers })
+    .catch(err => console.error('Error submitting PUT req (server.js): ', err));
+};
+
+const axiosPost = (path, body) => {
+  axios.post(`${url}${path}`, body, { headers })
+    .catch(err => console.error('Error completing POST req (server.js): ', err));
+};
+// ----- END OF HELPER FUNCTIONS ----- //
 
 
 // ---------- API GET REQUESTS ---------- //
@@ -75,9 +91,26 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 
 
 // ---------- API POST REQUESTS ---------- //
+/* ----- Reviews ----- */
+app.post('/reviews', (req, res) => {
+  axiosPost(req.url, req.body);
+  res.send('Successfully posted.');
+});
+
+// app.post('/reviews', (req, res) => {
+//   axios.post(`${url}/reviews?product_id=${req.query.product_id}`, req.body, {
+//     headers: headers
+//   })
+//     .then(results => {
+//       res.send(results.data);
+//       console.log('post data sent');
+//     })
+//     .catch(err => console.error('Improper request', err));
+// });
+
 /* ----- Questions & Answers ----- */
 app.post('/qa/questions', (req, res) => {
-  axiosPost(req.url, req.body, req);
+  axiosPost(req.url, req.body);
 });
 
 app.post('/qa/questions/:question_id/answers', (req, res) => {
@@ -86,25 +119,6 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 // ---------- END OF POST REQUESTS ---------- //
 
 
-// ----- HELPER FUNCTIONS ----- //
-const axiosGet = (path, response) => {
-  axios.get(`${url}${path}`, { headers })
-    .then(results => { response.send(results.data); })
-    .catch(err => console.error('Error executing Axios GET from API: ', err))
-};
-
-const axiosPut = (path, body) => {
-  axios.put(`${url}${path}`, body, { headers })
-    .catch(err => console.error('Error submitting PUT req (server.js): ', err))
-};
-
-const axiosPost = (path, body, req) => {
-  axios.post(`${url}${path}`, body, { headers })
-    .catch(err => console.error('Error completing POST req (server.js): ', err))
-};
-// ----- END OF HELPER FUNCTIONS ----- //
-
-
 app.listen(3000, () => {
-  console.log('Server listening on port 3000...')
+  console.log('Server listening on port 3000...');
 });

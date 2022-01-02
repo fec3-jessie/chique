@@ -27,15 +27,15 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.svg$/,
-        use: 'file-loader'
+        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|)$/i,
+        use: {
+            loader: 'file-loader'
+        }
       }
     ]
   }
