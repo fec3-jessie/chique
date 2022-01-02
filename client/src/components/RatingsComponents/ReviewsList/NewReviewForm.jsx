@@ -47,7 +47,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       photos: photoUrls,
       characteristics: characters
     };
-    console.log('this gonna be the body::::', body);
+    // leave this log here for testing purposes
+    // console.log('this gonna be the body::::', body);
 
     Axios({
       method: 'post',
