@@ -2,20 +2,13 @@ import React, {useState} from 'react';
 import StarBar from './StarBar.jsx';
 
 
-function RatingBreakdown ({ratings}) {
+function RatingBreakdown ({ratings, starsClicked, setStarsClicked}) {
   let starsCounts = ['1', '2', '3', '4', '5'];
-  const [starsClicked, setStarsClicked] = useState({
-    '1': false,
-    '2': false,
-    '3': false,
-    '4': false,
-    '5': false
-  });
   const starClickedStyles = {
-    'text-decoration': 'underline'
+    'textDecoration': 'underline'
   };
   const starUnClickStyles = {
-    'text-decoration': 'none'
+    'textDecoration': 'none'
   };
 
   return (

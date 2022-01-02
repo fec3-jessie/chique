@@ -7,7 +7,7 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
 
-function ReviewsSidebar ({productId}) {
+function ReviewsSidebar ({productId, starsClicked, setStarsClicked}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
@@ -30,7 +30,9 @@ function ReviewsSidebar ({productId}) {
         <div className='sidebar-components'>
           <AverageRating ratings={productMetaData.ratings}/>
           <PercentRecommended recommended={productMetaData.recommended}/>
-          <RatingBreakdown ratings={productMetaData.ratings}/>
+          <RatingBreakdown ratings={productMetaData.ratings}
+            setStarsClicked={setStarsClicked}
+            starsClicked={starsClicked}/>
           <RatingFactors characteristics={productMetaData.characteristics} />
         </div>
       )

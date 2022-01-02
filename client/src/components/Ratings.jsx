@@ -8,6 +8,17 @@ import { token } from '/config.js';
 function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
   const [sort, setSort] = useState('relevant');
+  const [reviews, setReviews] = useState([]);
+  const [starsFilter, setStarsFilter] = useState([]);
+  const [revert, setRevert] = useState(false);
+  const [starsClicked, setStarsClicked] = useState({
+    '1': false,
+    '2': false,
+    '3': false,
+    '4': false,
+    '5': false
+  });
+
 
   useEffect(() => {
     const url = `http://127.0.0.1:3000/reviews`;
@@ -16,11 +27,12 @@ function Ratings ({product_Id, productName}) {
       const getReviews = await Axios.get(url, {
         params: params
       });
-      const reviews = await getReviews.data;
-      setProductReviews(reviews);
+      const data = await getReviews.data;
+      setProductReviews(data);
+      setReviews(data.results);
     };
     fetchReviews();
-  }, [sort]);
+  }, [sort, revert]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
@@ -45,6 +57,30 @@ function Ratings ({product_Id, productName}) {
     fetchMeta();
   }, []);
 
+  useEffect(() => {
+    let filtering = [];
+    console.log('you clicked a star to filter');
+    for (const star in starsClicked) {
+      if (starsClicked[star] === true) {
+       filtering.push(parseInt(star));
+      }
+    }
+    console.log(productReviews.results);
+    setStarsFilter(filtering);
+  }, [starsClicked]);
+
+  useEffect(() => {
+    let newList;
+    if (starsFilter.length > 0) {
+      newList = productReviews.results.filter(result =>
+        starsFilter.includes(result.rating)
+      );
+      setReviews(newList);
+    } else {
+      setRevert(!revert);
+    }
+  },[starsFilter]);
+
   const handleChangeSort = (sortedBy) => {
     setSort(sortedBy);
     console.log('this was sorted:::', sortedBy);
@@ -57,12 +93,16 @@ function Ratings ({product_Id, productName}) {
           {productReviews.product !== undefined ?
           <ReviewsSidebar
             className='reviews-sidebar'
+            setStarsClicked={setStarsClicked}
+            starsClicked={starsClicked}
             productId={productReviews.product}/> : null}
           <ReviewsList
+            starsClicked={starsClicked}
             className='reviews-list'
-            reviews={productReviews}
+            data={productReviews}
             factors={factors}
             productName={productName}
+            reviews={reviews}
             characteristics={characteristics}
             product_Id={product_Id}
             handleChangeSort={handleChangeSort}/>
