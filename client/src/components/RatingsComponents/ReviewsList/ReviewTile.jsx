@@ -20,19 +20,19 @@ function ReviewTile (props) {
           user={props.user}
           time={props.time}/>
       </div>
-        <ReviewBody
-          body={props.body}
-          summary={props.summary}
-          photos={props.photos}/>
-        {props.recommend === true ?
+      <ReviewBody
+        body={props.body}
+        summary={props.summary}
+        photos={props.photos}/>
+      {props.recommend === true ?
         <Recommendation rec={props.recommend}/> : null}
-        {props.response !== null ?
+      {props.response !== null ?
         <Response response={props.response}/> : null}
-        <HelpfulTile
-          helpfulnessCount={props.helpfulness}
-          reviewId={props.reviewId}/>
+      <HelpfulTile
+        helpfulnessCount={props.helpfulness}
+        reviewId={props.reviewId}/>
     </div>
-  )
+  );
 }
 
 

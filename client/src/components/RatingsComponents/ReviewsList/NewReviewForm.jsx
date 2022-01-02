@@ -52,8 +52,11 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
 
     Axios({
       method: 'post',
-      url: `http://127.0.0.1:3000/reviews?product_id=${product_Id}`,
-      data: body
+      url: 'http://127.0.0.1:3000/reviews',
+      data: body,
+      params: {
+        product_id: product_Id
+      }
     })
       .then((response) => {
         console.log('this is the post reponse::', response);
