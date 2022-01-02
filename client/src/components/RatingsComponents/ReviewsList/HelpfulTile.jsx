@@ -21,7 +21,7 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
     });
   };
 
-  const handleClick = (e) => {
+  const handleYesClick = (e) => {
     e.preventDefault();
     if (yesClicked === false) {
       setYesCount(yesCount => yesCount + 1);
@@ -30,15 +30,15 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
     }
   }
 
-
   return (
     <div className='helpful-tile'>
       <p>{`Helpful?`}</p>
       <button
         className='yes-button'
-        onClick={handleClick}>
-        Yes</button>
-      <p>{`(${yesCount}) |  Report`}</p>
+        onClick={handleYesClick}>
+        Yes
+      </button>
+      <p>{`( ${yesCount} )   | Report`}</p>
     </div>
   )
 }

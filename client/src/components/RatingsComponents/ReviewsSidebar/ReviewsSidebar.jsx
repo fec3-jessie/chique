@@ -38,7 +38,6 @@ function ReviewsSidebar ({productId}) {
 
   return (
     <div className='reviews-sidebar'>
-      {/* <h5>This is the main sidebar</h5> */}
       {productMetaData.ratings !== undefined ?
         renderComponents() : null}
     </div>
