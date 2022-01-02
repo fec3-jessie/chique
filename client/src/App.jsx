@@ -38,7 +38,8 @@ class App extends React.Component {
         />
         <h1>QandA</h1>
         <QandA
-          product_Id={this.state.product_Id}
+          product_id={this.state.product_Id}
+          product_name={this.state.product_name}
         />
         <h1>Ratings</h1>
         <Ratings
