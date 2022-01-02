@@ -44,14 +44,10 @@ const ProductCard = (props) => {
     <div className='card-details'>
       <span className='card-category'>{item.category}</span><br></br>
       <span className='card-name'>{item.name}</span><br></br>
-<<<<<<< HEAD
-      <span className='card-price'>${defaultStyle.original_price}</span><br></br>
-=======
       <PriceLine
         originalPrice = {defaultStyle.original_price}
         salePrice={defaultStyle.sale_price}
       /><br></br>
->>>>>>> 7e5bad615ce1be863d7953d2277624c4ec904dd5
       <StarsTile stars ={starAverage} />
     </div>
   </div>)
