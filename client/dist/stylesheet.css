@@ -312,7 +312,7 @@ img {
 }
 
 /* ---------- Add Answer Modal ---------- */
-.container-modal {
+.QA-modal-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -325,7 +325,7 @@ img {
   background: rgba(0, 0, 0, 0.7);
 }
 
-.container-modal .modal-answer {
+.QA-modal-content {
   z-index: 1;
   width: 35%;
   height: 70%;
@@ -339,7 +339,7 @@ img {
   animation: animate 0.3s;
 }
 
-.modal-answer button {
+.QA-modal-content button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -353,7 +353,7 @@ img {
   cursor: pointer;
 }
 
-#answer-disclaimer {
+#QA-modal-disclaimer {
   font-size: smaller;
   margin: 0;
 }
