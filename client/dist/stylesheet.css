@@ -262,7 +262,7 @@ html {
   border: 1px solid black;
 }
 
-img {
+img.related-img {
   float: left;
   width: 250px;
   height: 250px;
@@ -694,9 +694,6 @@ button.modal-close {
   position: absolute;
   top: 5px;
   right: 5px;
-}
-.review-form-container {
-
 }
 #form {
   font-family: 'Raleway', sans-serif;
