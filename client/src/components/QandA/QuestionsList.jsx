@@ -4,10 +4,6 @@ import { token, url } from '/config.js';
 import QuestionCard from './QuestionsList/QuestionCard.jsx';
 import AddQuestionOrAnswer from './QuestionsList/QuestionCard/AddQuestionOrAnswer.jsx';
 
-// const headers = {
-//   'Authorization': token
-// };
-
 class QuestionsList extends React.Component {
   constructor(props) {
     super(props);
