@@ -11,9 +11,6 @@ const AnswerDetails = ({ name, date, helpfulness, ID }) => {
       by {name}, {newDate} &nbsp;
       |&nbsp;
       <HelpfulTracker ID={ID} helpful={helpfulness} usage='answer'/>
-      {/* Helpful? <span className='clickable'>Yes</span> ({helpfulness}) &nbsp;
-      |
-      &nbsp;<span className='clickable'>Report</span> */}
     </section>
   );
 }
