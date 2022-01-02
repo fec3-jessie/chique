@@ -74,6 +74,7 @@ class QuestionCard extends React.Component {
           helpful={this.props.helpful}
           reported={this.props.reported}
           question_id={this.props.question_id}
+          product_name={this.props.product_name}
         />
         <div className='symbol question-symbol'>Q:</div>
         <QuestionBody body={this.props.body}/>

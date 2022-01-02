@@ -31,6 +31,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
   }
 
   const postModalInput = (endpoint, body) => {
+    // console.log('Modal Post Body: ', body);
     axios.post(localHost + endpoint, body)
       .catch(err => console.error('Error posting Modal PUT req: ', err));
   };
@@ -48,23 +49,10 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
     if (usage === 'addAnswer') {
       endpoint = `/qa/questions/${questionOrProduct_id}/answers`;
       body.photos = [];
-      // body = {
-      //   body: bodyTextValue,
-      //   answerer_name: nicknameValue,
-      //   // answerer_email: emailValue,
-      //   helpfulness: 0,
-      //   photos: []
-      // };
     }
 
     if (usage === 'addQuestion') {
       endpoint = '/qa/questions';
-      // body = {
-      //   body: bodyTextValue,
-      //   name: nicknameValue,
-      //   email: emailValue,
-      //   product_id: questionOrProduct_id
-      // };
       body.product_id = questionOrProduct_id;
     }
 

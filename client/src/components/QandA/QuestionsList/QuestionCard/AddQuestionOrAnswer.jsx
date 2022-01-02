@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Modal from './Modal.jsx';
 
-var displayElement, component;
+let displayElement;
+let component;
 
-const AddQuestionOrAnswer = ({ usage }) => {
+const AddQuestionOrAnswer = ({ questionOrProduct_id, product_name, usage }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -12,10 +13,10 @@ const AddQuestionOrAnswer = ({ usage }) => {
 
   if (usage === 'addAnswer') {
     displayElement = <span className='clickable' onClick={openModal}><u>Add Answer</u></span>;
-    component = <Modal setShowModal={setShowModal} usage={usage} product_name='TBD (PLACEHOLDER)' />;
+    component = <Modal setShowModal={setShowModal} usage={usage} product_name={product_name} questionOrProduct_id={questionOrProduct_id}/>;
   } else {
     displayElement = <button onClick={openModal}>Add a Question +</button>;
-    component = <Modal setShowModal={setShowModal} usage={usage} product_name='TBD (PLACEHOLDER)' />;
+    component = <Modal setShowModal={setShowModal} usage={usage} product_name={product_name} questionOrProduct_id={questionOrProduct_id}/>;
   }
 
   return (
@@ -27,6 +28,6 @@ const AddQuestionOrAnswer = ({ usage }) => {
       }
     </div>
   );
-}
+};
 
 export default AddQuestionOrAnswer;

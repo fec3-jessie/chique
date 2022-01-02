@@ -64,6 +64,7 @@ class QuestionsList extends React.Component {
             key={item.question_id}
             reported={item.reported}
             question_id={item.question_id}
+            product_name={this.props.product_name}
           />
         )}
         {this.state.questions.length <= 2
@@ -75,6 +76,7 @@ class QuestionsList extends React.Component {
         }
         <AddQuestionOrAnswer
           questionOrProduct_id={this.props.product_id}
+          product_name={this.props.product_name}
           usage={'addQuestion'}
         />
       </>
