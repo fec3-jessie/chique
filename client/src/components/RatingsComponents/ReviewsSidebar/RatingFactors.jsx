@@ -10,13 +10,14 @@ function RatingFactors ({characteristics}) {
     <div className='factors-breakdown-container'>
       {factors.map((factor) => {
         return (
-         <div key={characteristics[factor].id}>
+          <div key={characteristics[factor].id}>
             <p className='factor'>{factor}</p>
             <FactorBar className='factor-bar' characteristics={characteristics} factor={factor} />
           </div>
-      )})}
+        );
+      })}
     </div>
-  )
+  );
 }
 
 export default RatingFactors;

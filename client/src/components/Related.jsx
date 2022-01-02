@@ -1,5 +1,5 @@
 import React from 'react';
-import RelatedProducts from './Related/RelatedProducts.jsx'
+import RelatedProducts from './Related/RelatedProducts.jsx';
 import YourOutfit from './Related/YourOutfit.jsx';
 
 class Related extends React.Component {
