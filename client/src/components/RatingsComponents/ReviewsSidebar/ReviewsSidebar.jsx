@@ -11,13 +11,12 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews/meta?product_id=${productId}`;
+    const url = 'http://127.0.0.1:3000/reviews/meta';
+    const params = {product_id: productId};
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+        params: params
       });
       const data = await getMetaData.data;
       setProductMetaData(data);
