@@ -1,3 +1,42 @@
+.main-image-container {
+  display: flex;
+}
+
+.left-arrow {
+  margin-top: 25%;
+  margin-right: 25px;
+
+}
+
+.right-arrow {
+  margin-top: 25%;
+
+}
+
+.overview-container {
+  margin-left: 20%;
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 100px;
+
+}
+
+
+
+#main-image {
+  width: 500px;
+  height: 400px;
+}
+
+.image-gallery-container {
+
+}
+
+.info-container {
+}
+
+
+
 .thumbnail-image {
 	margin-right: 5px;
 	border-style: solid;
@@ -106,7 +145,14 @@ div #image-container {
 
 #atc {
   color: red;
-  font-size: smaller;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#atc-text-container {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 45%
 }
 
 
@@ -162,8 +208,6 @@ i {
 
 
 
-
-/* CSS */
 .ATCButton {
   background-color: #fff;
   border: 1px solid #d5d9d9;

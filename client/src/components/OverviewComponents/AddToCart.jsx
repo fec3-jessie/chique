@@ -25,7 +25,7 @@ class AddToCart extends React.Component {
 
     // check for invalid ATC
     if (!this.props.validATC) {
-      ATCMessage.push(<span id = 'atc'>Please Select A Size!</span>);
+      ATCMessage.push(<div id = 'atc'>Please Select A Size!</div>);
     }
 
 
@@ -49,9 +49,13 @@ class AddToCart extends React.Component {
             </select>
           </div>
 
-          <button onClick = {this.props.handleAddToCart} className="ATCButton" role="button">Add To Cart</button>
-          {this.props.validATC === false ? ATCMessage[0] : ''}
 
+
+        </div>
+
+        <button onClick = {this.props.handleAddToCart} className="ATCButton" role="button">Add To Cart</button>
+        <div id = 'atc-text-container'>
+          {this.props.validATC === false ? ATCMessage[0] : ''}
         </div>
 
       </div>

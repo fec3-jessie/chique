@@ -1,13 +1,13 @@
 import React from 'react';
-// import StarRating from './OverviewComponents/StarRating.js';
-import Reviews from './OverviewComponents/Reviews.js';
+import StarRating from './OverviewComponents/StarRating.jsx';
+import Reviews from './OverviewComponents/Reviews.jsx';
 import axios from 'axios';
-import {token} from '../../../config.js';
-import StyleSelector from './OverviewComponents/StyleSelector.js';
-// import ImageGallery from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/ImageGallery.js'
-import AddToCart from './OverviewComponents/AddToCart.js';
-import ProductDescription from './OverviewComponents/ProductDescription.js';
-
+import {token} from '/config.js';
+import StyleSelector from './OverviewComponents/StyleSelector.jsx';
+import AddToCart from './OverviewComponents/AddToCart.jsx';
+import ProductDescription from './OverviewComponents/ProductDescription.jsx';
+import ImageGallery from './OverviewComponents/ImageGallery.jsx';
+import MainImage from './OverviewComponents/MainImage.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class Overview extends React.Component {
       productCategory: null,
       productPrice: null,
       thumbnails: [],
+      images: null,
       styles: [],
       selectedStyle: 0,
       sizes: [],
@@ -110,10 +111,17 @@ class Overview extends React.Component {
 
         var urls = [];
 
+        var images = [];
+
+
         res.data.results.forEach( (style, i) => {
           urls.push( {url: style.photos[0]['thumbnail_url'], index: i});
+          images.push( style.photos );
         });
-        this.setState({thumbnails: urls});
+        this.setState({thumbnails: urls}, () => {
+          this.setState({images: images });
+        });
+
       });
 
 
@@ -194,12 +202,20 @@ class Overview extends React.Component {
     return (
       <div>
         {/* <StarRating rating ={this.state.rating}/> */}
-        <Reviews numberOfReviews = {this.state.numberOfReviews} />
-        <div id = 'category-overview'>{this.state.productCategory}</div>
-        <div id = 'product-name-overview'>{this.state.productName}</div>
-        <div id = 'price-overview'>${this.state.productPrice}</div>
 
-        {/* {this.state.results.sale_price ?
+        <div className = 'overview-container'>
+
+          <div className = 'image-gallery-container'>
+            <ImageGallery selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
+          </div>
+
+          <div className = 'info-container'>
+            <Reviews numberOfReviews = {this.state.numberOfReviews} />
+            <div id = 'category-overview'>{this.state.productCategory}</div>
+            <div id = 'product-name-overview'>{this.state.productName}</div>
+            <div id = 'price-overview'>${this.state.productPrice}</div>
+
+            {/* {this.state.results.sale_price ?
         <>
         <div id = 'price-overview'>${this.state.productPrice}</div>
         <div id = 'price-overview'>${this.state.results[Number(selectedStyle)].sale_price}</div>
@@ -207,9 +223,13 @@ class Overview extends React.Component {
 
         : '' } */}
 
-        <StyleSelector results = {this.state.results} selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
-        {/* <ImageGallery/> */}
-        <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
+            <StyleSelector results = {this.state.results} selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
+
+            <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
+
+          </div>
+
+        </div>
 
         <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
         <div id = 'social-container'>
@@ -219,6 +239,8 @@ class Overview extends React.Component {
         </div>
 
       </div>
+
+
 
     );
   }
