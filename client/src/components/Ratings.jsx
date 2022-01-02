@@ -7,11 +7,8 @@ import { token } from '/config.js';
 
 function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
+  const [sort, setSort] = useState('relevant');
 
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=newest
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=relevant
-  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=helpful
-  const sort = 'relevant'
   useEffect(() => {
     const url = `http://127.0.0.1:3000/reviews`;
     const params = {product_id: product_Id, count: 50, sort : sort};
@@ -23,7 +20,7 @@ function Ratings ({product_Id, productName}) {
       setProductReviews(reviews);
     };
     fetchReviews();
-  }, []);
+  }, [sort]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
@@ -47,6 +44,12 @@ function Ratings ({product_Id, productName}) {
     };
     fetchMeta();
   }, []);
+
+  const handleChangeSort = (sortedBy) => {
+    setSort(sortedBy);
+    console.log('this was sorted:::', sortedBy);
+  };
+
   return (
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
@@ -61,7 +64,8 @@ function Ratings ({product_Id, productName}) {
             factors={factors}
             productName={productName}
             characteristics={characteristics}
-            product_Id={product_Id}/>
+            product_Id={product_Id}
+            handleChangeSort={handleChangeSort}/>
         </div>
       </div>
   )
