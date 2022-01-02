@@ -65,9 +65,10 @@ app.get('/products/:product_id/related', (req, res) => {
 });
 
 // Reviews API//
+// `http://127.0.0.1:3000/reviews?product_id=${product_Id}&count=50&sort=relevant`
 
 app.get('/reviews', (req, res) => {
-  axios.get(`${url}/reviews?product_id=${req.query.product_id}`, {
+  axios.get(`${url}/reviews?product_id=${req.query.product_id}&count=50&sort=${req.query.sort}`, {
     headers: headers
   })
     .then(results => {

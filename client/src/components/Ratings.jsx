@@ -8,8 +8,12 @@ import { token } from '/config.js';
 function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
 
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=newest
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=relevant
+  // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?product_id=40358&count=50&sort=helpful
+
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}`;
+    const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}&count=50&sort=relevant`;
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         headers: {
