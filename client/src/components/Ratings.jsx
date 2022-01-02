@@ -59,13 +59,11 @@ function Ratings ({product_Id, productName}) {
 
   useEffect(() => {
     let filtering = [];
-    console.log('you clicked a star to filter');
     for (const star in starsClicked) {
       if (starsClicked[star] === true) {
        filtering.push(parseInt(star));
       }
     }
-    console.log(productReviews.results);
     setStarsFilter(filtering);
   }, [starsClicked]);
 
@@ -83,7 +81,6 @@ function Ratings ({product_Id, productName}) {
 
   const handleChangeSort = (sortedBy) => {
     setSort(sortedBy);
-    console.log('this was sorted:::', sortedBy);
   };
 
   return (

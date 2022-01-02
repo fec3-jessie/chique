@@ -7,7 +7,6 @@ function ReviewsListSorting ({reviewsNum, handleChangeSort}) {
       <select id='filter-select'
         onChange={(e) => {
           handleChangeSort(e.target.value);
-          console.log('you clicked:::', e.target.value);
         }}>
         <option defaultValue>relevant</option>
         <option>newest</option>
