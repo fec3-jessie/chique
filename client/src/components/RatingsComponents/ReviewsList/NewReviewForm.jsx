@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {token} from '/config.js';
 import Axios from 'axios';
 
-function NewReviewForm ({factors, productName, closeModalOnSubmit}) {
+function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id}) {
   const factorGrades = {
     'Size': ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
     'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too Wide'],
@@ -25,17 +25,39 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('You are trying to submit a form::::', e.target);
-    console.log('form data nickname::::', e.target.reviewNickName.value);
-    console.log('form data email::::', e.target.reviewEmail.value);
-    console.log('form data stars::::', starsCount);
-    console.log('form data review summary::::', e.target.reviewSummary.value);
-    console.log('form data review body::::', e.target.reviewBody.value);
-    console.log('form data recomendded::::', recommend);
-    console.log('form data factors::::', factors);
-    factors.forEach((factor) => console.log(e.target[factor].value, `rating for factor ${factor}`));
-    let characteristics = {};
+    let characters = {};
     let photoUrls = [];
+    factors.forEach((factor) => {
+      characters[characteristics[factor].id] = Number(e.target[factor].value);
+    });
+    let summary;
+    if (e.target.reviewSummary.value.length === 0) {
+      summary = `${e.target.reviewBody.value.slice(0, 39)}...`;
+    } else {
+      summary = e.target.reviewSummary.value;
+    }
+    let body = {
+      product_id: parseInt(product_Id),
+      rating: starsCount,
+      summary: summary,
+      body: e.target.reviewBody.value,
+      recommend: recommend,
+      name: e.target.reviewNickName.value,
+      email: e.target.reviewEmail.value,
+      photos: photoUrls,
+      characteristics: characters
+    };
+    console.log('this gonna be the body::::', body);
+
+    Axios({
+      method: 'post',
+      url: `http://127.0.0.1:3000/reviews?product_id=${product_Id}`,
+      data: body
+    })
+      .then((response) => {
+        console.log('this is the post reponse::', response);
+      })
+      .catch((err) => console.log('oops, couldnt post form', err));
   };
 
   return (
@@ -92,8 +114,10 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit}) {
                 setStarFill3(false);
                 setStarFill4(false);
                 setStarFill5(false);
+                setStarsCount(1);
               } else {
                 setStarFill(true);
+                setStarsCount(1);
               }
             }} className='star-div' id='1'>{starFill === true ? '★' : '☆'}</div>
             <div onClick={() => {
@@ -224,7 +248,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit}) {
                 <div className='factor-radio-container'>
                   {grades.map((grade, i) => {
                     return (
-                      <div>
+                      <div key={i}>
                         <input
                           type='radio'
                           id={grade}

@@ -4,11 +4,12 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews, factors, productName}) {
+function ReviewsList ({reviews, factors, productName, characteristics, product_Id}) {
   const [showModal, setShowModal] = useState(false);
   const openFormModal = () => {
     setShowModal(true);
   };
+
   return (
     <div className='reviews-list'>
       <ReviewsListSorting reviewsNum={reviews.count}/>
@@ -36,7 +37,9 @@ function ReviewsList ({reviews, factors, productName}) {
           {showModal ? <NewReviewModal
             setShowModal={setShowModal}
             productName={productName}
-            factors={factors}/> : null}
+            characteristics={characteristics}
+            factors={factors}
+            product_Id={product_Id}/> : null}
       </div>
     </div>
   )

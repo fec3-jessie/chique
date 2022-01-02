@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import ReactDom from 'react-dom';
 import NewReviewForm from './NewReviewForm.jsx';
 
-function NewReviewModal ({setShowModal, factors, productName}) {
+function NewReviewModal ({setShowModal, factors, productName, characteristics, product_Id}) {
   const modalRef = useRef();
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
@@ -21,6 +21,8 @@ function NewReviewModal ({setShowModal, factors, productName}) {
           factors={factors}
           productName={productName}
           closeModalOnSubmit={setShowModal}
+          characteristics={characteristics}
+          product_Id={product_Id}
         />
       </div>
     </div>,

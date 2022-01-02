@@ -56,7 +56,9 @@ function Ratings ({product_Id, productName}) {
             className='reviews-list'
             reviews={productReviews}
             factors={factors}
-            productName={productName}/>
+            productName={productName}
+            characteristics={characteristics}
+            product_Id={product_Id}/>
         </div>
       </div>
   )
