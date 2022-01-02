@@ -15,8 +15,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       product_Id: 40358,
-      product_name: null
+      product_name: 'Camo Onesie'
     };
+    this.handleProductNameChange = this.handleProductNameChange.bind(this);
+  }
+
+  handleProductNameChange (name) {
+    this.setState({product_name: name});
   }
 
   render () {
@@ -25,6 +30,7 @@ class App extends React.Component {
         <h1>Overview</h1>
         <Overview
           product_Id={this.state.product_Id}
+          handleProductNameChange={this.handleProductNameChange}
         />
         <h1>Related</h1>
         <Related
@@ -37,13 +43,8 @@ class App extends React.Component {
         <h1>Ratings</h1>
         <Ratings
           product_Id={this.state.product_Id}
+          productName={this.state.product_name}
         />
-        <h1>Related</h1>
-        <Related
-          product_Id={this.state.product_Id}
-        />
-
-
       </div>
     );
   }
