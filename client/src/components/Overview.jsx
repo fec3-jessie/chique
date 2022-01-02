@@ -34,10 +34,6 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-
-
-
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344', {
       headers: {
         authorization: token
@@ -68,20 +64,14 @@ class Overview extends React.Component {
 
       });
 
-
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
       headers: {
         authorization: token
       }
     })
       .then(res => {
-
-
         // maintain styles API results in state, so that I can use it later in lifecycle
         this.setState({results: res.data.results});
-
-
         // initialize available sizes of default style
         var style = res.data.results[0];
         var styleSkus = style.skus;
@@ -92,8 +82,6 @@ class Overview extends React.Component {
           }
         }
         this.setState({sizes: sizesArr});
-
-
         // initialize quantity of default style and selected size
         var style = res.data.results[0];
         var styleSkus = style.skus;
@@ -104,10 +92,7 @@ class Overview extends React.Component {
           }
         }
         this.setState({quantity: quantity});
-
-
         // render thuumbnails and available sizes of default style
-
         var urls = [];
 
         res.data.results.forEach( (style, i) => {
@@ -115,8 +100,6 @@ class Overview extends React.Component {
         });
         this.setState({thumbnails: urls});
       });
-
-
   }
 
 
@@ -213,9 +196,9 @@ class Overview extends React.Component {
 
         <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
         <div id = 'social-container'>
-          <i class="fab fa-2x fa-facebook"></i>
-          <i class="fab fa-2x fa-twitter"></i>
-          <i class="fab fa-2x fa-pinterest"></i>
+          <i className="fab fa-2x fa-facebook"></i>
+          <i className="fab fa-2x fa-twitter"></i>
+          <i className="fab fa-2x fa-pinterest"></i>
         </div>
 
       </div>

@@ -99,6 +99,17 @@ app.get('/qa/questions', (req, res) => {
     .catch(err => console.error('Improper request', err));
 });
 
+app.post('/reviews', (req, res) => {
+  axios.post(`${url}/reviews?product_id=${req.query.product_id}`, req.body, {
+    headers: headers
+  })
+    .then(results => {
+      res.send(results.data);
+      console.log('post data sent');
+    })
+    .catch(err => console.error('Improper request', err));
+});
+
 
 
 
