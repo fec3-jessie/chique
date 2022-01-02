@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // ---------- API GET REQUESTS ---------- //
-// ----- Products ----- //
+/* ----- Products ----- */
 app.get('/products', (req, res) => {
   axiosGet(req.url, res);
 });
@@ -38,7 +38,7 @@ app.get('/products/:product_id/related', (req, res) => {
   axiosGet(req.url, res);
 });
 
-// ----- Reviews -----//
+/* ----- Reviews ----- */
 app.get('/reviews', (req, res) => {
   axiosGet(req.url, res);
 });
@@ -47,7 +47,7 @@ app.get('/reviews/meta', (req, res) => {
   axiosGet(req.url, res);
 });
 
-// ----- Questions ----- //
+/* ----- Questions ----- */
 app.get('/qa/questions', (req, res) => {
   axiosGet(req.url, res);
 });
@@ -86,7 +86,7 @@ app.post('/qa/questions/:question_id/answers', (req, res) => {
 // ---------- END OF POST REQUESTS ---------- //
 
 
-// ----- Helper Functions ----- //
+// ----- HELPER FUNCTIONS ----- //
 const axiosGet = (path, response) => {
   axios.get(`${url}${path}`, { headers })
     .then(results => { response.send(results.data); })
@@ -99,11 +99,10 @@ const axiosPut = (path, body) => {
 };
 
 const axiosPost = (path, body, req) => {
-  console.log(`THE REQUEST\nBody: ${req.body}\nURL: ${req.url}`);
-  // axios.post(`${url}${path}`, body, { headers })
-  //   .catch(err => console.error('Error completing POST req (server.js): ', err))
+  axios.post(`${url}${path}`, body, { headers })
+    .catch(err => console.error('Error completing POST req (server.js): ', err))
 };
-// ----- End of Helper Functions ----- //
+// ----- END OF HELPER FUNCTIONS ----- //
 
 
 app.listen(3000, () => {

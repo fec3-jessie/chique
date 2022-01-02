@@ -32,19 +32,29 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
     event.preventDefault();
 
     let endpoint, body;
-    body = {
-      body: bodyTextValue,
-      name: nicknameValue,
-      email: emailValue
-    };
 
     if (usage === 'addAnswer') {
       endpoint = `/qa/questions/${questionOrProduct_id}/answers`;
-      body.photos = [];
+      body = {
+        body: bodyTextValue,
+        answerer_name: nicknameValue,
+        // answerer_email: emailValue,
+        helpfulness: 0,
+        photos: []
+      };
     }
 
     if (usage === 'addQuestion') {
       endpoint = '/qa/questions';
+      body = {
+        question_body: bodyTextValue,
+        asker_name: nicknameValue,
+        // asker_email: emailValue,
+        product_id: questionOrProduct_id,
+        question_helpfulness: 0,
+        reported: false,
+        answers: []
+      };
       body.product_id = questionOrProduct_id;
     }
 
