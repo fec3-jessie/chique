@@ -9,7 +9,8 @@ bin-release/
 node_modules
 bundle.js
 config.js
-
+env.js
+.env
 # Executables
 *.swf
 *.air

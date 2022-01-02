@@ -19,6 +19,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+// helpers
+
+const axiosGet = (path, response) => {
+  axios.get(`${url}${path}`, { headers })
+    .then(results => { response.send(results.data); })
+    .catch(err => console.error('Error executing Axios GET from API: ', err));
+};
+
 //Products API//
 app.get('/products', (req, res) => {
   axios.get(`${url}/products`, {
@@ -66,15 +74,21 @@ app.get('/products/:product_id/related', (req, res) => {
 
 // Reviews API//
 
+// `http://127.0.0.1:3000/reviews?product_id=${product_Id}&count=50&sort=relevant`
+
+// app.get('/reviews', (req, res) => {
+//   axios.get(`${url}/reviews?product_id=${req.query.product_id}&count=50&sort=${req.query.sort}`, {
+//     headers: headers
+//   })
+//     .then(results => {
+//       res.send(results.data);
+//       console.log('data sent');
+//     })
+//     .catch(err => console.error('Improper request', err));
+// });
+
 app.get('/reviews', (req, res) => {
-  axios.get(`${url}/reviews?product_id=${req.query.product_id}`, {
-    headers: headers
-  })
-    .then(results => {
-      res.send(results.data);
-      console.log('data sent');
-    })
-    .catch(err => console.error('Improper request', err));
+  axiosGet(req.url, res);
 });
 
 app.get('/reviews/meta', (req, res) => {
