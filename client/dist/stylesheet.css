@@ -62,6 +62,7 @@
 #main-image {
   width: 500px;
   height: 400px;
+  object-fit: cover;
 }
 
 
@@ -365,7 +366,7 @@ html {
   border: 1px solid black;
 }
 
-img {
+img.related-img {
   float: left;
   width: 250px;
   height: 250px;
@@ -400,21 +401,20 @@ img {
   color: red;
 }
 
+
+/* ------------------------------
+    QUESTIONS & ANSWERS
+------------------------------ */
 .clickable {
   cursor: pointer;
 }
 
-#Image-Answer {
+#QA-answer-image {
   height: 10%;
   width: 10%;
 }
 
-#Question-Card {
-  border: 2px solid orange;
-  width: 60%;
-}
-
-/* ---------- Add Answer Modal ---------- */
+/* ---------- MODAL Handler ---------- */
 .QA-modal-container {
   position: fixed;
   top: 0;
@@ -461,6 +461,27 @@ img {
   margin: 0;
 }
 
+/* ---------- QUESTIONSLIST ---------- */
+#QA-questions-container {
+  border: 1px solid black;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.QA-helpful {
+  display: inline-block;
+}
+.QA-symbol, .QA-question-body {
+  display: inline-block;
+  font-weight: 600;
+}
+.QA-answers-container {
+  display: inline-block;
+}
+
+/* ---------- Questions Buttons ---------- */
+#QA-q-display-btn, .QA-add-QorA {
+  display: inline-block;
+}
 
 /* Ratings & Reviews Styles */
 
@@ -797,9 +818,6 @@ button.modal-close {
   position: absolute;
   top: 5px;
   right: 5px;
-}
-.review-form-container {
-
 }
 #form {
   font-family: 'Raleway', sans-serif;

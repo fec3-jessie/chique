@@ -9,7 +9,7 @@ const QuestionDetails = ({ asker, date, helpful, reported, question_id, product_
 
   return (
     <section>
-      <HelpfulTracker question_id={question_id} helpful={helpful}
+      <HelpfulTracker questionOrAnswer_id={question_id} helpful={helpful}
         usage='question' reported={reported}/>
       <AddQuestionOrAnswer
         questionOrProduct_id={question_id}

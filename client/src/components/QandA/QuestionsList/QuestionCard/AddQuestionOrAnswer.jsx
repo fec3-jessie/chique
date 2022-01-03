@@ -20,7 +20,7 @@ const AddQuestionOrAnswer = ({ questionOrProduct_id, product_name, usage }) => {
   }
 
   return (
-    <div className='AddAnswer'>
+    <div className='QA-add-QorA'>
       {displayElement}
       {showModal
         ? component
