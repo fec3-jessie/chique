@@ -62,7 +62,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       })
       .catch((err) => console.log('oops, couldnt post form', err));
 
-    setReviewsCount(reviewsCount + 1);
+    setReviewsCount(prevCount => prevCount + 1);
   };
 
   return (
