@@ -83,6 +83,7 @@ function Ratings ({product_Id, productName}) {
   };
 
   return (
+    <div id = 'reviews'>
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>
@@ -107,6 +108,7 @@ function Ratings ({product_Id, productName}) {
             reviewsCount={reviewsCount}/>
         </div>
       </div>
+     </div>
   )
 }
 
