@@ -14,8 +14,8 @@ function ThumbnailModal ({setShowModal, photo}) {
     <div className='pic-modal-container' ref={modalRef}
       onClick={() => setShowModal(false)}>
       <div className='pic-modal'>
-        <img src={photo} alt='product image'></img>
         <button onClick={() => setShowModal(false)}>X</button>
+        <img src={photo} alt='product image'></img>
       </div>
     </div>,
     document.getElementById('thumbnail-portal')

@@ -7,17 +7,16 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
 
-function ReviewsSidebar ({productId}) {
+function ReviewsSidebar ({productId, starsClicked, setStarsClicked}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews/meta?product_id=${productId}`;
+    const url = 'http://127.0.0.1:3000/reviews/meta';
+    const params = {product_id: productId};
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+        params: params
       });
       const data = await getMetaData.data;
       setProductMetaData(data);
@@ -30,7 +29,9 @@ function ReviewsSidebar ({productId}) {
         <div className='sidebar-components'>
           <AverageRating ratings={productMetaData.ratings}/>
           <PercentRecommended recommended={productMetaData.recommended}/>
-          <RatingBreakdown ratings={productMetaData.ratings}/>
+          <RatingBreakdown ratings={productMetaData.ratings}
+            setStarsClicked={setStarsClicked}
+            starsClicked={starsClicked}/>
           <RatingFactors characteristics={productMetaData.characteristics} />
         </div>
       )
@@ -38,7 +39,6 @@ function ReviewsSidebar ({productId}) {
 
   return (
     <div className='reviews-sidebar'>
-      {/* <h5>This is the main sidebar</h5> */}
       {productMetaData.ratings !== undefined ?
         renderComponents() : null}
     </div>

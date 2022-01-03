@@ -3,36 +3,46 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.jsx';
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
-import { token } from '/config.js';
 
-function Ratings ({product_Id}) {
+function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
+  const [sort, setSort] = useState('relevant');
+  const [reviews, setReviews] = useState([]);
+  const [starsFilter, setStarsFilter] = useState([]);
+  const [revert, setRevert] = useState(false);
+  const [starsClicked, setStarsClicked] = useState({
+    '1': false,
+    '2': false,
+    '3': false,
+    '4': false,
+    '5': false
+  });
+
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews?product_id=${product_Id}`;
+    const url = `http://127.0.0.1:3000/reviews`;
+    const params = {product_id: product_Id, count: 50, sort : sort};
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+        params: params
       });
-      const reviews = await getReviews.data;
-      setProductReviews(reviews);
+      const data = await getReviews.data;
+      setProductReviews(data);
+      setReviews(data.results);
     };
     fetchReviews();
-  }, []);
+  }, [sort, revert]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews/meta?product_id=${product_Id}`;
+    const url = 'http://127.0.0.1:3000/reviews/meta';
+    const params = {product_id: product_Id};
 
     const fetchMeta = async () => {
       const getMetaData = await Axios.get(url, {
-        headers: {
-          'Authorization': token
-        }
+        params: params
       });
       const data = await getMetaData.data.characteristics;
       await setCharacteristics(data);
@@ -44,14 +54,54 @@ function Ratings ({product_Id}) {
     };
     fetchMeta();
   }, []);
+
+  useEffect(() => {
+    let filtering = [];
+    for (const star in starsClicked) {
+      if (starsClicked[star] === true) {
+       filtering.push(parseInt(star));
+      }
+    }
+    setStarsFilter(filtering);
+  }, [starsClicked]);
+
+  useEffect(() => {
+    let newList;
+    if (starsFilter.length > 0) {
+      newList = productReviews.results.filter(result =>
+        starsFilter.includes(result.rating)
+      );
+      setReviews(newList);
+    } else {
+      setRevert(!revert);
+    }
+  },[starsFilter]);
+
+  const handleChangeSort = (sortedBy) => {
+    setSort(sortedBy);
+  };
+
   return (
     <div id = 'reviews'>
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>
           {productReviews.product !== undefined ?
-          <ReviewsSidebar className='reviews-sidebar' productId={productReviews.product}/> : null}
-          <ReviewsList className='reviews-list' reviews={productReviews} factors={factors}/>
+          <ReviewsSidebar
+            className='reviews-sidebar'
+            setStarsClicked={setStarsClicked}
+            starsClicked={starsClicked}
+            productId={productReviews.product}/> : null}
+          <ReviewsList
+            starsClicked={starsClicked}
+            className='reviews-list'
+            data={productReviews}
+            factors={factors}
+            productName={productName}
+            reviews={reviews}
+            characteristics={characteristics}
+            product_Id={product_Id}
+            handleChangeSort={handleChangeSort}/>
         </div>
       </div>
      </div>

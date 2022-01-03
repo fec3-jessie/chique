@@ -36,10 +36,6 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-
-
-
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344', {
       headers: {
         authorization: token
@@ -70,20 +66,14 @@ class Overview extends React.Component {
 
       });
 
-
-
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
       headers: {
         authorization: token
       }
     })
       .then(res => {
-
-
         // maintain styles API results in state, so that I can use it later in lifecycle
         this.setState({results: res.data.results});
-
-
         // initialize available sizes of default style
         var style = res.data.results[0];
         var styleSkus = style.skus;
@@ -94,8 +84,6 @@ class Overview extends React.Component {
           }
         }
         this.setState({sizes: sizesArr});
-
-
         // initialize quantity of default style and selected size
         var style = res.data.results[0];
         var styleSkus = style.skus;
@@ -106,10 +94,7 @@ class Overview extends React.Component {
           }
         }
         this.setState({quantity: quantity});
-
-
         // render thuumbnails and available sizes of default style
-
         var urls = [];
 
         var images = [];
@@ -242,18 +227,18 @@ class Overview extends React.Component {
             </div>
 
           </div>
-
         </div>
 
         <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
-
 
       </div>
 
 
 
     );
+
   }
+
 }
 
 export default Overview;

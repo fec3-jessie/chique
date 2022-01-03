@@ -4,16 +4,18 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews, factors}) {
+function ReviewsList ({reviews, factors, productName, characteristics, product_Id, handleChangeSort, starsClicked, data}) {
   const [showModal, setShowModal] = useState(false);
   const openFormModal = () => {
     setShowModal(true);
   };
+
   return (
     <div className='reviews-list'>
-      <ReviewsListSorting reviewsNum={reviews.count}/>
+      <ReviewsListSorting reviewsNum={reviews.length}
+        handleChangeSort={handleChangeSort}/>
       <div className='reviews-list-tiles'>
-        {reviews?.results?.map((review) => {
+        {reviews?.map((review) => {
           return <ReviewTile
             rating={review.rating}
             key={review.review_id}
@@ -29,11 +31,16 @@ function ReviewsList ({reviews, factors}) {
         })}
       </div>
       <div className='review-list-buttons-container'>
-        <button>More Reviews</button>
-        <button
+        <button className='btn reviews'>More Reviews</button>
+        <button className='btn reviews'
           onClick={() => openFormModal()}
           >Add Review</button>
-          {showModal ? <NewReviewModal setShowModal={setShowModal} factors={factors}/> : null}
+          {showModal ? <NewReviewModal
+            setShowModal={setShowModal}
+            productName={productName}
+            characteristics={characteristics}
+            factors={factors}
+            product_Id={product_Id}/> : null}
       </div>
     </div>
   )
