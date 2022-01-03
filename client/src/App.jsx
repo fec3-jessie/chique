@@ -18,13 +18,23 @@ class App extends React.Component {
       product_name: 'Camo Onesie'
     };
     this.handleProductNameChange = this.handleProductNameChange.bind(this);
+    this.relatedClickHandler = this.relatedClickHandler.bind(this);
   }
 
   handleProductNameChange (name) {
     this.setState({product_name: name});
   }
 
+  relatedClickHandler (e) {
+    e.preventDefault();
+    console.log(e.target);
+    // this.setState({product_Id: Id});
+
+  }
+
   render () {
+    console.log('App.jsx');
+    console.log(this.relatedClickHandler);
     return (
       <div>
         <h1>Overview</h1>
@@ -35,6 +45,7 @@ class App extends React.Component {
         <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
+          // relatedClickHandler={this.relatedClickHandler}
         />
         <h1>QandA</h1>
         <QandA

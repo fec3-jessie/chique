@@ -25,9 +25,14 @@ const RelatedProducts = (props) => {
 
   return (<div>
     <h3>Related Products</h3>
-    <div className='related-products'>
+    <div className='related-products' >
       {products.length !== 0 ?
-        products.map(product => (<ProductCard product = {product} key = {product.id}/>))
+        products.map(product => (
+          <ProductCard
+            product = {product}
+            key = {product.id}
+            relatedClickHandler = {props.relatedClickHandler}/>
+        ))
         : null}
     </div>
   </div>);

@@ -8,8 +8,11 @@ class Related extends React.Component {
   }
 
   render () {
+    console.log('Related.jsx');
+    console.log(this.props);
+    console.log(typeof this.props.relatedClickHandler);
     return (<div>
-      <RelatedProducts />
+      <RelatedProducts relatedClickHandler = {this.props.relatedClickHandler} />
       <YourOutfit />
     </div>);
   }
