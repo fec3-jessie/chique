@@ -9,7 +9,8 @@ class QuestionsList extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      questionCounter: 0
+      questionCounter: 0,
+      searchText: this.props.searchText
     };
     this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
     this.onCollapseQuestionsClick = this.onCollapseQuestionsClick.bind(this);
@@ -24,6 +25,14 @@ class QuestionsList extends React.Component {
         });
       })
       .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err));
+  }
+
+  componentDidUpdate() {
+    if (this.props.searchText !== this.state.searchText) {
+      this.setState({
+        searchText: this.props.searchText
+      });
+    }
   }
 
   onMoreQuestionsClick() {
@@ -45,13 +54,24 @@ class QuestionsList extends React.Component {
   }
 
   render() {
-    let sortedQuestions = this.state.questions.sort((a, b) =>
-      b.question_helpfulness - a.question_helpfulness);
+    let renderedQuestions;
+    if (this.state.searchText === '') {
+      let sortedQuestions = this.state.questions.sort((a, b) =>
+        b.question_helpfulness - a.question_helpfulness);
+
+      renderedQuestions = sortedQuestions.slice(0, this.state.questionCounter);
+    } else {
+      let filteredQuestions = this.state.questions.filter(q => q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase()));
+
+      let sortedQuestions = filteredQuestions.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+
+      renderedQuestions = sortedQuestions;
+    }
 
     return (
       <>
         <div id='QA-questions-container'>
-          {sortedQuestions.slice(0, this.state.questionCounter).map(item =>
+          {renderedQuestions.map(item =>
             <QuestionCard
               answers={item.answers}
               asker={item.asker_name}

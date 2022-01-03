@@ -84,7 +84,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
         <h3>{title}</h3>
         <h4>{subtitle}</h4>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='QA-modal-body'>{title_body}<span id='required-input'>*</span></label><br/>
+          <label htmlFor='QA-modal-body'>{title_body}<span id='QA-modal-required-input'> *</span></label><br/>
           <textarea
             id='QA-modal-body' maxLength='1000' required
             rows='12' cols='50' onChange={onBodyTextChange}
@@ -93,7 +93,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
           <br/>
           <br/>
 
-          <label htmlFor='QA-modal-nickname'>What is your nickname?<span id='required-input'>*</span></label><br/>
+          <label htmlFor='QA-modal-nickname'>What is your nickname?<span id='QA-modal-required-input'> *</span></label><br/>
           <input type='text' id='QA-modal-nickname' maxLength='60'
             placeholder='Example: jack543!' size='30' required
             onChange={onNicknameChange}/>
@@ -101,7 +101,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id }) => {
 
           <br/>
 
-          <label htmlFor='QA-modal-email'>Your email:<span id='required-input'>*</span></label><br/>
+          <label htmlFor='QA-modal-email'>Your email:<span id='QA-modal-required-input'> *</span></label><br/>
           <input type='email' id='QA-modal-email' maxLength='60' required
             placeholder='jack@email.com' size='30'
             onChange={onEmailChange}/>
