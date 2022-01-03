@@ -25,6 +25,7 @@
 #main-image {
   width: 500px;
   height: 400px;
+  object-fit: cover;
 }
 
 
@@ -365,7 +366,7 @@ html {
   border: 1px solid black;
 }
 
-img {
+img.related-img{
   float: left;
   width: 250px;
   height: 250px;
@@ -711,7 +712,7 @@ div.sorted-drop-down label {
 }
 
 /* -------------------------
-    Helpful Yes Button
+    Helpful Yes Button & Report button
 --------------------------- */
 
 .yes-button {
@@ -737,6 +738,9 @@ div.sorted-drop-down label {
 }
 .check {
   padding: 0% 1%;
+}
+.reported {
+  cursor: pointer;
 }
 
 /* -------------------------
