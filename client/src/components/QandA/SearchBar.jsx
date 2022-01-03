@@ -6,11 +6,11 @@ const SearchBar = () => {
       <input
         type='search'
         placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
-        size='100'
+        size='60'
       ></input>
     </form>
 
   );
-}
+};
 
 export default SearchBar;

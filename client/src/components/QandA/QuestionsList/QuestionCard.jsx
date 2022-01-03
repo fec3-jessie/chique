@@ -66,7 +66,7 @@ class QuestionCard extends React.Component {
 
   render() {
     return (
-      <div id='Question-Card'>
+      <div id='QA-question-card'>
         <QuestionDetails
           asker={this.props.asker}
           date={this.props.date}
@@ -75,11 +75,11 @@ class QuestionCard extends React.Component {
           question_id={this.props.question_id}
           product_name={this.props.product_name}
         />
-        <div className='symbol question-symbol'>Q:</div>
+        <div className='QA-symbol QA-question-symbol'>Q:</div>
         <QuestionBody body={this.props.body}/>
         {Object.keys(this.props.answers).length > 0 ?
           <>
-            <div className='symbol answer-symbol'>A:</div>
+            <div className='QA-symbol QA-answer-symbol'>A:</div>
             <Answers
               answers={this.props.answers}
               key={this.props.question_id * 3}

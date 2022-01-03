@@ -8,6 +8,7 @@ const QandA = ({ product_id, product_name }) => {
     <div>
       <p>Questions & Answers</p>
       <SearchBar />
+      <br/>
       <QuestionsList product_id={40356} product_name={product_name}/>
     </div>
   );

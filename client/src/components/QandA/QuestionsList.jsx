@@ -50,30 +50,36 @@ class QuestionsList extends React.Component {
 
     return (
       <>
-        {sortedQuestions.slice(0, this.state.questionCounter).map(item =>
-          <QuestionCard
-            answers={item.answers}
-            asker={item.asker_name}
-            body={item.question_body}
-            date={item.question_date}
-            helpful={item.question_helpfulness}
-            key={item.question_id}
-            reported={item.reported}
-            question_id={item.question_id}
+        <div id='QA-questions-container'>
+          {sortedQuestions.slice(0, this.state.questionCounter).map(item =>
+            <QuestionCard
+              answers={item.answers}
+              asker={item.asker_name}
+              body={item.question_body}
+              date={item.question_date}
+              helpful={item.question_helpfulness}
+              key={item.question_id}
+              reported={item.reported}
+              question_id={item.question_id}
+              product_name={this.props.product_name}
+            />
+          )}
+        </div>
+
+        <div id='QA-qestionsBtns-container'>
+          {this.state.questions.length <= 2
+            ? null :
+            this.state.questions.length === this.state.questionCounter
+              ? <button id='QA-q-display-btn' onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
+              : <button id='QA-q-display-btn' onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
+          }
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <AddQuestionOrAnswer
+            questionOrProduct_id={this.props.product_id}
             product_name={this.props.product_name}
+            usage={'addQuestion'}
           />
-        )}
-        {this.state.questions.length <= 2
-          ? null :
-          this.state.questions.length === this.state.questionCounter
-            ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
-            : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
-        }
-        <AddQuestionOrAnswer
-          questionOrProduct_id={this.props.product_id}
-          product_name={this.props.product_name}
-          usage={'addQuestion'}
-        />
+        </div>
       </>
     );
   }
