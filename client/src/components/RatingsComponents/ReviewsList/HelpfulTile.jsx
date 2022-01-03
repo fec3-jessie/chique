@@ -5,7 +5,7 @@ import { token } from '/config.js';
 // switch to dynamic data after testing...
 
 
-function HelpfulTile ({helpfulnessCount, reviewId}) {
+function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
   const [yesCount, setYesCount] = useState(helpfulnessCount);
   const [yesClicked, setYesClicked] = useState(false);
   const [reported, setReported] = useState(false);
@@ -34,6 +34,7 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
     })
     .then(() => console.log('you have reported review # ', reviewId))
     .catch((err) => console.log('error reporting review', err));
+    setReviewsCount(prevState => prevState -1);
   };
 
 

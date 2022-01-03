@@ -511,6 +511,7 @@ div.sorted-drop-down label {
 }
 .review-tile {
   padding: 5%;
+  padding-bottom: 2%;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;

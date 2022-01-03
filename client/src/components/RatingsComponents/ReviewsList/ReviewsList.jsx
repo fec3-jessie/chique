@@ -21,7 +21,7 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
   useEffect(() => {
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviewsShown]);
+  }, [reviewsShown, reviewsCount]);
 
   return (
     <div className='reviews-list'>
@@ -40,7 +40,8 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
             response={review.response}
             photos={review.photos}
             helpfulness={review.helpfulness}
-            reviewId={review.review_id}/>
+            reviewId={review.review_id}
+            setReviewsCount={setReviewsCount}/>
         })}
       </div>
       <div className='review-list-buttons-container'>
