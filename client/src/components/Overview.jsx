@@ -154,6 +154,7 @@ class Overview extends React.Component {
     // update selectedSize state back to null if user presses "Select Size"
     if (e.target.value === 'Select Size') {
       this.setState({selectedSize: null}, () => {
+        this.setState({quantity: 0});
       });
       return;
     }
