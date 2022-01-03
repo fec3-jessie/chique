@@ -9,7 +9,8 @@ class ImageGallery extends React.Component {
     super(props);
 
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      imageRange: [0, this.props.length]
     };
   }
 
@@ -34,6 +35,28 @@ class ImageGallery extends React.Component {
   }
 
 
+  handleSliderThumbnailClick(event) {
+    console.log(event.target.getAttribute('thumbnailId'));
+    this.setState({currentIndex: Number(event.target.getAttribute('thumbnailId'))});
+  }
+
+
+  handleLeftArrowSlider() {
+
+  }
+
+
+  handleRightArrowSlider() {
+    var length = this.props.images[Number(this.props.selectedStyle)].length;
+    if (currentIndex === length - 1) {
+      return;
+    }
+    var upToImage = this.state.upToImage.slice();
+    upToImage[0]++;
+    upToImage[1]++;
+    this.setState({upToImage: upToImage});
+  }
+
 
 
   render () {
@@ -44,7 +67,7 @@ class ImageGallery extends React.Component {
           <MainImage currentIndex = {this.state.currentIndex} selectedStyle = {this.props.selectedStyle} images = {this.props.images}/>
           <RightArrow handleRightArrow = {this.handleRightArrow.bind(this)}/>
         </div>
-        <Slider/>
+        <Slider handleLeftArrowSlider = {this.handleLeftArrowSlider.bind(this)} handleRightArrowSlider = {this.handleRightArrowSlider.bind(this)} currentIndex = {this.state.currentIndex} handleSliderThumbnailClick = {this.handleSliderThumbnailClick.bind(this)} selectedStyle = {this.props.selectedStyle} images = {this.props.images}/>
       </>
     );
 

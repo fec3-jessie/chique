@@ -1,3 +1,28 @@
+.slider-thumbnail {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  margin-top: 10px;
+  opacity: .6;
+
+
+}
+
+.sliderThumbnailSelected {
+  opacity: 1;
+}
+
+
+.slider-thumbnail:hover {
+  opacity: 1;
+}
+
+.slider-container {
+  margin-left: 30px;
+  display: flex;;
+  margin-bottom: 20px;
+}
+
 #added-to-cart {
   color: green;
 }
@@ -18,7 +43,24 @@
 
 .left-arrow {
   margin-top: 25%;
-  margin-right: 25px;
+  margin-right: 10px;
+
+}
+
+.right-arrow-slider {
+  margin-top: 25px;
+  margin-left: 5px;
+  color: turquoise
+
+
+
+
+}
+
+.left-arrow-slider {
+  margin-top: 25px;
+  margin-right: 5px;
+  color: turquoise
 
 }
 
@@ -44,7 +86,7 @@
 
 .right-arrow {
   margin-top: 25%;
-  margin-left: 25px;
+  margin-left: 10px;
 
 
 }
@@ -62,6 +104,8 @@
 #main-image {
   width: 500px;
   height: 400px;
+  object-fit: cover;
+
 }
 
 
@@ -365,7 +409,7 @@ html {
   border: 1px solid black;
 }
 
-img {
+img .related {
   float: left;
   width: 250px;
   height: 250px;

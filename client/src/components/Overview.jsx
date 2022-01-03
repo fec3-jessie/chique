@@ -117,7 +117,7 @@ class Overview extends React.Component {
   }
 
 
-  handleStyleClick(e) {
+  handleStyleClick(event) {
 
     // update available sizes upon clicking new style
     this.setState({selectedStyle: event.target.getAttribute('id')}, () => {
@@ -191,7 +191,7 @@ class Overview extends React.Component {
 
 
   render () {
-
+    // length = {this.state.images[Number(this.state.selectedStyle)].length}
 
     return (
       <div>
@@ -221,9 +221,9 @@ class Overview extends React.Component {
 
             <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
             <div id = 'social-container'>
-              <i class="fab fa-2x fa-facebook"></i>
-              <i class="fab fa-2x fa-twitter"></i>
-              <i class="fab fa-2x fa-pinterest"></i>
+              <i className="fab fa-2x fa-facebook"></i>
+              <i className="fab fa-2x fa-twitter"></i>
+              <i className="fab fa-2x fa-pinterest"></i>
             </div>
 
           </div>
