@@ -6,6 +6,8 @@ import NewReviewModal from './NewReviewModal.jsx';
 
 function ReviewsList ({reviews, factors, productName, characteristics, product_Id, handleChangeSort, starsClicked, data, reviewsCount, setReviewsCount}) {
   const [showModal, setShowModal] = useState(false);
+  const [reviewsShown, setReviewsShown] = useState(2);
+
   const openFormModal = () => {
     setShowModal(true);
   };
