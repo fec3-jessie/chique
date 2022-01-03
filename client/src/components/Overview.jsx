@@ -1,13 +1,13 @@
 import React from 'react';
-// import StarRating from './OverviewComponents/StarRating.js';
-import Reviews from './OverviewComponents/Reviews.js';
+import StarRating from './OverviewComponents/StarRating.jsx';
+import Reviews from './OverviewComponents/Reviews.jsx';
 import axios from 'axios';
-import {token} from '../../../config.js';
-import StyleSelector from './OverviewComponents/StyleSelector.js';
-// import ImageGallery from '/Users/danielghaly/Desktop/Hack Reactor/fec3/client/src/components/OverviewComponents/ImageGallery.js'
-import AddToCart from './OverviewComponents/AddToCart.js';
-import ProductDescription from './OverviewComponents/ProductDescription.js';
-
+import {token} from '/config.js';
+import StyleSelector from './OverviewComponents/StyleSelector.jsx';
+import AddToCart from './OverviewComponents/AddToCart.jsx';
+import ProductDescription from './OverviewComponents/ProductDescription.jsx';
+import ImageGallery from './OverviewComponents/ImageGallery.jsx';
+import MainImage from './OverviewComponents/MainImage.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class Overview extends React.Component {
       productCategory: null,
       productPrice: null,
       thumbnails: [],
+      images: null,
       styles: [],
       selectedStyle: 0,
       sizes: [],
@@ -28,7 +29,8 @@ class Overview extends React.Component {
       results: null,
       validATC: null,
       productDescription: null,
-      productSlogan: null
+      productSlogan: null,
+      salePrice: null
 
     };
   }
@@ -95,11 +97,23 @@ class Overview extends React.Component {
         // render thuumbnails and available sizes of default style
         var urls = [];
 
+        var images = [];
+
+
         res.data.results.forEach( (style, i) => {
           urls.push( {url: style.photos[0]['thumbnail_url'], index: i});
+          images.push( style.photos );
+          this.setState({sale_price: style.sale_price});
         });
-        this.setState({thumbnails: urls});
+        this.setState({thumbnails: urls}, () => {
+          this.setState({images: images });
+        });
+
       });
+
+
+
+
   }
 
 
@@ -115,7 +129,9 @@ class Overview extends React.Component {
           sizesArr.push(styleSkus[sku].size);
         }
       }
-      this.setState({sizes: sizesArr});
+      this.setState({sizes: sizesArr}, () => {
+        this.setState({sale_price: this.state.results[Number(this.state.selectedStyle)].sale_price});
+      });
 
 
       // toggle "outOfStock" boolean if quantity of currently selected style === 0
@@ -137,7 +153,8 @@ class Overview extends React.Component {
 
     // update selectedSize state back to null if user presses "Select Size"
     if (e.target.value === 'Select Size') {
-      this.setState({selectedSize: null});
+      this.setState({selectedSize: null}, () => {
+      });
       return;
     }
 
@@ -151,7 +168,9 @@ class Overview extends React.Component {
           quantity += styleSkus[sku].quantity;
         }
       }
-      this.setState({quantity: quantity});
+      this.setState({quantity: quantity}, () => {
+        this.setState({validATC: null});
+      });
     });
 
 
@@ -176,35 +195,50 @@ class Overview extends React.Component {
 
     return (
       <div>
-        {/* <StarRating rating ={this.state.rating}/> */}
-        <Reviews numberOfReviews = {this.state.numberOfReviews} />
-        <div id = 'category-overview'>{this.state.productCategory}</div>
-        <div id = 'product-name-overview'>{this.state.productName}</div>
-        <div id = 'price-overview'>${this.state.productPrice}</div>
 
-        {/* {this.state.results.sale_price ?
-        <>
-        <div id = 'price-overview'>${this.state.productPrice}</div>
-        <div id = 'price-overview'>${this.state.results[Number(selectedStyle)].sale_price}</div>
-        </>
+        <div className = 'overview-container'>
 
-        : '' } */}
+          <div className = 'image-gallery-container'>
+            <ImageGallery selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
+          </div>
 
-        <StyleSelector results = {this.state.results} selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
-        {/* <ImageGallery/> */}
-        <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
+          <div className = 'info-container'>
+            <StarRating rating ={this.state.rating}/>
+            <Reviews numberOfReviews = {this.state.numberOfReviews} />
+            <div id = 'category-overview'>{this.state.productCategory}</div>
+            <div id = 'product-name-overview'>{this.state.productName}</div>
+
+            {this.state.sale_price ?
+              <>
+                <div id = 'sale-price-overview-strikethrough'>${this.state.productPrice}</div>
+                <div id = 'sale-price-overview'>${this.state.sale_price}</div>
+              </>
+              :
+              <div id = 'price-overview'>${this.state.productPrice}</div>
+            }
+
+            <StyleSelector results = {this.state.results} selectedStyle = {this.state.selectedStyle} handleStyleClick = {this.handleStyleClick.bind(this)} thumbnails = {this.state.thumbnails} />
+
+            <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
+            <div id = 'social-container'>
+              <i class="fab fa-2x fa-facebook"></i>
+              <i class="fab fa-2x fa-twitter"></i>
+              <i class="fab fa-2x fa-pinterest"></i>
+            </div>
+
+          </div>
+        </div>
 
         <ProductDescription productSlogan = {this.state.productSlogan} productDescription = {this.state.productDescription}/>
-        <div id = 'social-container'>
-          <i className="fab fa-2x fa-facebook"></i>
-          <i className="fab fa-2x fa-twitter"></i>
-          <i className="fab fa-2x fa-pinterest"></i>
-        </div>
 
       </div>
 
+
+
     );
+
   }
+
 }
 
 export default Overview;
