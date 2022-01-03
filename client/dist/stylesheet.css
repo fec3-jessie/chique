@@ -1,3 +1,27 @@
+.slider-thumbnail {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  margin-top: 10px;
+  opacity: .6;
+
+}
+
+.sliderThumbnailSelected {
+  opacity: 1;
+}
+
+
+.slider-thumbnail:hover {
+  opacity: 1;
+}
+
+.slider-container {
+  margin-left: 30px;
+  display: flex;;
+  margin-bottom: 20px;
+}
+
 #added-to-cart {
   color: green;
 }
@@ -18,8 +42,32 @@
 
 .left-arrow {
   margin-top: 25%;
-  margin-right: 25px;
+  margin-right: 10px;
 
+}
+
+
+.right-arrow-slider {
+  margin-top: 25px;
+  margin-left: 5px;
+  color: turquoise
+
+
+
+
+}
+
+.left-arrow-slider {
+  margin-top: 25px;
+  margin-right: 5px;
+  color: turquoise
+
+}
+
+#main-image {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
 }
 
 
@@ -44,7 +92,7 @@
 
 .right-arrow {
   margin-top: 25%;
-  margin-left: 25px;
+  margin-left: 10px;
 
 
 }
@@ -59,11 +107,16 @@
 
 
 
+<<<<<<< HEAD
+=======
 #main-image {
   width: 500px;
   height: 400px;
+  object-fit: cover;
+
 }
 
+>>>>>>> staging
 
 .thumbnail-image {
   cursor: pointer;
@@ -85,12 +138,16 @@
 }
 
 #product-description-container {
-  margin-left: 30%;
+  margin-left: 25%;
 }
 
 #product-description {
   max-width: 40%;
   font-size: larger;
+}
+
+.pink {
+  color: pink;
 }
 
 .fa-check {
@@ -211,7 +268,7 @@ div #image-container {
 }
 
 
-img .quarter{
+img.quarter{
   height: 75px;
 }
 
@@ -365,7 +422,7 @@ html {
   border: 1px solid black;
 }
 
-img {
+img.related-img {
   float: left;
   width: 250px;
   height: 250px;
@@ -400,21 +457,20 @@ img {
   color: red;
 }
 
+
+/* ------------------------------
+    QUESTIONS & ANSWERS
+------------------------------ */
 .clickable {
   cursor: pointer;
 }
 
-#Image-Answer {
+#QA-answer-image {
   height: 10%;
   width: 10%;
 }
 
-#Question-Card {
-  border: 2px solid orange;
-  width: 60%;
-}
-
-/* ---------- Add Answer Modal ---------- */
+/* ---------- MODAL Handler ---------- */
 .QA-modal-container {
   position: fixed;
   top: 0;
@@ -461,6 +517,27 @@ img {
   margin: 0;
 }
 
+/* ---------- QUESTIONSLIST ---------- */
+#QA-questions-container {
+  border: 1px solid black;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.QA-helpful {
+  display: inline-block;
+}
+.QA-symbol, .QA-question-body {
+  display: inline-block;
+  font-weight: 600;
+}
+.QA-answers-container {
+  display: inline-block;
+}
+
+/* ---------- Questions Buttons ---------- */
+#QA-q-display-btn, .QA-add-QorA {
+  display: inline-block;
+}
 
 /* Ratings & Reviews Styles */
 
@@ -510,6 +587,7 @@ div.sorted-drop-down label {
 }
 .review-tile {
   padding: 5%;
+  padding-bottom: 2%;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -600,7 +678,7 @@ div.sorted-drop-down label {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
 }
-.btn:hover, .btn:focus {
+.btn:hover {
   color: #fff;
   outline: 0;
 }
@@ -619,15 +697,13 @@ div.sorted-drop-down label {
 
 .review-thumbnail .img-container {
   float: left;
-  position: relative;
   width: 12%;
   margin: 0.83%;
   overflow: hidden;
 }
 .img-container{
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
 }
 .img-container:hover {
   cursor: zoom-in;
@@ -647,9 +723,7 @@ div.sorted-drop-down label {
 
 .pic-modal-container {
   z-index: 2;
-  height:100%;
-  /* display: flex; */
-  position: relative;
+  height:70%;
   animation: animate 0.3s;
 }
 .pic-modal {
@@ -657,15 +731,15 @@ div.sorted-drop-down label {
   justify-content: center;
   align-items: center;
 }
-.pic-modal img {
-  min-height: 550px;
-  min-width: 550px;
-
+.pic-modal img{
+  height: 75vh;
+  width: auto;
+  position: relative;
 }
-.pic-modal button {
-  position:absolute;
+.pic-modal button{
+  /* position:absolute; */
   top: 23%;
-  right: 23%;
+  /* right: 90%; */
   padding: 8px 11px;
   background: crimson;
   color: white;
@@ -715,7 +789,7 @@ div.sorted-drop-down label {
 }
 
 /* -------------------------
-    Helpful Yes Button
+    Helpful Yes Button & Report button
 --------------------------- */
 
 .yes-button {
@@ -741,6 +815,9 @@ div.sorted-drop-down label {
 }
 .check {
   padding: 0% 1%;
+}
+.reported {
+  cursor: pointer;
 }
 
 /* -------------------------
@@ -797,9 +874,6 @@ button.modal-close {
   position: absolute;
   top: 5px;
   right: 5px;
-}
-.review-form-container {
-
 }
 #form {
   font-family: 'Raleway', sans-serif;
