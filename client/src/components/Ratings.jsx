@@ -78,9 +78,6 @@ function Ratings ({product_Id, productName}) {
     }
   },[starsFilter]);
 
-  const handleChangeSort = (sortedBy) => {
-    setSort(sortedBy);
-  };
 
   return (
     <div id = 'reviews'>
@@ -104,7 +101,8 @@ function Ratings ({product_Id, productName}) {
             reviews={reviews}
             characteristics={characteristics}
             product_Id={product_Id}
-            handleChangeSort={handleChangeSort}
+            sort={sort}
+            setSort={setSort}
             setReviewsCount={setReviewsCount}
             reviewsCount={reviewsCount}/>
         </div>

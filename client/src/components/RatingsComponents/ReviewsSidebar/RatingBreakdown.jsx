@@ -30,6 +30,7 @@ function RatingBreakdown ({ratings, starsClicked, setStarsClicked}) {
               </span>
             </a>
             <StarBar className='stars-bar' ratings={ratings} key={-star} star={star}/>
+            <p className='review-stars-count'>{`(${ratings[star]})`}</p>
           </div>
         )
       })}

@@ -1037,8 +1037,8 @@ button.modal-close {
 .stars-bar-container {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
   gap: 5px;
 }
 

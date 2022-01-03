@@ -4,7 +4,7 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews, factors, productName, characteristics, product_Id, handleChangeSort, starsClicked, data, reviewsCount, setReviewsCount}) {
+function ReviewsList ({reviews, factors, productName, characteristics, product_Id, starsClicked, data, reviewsCount, setReviewsCount, setSort, sort}) {
   const [showModal, setShowModal] = useState(false);
   const [reviewsShown, setReviewsShown] = useState(2);
   const [reviewsList, setReviewsList] = useState([]);
@@ -16,17 +16,18 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
     setReviewsCount(reviews.length);
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviews]);
+  }, [reviews, reviewsCount]);
 
   useEffect(() => {
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviewsShown, reviews]);
+  }, [reviewsShown, reviews, sort, starsClicked]);
 
   return (
     <div className='reviews-list'>
-      <ReviewsListSorting reviewsNum={reviewsCount}
-        handleChangeSort={handleChangeSort}/>
+      <ReviewsListSorting
+        reviewsNum={reviewsCount}
+        setSort={setSort}/>
       <div className='reviews-list-tiles'>
         {reviewsList?.map((review) => {
           return <ReviewTile
