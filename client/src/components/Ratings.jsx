@@ -10,6 +10,7 @@ function Ratings ({product_Id, productName}) {
   const [reviews, setReviews] = useState([]);
   const [starsFilter, setStarsFilter] = useState([]);
   const [revert, setRevert] = useState(false);
+  const [reviewsCount, setReviewsCount] = useState(0);
   const [starsClicked, setStarsClicked] = useState({
     '1': false,
     '2': false,
@@ -53,7 +54,7 @@ function Ratings ({product_Id, productName}) {
       setFactors(factorsData);
     };
     fetchMeta();
-  }, []);
+  }, [reviewsCount]);
 
   useEffect(() => {
     let filtering = [];
@@ -91,6 +92,7 @@ function Ratings ({product_Id, productName}) {
             className='reviews-sidebar'
             setStarsClicked={setStarsClicked}
             starsClicked={starsClicked}
+            reviewsCount={reviewsCount}
             productId={productReviews.product}/> : null}
           <ReviewsList
             starsClicked={starsClicked}
@@ -101,7 +103,9 @@ function Ratings ({product_Id, productName}) {
             reviews={reviews}
             characteristics={characteristics}
             product_Id={product_Id}
-            handleChangeSort={handleChangeSort}/>
+            handleChangeSort={handleChangeSort}
+            setReviewsCount={setReviewsCount}
+            reviewsCount={reviewsCount}/>
         </div>
       </div>
      </div>

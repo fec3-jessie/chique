@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {token} from '/config.js';
 import Axios from 'axios';
 
-function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id}) {
+function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id, reviewsCount, setReviewsCount}) {
   const factorGrades = {
     'Size': ['A size too small', '1/2 size too small', 'Perfect', '1/2 size too big', 'A size too wide'],
     'Width': ['Too narrow', 'Slightly narrow', 'Perfect', 'Slightly wide', 'Too Wide'],
@@ -62,6 +61,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
         console.log('this is the post reponse::', response);
       })
       .catch((err) => console.log('oops, couldnt post form', err));
+
+    setReviewsCount(reviewsCount + 1);
   };
 
   return (
