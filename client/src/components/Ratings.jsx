@@ -32,7 +32,7 @@ function Ratings ({product_Id, productName}) {
       setReviews(data.results);
     };
     fetchReviews();
-  }, [sort, revert,reviewsCount]);
+  }, [sort, revert]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
