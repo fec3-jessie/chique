@@ -1,10 +1,9 @@
 .slider-thumbnail {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
   margin-top: 10px;
   opacity: .6;
-
 
 }
 
@@ -46,6 +45,7 @@
   margin-right: 10px;
 
 }
+
 
 .right-arrow-slider {
   margin-top: 25px;
@@ -129,12 +129,16 @@
 }
 
 #product-description-container {
-  margin-left: 30%;
+  margin-left: 25%;
 }
 
 #product-description {
   max-width: 40%;
   font-size: larger;
+}
+
+.pink {
+  color: pink;
 }
 
 .fa-check {

@@ -11,16 +11,15 @@ class Slider extends React.Component {
 
 
   render () {
-    console.log( 'current index', this.props.currentIndex)
     return (
       <>
         <div className = 'slider-container'>
           <LeftArrowSlider handleLeftArrowSlider = {this.props.handleLeftArrowSlider}/>
 
           {this.props.images ? this.props.images[Number(this.props.selectedStyle)].map( (photo, i) => {
-            console.log('current i', this.props.currentIndex)
-            console.log(this.props.currentIndex === i)
-            return <img className = {this.props.currentIndex === i ? 'sliderThumbnailSelected' : '' } onClick = {this.props.handleSliderThumbnailClick} thumbnailId = {i} className = 'slider-thumbnail' src = {photo.url}/>;
+            if (i <= this.props.imageRange[1] && i >= this.props.imageRange[0]) {
+              return <img className = {this.props.currentIndex === i ? 'sliderThumbnailSelected' : '' } onClick = {this.props.handleSliderThumbnailClick} thumbnailId = {i} className = 'slider-thumbnail' src = {photo.url}/>;
+            }
           })
             : '' }
           <RightArrowSlider handleRightArrowSlider = {this.props.handleRightArrowSlider}/>
