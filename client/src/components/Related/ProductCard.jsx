@@ -34,11 +34,12 @@ const ProductCard = (props) => {
 
 
   return (
-    <div className='product-card' onClick = {props.relatedClickHandler} >
+    <div className='product-card' onClick = {(e) => props.relatedClickHandler(e, item.id)}>
       <div className='card-frame'>
         <img
           className='related-img'
-          src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}/>
+          src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}
+          onClick = {props.relatedClickHandler}/>
       </div>
       <div className='card-details'>
         <span className='card-category'>{item.category}</span><br></br>

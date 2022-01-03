@@ -8,16 +8,12 @@ const url = 'http://localhost:3000';
 const RelatedProducts = (props) => {
 
   const [products, setProducts] = useState([]);
-  const productId = '40345';
+  const productId = props.product_Id;
 
   useEffect(() =>{
-    axios.get(`${url}/products/${productId}/related`, {
-      headers: { 'Authorization': token }
-    })
+    axios.get(`${url}/products/${productId}/related`)
       .then(res => {
-        axios.get(`${url}/products/`, {
-          headers: { 'Authorization': token }
-        })
+        axios.get(`${url}/products/`)
           .then(products => products.data.filter(product => res.data.includes(product.id)))
           .then(filteredProducts => setProducts(filteredProducts));
       });

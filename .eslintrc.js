@@ -44,6 +44,7 @@ module.exports = {
     'no-use-before-define': 2,
     /* Minuta */
     'comma-style': [2, 'last'],
-    'quotes': [1, 'single']
+    'quotes': [1, 'single', { 'allowTemplateLiterals': true }],
+
   }
 };

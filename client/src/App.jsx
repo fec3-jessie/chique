@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_Id: 40349,
+      product_Id: 40344,
       product_name: 'Camo Onesie'
     };
     this.handleProductNameChange = this.handleProductNameChange.bind(this);
@@ -25,11 +25,11 @@ class App extends React.Component {
     this.setState({product_name: name});
   }
 
-  relatedClickHandler (e) {
-    e.preventDefault();
-    console.log('e.target');
-    console.log(e.target);
-    // this.setState({product_Id: Id});
+  relatedClickHandler (e, itemId) {
+    // e.preventDefault();
+    console.log('itemId');
+    console.log(itemId);
+    this.setState({product_Id: itemId});
 
   }
 
@@ -44,7 +44,7 @@ class App extends React.Component {
         <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
-          // relatedClickHandler={this.relatedClickHandler}
+          relatedClickHandler={this.relatedClickHandler}
         />
         <h1>QandA</h1>
         <QandA
