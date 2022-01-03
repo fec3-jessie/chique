@@ -20,32 +20,33 @@ const Answers = ({ answers, answerCounter }) => {
   temp = [];
 
   return (
-    <>
+    <div className='QA-answers-container'>
       {sortedAnswers.slice(0, answerCounter).map(ans =>
-        <div>
+        <div key={ans.id * 2}>
           <AnswerBody
-            key={ans.id * 2}
+            // key={ans.id * 2}
             body={ans.body}
           />
           <AnswerDetails
             name={ans.answerer_name}
             date={ans.date}
             helpfulness={ans.helpfulness}
-            key={ans.id}
-            ID={ans.id}
+            // key={ans.id}
+            answer_id={ans.id}
           />
           {ans.photos.length !== 0
             ? <AnswerImages
               photos={ans.photos}
-              key={-ans.id}
-              ID={ans.id}
+              // key={-ans.id}
+              answer_id={ans.id}
             />
             : null
           }
+          <br/>
         </div>
       )}
-    </>
+    </div>
   );
-}
+};
 
 export default Answers;
