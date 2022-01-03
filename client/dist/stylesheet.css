@@ -413,7 +413,7 @@ html {
   border: 1px solid black;
 }
 
-img .related {
+img.related-img {
   float: left;
   width: 250px;
   height: 250px;
