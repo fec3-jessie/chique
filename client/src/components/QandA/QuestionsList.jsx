@@ -9,7 +9,8 @@ class QuestionsList extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      questionCounter: 0
+      questionCounter: 0,
+      searchText: this.props.searchText
     };
     this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
     this.onCollapseQuestionsClick = this.onCollapseQuestionsClick.bind(this);
@@ -24,6 +25,14 @@ class QuestionsList extends React.Component {
         });
       })
       .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err));
+  }
+
+  componentDidUpdate() {
+    if (this.props.searchText !== this.state.searchText) {
+      this.setState({
+        searchText: this.props.searchText
+      });
+    }
   }
 
   onMoreQuestionsClick() {
@@ -45,35 +54,52 @@ class QuestionsList extends React.Component {
   }
 
   render() {
-    let sortedQuestions = this.state.questions.sort((a, b) =>
-      b.question_helpfulness - a.question_helpfulness);
+    let renderedQuestions;
+    if (this.state.searchText === '') {
+      let sortedQuestions = this.state.questions.sort((a, b) =>
+        b.question_helpfulness - a.question_helpfulness);
+
+      renderedQuestions = sortedQuestions.slice(0, this.state.questionCounter);
+    } else {
+      let filteredQuestions = this.state.questions.filter(q => q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase()));
+
+      let sortedQuestions = filteredQuestions.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+
+      renderedQuestions = sortedQuestions;
+    }
 
     return (
       <>
-        {sortedQuestions.slice(0, this.state.questionCounter).map(item =>
-          <QuestionCard
-            answers={item.answers}
-            asker={item.asker_name}
-            body={item.question_body}
-            date={item.question_date}
-            helpful={item.question_helpfulness}
-            key={item.question_id}
-            reported={item.reported}
-            question_id={item.question_id}
+        <div id='QA-questions-container'>
+          {renderedQuestions.map(item =>
+            <QuestionCard
+              answers={item.answers}
+              asker={item.asker_name}
+              body={item.question_body}
+              date={item.question_date}
+              helpful={item.question_helpfulness}
+              key={item.question_id}
+              reported={item.reported}
+              question_id={item.question_id}
+              product_name={this.props.product_name}
+            />
+          )}
+        </div>
+        <br/>
+        <div id='QA-qestionsBtns-container'>
+          {this.state.questions.length <= 2
+            ? null :
+            this.state.questions.length === this.state.questionCounter
+              ? <button id='QA-q-display-btn' onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
+              : <button id='QA-q-display-btn' onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
+          }
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <AddQuestionOrAnswer
+            questionOrProduct_id={this.props.product_id}
             product_name={this.props.product_name}
+            usage={'addQuestion'}
           />
-        )}
-        {this.state.questions.length <= 2
-          ? null :
-          this.state.questions.length === this.state.questionCounter
-            ? <button onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
-            : <button onClick={this.onMoreQuestionsClick}>More Answered Questions</button>
-        }
-        <AddQuestionOrAnswer
-          questionOrProduct_id={this.props.product_id}
-          product_name={this.props.product_name}
-          usage={'addQuestion'}
-        />
+        </div>
       </>
     );
   }

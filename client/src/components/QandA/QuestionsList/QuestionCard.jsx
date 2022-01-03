@@ -66,7 +66,7 @@ class QuestionCard extends React.Component {
 
   render() {
     return (
-      <div id='Question-Card'>
+      <div id='QA-question-card'>
         <QuestionDetails
           asker={this.props.asker}
           date={this.props.date}
@@ -75,11 +75,11 @@ class QuestionCard extends React.Component {
           question_id={this.props.question_id}
           product_name={this.props.product_name}
         />
-        <div className='symbol question-symbol'>Q:</div>
+        <div className='QA-symbol QA-question-symbol'>Q:&nbsp;&nbsp;</div>
         <QuestionBody body={this.props.body}/>
         {Object.keys(this.props.answers).length > 0 ?
           <>
-            <div className='symbol answer-symbol'>A:</div>
+            <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
             <Answers
               answers={this.props.answers}
               key={this.props.question_id * 3}
@@ -90,8 +90,16 @@ class QuestionCard extends React.Component {
             {
               !this.state.showMoreBtn ? null
                 : !this.state.showCollapseBtn
-                  ? <button onClick={this.onSeeMoreClick}>See more answers</button>
-                  : <button onClick={this.onCollapseClick}>Collapse answers</button>
+                  ?
+                  <>
+                    <button onClick={this.onSeeMoreClick}>See more answers</button>
+                    <br/><br/>
+                  </>
+                  :
+                  <>
+                    <button onClick={this.onCollapseClick}>Collapse answers</button>
+                    <br/><br/>
+                  </>
             }
           </>
           : null
