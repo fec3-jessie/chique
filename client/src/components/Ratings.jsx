@@ -93,6 +93,7 @@ function Ratings ({product_Id, productName}) {
             setStarsClicked={setStarsClicked}
             starsClicked={starsClicked}
             reviewsCount={reviewsCount}
+            reviews={reviews}
             productId={productReviews.product}/> : null}
           <ReviewsList
             starsClicked={starsClicked}
