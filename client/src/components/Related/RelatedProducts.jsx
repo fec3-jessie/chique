@@ -14,13 +14,13 @@ const RelatedProducts = (props) => {
     axios.get(`${url}/products/${productId}/related`, {
       headers: { 'Authorization': token }
     })
-    .then(res => {
-      axios.get(`${url}/products/`, {
-        headers: { 'Authorization': token }
-      })
-      .then(products => products.data.filter(product => res.data.includes(product.id)))
-      .then(filteredProducts => setProducts(filteredProducts))
-    });
+      .then(res => {
+        axios.get(`${url}/products/`, {
+          headers: { 'Authorization': token }
+        })
+          .then(products => products.data.filter(product => res.data.includes(product.id)))
+          .then(filteredProducts => setProducts(filteredProducts));
+      });
   }, []);
 
   return (<div>
@@ -30,7 +30,7 @@ const RelatedProducts = (props) => {
         products.map(product => (<ProductCard product = {product} key = {product.id}/>))
         : null}
     </div>
-  </div>)
-}
+  </div>);
+};
 
 export default RelatedProducts;
