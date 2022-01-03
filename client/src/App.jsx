@@ -27,14 +27,13 @@ class App extends React.Component {
 
   relatedClickHandler (e) {
     e.preventDefault();
+    console.log('e.target');
     console.log(e.target);
     // this.setState({product_Id: Id});
 
   }
 
   render () {
-    console.log('App.jsx');
-    console.log(this.relatedClickHandler);
     return (
       <div>
         <h1>Overview</h1>
