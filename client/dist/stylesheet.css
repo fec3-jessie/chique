@@ -310,10 +310,6 @@ img.related-img {
   width: 10%;
 }
 
-#QA-question-card {
-  border: 1px solid orange;
-}
-
 /* ---------- MODAL Handler ---------- */
 .QA-modal-container {
   position: fixed;
@@ -370,10 +366,17 @@ img.related-img {
 .QA-helpful {
   display: inline-block;
 }
+.QA-symbol, .QA-question-body {
+  display: inline-block;
+  font-weight: 600;
+}
+.QA-answers-container {
+  display: inline-block;
+}
 
 /* ---------- Questions Buttons ---------- */
 #QA-q-display-btn, .QA-add-QorA {
-  display: inline-block
+  display: inline-block;
 }
 
 /* Ratings & Reviews Styles */

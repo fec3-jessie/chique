@@ -20,7 +20,7 @@ const Answers = ({ answers, answerCounter }) => {
   temp = [];
 
   return (
-    <>
+    <div className='QA-answers-container'>
       {sortedAnswers.slice(0, answerCounter).map(ans =>
         <div key={ans.id * 2}>
           <AnswerBody
@@ -42,9 +42,10 @@ const Answers = ({ answers, answerCounter }) => {
             />
             : null
           }
+          <br/>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
