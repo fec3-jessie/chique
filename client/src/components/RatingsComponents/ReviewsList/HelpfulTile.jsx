@@ -5,9 +5,12 @@ import { token } from '/config.js';
 // switch to dynamic data after testing...
 
 
-function HelpfulTile ({helpfulnessCount, reviewId}) {
+function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
   const [yesCount, setYesCount] = useState(helpfulnessCount);
   const [yesClicked, setYesClicked] = useState(false);
+  const [reported, setReported] = useState(false);
+  const localHost = 'http://127.0.0.1:3000';
+
   const reviewUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/helpful?review_id=${reviewId}`;
 
   const postYesVote = async () => {
@@ -21,6 +24,20 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
     });
   };
 
+  const handleReported = () => {
+    Axios({
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/report?review_id=${reviewId}`,
+      headers: {
+        'Authorization': token
+      }
+    })
+    .then(() => console.log('you have reported review # ', reviewId))
+    .catch((err) => console.log('error reporting review', err));
+    setReviewsCount(prevState => prevState -1);
+  };
+
+
   const handleYesClick = (e) => {
     e.preventDefault();
     if (yesClicked === false) {
@@ -28,6 +45,14 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
       setYesClicked(true);
       postYesVote();
     }
+  };
+
+  const reportedStyles = {
+    'textDecoration': 'underline'
+  };
+
+  const nonReportedStyles = {
+    'textDecoration': 'none'
   }
 
   return (
@@ -38,7 +63,17 @@ function HelpfulTile ({helpfulnessCount, reviewId}) {
         onClick={handleYesClick}>
         Yes
       </button>
-      <p>{`( ${yesCount} )   | Report`}</p>
+      <p>{`( ${yesCount} ) | `}
+        <span
+        className='reported'
+        onClick={() => {
+          setReported(true);
+          handleReported();
+        }}
+        style={reported ? reportedStyles : nonReportedStyles}>
+        Report
+        </span>
+      </p>
     </div>
   )
 }

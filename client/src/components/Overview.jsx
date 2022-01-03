@@ -36,7 +36,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344', {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40349', {
       headers: {
         authorization: token
       }
@@ -52,7 +52,7 @@ class Overview extends React.Component {
         this.setState({rating: rating});
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344', {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349', {
       headers: {
         authorization: token
       }
@@ -66,7 +66,7 @@ class Overview extends React.Component {
 
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349/styles', {
       headers: {
         authorization: token
       }
@@ -117,7 +117,7 @@ class Overview extends React.Component {
   }
 
 
-  handleStyleClick(e) {
+  handleStyleClick(event) {
 
     // update available sizes upon clicking new style
     this.setState({selectedStyle: event.target.getAttribute('id')}, () => {
@@ -154,6 +154,7 @@ class Overview extends React.Component {
     // update selectedSize state back to null if user presses "Select Size"
     if (e.target.value === 'Select Size') {
       this.setState({selectedSize: null}, () => {
+        this.setState({quantity: 0});
       });
       return;
     }
@@ -192,14 +193,15 @@ class Overview extends React.Component {
 
   render () {
 
-
     return (
       <div>
 
         <div className = 'overview-container'>
 
           <div className = 'image-gallery-container'>
-            <ImageGallery selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
+            <ImageGallery
+              length = {this.state.images ? this.state.images[Number(this.state.selectedStyle)].length : ''}
+              selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
           </div>
 
           <div className = 'info-container'>
@@ -221,9 +223,9 @@ class Overview extends React.Component {
 
             <AddToCart validATC = {this.state.validATC} handleAddToCart = {this.handleAddToCart.bind(this)} handleSizeSelect = {this.handleSizeSelect.bind(this)} quantity = {this.state.quantity} sizes = {this.state.sizes} outOfStock = {this.state.outOfStock}/>
             <div id = 'social-container'>
-              <i class="fab fa-2x fa-facebook"></i>
-              <i class="fab fa-2x fa-twitter"></i>
-              <i class="fab fa-2x fa-pinterest"></i>
+              <i className="fab fa-2x fa-facebook"></i>
+              <i className="fab fa-2x fa-twitter"></i>
+              <i className="fab fa-2x fa-pinterest"></i>
             </div>
 
           </div>

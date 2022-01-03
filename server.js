@@ -63,6 +63,10 @@ app.get('/reviews/meta', (req, res) => {
   axiosGet(req.url, res);
 });
 
+app.put('/reviews/:review_id/report', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+
 /* ----- Questions ----- */
 app.get('/qa/questions', (req, res) => {
   axiosGet(req.url, res);

@@ -30,7 +30,8 @@ function ReviewTile (props) {
         <Response response={props.response}/> : null}
       <HelpfulTile
         helpfulnessCount={props.helpfulness}
-        reviewId={props.reviewId}/>
+        reviewId={props.reviewId}
+        setReviewsCount={props.setReviewsCount}/>
     </div>
   );
 }
