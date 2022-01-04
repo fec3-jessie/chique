@@ -49,8 +49,6 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     };
     // leave this log here for testing purposes
     // console.log('this gonna be the body::::', body);
-    // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews'
-    // 'http://127.0.0.1:3000/reviews'
     Axios({
       method: 'post',
       url: 'http://127.0.0.1:3000/reviews',
