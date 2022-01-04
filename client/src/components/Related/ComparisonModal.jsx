@@ -10,11 +10,8 @@ const ComparisonModal = ({setShowModal}) => {
   };
 
   return ReactDom.createPortal(
-    <div
-      className='pic-modal-container'
-      ref ={modalRef}
-      onClick={() => setShowModal(false)}
-    >
+    <div className='pic-modal-container' ref ={modalRef}
+      onClick={() => setShowModal(false)}>
       <div className='pic-modal'>
         <button onClick={() => setShowModal(false)}>X</button>
         comparison goes here

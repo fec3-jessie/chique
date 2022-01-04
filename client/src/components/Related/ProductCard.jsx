@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {token} from '/config.js';
 import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 import PriceLine from './PriceLine.jsx';
 const url = 'http://localhost:3000';
 
@@ -11,9 +12,8 @@ const ProductCard = (props) => {
   const [starAverage, setStarAverage] = useState(0);
   const [features, setFeatures] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const openComparisonModal = (url) => {
+  const openComparisonModal = () => {
     setShowModal(true);
-    return;
   };
 
   useEffect(() => {
@@ -68,8 +68,8 @@ const ProductCard = (props) => {
         /><br></br>
         <StarsTile stars ={starAverage} />
       </div>
-      <button onClick={() => openComparisonModal}>show comparison window</button>
-      {showModal ? <ThumbnailModal setShowModal={setShowModal} photo={modalPhoto}/> : null}
+      <button onClick={openComparisonModal}>show comparison window</button>
+      {showModal ? <ComparisonModal setShowModal={setShowModal} mainFeatures = {props.mainFeatures} compareFeatures = {features}/> : null}
     </div>);
 };
 
