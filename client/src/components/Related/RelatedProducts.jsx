@@ -8,6 +8,7 @@ const url = 'http://localhost:3000';
 const RelatedProducts = (props) => {
 
   const [productId, setProductId] = useState(props.product_Id);
+  const [mainFeatures, setMainFeatures] = useState([]);
   const [products, setProducts] = useState([]);
   // const [productId, setProductId] = useState(props.product_Id);
   // setProductId(product_Id_upstream);
@@ -18,6 +19,12 @@ const RelatedProducts = (props) => {
         axios.get(`${url}/products/`)
           .then(products => products.data.filter(product => res.data.includes(product.id)))
           .then(filteredProducts => setProducts(filteredProducts));
+      })
+      .then(() => {
+        axios.get(`${url}/products/${productId}`)
+          .then((res) => {
+            setMainFeatures(res.data.features);
+          });
       });
   }, [productId]);
 
@@ -29,8 +36,9 @@ const RelatedProducts = (props) => {
           <ProductCard
             product = {product}
             key = {product.id}
+            mainFeatures = {mainFeatures}
             relatedClickHandler = {props.relatedClickHandler}
-            setProductId ={setProductId}/>
+            setProductId = {setProductId}/>
         ))
         : null}
     </div>
