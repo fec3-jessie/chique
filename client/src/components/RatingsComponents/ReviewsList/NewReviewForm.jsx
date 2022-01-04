@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
+const { url, token } = require('/config.js');
 
 function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id, reviewsCount, setReviewsCount}) {
   const factorGrades = {
@@ -48,13 +49,15 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     };
     // leave this log here for testing purposes
     // console.log('this gonna be the body::::', body);
-
+    // https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews'
+    // 'http://127.0.0.1:3000/reviews'
     Axios({
       method: 'post',
       url: 'http://127.0.0.1:3000/reviews',
       data: body,
-      params: {
-        product_id: product_Id
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
       }
     })
       .then((response) => {

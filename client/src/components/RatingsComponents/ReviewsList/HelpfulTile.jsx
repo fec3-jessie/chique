@@ -13,17 +13,20 @@ function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
 
   const reviewUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/helpful?review_id=${reviewId}`;
 
-  const postYesVote = async () => {
+
+  const postYesVote = () => {
     const body = {
       'helpfulness': yesCount
     };
-    const postHelpfullness = await Axios.put(reviewUrl, body, {
-      headers: {
-        'Authorization': token
+    Axios.put(`http://127.0.0.1:3000/reviews/${reviewId}/helpful`, body, {
+      params: {
+        review_id: reviewId
       }
-    });
+    })
+      .catch((err) => console.error('error putting helpful::::', err));
   };
 
+  // this one working
   const handleReported = () => {
     Axios({
       method: 'put',
@@ -32,10 +35,32 @@ function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
         'Authorization': token
       }
     })
-    .then(() => console.log('you have reported review # ', reviewId))
-    .catch((err) => console.log('error reporting review', err));
+      .then(() => console.log('you have reported review # ', reviewId))
+      .catch((err) => console.log('error reporting review', err));
     setReviewsCount(prevState => prevState -1);
   };
+
+  // this one not working
+  // const handleReported = () => {
+  //   Axios.put(`http://127.0.0.1:3000/reviews/${reviewId}/report`, {
+  //     params: {
+  //       review_id: reviewId
+  //     }
+  //   })
+  //     .catch((err) => console.error('error putting report::::', err));
+  //   setReviewsCount(prevState => prevState - 1);
+  // };
+  // const handleReported = () => {
+  //   Axios({
+  //     method: 'put',
+  //     url: `http://127.0.0.1:3000/reviews/${reviewId}/report`,
+  //     params: {
+  //       review_id: reviewId
+  //     }
+  //   })
+  //     .catch((err) => console.error('error putting report::::', err));
+  //   setReviewsCount(prevState => prevState - 1);
+  // };
 
 
   const handleYesClick = (e) => {
