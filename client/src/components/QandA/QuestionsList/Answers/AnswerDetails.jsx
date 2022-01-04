@@ -7,7 +7,7 @@ const AnswerDetails = ({ name, date, helpfulness, answer_id }) => {
   const newDate = new Date(date).toLocaleDateString('default', options);
 
   return (
-    <section>
+    <section className='QA-answer-details'>
       by {name}, {newDate} &nbsp;
       |&nbsp;&nbsp;
       <HelpfulTracker questionOrAnswer_id={answer_id} helpful={helpfulness} usage='answer'/>
