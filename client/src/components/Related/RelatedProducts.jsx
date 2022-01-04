@@ -7,8 +7,10 @@ const url = 'http://localhost:3000';
 
 const RelatedProducts = (props) => {
 
-  const [products, setProducts] = useState([]);
   const productId = props.product_Id;
+  const [products, setProducts] = useState([]);
+  // const [productId, setProductId] = useState(props.product_Id);
+  // setProductId(product_Id_upstream);
 
   useEffect(() =>{
     axios.get(`${url}/products/${productId}/related`)
