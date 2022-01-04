@@ -76,7 +76,7 @@ class QuestionCard extends React.Component {
     return (
       <div id='QA-question-card'>
         <div id='QA-question-card-question'>
-          <div className='QA-symbol QA-question-symbol'>Q:&nbsp;&nbsp;</div>
+          <div className='QA-symbol'>Q:&nbsp;&nbsp;</div>
           <QuestionBody
             body={this.props.body}
             onAccordionClick={this.onAccordionClick}
