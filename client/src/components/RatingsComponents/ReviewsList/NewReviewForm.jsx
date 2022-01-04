@@ -21,10 +21,11 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
   const [charCount, setCharCount] = useState(0);
   const [starsCount, setStarsCount] = useState(1);
   const [recommend, setRecommend] = useState(true);
-  // const [uploadPhoto, setUploadPhoto] = useState(false); // might not need this
   const [photosList, setPhotosList] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const [imageSelected, setImageSelected] = useState('');
   // const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/demo/image/upload'
-  const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dg6a907c2';
+
 
   const addPhotosInputBox = () => {
     if (photosList.length < 5) {
@@ -32,27 +33,38 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     }
   };
 
+  const upLoadImage = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', imageSelected);
+    formData.append('upload_preset', 'kbc6kwjc');
+
+    Axios.post('https://api.cloudinary.com/v1_1/dg6a907c2/image/upload', formData)
+      .then((res) => {
+        console.log('this is the cloudinary post response', res.data.secure_url);
+        setPhotos(prevState => [res.data.secure_url, ...prevState]);
+      })
+      .catch((err) => console.log('cloudinary posting error::', err));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     let characters = {};
-    let photoUrls = [];
-    let photoKeys = ['photo0', 'photo1', 'photo2', 'photo3', 'photo4'];
-    let photos = [];
     factors.forEach((factor) => {
-      characters[characteristics[factor].id] = Number(e.target[factor].value);
+      if (Number(e.target[factor].value) === 0) {
+        characters[characteristics[factor].id] = 1;
+      } else {
+        characters[characteristics[factor].id] = Number(e.target[factor].value);
+      }
     });
+
     let summary;
     if (e.target.reviewSummary.value.length === 0) {
       summary = `${e.target.reviewBody.value.slice(0, 39)}...`;
     } else {
       summary = e.target.reviewSummary.value;
     }
-
-    photoKeys.forEach((key) => {
-      if (e.target[key] !== undefined) {
-        photos.push(e.target[key].files[0]);
-      }
-    });
 
     let body = {
       product_id: parseInt(product_Id),
@@ -62,28 +74,24 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       recommend: recommend,
       name: e.target.reviewNickName.value,
       email: e.target.reviewEmail.value,
-      // photos: photoUrls,
       photos: photos,
       characteristics: characters
     };
     // leave this log here for testing purposes
-    // console.log('this gonna be the body::::', body);
-    console.log('this gonna be the body::::', photos[0]);
-    // Axios({
-    //   method: 'post',
-    //   url: 'http://127.0.0.1:3000/reviews',
-    //   data: body,
-    //   headers: {
-    //     'Authorization': token,
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    //   .then((response) => {
-    //     console.log('this is the post reponse::', response);
-    //   })
-    //   .catch((err) => console.log('oops, couldnt post form', err));
-
-    // setReviewsCount(prevCount => prevCount + 1);
+    console.log('REQUEST BODY', body);
+    Axios({
+      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+      method: 'post',
+      headers: {
+        'Authorization': token,
+      },
+      data: body,
+    })
+      .then((response) => {
+        console.log('this is the post reponse::', response);
+        setReviewsCount(prevState => prevState + 1);
+      })
+      .catch((err) => console.log('oops, couldnt post form', err));
   };
 
   return (
@@ -256,7 +264,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
             className="container__input"
             id='review-body'
             name='reviewBody'
-            minLength='50'
+            // minLength='50'
             maxLength='1000'
             placeholder='Why did you like the product or not?'
             required
@@ -302,8 +310,12 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
                   className='photo-upload'
                   id={`photo${i}`}
                   name={`photo${i}`}
-                  accept='image/png, image/jpeg'>
+                  accept='image/png, image/jpeg'
+                  onChange={(e) => {
+                    setImageSelected(e.target.files[0]);
+                  }}>
                 </input>
+                <button onClick={upLoadImage}>Upload Image</button>
               </div>
             )) : null}
         </div>
