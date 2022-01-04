@@ -73,19 +73,23 @@ class QuestionsList extends React.Component {
     return (
       <>
         <div id='QA-questions-container'>
-          {renderedQuestions.map(item =>
-            <QuestionCard
-              answers={item.answers}
-              asker={item.asker_name}
-              body={item.question_body}
-              date={item.question_date}
-              helpful={item.question_helpfulness}
-              key={item.question_id}
-              reported={item.reported}
-              question_id={item.question_id}
-              product_name={this.props.product_name}
-            />
-          )}
+          {renderedQuestions.map(item => {
+            if (item.reported !== true) {
+              return (
+                <QuestionCard
+                  answers={item.answers}
+                  asker={item.asker_name}
+                  body={item.question_body}
+                  date={item.question_date}
+                  helpful={item.question_helpfulness}
+                  key={item.question_id}
+                  reported={item.reported}
+                  question_id={item.question_id}
+                  product_name={this.props.product_name}
+                />
+              );
+            }
+          })}
         </div>
         <br/>
         <div id='QA-qestionsBtns-container'>
