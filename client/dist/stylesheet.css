@@ -170,9 +170,9 @@ div #image-container {
 
 }
 
-#image-container:hover {
+/* #image-container:hover {
   /* background-color: pink; */
-}
+/* }  */
 
 
 div #image-container {
@@ -970,6 +970,7 @@ button.modal-close {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 2%;
 }
 #submit-review {
   margin-top: 8%;
@@ -1003,6 +1004,20 @@ button.modal-close {
 }
 .factor__label {
   margin-right: 5px;
+}
+#form-photo-input-container {
+  padding-top: 2%;
+}
+.photo-upload {
+  font-family: 'Raleway', sans-serif;
+  padding: 8px 11px;
+  background: crimson;
+  color: white;
+  /* font-weight: bold; */
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 /* -------------------------

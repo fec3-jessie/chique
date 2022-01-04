@@ -32,7 +32,7 @@ function Ratings ({product_Id, productName}) {
       setReviews(data.results);
     };
     fetchReviews();
-  }, [sort, revert]);
+  }, [sort, revert, product_Id]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
@@ -54,7 +54,7 @@ function Ratings ({product_Id, productName}) {
       setFactors(factorsData);
     };
     fetchMeta();
-  }, [reviewsCount]);
+  }, [reviewsCount, product_Id]);
 
   useEffect(() => {
     let filtering = [];

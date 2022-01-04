@@ -1,6 +1,5 @@
 const express = require('express');
 const { url, token } = require('./config.js');
-const router = require('express').Router();
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');

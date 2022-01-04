@@ -12,21 +12,32 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     'Fit': ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
   };
 
-
   const [starFill, setStarFill] = useState(false);
   const [starFill2, setStarFill2] = useState(false);
   const [starFill3, setStarFill3] = useState(false);
   const [starFill4, setStarFill4] = useState(false);
   const [starFill5, setStarFill5] = useState(false);
+
   const [charCount, setCharCount] = useState(0);
   const [starsCount, setStarsCount] = useState(1);
   const [recommend, setRecommend] = useState(true);
+  // const [uploadPhoto, setUploadPhoto] = useState(false); // might not need this
+  const [photosList, setPhotosList] = useState([]);
+  // const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/demo/image/upload'
+  const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dg6a907c2';
 
+  const addPhotosInputBox = () => {
+    if (photosList.length < 5) {
+      setPhotosList(prevState => [true, ...prevState]);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let characters = {};
     let photoUrls = [];
+    let photoKeys = ['photo0', 'photo1', 'photo2', 'photo3', 'photo4'];
+    let photos = [];
     factors.forEach((factor) => {
       characters[characteristics[factor].id] = Number(e.target[factor].value);
     });
@@ -36,6 +47,13 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     } else {
       summary = e.target.reviewSummary.value;
     }
+
+    photoKeys.forEach((key) => {
+      if (e.target[key] !== undefined) {
+        photos.push(e.target[key].files[0]);
+      }
+    });
+
     let body = {
       product_id: parseInt(product_Id),
       rating: starsCount,
@@ -44,26 +62,28 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       recommend: recommend,
       name: e.target.reviewNickName.value,
       email: e.target.reviewEmail.value,
-      photos: photoUrls,
+      // photos: photoUrls,
+      photos: photos,
       characteristics: characters
     };
     // leave this log here for testing purposes
     // console.log('this gonna be the body::::', body);
-    Axios({
-      method: 'post',
-      url: 'http://127.0.0.1:3000/reviews',
-      data: body,
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((response) => {
-        console.log('this is the post reponse::', response);
-      })
-      .catch((err) => console.log('oops, couldnt post form', err));
+    console.log('this gonna be the body::::', photos[0]);
+    // Axios({
+    //   method: 'post',
+    //   url: 'http://127.0.0.1:3000/reviews',
+    //   data: body,
+    //   headers: {
+    //     'Authorization': token,
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then((response) => {
+    //     console.log('this is the post reponse::', response);
+    //   })
+    //   .catch((err) => console.log('oops, couldnt post form', err));
 
-    setReviewsCount(prevCount => prevCount + 1);
+    // setReviewsCount(prevCount => prevCount + 1);
   };
 
   return (
@@ -274,13 +294,28 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
             );
           })}
         </div>
+        <div id='form-photo-input-container'>
+          {photosList.length > 0 ?
+            photosList.map((bool, i) => (
+              <div key={i}>
+                <input type='file'
+                  className='photo-upload'
+                  id={`photo${i}`}
+                  name={`photo${i}`}
+                  accept='image/png, image/jpeg'>
+                </input>
+              </div>
+            )) : null}
+        </div>
         <div id='form-buttons-container'>
-          <button className="form__photo"
-            id="submit-photo"
-            type="button"
-            value="submit-photo">
-            Upload Your Photos
-          </button>
+          {photosList.length < 5 ?
+            <button className="form__photo"
+              onClick={() => addPhotosInputBox()}
+              id="submit-photo"
+              type="button"
+              value="submit-photo">
+          Upload Your Photos
+            </button> : null}
           <button className="form__submit"
             id="submit-review"
             type='submit'
@@ -297,3 +332,11 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
 export default NewReviewForm;
 
 //for form submission will need to use : e.target.getAttribute("data-stars"); to send star vote to api
+
+{ /* <button className="form__photo"
+            onClick={() => addPhotosInputBox()}
+            id="submit-photo"
+            type="button"
+            value="submit-photo">
+            Upload Your Photos
+          </button> */ }
