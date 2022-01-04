@@ -21,15 +21,16 @@ class App extends React.Component {
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
   }
 
+
   handleProductNameChange (name) {
     this.setState({product_name: name});
   }
 
-  relatedClickHandler (e, itemId) {
+  relatedClickHandler (e, itemId, cb) {
     e.preventDefault();
     console.log(itemId);
     this.setState({product_Id: itemId});
-
+    cb(itemId);
   }
 
   render () {

@@ -7,7 +7,7 @@ const url = 'http://localhost:3000';
 
 const RelatedProducts = (props) => {
 
-  const productId = props.product_Id;
+  const [productId, setProductId] = useState(props.product_Id);
   const [products, setProducts] = useState([]);
   // const [productId, setProductId] = useState(props.product_Id);
   // setProductId(product_Id_upstream);
@@ -19,7 +19,7 @@ const RelatedProducts = (props) => {
           .then(products => products.data.filter(product => res.data.includes(product.id)))
           .then(filteredProducts => setProducts(filteredProducts));
       });
-  }, []);
+  }, [productId]);
 
   return (<div>
     <h3>Related Products</h3>
@@ -29,7 +29,8 @@ const RelatedProducts = (props) => {
           <ProductCard
             product = {product}
             key = {product.id}
-            relatedClickHandler = {props.relatedClickHandler}/>
+            relatedClickHandler = {props.relatedClickHandler}
+            setProductId ={setProductId}/>
         ))
         : null}
     </div>
