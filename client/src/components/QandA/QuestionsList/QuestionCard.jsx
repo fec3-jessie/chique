@@ -75,9 +75,12 @@ class QuestionCard extends React.Component {
   render() {
     return (
       <div id='QA-question-card'>
-        <div id='QA-question-card-question' onClick={this.onAccordionClick}>
+        <div id='QA-question-card-question'>
           <div className='QA-symbol QA-question-symbol'>Q:&nbsp;&nbsp;</div>
-          <QuestionBody body={this.props.body}/>
+          <QuestionBody
+            body={this.props.body}
+            onAccordionClick={this.onAccordionClick}
+          />
           <QuestionDetails
             asker={this.props.asker}
             date={this.props.date}
@@ -93,26 +96,26 @@ class QuestionCard extends React.Component {
             (this.state.accordionDisplay &&
             Object.keys(this.props.answers).length > 0) &&
               <>
-                <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
-                <Answers
-                  answers={this.props.answers}
-                  key={this.props.question_id * 3}
-                  answerCounter={this.state.answerCounter}
-                  showMore={this.state.showMoreBtn}
-                  collapse={this.state.showCollapseBtn}
-                />
+                <div className='QA-symbol-and-answers'>
+                  <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
+                  <Answers
+                    answers={this.props.answers}
+                    key={this.props.question_id * 3}
+                    answerCounter={this.state.answerCounter}
+                    showMore={this.state.showMoreBtn}
+                    collapse={this.state.showCollapseBtn}
+                  />
+                </div>
                 {
                   !this.state.showMoreBtn ? null
                     : !this.state.showCollapseBtn
                       ?
                       <>
                         <button onClick={this.onSeeMoreClick}>See more answers</button>
-                        <br/><br/>
                       </>
                       :
                       <>
                         <button onClick={this.onCollapseClick}>Collapse answers</button>
-                        <br/><br/>
                       </>
                 }
               </>

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const SearchBar = ({ setSearchText }) => {
-  // const [searchText, setSearchText] = useState('');
 
   const onSearchTextChange = (event) => {
     const typedEntry = event.target.value;
@@ -9,7 +8,7 @@ const SearchBar = ({ setSearchText }) => {
   };
 
   return (
-    <form action='' method=''>
+    <form action='' method='' id='QA-search-bar'>
       <input
         type='search'
         placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'

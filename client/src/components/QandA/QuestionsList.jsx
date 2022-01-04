@@ -91,7 +91,6 @@ class QuestionsList extends React.Component {
             }
           })}
         </div>
-        <br/>
         <div id='QA-qestionsBtns-container'>
           {this.state.questions.length <= 2
             ? null :
