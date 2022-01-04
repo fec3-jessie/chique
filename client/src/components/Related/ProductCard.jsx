@@ -34,7 +34,7 @@ const ProductCard = (props) => {
 
 
   return (
-    <div className='product-card' onClick = {(e) => props.relatedClickHandler(e, item.id, props.setProductId)}>
+    <div className='product-card' onClick = {(e) => props.relatedClickHandler(e, item.id, item.name, props.setProductId)}>
       <div className='card-frame'>
         <img
           className='related-img'
