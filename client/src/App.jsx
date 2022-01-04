@@ -28,7 +28,6 @@ class App extends React.Component {
 
   relatedClickHandler (e, itemId, itemName, cb) {
     e.preventDefault();
-    console.log(itemId);
     this.setState({
       product_Id: itemId,
       product_name: itemName
