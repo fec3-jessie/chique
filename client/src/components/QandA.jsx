@@ -7,9 +7,8 @@ const QandA = ({ product_id, product_name }) => {
 
   return (
     <div>
-      <p>Questions & Answers</p>
+      <p id='QA-section-title'>Questions & Answers</p>
       <SearchBar setSearchText={setSearchText}/>
-      <br/>
       <QuestionsList
         product_id={40356}
         product_name={product_name}
