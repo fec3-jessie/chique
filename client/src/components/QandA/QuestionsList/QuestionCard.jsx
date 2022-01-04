@@ -9,10 +9,12 @@ class QuestionCard extends React.Component {
     this.state = {
       answerCounter: 0,
       showMoreBtn: false,
-      showCollapseBtn: false
+      showCollapseBtn: false,
+      accordionDisplay: false
     };
     this.onSeeMoreClick = this.onSeeMoreClick.bind(this);
     this.onCollapseClick = this.onCollapseClick.bind(this);
+    this.onAccordionClick = this.onAccordionClick.bind(this);
   }
 
   componentDidMount() {
@@ -64,46 +66,61 @@ class QuestionCard extends React.Component {
     }
   }
 
+  onAccordionClick() {
+    this.setState({
+      accordionDisplay: !this.state.accordionDisplay
+    });
+  }
+
   render() {
     return (
       <div id='QA-question-card'>
-        <QuestionDetails
-          asker={this.props.asker}
-          date={this.props.date}
-          helpful={this.props.helpful}
-          reported={this.props.reported}
-          question_id={this.props.question_id}
-          product_name={this.props.product_name}
-        />
-        <div className='QA-symbol QA-question-symbol'>Q:&nbsp;&nbsp;</div>
-        <QuestionBody body={this.props.body}/>
-        {Object.keys(this.props.answers).length > 0 ?
-          <>
-            <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
-            <Answers
-              answers={this.props.answers}
-              key={this.props.question_id * 3}
-              answerCounter={this.state.answerCounter}
-              showMore={this.state.showMoreBtn}
-              collapse={this.state.showCollapseBtn}
-            />
-            {
-              !this.state.showMoreBtn ? null
-                : !this.state.showCollapseBtn
-                  ?
-                  <>
-                    <button onClick={this.onSeeMoreClick}>See more answers</button>
-                    <br/><br/>
-                  </>
-                  :
-                  <>
-                    <button onClick={this.onCollapseClick}>Collapse answers</button>
-                    <br/><br/>
-                  </>
-            }
-          </>
-          : null
-        }
+        <div id='QA-question-card-question'>
+          <div className='QA-symbol'>Q:&nbsp;&nbsp;</div>
+          <QuestionBody
+            body={this.props.body}
+            onAccordionClick={this.onAccordionClick}
+          />
+          <QuestionDetails
+            asker={this.props.asker}
+            date={this.props.date}
+            helpful={this.props.helpful}
+            reported={this.props.reported}
+            question_id={this.props.question_id}
+            product_name={this.props.product_name}
+          />
+        </div>
+
+        <div id='QA-question-card-answers'>
+          {
+            (this.state.accordionDisplay &&
+            Object.keys(this.props.answers).length > 0) &&
+              <>
+                <div className='QA-symbol-and-answers'>
+                  <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
+                  <Answers
+                    answers={this.props.answers}
+                    key={this.props.question_id * 3}
+                    answerCounter={this.state.answerCounter}
+                    showMore={this.state.showMoreBtn}
+                    collapse={this.state.showCollapseBtn}
+                  />
+                </div>
+                {
+                  !this.state.showMoreBtn ? null
+                    : !this.state.showCollapseBtn
+                      ?
+                      <>
+                        <button onClick={this.onSeeMoreClick}>See more answers</button>
+                      </>
+                      :
+                      <>
+                        <button onClick={this.onCollapseClick}>Collapse answers</button>
+                      </>
+                }
+              </>
+          }
+        </div>
       </div>
     );
   }

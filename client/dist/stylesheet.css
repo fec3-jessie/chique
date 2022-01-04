@@ -458,13 +458,16 @@ img.related-img {
 /* ------------------------------
     QUESTIONS & ANSWERS
 ------------------------------ */
-.clickable {
-  cursor: pointer;
-}
-
 #QA-answer-image {
   height: 10%;
   width: 10%;
+}
+
+/* ---------- SEARCH BAR ---------- */
+#QA-search-bar, #QA-section-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 /* ---------- MODAL Handler ---------- */
@@ -519,8 +522,20 @@ img.related-img {
   border: 1px solid black;
   max-height: 80vh;
   overflow-y: scroll;
+  margin: 1rem auto;
 }
-.QA-helpful {
+#QA-question-card-question, .QA-symbol-and-answers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.QA-question-details {
+  display: inline-block;
+  font-size: smaller;
+  margin: auto 1em;
+}
+.QA-helpful, .QA-add-QorA {
   display: inline-block;
 }
 .QA-symbol, .QA-question-body {
@@ -528,11 +543,34 @@ img.related-img {
   font-weight: 600;
 }
 .QA-answers-container {
+  border: 1px solid black;
+  max-height: 40vh;
+  overflow-y: scroll;
   display: inline-block;
+}
+#QA-question-card-answers {
+  margin: auto 1em;
+}
+#QA-question-card {
+  max-width: 100vh; /* child of #QA-questions-container above */
+  margin: 2rem auto;
+}
+.QA-question-body:hover, .clickable:hover {
+  background-color: #f3d5f2;
+  cursor: pointer;
+}
+.QA-answer-details {
+  font-size: smaller;
+  margin: auto 1em 1em;
+}
+#QA-qestionsBtns-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 /* ---------- Questions Buttons ---------- */
-#QA-q-display-btn, .QA-add-QorA {
+#QA-q-display-btn {
   display: inline-block;
 }
 

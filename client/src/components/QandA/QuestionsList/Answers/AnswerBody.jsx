@@ -6,6 +6,6 @@ const AnswerBody = ({ body }) => {
       {body}
     </>
   );
-}
+};
 
 export default AnswerBody;
