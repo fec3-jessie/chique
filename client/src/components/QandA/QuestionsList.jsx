@@ -55,13 +55,15 @@ class QuestionsList extends React.Component {
 
   render() {
     let renderedQuestions;
-    if (this.state.searchText === '') {
+    if (this.state.searchText.length < 3) {
       let sortedQuestions = this.state.questions.sort((a, b) =>
         b.question_helpfulness - a.question_helpfulness);
 
       renderedQuestions = sortedQuestions.slice(0, this.state.questionCounter);
     } else {
-      let filteredQuestions = this.state.questions.filter(q => q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase()));
+      let filteredQuestions = this.state.questions.filter(q =>
+        q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase())
+      );
 
       let sortedQuestions = filteredQuestions.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
 
