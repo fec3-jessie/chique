@@ -10,8 +10,6 @@ const ComparisonModal = (props) => {
     }
   };
 
-  console.log('setShowModal', props.setShowModal);
-
   return ReactDom.createPortal(
     <div className='pic-modal-container' ref ={modalRef}
       onClick={closeModal}>
