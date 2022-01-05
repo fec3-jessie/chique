@@ -15,7 +15,11 @@ const ProductCard = (props) => {
   const openComparisonModal = () => {
     setShowModal(true);
   };
-
+  const closeModal = (e) => {
+    if (e.target === modalRef.current) {
+      props.setShowModal(false);
+    }
+  };
   useEffect(() => {
     axios.get(`${url}/products/${item.id}/styles`)
       .then(res => {
@@ -43,6 +47,9 @@ const ProductCard = (props) => {
   }, []);
 
 
+
+  console.log('card', setShowModal);
+
   return (
     <div className='product-card' >
       <div className='card-frame'>
@@ -69,7 +76,7 @@ const ProductCard = (props) => {
         <StarsTile stars ={starAverage} />
       </div>
       <button onClick={openComparisonModal}>show comparison window</button>
-      {showModal ? <ComparisonModal setShowModal={setShowModal} mainFeatures = {props.mainFeatures} compareFeatures = {features}/> : null}
+      {showModal ? <ComparisonModal setShowModal={setShowModal} mainFeatures = {props.mainFeatures} comparisonFeatures = {features} closeModal = {closeModal}/> : null}
     </div>);
 };
 
