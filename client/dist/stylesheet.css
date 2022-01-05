@@ -19,8 +19,8 @@
 #expanded-image {
   width: 800px;
   height: 500px;
-  /* margin-left: 20%; */
   margin-top: 5%;
+  object-fit: cover;
 }
 
 .expanded-view-container {

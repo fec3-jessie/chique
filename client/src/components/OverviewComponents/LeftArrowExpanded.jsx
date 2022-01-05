@@ -10,8 +10,8 @@ class LeftArrowExpanded extends React.Component {
   render () {
     return (
       <>
-        <div className='left-arrow-expanded' onClick={this.props.handleLeftArrow}>
-          <i className='fa fa-angle-left fa-3x'></i>
+        <div className='left-arrow-expanded' >
+          <i onClick={this.props.handleLeftArrowExpanded} className='fa fa-angle-left fa-3x'></i>
         </div>
       </>
     );

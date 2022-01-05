@@ -11,7 +11,7 @@ class RightArrowExpanded extends React.Component {
     return (
       <>
         <div className='right-arrow-expanded' onClick={this.props.handleLeftArrowSlider}>
-          <i className='fa fa-angle-right fa-3x'></i>
+          <i onClick={this.props.handleRightArrowExpanded} className='fa fa-angle-right fa-3x'></i>
         </div>
       </>
     );
