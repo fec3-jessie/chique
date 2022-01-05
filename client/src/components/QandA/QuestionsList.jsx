@@ -55,13 +55,15 @@ class QuestionsList extends React.Component {
 
   render() {
     let renderedQuestions;
-    if (this.state.searchText === '') {
+    if (this.state.searchText.length < 3) {
       let sortedQuestions = this.state.questions.sort((a, b) =>
         b.question_helpfulness - a.question_helpfulness);
 
       renderedQuestions = sortedQuestions.slice(0, this.state.questionCounter);
     } else {
-      let filteredQuestions = this.state.questions.filter(q => q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase()));
+      let filteredQuestions = this.state.questions.filter(q =>
+        q.question_body.toLowerCase().includes(this.state.searchText.toLowerCase())
+      );
 
       let sortedQuestions = filteredQuestions.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
 
@@ -71,21 +73,24 @@ class QuestionsList extends React.Component {
     return (
       <>
         <div id='QA-questions-container'>
-          {renderedQuestions.map(item =>
-            <QuestionCard
-              answers={item.answers}
-              asker={item.asker_name}
-              body={item.question_body}
-              date={item.question_date}
-              helpful={item.question_helpfulness}
-              key={item.question_id}
-              reported={item.reported}
-              question_id={item.question_id}
-              product_name={this.props.product_name}
-            />
-          )}
+          {renderedQuestions.map(item => {
+            if (item.reported !== true) {
+              return (
+                <QuestionCard
+                  answers={item.answers}
+                  asker={item.asker_name}
+                  body={item.question_body}
+                  date={item.question_date}
+                  helpful={item.question_helpfulness}
+                  key={item.question_id}
+                  reported={item.reported}
+                  question_id={item.question_id}
+                  product_name={this.props.product_name}
+                />
+              );
+            }
+          })}
         </div>
-        <br/>
         <div id='QA-qestionsBtns-container'>
           {this.state.questions.length <= 2
             ? null :

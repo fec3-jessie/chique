@@ -5,7 +5,7 @@ const YourOutfit = (props) => {
     <h3>
     Your Outfit
     </h3>
-  </div>)
-}
+  </div>);
+};
 
 export default YourOutfit;
