@@ -46,10 +46,6 @@ const ProductCard = (props) => {
       });
   }, []);
 
-
-
-  console.log('card', setShowModal);
-
   return (
     <div className='product-card' >
       <div className='card-frame'>
