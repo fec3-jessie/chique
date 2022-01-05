@@ -22,7 +22,7 @@ function Ratings ({product_Id, productName}) {
 
   useEffect(() => {
     const url = `http://127.0.0.1:3000/reviews`;
-    const params = {product_id: product_Id, count: 50, sort : sort};
+    const params = {product_id: product_Id, count: 50, sort: sort};
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
         params: params
@@ -32,7 +32,7 @@ function Ratings ({product_Id, productName}) {
       setReviews(data.results);
     };
     fetchReviews();
-  }, [sort, revert]);
+  }, [sort, revert, product_Id]);
 
   const [characteristics, setCharacteristics] = useState({});
   const [factors, setFactors] = useState([]);
@@ -49,18 +49,18 @@ function Ratings ({product_Id, productName}) {
       await setCharacteristics(data);
       let factorsData = [];
       for (const factor in data) {
-        factorsData.push(factor)
+        factorsData.push(factor);
       }
       setFactors(factorsData);
     };
     fetchMeta();
-  }, [reviewsCount]);
+  }, [reviewsCount, product_Id]);
 
   useEffect(() => {
     let filtering = [];
     for (const star in starsClicked) {
       if (starsClicked[star] === true) {
-       filtering.push(parseInt(star));
+        filtering.push(parseInt(star));
       }
     }
     setStarsFilter(filtering);
@@ -76,7 +76,7 @@ function Ratings ({product_Id, productName}) {
     } else {
       setRevert(!revert);
     }
-  },[starsFilter]);
+  }, [starsFilter]);
 
   const handleChangeSort = (sortedBy) => {
     setSort(sortedBy);
@@ -88,13 +88,13 @@ function Ratings ({product_Id, productName}) {
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>
           {productReviews.product !== undefined ?
-          <ReviewsSidebar
-            className='reviews-sidebar'
-            setStarsClicked={setStarsClicked}
-            starsClicked={starsClicked}
-            reviewsCount={reviewsCount}
-            reviews={reviews}
-            productId={productReviews.product}/> : null}
+            <ReviewsSidebar
+              className='reviews-sidebar'
+              setStarsClicked={setStarsClicked}
+              starsClicked={starsClicked}
+              reviewsCount={reviewsCount}
+              reviews={reviews}
+              productId={productReviews.product}/> : null}
           <ReviewsList
             starsClicked={starsClicked}
             className='reviews-list'
@@ -109,8 +109,8 @@ function Ratings ({product_Id, productName}) {
             reviewsCount={reviewsCount}/>
         </div>
       </div>
-     </div>
-  )
+    </div>
+  );
 }
 
 

@@ -1,10 +1,14 @@
 import React from 'react';
 
-const QuestionBody = ({ body }) => {
+const QuestionBody = ({ body, onAccordionClick }) => {
   return (
     <>
-      <div className='QA-question-body'>{body}</div>
-      <br/>
+      <div
+        className='QA-question-body'
+        onClick={onAccordionClick}
+      >
+        {body}
+      </div>
     </>
 
   );

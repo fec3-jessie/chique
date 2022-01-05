@@ -11,46 +11,46 @@ const ProductCard = (props) => {
   const [starAverage, setStarAverage] = useState(0);
 
   useEffect(() => {
-    axios.get(`${url}/products/${item.id}/styles`, {
-      headers: { 'Authorization': token }
-    })
-    .then(res => {
-      let styles = res.data.results;
-      const [style] = styles.filter(style => style['default?'] === true);
-      setDefaultStyle(style);
-    })
-    .then(() => {
-      axios.get(`${url}/reviews/meta?product_id=${item.id}`, {
-        headers: { 'Authorization': token }
-      })
+    axios.get(`${url}/products/${item.id}/styles`)
       .then(res => {
-        const ratings = res.data.ratings;
-        let [score, reviews] = [0, 0];
-        for (const key in ratings) {
-          reviews += parseInt(ratings[key]); //adds review count to denominator
-          score += parseInt(ratings[key]) * parseInt(key); //adds score to numerator
-        }
-        const value = Math.round(score/reviews * 100) / 100; //rounds to two places
-        setStarAverage(value);
+        let styles = res.data.results;
+        const [style] = styles.filter(style => style['default?'] === true);
+        setDefaultStyle(style);
       })
-    })
-  }, [])
+      .then(() => {
+        axios.get(`${url}/reviews/meta?product_id=${item.id}`)
+          .then(res => {
+            const ratings = res.data.ratings;
+            let [score, reviews] = [0, 0];
+            for (const key in ratings) {
+              reviews += parseInt(ratings[key]); //adds review count to denominator
+              score += parseInt(ratings[key]) * parseInt(key); //adds score to numerator
+            }
+            const value = Math.round(score / reviews * 100) / 100; //rounds to two places
+            setStarAverage(value);
+          });
+      });
+  }, []);
 
 
-  return (<div className='product-card'>
-    <div className='card-frame'>
-      <img className='related-img' src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}/>
-    </div>
-    <div className='card-details'>
-      <span className='card-category'>{item.category}</span><br></br>
-      <span className='card-name'>{item.name}</span><br></br>
-      <PriceLine
-        originalPrice = {defaultStyle.original_price}
-        salePrice={defaultStyle.sale_price}
-      /><br></br>
-      <StarsTile stars ={starAverage} />
-    </div>
-  </div>)
-}
+  return (
+    <div className='product-card' onClick = {(e) => props.relatedClickHandler(e, item.id, item.name, props.setProductId)}>
+      <div className='card-frame'>
+        <img
+          className='related-img'
+          src = {defaultStyle.photos?.[0].thumbnail_url || 'https://png.vector.me/files/images/1/5/151985/none_icon_available_no_unavailable_preview.jpg'}
+        />
+      </div>
+      <div className='card-details'>
+        <span className='card-category'>{item.category}</span><br></br>
+        <span className='card-name'>{item.name}</span><br></br>
+        <PriceLine
+          originalPrice = {defaultStyle.original_price}
+          salePrice={defaultStyle.sale_price}
+        /><br></br>
+        <StarsTile stars ={starAverage} />
+      </div>
+    </div>);
+};
 
 export default ProductCard;
