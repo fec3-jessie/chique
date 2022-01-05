@@ -38,10 +38,10 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     const formData = new FormData();
     formData.append('file', imageSelected);
     formData.append('upload_preset', 'kbc6kwjc');
-    console.log('clicked');
+    // console.log('clicked');
     Axios.post('https://api.cloudinary.com/v1_1/dg6a907c2/image/upload', formData)
       .then((res) => {
-        console.log('this is the cloudinary post response', res.data.secure_url);
+        // console.log('this is the cloudinary post response', res.data.secure_url);
         setPhotos(prevState => [res.data.secure_url, ...prevState]);
         e.target.innerText = 'Loaded';
         e.target.style.backgroundColor = 'green';

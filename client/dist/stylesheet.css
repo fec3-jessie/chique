@@ -170,10 +170,6 @@ div #image-container {
 
 }
 
-/* #image-container:hover {
-  /* background-color: pink; */
-/* }  */
-
 
 div #image-container {
   position: relative;
@@ -410,10 +406,6 @@ html {
 }
 
 .product-card {
-  /* display: flex;
-  flex-direction: column;
-  flex: 0 1 auto; */
-  /* height: 80%; */
   margin-left: 1%;
   margin-top: 10px;
   border: 1px solid black;
@@ -452,6 +444,19 @@ img.related-img {
 
 .sale-price {
   color: red;
+}
+
+.comparison-modal {
+  font-family: 'Raleway', sans-serif;
+  background-image: linear-gradient(0, rgba(168, 227, 245, .95), rgba(245, 189, 242, 0.95));
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  flex-shrink: auto;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 

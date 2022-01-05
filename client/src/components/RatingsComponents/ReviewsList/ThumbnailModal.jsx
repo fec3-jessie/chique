@@ -8,7 +8,7 @@ function ThumbnailModal ({setShowModal, photo}) {
     if (e.target === modalRef.current) {
       setShowModal(false);
     }
-  }
+  };
 
   return ReactDom.createPortal(
     <div className='pic-modal-container' ref={modalRef}
