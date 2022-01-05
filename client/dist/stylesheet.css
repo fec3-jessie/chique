@@ -1,3 +1,63 @@
+.left-arrow-expanded {
+  position: absolute;
+  color: pink;
+  bottom: 50%;
+  left: 15px;
+}
+
+#expanded-image-container {
+  position: relative;
+}
+
+.right-arrow-expanded {
+  position: absolute;
+  color: pink;
+  bottom: 50%;
+  right: 15px;
+}
+
+#expanded-image {
+  width: 800px;
+  height: 500px;
+  /* margin-left: 20%; */
+  margin-top: 5%;
+}
+
+.expanded-view-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-main {
+  position:fixed;
+  background: transparent;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 .slider-thumbnail {
   width: 65px;
   height: 65px;

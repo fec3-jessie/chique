@@ -110,7 +110,7 @@ class ImageGallery extends React.Component {
         <div className = 'main-image-container'>
 
           <LeftArrow className = {this.state.currentIndex === 0 ? 'pink' : ''} handleLeftArrow = {this.handleLeftArrow.bind(this)}/>
-          <MainImage currentIndex = {this.state.currentIndex} selectedStyle = {this.props.selectedStyle} images = {this.props.images}/>
+          <MainImage showExpandedView = {this.props.showExpandedView} currentIndex = {this.state.currentIndex} selectedStyle = {this.props.selectedStyle} images = {this.props.images}/>
           {this.state.currentIndex === this.props.length - 1 ? '' :
             <RightArrow handleRightArrow = {this.handleRightArrow.bind(this)}/>}
         </div>
