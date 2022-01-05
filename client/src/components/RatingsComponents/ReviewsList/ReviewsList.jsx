@@ -42,7 +42,7 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
             photos={review.photos}
             helpfulness={review.helpfulness}
             reviewId={review.review_id}
-            setReviewsCount={setReviewsCount}/>
+            setReviewsCount={setReviewsCount}/>;
         })}
       </div>
       <div className='review-list-buttons-container'>
@@ -51,13 +51,13 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
             e.preventDefault();
             setReviewsShown(prevState => prevState + 2);
           }}
-          >More Reviews
+        >More Reviews
         </button>
         <button className='btn reviews'
           onClick={() => openFormModal()}
-          >Add Review
+        >Add Review
         </button>
-          {showModal ?
+        {showModal ?
           <NewReviewModal
             setShowModal={setShowModal}
             productName={productName}
@@ -70,7 +70,7 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
           /> : null}
       </div>
     </div>
-  )
+  );
 }
 
 
