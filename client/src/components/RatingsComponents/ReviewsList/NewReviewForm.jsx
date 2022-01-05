@@ -24,7 +24,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
   const [photosList, setPhotosList] = useState([]);
   const [photos, setPhotos] = useState([]);
   const [imageSelected, setImageSelected] = useState('');
-  // const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/demo/image/upload'
+
 
 
   const addPhotosInputBox = () => {
@@ -38,11 +38,13 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     const formData = new FormData();
     formData.append('file', imageSelected);
     formData.append('upload_preset', 'kbc6kwjc');
-
+    console.log('clicked');
     Axios.post('https://api.cloudinary.com/v1_1/dg6a907c2/image/upload', formData)
       .then((res) => {
         console.log('this is the cloudinary post response', res.data.secure_url);
         setPhotos(prevState => [res.data.secure_url, ...prevState]);
+        e.target.innerText = 'Loaded';
+        e.target.style.backgroundColor = 'green';
       })
       .catch((err) => console.log('cloudinary posting error::', err));
   };
@@ -77,8 +79,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       photos: photos,
       characteristics: characters
     };
-    // leave this log here for testing purposes
-    console.log('REQUEST BODY', body);
+
     Axios({
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
       method: 'post',
@@ -264,7 +265,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
             className="container__input"
             id='review-body'
             name='reviewBody'
-            // minLength='50'
+            minLength='50'
             maxLength='1000'
             placeholder='Why did you like the product or not?'
             required
@@ -305,7 +306,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
         <div id='form-photo-input-container'>
           {photosList.length > 0 ?
             photosList.map((bool, i) => (
-              <div key={i}>
+              <div key={i}
+                className='upload-container'>
                 <input type='file'
                   className='photo-upload'
                   id={`photo${i}`}
@@ -315,7 +317,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
                     setImageSelected(e.target.files[0]);
                   }}>
                 </input>
-                <button onClick={upLoadImage}>Upload Image</button>
+                <button className='upload' id={`upload-button-${i}`}
+                  onClick={upLoadImage}>Upload Image</button>
               </div>
             )) : null}
         </div>
