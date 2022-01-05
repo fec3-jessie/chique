@@ -16,12 +16,12 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
     setReviewsCount(reviews.length);
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviews, reviewsCount]);
+  }, [reviews]);
 
   useEffect(() => {
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviewsShown, reviews, sort, starsClicked]);
+  }, [reviewsShown, sort, starsClicked]);
 
   return (
     <div className='reviews-list'>

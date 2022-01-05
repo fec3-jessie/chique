@@ -636,9 +636,14 @@ div.sorted-drop-down label {
   align-items: baseline;
 }
 .body-tile {
+  display: flex;
+  flex-direction: column;
   text-align:justify;
-  text-justify: distribute-all-lines;
+  width: 100%;
   color: rgb(12, 12, 12);
+}
+.body-tile p{
+  align-items: flex-end;
 }
 .body-summary-tile {
   font-weight: bold;
