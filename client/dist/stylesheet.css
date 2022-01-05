@@ -483,7 +483,6 @@ img.related-img {
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
-
 .QA-modal-content {
   z-index: 1;
   width: 35%;
@@ -497,7 +496,6 @@ img.related-img {
   position: relative;
   animation: animate 0.3s;
 }
-
 .QA-modal-content button {
   position: absolute;
   top: 5px;
@@ -511,10 +509,13 @@ img.related-img {
   border-radius: 2px; */
   cursor: pointer;
 }
-
 #QA-modal-disclaimer {
   font-size: smaller;
   margin: 0;
+}
+.QA-modal-required-input {
+  color: red;
+  font-weight: bold;
 }
 
 /* ---------- QUESTIONSLIST ---------- */
@@ -563,7 +564,7 @@ img.related-img {
   font-size: smaller;
   margin: auto 1em 1em;
 }
-#QA-qestionsBtns-container {
+#QA-questionsBtns-container {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;

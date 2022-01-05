@@ -88,6 +88,7 @@ class QuestionCard extends React.Component {
             reported={this.props.reported}
             question_id={this.props.question_id}
             product_name={this.props.product_name}
+            onAorQAddition={this.props.onAorQAddition}
           />
         </div>
 
