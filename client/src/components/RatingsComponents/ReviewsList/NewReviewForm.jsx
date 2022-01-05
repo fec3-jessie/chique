@@ -89,7 +89,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       data: body,
     })
       .then((response) => {
-        console.log('this is the post reponse::', response);
+        // console.log('this is the post reponse::', response);
         setReviewsCount(prevState => prevState + 1);
       })
       .catch((err) => console.log('oops, couldnt post form', err));
