@@ -4,7 +4,7 @@ import ReviewTile from './ReviewTile.jsx';
 import ReviewsListSorting from './ReviewsListSorting.jsx';
 import NewReviewModal from './NewReviewModal.jsx';
 
-function ReviewsList ({reviews, factors, productName, characteristics, product_Id, handleChangeSort, starsClicked, data, reviewsCount, setReviewsCount}) {
+function ReviewsList ({reviews, factors, productName, characteristics, product_Id, starsClicked, data, reviewsCount, setReviewsCount, setSort, sort}) {
   const [showModal, setShowModal] = useState(false);
   const [reviewsShown, setReviewsShown] = useState(2);
   const [reviewsList, setReviewsList] = useState([]);
@@ -21,12 +21,13 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
   useEffect(() => {
     let list = reviews.slice(0, reviewsShown);
     setReviewsList(list);
-  }, [reviewsShown, reviews]);
+  }, [reviewsShown, sort, starsClicked]);
 
   return (
     <div className='reviews-list'>
-      <ReviewsListSorting reviewsNum={reviewsCount}
-        handleChangeSort={handleChangeSort}/>
+      <ReviewsListSorting
+        reviewsNum={reviewsCount}
+        setSort={setSort}/>
       <div className='reviews-list-tiles'>
         {reviewsList?.map((review) => {
           return <ReviewTile
@@ -41,7 +42,7 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
             photos={review.photos}
             helpfulness={review.helpfulness}
             reviewId={review.review_id}
-            setReviewsCount={setReviewsCount}/>
+            setReviewsCount={setReviewsCount}/>;
         })}
       </div>
       <div className='review-list-buttons-container'>
@@ -50,13 +51,13 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
             e.preventDefault();
             setReviewsShown(prevState => prevState + 2);
           }}
-          >More Reviews
+        >More Reviews
         </button>
         <button className='btn reviews'
           onClick={() => openFormModal()}
-          >Add Review
+        >Add Review
         </button>
-          {showModal ?
+        {showModal ?
           <NewReviewModal
             setShowModal={setShowModal}
             productName={productName}
@@ -69,7 +70,7 @@ function ReviewsList ({reviews, factors, productName, characteristics, product_I
           /> : null}
       </div>
     </div>
-  )
+  );
 }
 
 

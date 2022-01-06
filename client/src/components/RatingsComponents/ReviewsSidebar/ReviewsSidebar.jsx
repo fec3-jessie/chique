@@ -6,7 +6,7 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
 
-function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount}) {
+function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount, reviews}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount
       setProductMetaData(data);
     };
     fetchMeta();
-  }, [reviewsCount]);
+  }, [reviewsCount, reviews]);
 
     const renderComponents = () => {
       return (
