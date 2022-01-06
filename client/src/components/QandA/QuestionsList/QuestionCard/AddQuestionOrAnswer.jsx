@@ -4,7 +4,7 @@ import Modal from './Modal.jsx';
 let displayElement;
 let component;
 
-const AddQuestionOrAnswer = ({ questionOrProduct_id, product_name, usage }) => {
+const AddQuestionOrAnswer = ({ questionOrProduct_id, product_name, usage, onAorQAddition }) => {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
@@ -13,10 +13,17 @@ const AddQuestionOrAnswer = ({ questionOrProduct_id, product_name, usage }) => {
 
   if (usage === 'addAnswer') {
     displayElement = <span className='clickable' onClick={openModal}><u>Add Answer</u></span>;
-    component = <Modal setShowModal={setShowModal} usage={usage} product_name={product_name} questionOrProduct_id={questionOrProduct_id}/>;
+    component =
+      <Modal
+        setShowModal={setShowModal} usage={usage} product_name={product_name}
+        questionOrProduct_id={questionOrProduct_id} onAorQAddition={onAorQAddition}
+      />;
   } else {
     displayElement = <button onClick={openModal}>Add a Question +</button>;
-    component = <Modal setShowModal={setShowModal} usage={usage} product_name={product_name} questionOrProduct_id={questionOrProduct_id}/>;
+    component =
+      <Modal
+        setShowModal={setShowModal} usage={usage} product_name={product_name}
+        questionOrProduct_id={questionOrProduct_id} onAorQAddition={onAorQAddition}/>;
   }
 
   return (

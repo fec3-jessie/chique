@@ -37,7 +37,6 @@ class App extends React.Component {
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
   }
 
-
   handleProductNameChange (name) {
     this.setState({product_name: name});
   }
@@ -50,8 +49,6 @@ class App extends React.Component {
     });
     cb(itemId);
   }
-
-
 
   render () {
     window.addEventListener('click', function (e) {
