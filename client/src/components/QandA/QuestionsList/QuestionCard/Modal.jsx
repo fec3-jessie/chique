@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 const localHost = 'http://127.0.0.1:3000';
@@ -42,7 +42,6 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     title_body = 'Your Question';
     buttonText = 'Submit Question';
   }
-
 
   const handleFileInputChange = (e) => {
     const files = e.target.files;
@@ -119,16 +118,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     try {
       const postReq = await axios.post(localHost + endpoint, body);
       onAorQAddition();
-      // if (usage === 'addQuestion') {
-      //   onAorQAddition();
-      // } else {
-      //   axios.get(localHost + endpoint,
-      //     { params: { product_id: product_id, count: 25 }})
-      //     .then(response => {
-
-      //     })
-      // }
-      // }
+      // setShowModal(false);
     } catch (err) {
       console.error( 'Error posting from Modal: ', err );
     }

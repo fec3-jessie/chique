@@ -10,7 +10,6 @@ const QandA = ({ product_id, product_name }) => {
       <h3 id='QA-section-title'>Questions & Answers</h3>
       <SearchBar setSearchText={setSearchText}/>
       <QuestionsList
-        //product_id={40356}
         product_id={product_id}
         product_name={product_name}
         searchText={searchText}
