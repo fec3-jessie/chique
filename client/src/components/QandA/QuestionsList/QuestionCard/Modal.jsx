@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 const localHost = 'http://127.0.0.1:3000';
-import { cloudinary_name, cloudinary_url } from '/config';
+
+const cloudinary_name = 'flightfulkiwi';
+const cloudinary_url = 'https://api.cloudinary.com/v1_1/flightfulkiwi/image/upload';
+const cloudinary_preset = 'fec_preset';
 
 let title;
 let subtitle;
@@ -15,13 +18,8 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
   const [bodyTextValue, setBodyTextValue] = useState('');
   const [nicknameValue, setNicknameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
-
   const [showImageInputButton, setShowImageInputButton] = useState(true);
-  const [image, setImage] = useState('');
-  const [url, setUrl] = useState('');
   const [images, setImages] = useState([]);
-  const [imageURLs, setImageURLs] = useState([]);
-
   const [previewSources, setPreviewSources] = useState([]);
 
   // Close the modal when clicking outside the modal
@@ -77,23 +75,25 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     e.preventDefault();
     setPreviewSources([]);
     setImages([]);
-    // setImageURLs([]);
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const imageURLs = [];
 
-    // Uploads an image to Cloudinary
-    const data = new FormData();
-    data.append('file', image);
-    data.append('upload_preset', 'fec_preset');
-    data.append('cloud_name', cloudinary_name);
+    // Uploads images to Cloudinary
+    for (let k = 0; k < images.length; k++) {
+      const data = new FormData();
+      data.append('file', images[k]);
+      data.append('upload_preset', cloudinary_preset);
+      data.append('cloud_name', cloudinary_name);
 
-    try {
-      const result = await axios.post(cloudinary_url, data);
-      setUrl(result.data.url);
-    } catch(err) {
-      console.error( 'Error posting to Cloudinary: ', err );
+      try  {
+        const result = await axios.post(cloudinary_url, data);
+        imageURLs.unshift(result.data.url);
+      } catch(err) {
+        console.error( 'Error posting to Cloudinary: ', err );
+      }
     }
 
     let endpoint;
@@ -108,7 +108,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
 
     if (usage === 'addAnswer') {
       endpoint = `/qa/questions/${questionOrProduct_id}/answers`;
-      body.photos = [];
+      body.photos = imageURLs;
     }
 
     if (usage === 'addQuestion') {
@@ -203,7 +203,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
         </form>
 
         <button className='QA-Modal-X-btn'
-          onClick={ () => setShowModal(false); }
+          onClick={ () => setShowModal(false) }
         >X</button>
       </div>
     </div>,
