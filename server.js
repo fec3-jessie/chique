@@ -107,7 +107,6 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 /* ----- Reviews ----- */
 app.post('/reviews', (req, res) => {
   axiosPost(req.url, req.body);
-  res.send('Successfully posted.');
 });
 
 // app.post('/reviews', (req, res) => {
@@ -124,6 +123,7 @@ app.post('/reviews', (req, res) => {
 /* ----- Questions & Answers ----- */
 app.post('/qa/questions', (req, res) => {
   axiosPost(req.url, req.body);
+  res.send(req.body);
 });
 
 app.post('/qa/questions/:question_id/answers', (req, res) => {

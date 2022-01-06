@@ -628,7 +628,6 @@ input.QA-search-bar {
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
-
 .QA-modal-content {
   z-index: 1;
   width: 35%;
@@ -642,8 +641,7 @@ input.QA-search-bar {
   position: relative;
   animation: animate 0.3s;
 }
-
-.QA-modal-content button {
+.QA-modal-content .QA-Modal-X-btn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -656,10 +654,16 @@ input.QA-search-bar {
   border-radius: 2px; */
   cursor: pointer;
 }
-
 #QA-modal-disclaimer {
   font-size: smaller;
   margin: 0;
+}
+.QA-modal-required-input {
+  color: red;
+  font-weight: bold;
+}
+.QA-modal-img-error {
+  color: red;
 }
 
 /* ---------- QUESTIONSLIST ---------- */
@@ -708,7 +712,7 @@ input.QA-search-bar {
   font-size: smaller;
   margin: auto 1em 1em;
 }
-#QA-qestionsBtns-container {
+#QA-questionsBtns-container {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
@@ -1226,15 +1230,6 @@ button.upload  {
   height: 2vh;
   cursor: pointer;
   border-radius: 0.6em;
-}
-::file-selector-button {
-  /* display: none; */
-  width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
 }
 
 
