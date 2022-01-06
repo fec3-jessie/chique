@@ -15,7 +15,9 @@ const findId = (element) => {
   };
 
   const recurseNodeTree = (node) => {
-    if (moduleIds[node.id] !== undefined) {
+    if (node === null) {
+      return;
+    } else if (moduleIds[node.id] !== undefined) {
       id = node.id;
       return;
     } else if (node.parentElement) {
