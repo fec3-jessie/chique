@@ -12,14 +12,14 @@ class AddToCart extends React.Component {
     // Else if <15, user selects from 1 to the quantity in stock
     var output = [];
     if (!this.props.quantity) {
-      output.push(<option>—</option>);
+      output.push(<option key = {'-'}>—</option>);
     } else if (this.props.quantity >= 15) {
       for (var i = 1; i <= 15; i++) {
-        output.push(<option>{i}</option>);
+        output.push(<option key = {i}>{i}</option>);
       }
     } else {
       for (var i = 1; i <= this.props.quantity; i++) {
-        output.push(<option>{i}</option>);
+        output.push(<option key = {i}>{i}</option>);
       }
     }
 
@@ -39,8 +39,8 @@ class AddToCart extends React.Component {
           <div className="select-dropdown">
             <select onChange = {this.props.handleSizeSelect}>
 
-              {this.props.outOfStock ? <option >OUT OF STOCK</option> : <option >Select Size</option>}
-              {!this.props.outOfStock ? this.props.sizes.map(size => <option >{size}</option>) : '' }
+              {this.props.outOfStock ? <option key = {'outofStock'} >OUT OF STOCK</option> : <option key = {'selectSize'} >Select Size</option>}
+              {!this.props.outOfStock ? this.props.sizes.map( (size, i) => <option key = {i}>{size}</option>) : '' }
 
             </select>
           </div>

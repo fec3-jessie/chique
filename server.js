@@ -1,6 +1,5 @@
 const express = require('express');
 const { url, token } = require('./config.js');
-const router = require('express').Router();
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');
@@ -10,11 +9,17 @@ const headers = {
   'Authorization': token
 };
 
+const postHeaders = {
+  'Authorization': token,
+  'Content-Type': 'application/json'
+};
+
 // Middleware
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(cors());
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.json());
+// app.use(upload.array());
+app.use(express.urlencoded({ extended: true }));
 
 
 // ----- HELPER FUNCTIONS ----- //
@@ -30,7 +35,7 @@ const axiosPut = (path, body) => {
 };
 
 const axiosPost = (path, body) => {
-  axios.post(`${url}${path}`, body, { headers })
+  axios.post(`${url}${path}`, body, { headers: postHeaders })
     .catch(err => console.error('Error completing POST req (server.js): ', err));
 };
 // ----- END OF HELPER FUNCTIONS ----- //
@@ -63,9 +68,6 @@ app.get('/reviews/meta', (req, res) => {
   axiosGet(req.url, res);
 });
 
-app.put('/reviews/:review_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
-});
 
 /* ----- Questions ----- */
 app.get('/qa/questions', (req, res) => {
@@ -89,6 +91,13 @@ app.put('/qa/questions/:question_id/report', (req, res) => {
 });
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+/* ----- Ratings ----- */
+app.put('/reviews/:review_id/report', (req, res) => {
+  axiosPut(req.url, req.body);
+});
+app.put('/reviews/:review_id/helpful', (req, res) => {
   axiosPut(req.url, req.body);
 });
 // ---------- END OF PUT REQUESTS ---------- //

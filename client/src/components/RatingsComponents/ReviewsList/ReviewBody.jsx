@@ -13,18 +13,20 @@ function ReviewBody ({body, summary, photos}) {
     <div className='body-tile'>
       <p className='body-summary-tile'>{summary} </p>
       <p>{body}</p>
-      {photos.length > 0 ?
-        photos.map((photo) => {
-          return <div className='review-thumbnail' key={photo.id}>
-            <img
-              onClick={() => openPhotoModal(photo.url)}
-              className='img-container'
-              src={photo.url}
-              key={photo.id}
-              alt='product thumbnail'>
-            </img>
-          </div>;
-        }) : null}
+      <div className='review-thumbnail-container'>
+        {photos.length > 0 ?
+          photos.map((photo) => {
+            return <div className='review-thumbnail' key={photo.id}>
+              <img
+                onClick={() => openPhotoModal(photo.url)}
+                className='img-container'
+                src={photo.url}
+                key={photo.id}
+                alt='product thumbnail'>
+              </img>
+            </div>;
+          }) : null}
+      </div>
       {showModal ? <ThumbnailModal setShowModal={setShowModal} photo={modalPhoto}/> : null}
     </div>
   );
