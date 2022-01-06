@@ -35,7 +35,6 @@ const axiosPut = (path, body) => {
 };
 
 const axiosPost = (path, body) => {
-  console.log('this is the axiospost:::', body);
   axios.post(`${url}${path}`, body, { headers: postHeaders })
     .catch(err => console.error('Error completing POST req (server.js): ', err));
 };

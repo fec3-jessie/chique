@@ -345,13 +345,3 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
 }
 
 export default NewReviewForm;
-
-//for form submission will need to use : e.target.getAttribute("data-stars"); to send star vote to api
-
-{ /* <button className="form__photo"
-            onClick={() => addPhotosInputBox()}
-            id="submit-photo"
-            type="button"
-            value="submit-photo">
-            Upload Your Photos
-          </button> */ }
