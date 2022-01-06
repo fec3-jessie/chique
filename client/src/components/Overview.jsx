@@ -8,6 +8,7 @@ import AddToCart from './OverviewComponents/AddToCart.jsx';
 import ProductDescription from './OverviewComponents/ProductDescription.jsx';
 import ImageGallery from './OverviewComponents/ImageGallery.jsx';
 import MainImage from './OverviewComponents/MainImage.jsx';
+import ExpandedView from './OverviewComponents/ExpandedView.jsx';
 
 class Overview extends React.Component {
   constructor(props) {
@@ -30,7 +31,8 @@ class Overview extends React.Component {
       validATC: null,
       productDescription: null,
       productSlogan: null,
-      salePrice: null
+      salePrice: null,
+      expandedView: null
 
     };
   }
@@ -188,8 +190,18 @@ class Overview extends React.Component {
     }
   }
 
+  showExpandedView() {
+    this.setState({expandedView: true});
+  }
 
+  handleCircleClick() {
+    console.log('a');
 
+  }
+
+  handleExpandedImageClose(e) {
+    this.setState({expandedView: null});
+  }
 
   render () {
 
@@ -199,10 +211,18 @@ class Overview extends React.Component {
         <div className = 'overview-container'>
 
           <div className = 'image-gallery-container'>
-            <ImageGallery
+            <ImageGallery expandedView = {this.state.expandedView}
+              showExpandedView = {this.showExpandedView.bind(this)}
               length = {this.state.images ? this.state.images[Number(this.state.selectedStyle)].length : ''}
-              selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
+              selectedStyle = {this.state.selectedStyle}
+              images = {this.state.images} />
           </div>
+
+          <ExpandedView images = {this.state.images}
+            handleExpandedImageClose = {this.handleExpandedImageClose.bind(this)}
+            handleCircleClick = {this.handleCircleClick.bind(this)}
+            selectedStyle = {this.state.selectedStyle}
+            expandedView = {this.state.expandedView}/>
 
           <div className = 'info-container'>
             <StarRating rating ={this.state.rating}/>
