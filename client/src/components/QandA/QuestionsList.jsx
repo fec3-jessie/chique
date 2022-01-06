@@ -18,7 +18,7 @@ class QuestionsList extends React.Component {
   }
 
   getAllQuestions() {
-    axios.get('http://127.0.0.1:3000/qa/questions', {params: { product_id: this.props.product_id, count: 25 }})
+    axios.get('http://127.0.0.1:3000/qa/questions', {params: { product_id: this.props.product_id, count: 50 }})
       .then(returnedQuestions => {
         this.setState({
           questions: returnedQuestions.data.results,
@@ -59,6 +59,7 @@ class QuestionsList extends React.Component {
   }
 
   onAorQAddition() {
+    console.log('Message received. Spin the wheel again from QL.jsx L62');
     this.getAllQuestions();
   }
 

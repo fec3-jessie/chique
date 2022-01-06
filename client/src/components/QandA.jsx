@@ -10,7 +10,8 @@ const QandA = ({ product_id, product_name }) => {
       <p id='QA-section-title'>Questions & Answers</p>
       <SearchBar setSearchText={setSearchText}/>
       <QuestionsList
-        product_id={40356}
+        //product_id={40356}
+        product_id={product_id}
         product_name={product_name}
         searchText={searchText}
       />
