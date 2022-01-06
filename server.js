@@ -9,11 +9,6 @@ const headers = {
   'Authorization': token
 };
 
-// const postHeaders = {
-//   'Authorization': token,
-//   'Content-Type': 'application/json'
-// };
-
 // Middleware
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(cors());
