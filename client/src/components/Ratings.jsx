@@ -80,7 +80,7 @@ function Ratings ({product_Id, productName}) {
 
 
   return (
-    <div id = 'reviews'>
+    <div id='Ratings'>
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>

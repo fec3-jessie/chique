@@ -48,7 +48,7 @@ const ProductCard = (props) => {
 
 
 
-  console.log('card', setShowModal);
+  // console.log('card', setShowModal);
 
   return (
     <div className='product-card' >

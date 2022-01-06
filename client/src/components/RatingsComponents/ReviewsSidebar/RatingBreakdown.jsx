@@ -20,7 +20,7 @@ function RatingBreakdown ({ratings, starsClicked, setStarsClicked}) {
               onClick={(e) => {
                 setStarsClicked(prevState => ({
                   ...prevState,
-                  [star] : !prevState[star]
+                  [star]: !prevState[star]
                 }));
               }}
               key={star}>{`${star}`}
