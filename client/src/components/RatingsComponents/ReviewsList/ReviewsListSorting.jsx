@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ReviewsListSorting ({reviewsNum, handleChangeSort}) {
+function ReviewsListSorting ({reviewsNum, setSort}) {
   return (
     <div className='sorted-drop-down'>
       <label htmlFor='filter-select'>{`${reviewsNum} reviews, sorted by `}</label>
       <select id='filter-select'
         onChange={(e) => {
-          handleChangeSort(e.target.value);
+          setSort(e.target.value);
         }}>
         <option defaultValue>relevant</option>
         <option>newest</option>

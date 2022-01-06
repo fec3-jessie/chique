@@ -10,6 +10,7 @@ const SearchBar = ({ setSearchText }) => {
   return (
     <form action='' method='' id='QA-search-bar'>
       <input
+        className='QA-search-bar'
         type='search'
         placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
         size='60'
