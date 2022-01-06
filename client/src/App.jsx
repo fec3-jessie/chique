@@ -4,10 +4,26 @@ import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
 import QandA from './components/QandA.jsx';
 import axios from 'axios';
-import { token, url } from '/config.js';
 
-const headers = {
-  'Authorization': token
+const findId = (element) => {
+  let id;
+  let moduleIds = {
+    'Overview': true,
+    'Related': true,
+    'QandA': true,
+    'Ratings': true,
+  };
+
+  const recurseNodeTree = (node) => {
+    if (moduleIds[node.id] !== undefined) {
+      id = node.id;
+      return;
+    } else if (node.parentElement) {
+      recurseNodeTree(node.parentElement);
+    }
+  };
+  recurseNodeTree(element);
+  return id;
 };
 
 class App extends React.Component {
@@ -35,25 +51,35 @@ class App extends React.Component {
     cb(itemId);
   }
 
+
+
   render () {
+    window.addEventListener('click', function (e) {
+      let time = new Date().toLocaleString();
+      let body = {
+        time: time,
+        module: findId(e.target.parentNode),
+        element: e.target.outerHTML
+      };
+      console.log('this is your click event', body);
+
+      // create axios post to /interactions here
+    });
+
     return (
       <div>
-        <h1>Overview</h1>
         <Overview
           product_Id={this.state.product_Id}
           handleProductNameChange={this.handleProductNameChange}
         />
-        <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
           relatedClickHandler={this.relatedClickHandler}
         />
-        <h1>QandA</h1>
         <QandA
           product_id={this.state.product_Id}
           product_name={this.state.product_name}
         />
-        <h1>Ratings</h1>
         <Ratings
           product_Id={this.state.product_Id}
           productName={this.state.product_name}

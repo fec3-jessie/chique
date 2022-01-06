@@ -6,8 +6,8 @@ const QandA = ({ product_id, product_name }) => {
   const [searchText, setSearchText] = useState('');
 
   return (
-    <div>
-      <p id='QA-section-title'>Questions & Answers</p>
+    <div id='QandA'>
+      <h3 id='QA-section-title'>Questions & Answers</h3>
       <SearchBar setSearchText={setSearchText}/>
       <QuestionsList
         product_id={40356}
