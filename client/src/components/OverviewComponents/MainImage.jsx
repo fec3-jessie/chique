@@ -15,7 +15,7 @@ class MainImage extends React.Component {
 
     return (
       <>
-        {this.props.images ? <img id = 'main-image' src = {this.props.images[Number(this.props.selectedStyle)][this.props.currentIndex].url} /> : ''}
+        {this.props.images ? <img onClick = {this.props.showExpandedView} id = 'main-image' src = {this.props.images[Number(this.props.selectedStyle)][this.props.currentIndex].url} /> : ''}
       </>
     );
 

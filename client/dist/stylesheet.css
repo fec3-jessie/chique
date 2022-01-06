@@ -1,3 +1,120 @@
+.expanded-image {
+  width: 800px;
+  height: 500px;
+  margin-top: 5%;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.expanded-image.zoom-view {
+  /* background-size: 250%; */
+  width: 2000px;
+  height: 1250px;
+  cursor: zoom-out;
+
+}
+
+.fa-times {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  color: pink;
+  cursor: pointer;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+
+}
+
+.fa-times:hover {
+ color:white
+
+}
+
+.fa-circle {
+  color:pink;
+  margin-right: 10px;
+  cursor: pointer;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+
+}
+
+.fa-circle.clickedCircle {
+  color: white
+}
+
+.fa-circle:hover {
+  color:white;
+
+}
+
+#circles {
+  position: absolute;
+  left: 35%;
+  top: 15%
+}
+
+.left-arrow-expanded {
+  position: absolute;
+  color: pink;
+  bottom: 50%;
+  left: 15px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+}
+
+
+#expanded-image-container {
+
+  position: relative;
+}
+
+.right-arrow-expanded {
+  position: absolute;
+  color: pink;
+  bottom: 50%;
+  right: 15px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+}
+
+
+
+.expanded-view-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-main {
+  position:fixed;
+  background: transparent;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 .slider-thumbnail {
   width: 65px;
   height: 65px;
@@ -7,9 +124,10 @@
 
 }
 
-.sliderThumbnailSelected {
-  opacity: 1;
+.slider-thumbnail.active-thumbnail {
+  opacity: 1
 }
+
 
 
 .slider-thumbnail:hover {
@@ -68,6 +186,7 @@
   width: 500px;
   height: 400px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 
@@ -128,6 +247,8 @@
   object-fit: cover;
 
 }
+
+
 
 .thumbnail-image:hover {
   background-color: pink;

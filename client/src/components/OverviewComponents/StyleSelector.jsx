@@ -21,13 +21,13 @@ class StyleSelector extends React.Component {
 
       // if style is selected, then add a checkmark to DOM. Else, don't add
       if (this.props.selectedStyle.toString() === i.toString()) {
-        element = [<div id = 'image-container'> <img id = {this.props.thumbnails[i].index}
+        element = [<div key = {i} id = 'image-container'> <img id = {this.props.thumbnails[i].index}
           className = 'thumbnail-image'
           onClick = {this.props.handleStyleClick} src = {this.props.thumbnails[i].url} />
-        <i class="fas fa-check fa-lg"></i> </div>];
+        <i className="fas fa-check fa-lg"></i> </div>];
       } else {
-        element = [<div id = 'image-container'>
-          <img id = {this.props.thumbnails[i].index}
+        element = [<div key = {i} id = 'image-container'>
+          <img key = {i} id = {this.props.thumbnails[i].index}
             className = 'thumbnail-image' onClick = {this.props.handleStyleClick}
             src = {this.props.thumbnails[i].url} /> </div>];
       }
