@@ -9,10 +9,10 @@ const headers = {
   'Authorization': token
 };
 
-const postHeaders = {
-  'Authorization': token,
-  'Content-Type': 'application/json'
-};
+// const postHeaders = {
+//   'Authorization': token,
+//   'Content-Type': 'application/json'
+// };
 
 // Middleware
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
@@ -34,8 +34,9 @@ const axiosPut = (path, body) => {
     .catch(err => console.error('Error submitting PUT req (server.js): ', err));
 };
 
-const axiosPost = (path, body) => {
-  axios.post(`${url}${path}`, body, { headers: postHeaders })
+const axiosPost = (path, body, res) => {
+  axios.post(`${url}${path}`, body, { headers })
+    .then(() => res.status(201).send('success'))
     .catch(err => console.error('Error completing POST req (server.js): ', err));
 };
 // ----- END OF HELPER FUNCTIONS ----- //
@@ -106,28 +107,23 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 // ---------- API POST REQUESTS ---------- //
 /* ----- Reviews ----- */
 app.post('/reviews', (req, res) => {
-  axiosPost(req.url, req.body);
-  res.send('Successfully posted.');
+  axiosPost(req.url, req.body, res);
 });
 
-// app.post('/reviews', (req, res) => {
-//   axios.post(`${url}/reviews?product_id=${req.query.product_id}`, req.body, {
-//     headers: headers
-//   })
-//     .then(results => {
-//       res.send(results.data);
-//       console.log('post data sent');
-//     })
-//     .catch(err => console.error('Improper request', err));
-// });
+/* ----- Change Requests ----- */
+
+app.post('/interactions', (req, res) => {
+  axiosPost(req.url, req.body, res);
+
+});
 
 /* ----- Questions & Answers ----- */
 app.post('/qa/questions', (req, res) => {
-  axiosPost(req.url, req.body);
+  axiosPost(req.url, req.body, res);
 });
 
 app.post('/qa/questions/:question_id/answers', (req, res) => {
-  axiosPost(req.url, req.body);
+  axiosPost(req.url, req.body, res);
 });
 // ---------- END OF POST REQUESTS ---------- //
 

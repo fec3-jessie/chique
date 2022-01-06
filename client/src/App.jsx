@@ -17,6 +17,8 @@ const findId = (element) => {
   const recurseNodeTree = (node) => {
     if (node === null) {
       return;
+    } else if (node.id === 'thumbnail-portal') {
+      id = 'Modal';
     } else if (moduleIds[node.id] !== undefined) {
       id = node.id;
       return;
@@ -25,6 +27,13 @@ const findId = (element) => {
     }
   };
   recurseNodeTree(element);
+
+  if (id === undefined && element.outerHTML.indexOf('button') > -1) {
+    id = 'Modal';
+  } else if (id === undefined && element.outerHTML.indexOf('img') > -1) {
+    id = 'Overview';
+  }
+
   return id;
 };
 
@@ -54,18 +63,26 @@ class App extends React.Component {
   }
 
 
-
+  // e.target
   render () {
     window.addEventListener('click', function (e) {
+      let element;
+      if (e.target.parentNode === null) {
+        element = e.target;
+      } else {
+        element = e.target.parentNode;
+      }
       let time = new Date().toLocaleString();
       let body = {
         time: time,
-        module: findId(e.target.parentNode),
-        element: e.target.outerHTML
+        element: e.target.outerHTML,
+        widget: findId(element)
       };
-      console.log('this is your click event', body);
 
-      // create axios post to /interactions here
+      axios.post('http://127.0.0.1:3000/interactions', body)
+        .then(() => console.log('posted to interactions'))
+        .catch((err) => console.error('this is the interactions error', err));
+
     });
 
     return (

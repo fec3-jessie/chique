@@ -81,15 +81,11 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     };
 
     Axios({
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+      url: 'http://127.0.0.1:3000/reviews',
       method: 'post',
-      headers: {
-        'Authorization': token,
-      },
       data: body,
     })
-      .then((response) => {
-        // console.log('this is the post reponse::', response);
+      .then(() => {
         setReviewsCount(prevState => prevState + 1);
       })
       .catch((err) => console.log('oops, couldnt post form', err));
