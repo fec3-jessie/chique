@@ -59,15 +59,15 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     // }
 
     filesArray.forEach(imageFile => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      var image = new Image();
-      image.height = 50;
-      image.alt = 'Image to upload';
-      image.src = reader.result;
-      previewDIV.appendChild(image);
-    }
-    reader.readAsDataURL(imageFile);
+      const reader = new FileReader();
+      reader.onload = () => {
+        var image = new Image();
+        image.height = 50;
+        image.alt = 'Image to upload';
+        image.src = reader.result;
+        previewDIV.appendChild(image);
+      };
+      reader.readAsDataURL(imageFile);
     });
   };
 
@@ -75,7 +75,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     e.preventDefault();
     setPreviewSources([]);
     setImages([]);
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -88,10 +88,10 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
       data.append('upload_preset', cloudinary_preset);
       data.append('cloud_name', cloudinary_name);
 
-      try  {
+      try {
         const result = await axios.post(cloudinary_url, data);
         imageURLs.unshift(result.data.url);
-      } catch(err) {
+      } catch (err) {
         console.error( 'Error posting to Cloudinary: ', err );
       }
     }
@@ -119,18 +119,18 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     try {
       const postReq = await axios.post(localHost + endpoint, body);
       onAorQAddition();
-        // if (usage === 'addQuestion') {
-        //   onAorQAddition();
-        // } else {
-        //   axios.get(localHost + endpoint,
-        //     { params: { product_id: product_id, count: 25 }})
-        //     .then(response => {
+      // if (usage === 'addQuestion') {
+      //   onAorQAddition();
+      // } else {
+      //   axios.get(localHost + endpoint,
+      //     { params: { product_id: product_id, count: 25 }})
+      //     .then(response => {
 
-        //     })
-        // }
-        // }
-    } catch(err) {
-      console.error( 'Error posting from Modal: ', err )
+      //     })
+      // }
+      // }
+    } catch (err) {
+      console.error( 'Error posting from Modal: ', err );
     }
 
     // Closes modal on Submit
@@ -177,21 +177,21 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
             <label htmlFor='answer-photos'>Upload your photos (5 Max):</label><br/>
             {
               images.length > 5 ?
-              <div>
-                <p className='QA-modal-img-error'>{ imageErrorMsg }</p>
-                <button onClick={tryAgainHandler}>Please Try Again!</button>
-              </div>
-              :
-              <div>
-                { images.length < 5 &&
+                <div>
+                  <p className='QA-modal-img-error'>{ imageErrorMsg }</p>
+                  <button onClick={tryAgainHandler}>Please Try Again!</button>
+                </div>
+                :
+                <div>
+                  { images.length < 5 &&
                   <input
                     type='file' id='answer-photos' accept='image/*'
                     multiple onChange={handleFileInputChange}
                   />
-                }
-                <br/>
-                <div id='QA-Modal-previews'></div>
-              </div>
+                  }
+                  <br/>
+                  <div id='QA-Modal-previews'></div>
+                </div>
             }
           </>
           }
