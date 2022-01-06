@@ -1,11 +1,71 @@
+.expanded-image {
+  width: 800px;
+  height: 500px;
+  margin-top: 5%;
+  object-fit: cover;
+  cursor: zoom-in;
+}
+
+.expanded-image.zoom-view {
+  /* background-size: 250%; */
+  width: 2000px;
+  height: 1250px;
+  cursor: zoom-out;
+
+}
+
+.fa-times {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  color: pink;
+  cursor: pointer;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+
+}
+
+.fa-times:hover {
+ color:white
+
+}
+
+.fa-circle {
+  color:pink;
+  margin-right: 10px;
+  cursor: pointer;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+
+}
+
+.fa-circle.clickedCircle {
+  color: white
+}
+
+.fa-circle:hover {
+  color:white;
+
+}
+
+#circles {
+  position: absolute;
+  left: 35%;
+  top: 15%
+}
+
 .left-arrow-expanded {
   position: absolute;
   color: pink;
   bottom: 50%;
   left: 15px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
 }
 
+
 #expanded-image-container {
+
   position: relative;
 }
 
@@ -14,14 +74,11 @@
   color: pink;
   bottom: 50%;
   right: 15px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
 }
 
-#expanded-image {
-  width: 800px;
-  height: 500px;
-  margin-top: 5%;
-  object-fit: cover;
-}
+
 
 .expanded-view-container {
   display: flex;
@@ -67,9 +124,10 @@
 
 }
 
-.sliderThumbnailSelected {
-  opacity: 1;
+.slider-thumbnail.active-thumbnail {
+  opacity: 1
 }
+
 
 
 .slider-thumbnail:hover {
@@ -128,6 +186,7 @@
   width: 500px;
   height: 400px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 
@@ -188,6 +247,8 @@
   object-fit: cover;
 
 }
+
+
 
 .thumbnail-image:hover {
   background-color: pink;

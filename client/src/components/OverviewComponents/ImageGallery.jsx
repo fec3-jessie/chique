@@ -56,7 +56,7 @@ class ImageGallery extends React.Component {
 
 
   handleSliderThumbnailClick(event) {
-    this.setState({currentIndex: Number(event.target.getAttribute('thumbnailId'))});
+    this.setState({currentIndex: Number(event.target.getAttribute('thumbnailid'))});
   }
 
 

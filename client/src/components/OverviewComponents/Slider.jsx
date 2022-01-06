@@ -18,7 +18,8 @@ class Slider extends React.Component {
 
           {this.props.images ? this.props.images[Number(this.props.selectedStyle)].map( (photo, i) => {
             if (i <= this.props.imageRange[1] && i >= this.props.imageRange[0]) {
-              return <img className = {this.props.currentIndex === i ? 'sliderThumbnailSelected' : '' } onClick = {this.props.handleSliderThumbnailClick} thumbnailId = {i} className = 'slider-thumbnail' src = {photo.url}/>;
+
+              return <img key = {i} className = {this.props.currentIndex === i ? 'slider-thumbnail active-thumbnail' : 'slider-thumbnail' } onClick = {this.props.handleSliderThumbnailClick} thumbnailid = {i} className = 'slider-thumbnail' src = {photo.url}/>;
             }
           })
             : '' }

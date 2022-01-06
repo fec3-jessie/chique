@@ -194,6 +194,15 @@ class Overview extends React.Component {
     this.setState({expandedView: true});
   }
 
+  handleCircleClick() {
+    console.log('a');
+
+  }
+
+  handleExpandedImageClose(e) {
+    this.setState({expandedView: null});
+  }
+
   render () {
 
     return (
@@ -210,6 +219,8 @@ class Overview extends React.Component {
           </div>
 
           <ExpandedView images = {this.state.images}
+            handleExpandedImageClose = {this.handleExpandedImageClose.bind(this)}
+            handleCircleClick = {this.handleCircleClick.bind(this)}
             selectedStyle = {this.state.selectedStyle}
             expandedView = {this.state.expandedView}/>
 
