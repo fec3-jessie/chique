@@ -36,6 +36,7 @@ const RelatedProducts = (props) => {
           <ProductCard
             product = {product}
             key = {product.id}
+            mainProductName = {props.mainProductName}
             mainFeatures = {mainFeatures}
             relatedClickHandler = {props.relatedClickHandler}
             setProductId = {setProductId}/>

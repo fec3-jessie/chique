@@ -18,11 +18,13 @@ const ComparisonTable = (props) => {
     }
   }
 
+
+
   return (<div>
     <table>
       <thead>
         <tr>
-          <th>Main Product</th>
+          <th>{props.mainProductName}</th>
           <th>Feature</th>
           <th>Comparison Product</th>
         </tr>
@@ -30,8 +32,8 @@ const ComparisonTable = (props) => {
       <tbody>
         {shared?.map (feature => (
           <tr key = {feature.feature}>
-            <td>{feature.feature}</td>
             <td>{feature.mainValue}</td>
+            <td>{feature.feature}</td>
             <td>{feature.compareValue}</td>
           </tr>
         ))}

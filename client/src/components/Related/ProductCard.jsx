@@ -46,6 +46,8 @@ const ProductCard = (props) => {
       });
   }, []);
 
+  console.log(props.mainProductName);
+
   return (
     <div className='product-card' >
       <div className='card-frame'>
@@ -60,7 +62,6 @@ const ProductCard = (props) => {
         <span className='card-category'>{item.category}</span><br></br>
         <span
           className='card-name'
-          // a href='#'
           onClick = {(e) => props.relatedClickHandler(e, item.id, item.name, props.setProductId)}
         >
           {item.name}
@@ -72,7 +73,7 @@ const ProductCard = (props) => {
         <StarsTile stars ={starAverage} />
       </div>
       <button onClick={openComparisonModal}>show comparison window</button>
-      {showModal ? <ComparisonModal setShowModal={setShowModal} mainFeatures = {props.mainFeatures} comparisonFeatures = {features} closeModal = {closeModal}/> : null}
+      {showModal ? <ComparisonModal setShowModal={setShowModal} mainProductName = {props.mainProductName} mainFeatures = {props.mainFeatures} comparisonFeatures = {features} closeModal = {closeModal}/> : null}
     </div>);
 };
 

@@ -46,6 +46,7 @@ class App extends React.Component {
         <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
+          product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
         />
         <h1>QandA</h1>
