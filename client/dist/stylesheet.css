@@ -496,7 +496,7 @@ img.related-img {
   position: relative;
   animation: animate 0.3s;
 }
-.QA-modal-content button {
+.QA-modal-content .QA-Modal-X-btn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -516,6 +516,9 @@ img.related-img {
 .QA-modal-required-input {
   color: red;
   font-weight: bold;
+}
+.QA-modal-img-error {
+  color: red;
 }
 
 /* ---------- QUESTIONSLIST ---------- */

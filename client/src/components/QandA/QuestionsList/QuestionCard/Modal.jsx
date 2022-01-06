@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 const localHost = 'http://127.0.0.1:3000';
@@ -8,18 +8,21 @@ let title;
 let subtitle;
 let title_body;
 let buttonText;
+let imageErrorMsg = 'Sorry! Maximum number of images (5) exceeded.';
+let imageSuccessMsg = 'Thanks! You\'ve selected five (5) images.';
 
 const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQAddition }) => {
   const [bodyTextValue, setBodyTextValue] = useState('');
   const [nicknameValue, setNicknameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
 
+  const [showImageInputButton, setShowImageInputButton] = useState(true);
   const [image, setImage] = useState('');
   const [url, setUrl] = useState('');
+  const [images, setImages] = useState([]);
+  const [imageURLs, setImageURLs] = useState([]);
 
-  // const [fileInput, setFileInput] = useState('');
-  const [selectFile, setSelectedFile] = useState('');
-  const [previewSource, setPreviewSource] = useState();
+  const [previewSources, setPreviewSources] = useState([]);
 
   // Close the modal when clicking outside the modal
   const modalRef = useRef();
@@ -29,6 +32,7 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     }
   };
 
+  // Determines displayed text based on whether Q or A
   if (usage === 'addAnswer') {
     title = 'Submit your answer';
     subtitle = `${product_name}:`;
@@ -41,51 +45,56 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
     buttonText = 'Submit Question';
   }
 
-  const postModalInput = (endpoint, body) => {
-    axios.post(localHost + endpoint, body)
-      .then(() => onAorQAddition() )
-      .catch(err => console.error( 'Error posting from Modal: ', err) );
-  };
-
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
 
   const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    previewFile(file);
-    setImage(file);
+    const files = e.target.files;
+    const filesArray = [];
+    for (let i = 0; i < files.length; i++) {
+      filesArray.push(files[i]);
+    }
+
+    setImages(prevImages => [...filesArray, ...prevImages]);
+
+    const previewDIV = document.getElementById('QA-Modal-previews');
+    // while (previewDIV.firstChild) {
+    //   previewDIV.removeChild(previewDIV.lastChild);
+    // }
+
+    filesArray.forEach(imageFile => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      var image = new Image();
+      image.height = 50;
+      image.alt = 'Image to upload';
+      image.src = reader.result;
+      previewDIV.appendChild(image);
+    }
+    reader.readAsDataURL(imageFile);
+    });
   };
 
-  // const uploadImage = (base64EncodedImage) => {
-  //   axios.post(
-  //     `${localHost}/api/upload`,
-  //     { data: JSON.stringify(base64EncodedImage) },
-  //     { headers: { 'Content-Type': 'application/json' }}
-  //   )
-  //     .catch(err => console.error( 'Error posting Modal images: ', err ));
-  // };
-  const uploadImage = () => {
+  const tryAgainHandler = (e) => {
+    e.preventDefault();
+    setPreviewSources([]);
+    setImages([]);
+    // setImageURLs([]);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Uploads an image to Cloudinary
     const data = new FormData();
     data.append('file', image);
     data.append('upload_preset', 'fec_preset');
     data.append('cloud_name', cloudinary_name);
 
-    axios.post(cloudinary_url, data)
-      .then(response => response.json())
-      .then(result => setUrl(result.url))
-      .catch(err => console.error('Error posting to Cloudinary: ', err));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Uploads an image to Cloudinary
-    // uploadImage();
+    try {
+      const result = await axios.post(cloudinary_url, data);
+      setUrl(result.data.url);
+    } catch(err) {
+      console.error( 'Error posting to Cloudinary: ', err );
+    }
 
     let endpoint;
     let body = {
@@ -107,12 +116,22 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
       body.product_id = questionOrProduct_id;
     }
 
-    postModalInput(endpoint, body);
+    try {
+      const postReq = await axios.post(localHost + endpoint, body);
+      onAorQAddition();
+        // if (usage === 'addQuestion') {
+        //   onAorQAddition();
+        // } else {
+        //   axios.get(localHost + endpoint,
+        //     { params: { product_id: product_id, count: 25 }})
+        //     .then(response => {
 
-    /* ----- Handle Images on Submit ----- */
-    // if (previewSource) {
-    //   uploadImage(previewSource);
-    // }
+        //     })
+        // }
+        // }
+    } catch(err) {
+      console.error( 'Error posting from Modal: ', err )
+    }
 
     // Closes modal on Submit
     setShowModal(false);
@@ -128,13 +147,14 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
           <label htmlFor='QA-modal-body'>{title_body}<span className='QA-modal-required-input'> *</span></label><br/>
           <textarea
             id='QA-modal-body' maxLength='1000' required
-            rows='12' cols='50' name='modalBody'
+            rows='6' cols='40' name='modalBody'
           ></textarea>
 
           <br/>
           <br/>
 
-          <label htmlFor='QA-modal-nickname'>What is your nickname?<span className='QA-modal-required-input'> *</span></label><br/>
+          <label htmlFor='QA-modal-nickname'>What is your nickname?<span className='QA-modal-required-input'> *</span></label>
+          <br/>
           <input type='text' id='QA-modal-nickname' maxLength='60'
             placeholder='Example: jack543!' size='30' required name='modalNickname'
           />
@@ -142,7 +162,8 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
 
           <br/>
 
-          <label htmlFor='QA-modal-email'>Your email:<span className='QA-modal-required-input'> *</span></label><br/>
+          <label htmlFor='QA-modal-email'>Your email:<span className='QA-modal-required-input'> *</span></label>
+          <br/>
           <input
             type='email' id='QA-modal-email' maxLength='60' required
             placeholder='jack@email.com' size='30' name='modalEmail'
@@ -154,16 +175,23 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
           {usage === 'addAnswer' &&
           <>
             <label htmlFor='answer-photos'>Upload your photos (5 Max):</label><br/>
-            <input
-              type='file' id='answer-photos' onChange={handleFileInputChange}
-            />
             {
-              previewSource &&
-              <img
-                src={previewSource}
-                alt='Image to upload'
-                style={{ height: '5vh' }}
-              />
+              images.length > 5 ?
+              <div>
+                <p className='QA-modal-img-error'>{ imageErrorMsg }</p>
+                <button onClick={tryAgainHandler}>Please Try Again!</button>
+              </div>
+              :
+              <div>
+                { images.length < 5 &&
+                  <input
+                    type='file' id='answer-photos' accept='image/*'
+                    multiple onChange={handleFileInputChange}
+                  />
+                }
+                <br/>
+                <div id='QA-Modal-previews'></div>
+              </div>
             }
           </>
           }
@@ -174,7 +202,9 @@ const Modal = ({ setShowModal, usage, product_name, questionOrProduct_id, onAorQ
           <input type='submit' value={buttonText} className='QA-modal-submit-btn' />
         </form>
 
-        <button onClick={() => setShowModal(false)}>X</button>
+        <button className='QA-Modal-X-btn'
+          onClick={ () => setShowModal(false); }
+        >X</button>
       </div>
     </div>,
     document.getElementById('thumbnail-portal')
