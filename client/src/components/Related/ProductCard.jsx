@@ -45,10 +45,6 @@ const ProductCard = (props) => {
       });
   }, []);
 
-
-
-  // console.log('card', setShowModal);
-
   return (
     <div className='product-card' >
       <div className='card-frame'>
@@ -73,7 +69,7 @@ const ProductCard = (props) => {
         /><br></br>
         <StarsTile stars ={starAverage} />
       </div>
-      <button onClick={openComparisonModal}>show comparison window</button>
+      <button onClick={openComparisonModal}>Comapre Features</button>
       {showModal ? <ComparisonModal setShowModal={setShowModal} mainProductName = {props.mainProductName} mainFeatures = {props.mainFeatures} comparisonFeatures = {features} closeModal = {closeModal}/> : null}
     </div>);
 };
