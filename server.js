@@ -9,16 +9,10 @@ const headers = {
   'Authorization': token
 };
 
-const postHeaders = {
-  'Authorization': token,
-  'Content-Type': 'application/json'
-};
-
 // Middleware
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(cors());
 app.use(express.json());
-// app.use(upload.array());
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -29,13 +23,15 @@ const axiosGet = (path, response) => {
     .catch(err => console.error('Error executing Axios GET from API: ', err));
 };
 
-const axiosPut = (path, body) => {
+const axiosPut = (path, body, res) => {
   axios.put(`${url}${path}`, body, { headers })
+    .then(() => res.status(204).send(''))
     .catch(err => console.error('Error submitting PUT req (server.js): ', err));
 };
 
-const axiosPost = (path, body) => {
-  axios.post(`${url}${path}`, body, { headers: postHeaders })
+const axiosPost = (path, body, res) => {
+  axios.post(`${url}${path}`, body, { headers })
+    .then(() => res.status(201).send('Success'))
     .catch(err => console.error('Error completing POST req (server.js): ', err));
 };
 // ----- END OF HELPER FUNCTIONS ----- //
@@ -79,26 +75,26 @@ app.get('/qa/questions', (req, res) => {
 // ---------- API PUT REQUESTS ---------- //
 /* ----- Questions & Answers ----- */
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/questions/:question_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 /* ----- Ratings ----- */
 app.put('/reviews/:review_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 app.put('/reviews/:review_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 // ---------- END OF PUT REQUESTS ---------- //
 
@@ -106,28 +102,16 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 // ---------- API POST REQUESTS ---------- //
 /* ----- Reviews ----- */
 app.post('/reviews', (req, res) => {
-  axiosPost(req.url, req.body);
+  axiosPost(req.url, req.body, res);
 });
-
-// app.post('/reviews', (req, res) => {
-//   axios.post(`${url}/reviews?product_id=${req.query.product_id}`, req.body, {
-//     headers: headers
-//   })
-//     .then(results => {
-//       res.send(results.data);
-//       console.log('post data sent');
-//     })
-//     .catch(err => console.error('Improper request', err));
-// });
 
 /* ----- Questions & Answers ----- */
 app.post('/qa/questions', (req, res) => {
-  axiosPost(req.url, req.body);
-  res.send(req.body);
+  axiosPost(req.url, req.body, res);
 });
 
 app.post('/qa/questions/:question_id/answers', (req, res) => {
-  axiosPost(req.url, req.body);
+  axiosPost(req.url, req.body, res);
 });
 // ---------- END OF POST REQUESTS ---------- //
 
