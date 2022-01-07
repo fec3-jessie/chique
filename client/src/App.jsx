@@ -58,7 +58,7 @@ class App extends React.Component {
         module: findId(e.target.parentNode),
         element: e.target.outerHTML
       };
-      console.log('this is your click event', body);
+      // console.log('this is your click event', body);
 
       // create axios post to /interactions here
     });
