@@ -98,7 +98,7 @@ class QuestionCard extends React.Component {
             Object.keys(this.props.answers).length > 0) &&
               <>
                 <div className='QA-symbol-and-answers'>
-                  <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
+                  <div className='QA-symbol'>A:</div>
                   <Answers
                     answers={this.props.answers}
                     key={this.props.question_id * 3}
