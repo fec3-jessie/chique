@@ -617,6 +617,12 @@ input.QA-search-bar {
   /* max-width: 100vh; */
   margin: auto 2rem;
 }
+#QA-questions-container hr {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-style: inset;
+  width: 60%
+}
 .QA-question-card-question {
   /* border: outset; */
   display: flex;
@@ -673,7 +679,7 @@ input.QA-search-bar {
   justify-content: center;
   margin-bottom: 1rem;
 }
-.QA-card-btn-see, .QA-card-btn-collapse {
+.QA-card-btn-see, .QA-card-btn-collapse, #QA-q-display-btn, .QA-add-question-btn {
   box-sizing: border-box;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -695,16 +701,16 @@ input.QA-search-bar {
   /* text-transform: uppercase; */
   transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
-.QA-card-btn-see:hover, .QA-card-btn-collapse:hover {
+.QA-card-btn-see:hover, .QA-card-btn-collapse:hover, #QA-q-display-btn:hover, .QA-add-question-btn:hover {
   color: #fff;
   box-shadow: 0 0 40px 40px #421510 inset;
   outline: 0;
 }
 
 /* ---------- Questions Buttons ---------- */
-#QA-q-display-btn {
+/* #QA-q-display-btn {
   display: inline-block;
-}
+} */
 
 /* Ratings & Reviews Styles */
 
