@@ -37,7 +37,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/reviews', { params: { product_id: this.props.product_Id }})
+    axios.get('http://127.0.0.1:3000/reviews', { params: { product_id: this.props.product_Id }})
       .then(res => {
         this.setState({numberOfReviews: res.data.results.length});
 
@@ -49,7 +49,7 @@ class Overview extends React.Component {
         this.setState({rating: rating});
       });
 
-    axios.get(`/products/${this.props.product_Id}`)
+    axios.get(`http://127.0.0.1:3000/products/${this.props.product_Id}`)
       .then(res => {
         this.setState({productName: res.data.name});
         this.setState({productCategory: res.data.category});
