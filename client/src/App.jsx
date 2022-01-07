@@ -76,6 +76,7 @@ class App extends React.Component {
         element: e.target.outerHTML.slice(0, 25),
         widget: findId(element)
       };
+      // console.log('this is your click event', body);
 
       axios.post(`${localhost}/interactions`, body)
         .catch((err) => console.error('this is the interactions error', err));
