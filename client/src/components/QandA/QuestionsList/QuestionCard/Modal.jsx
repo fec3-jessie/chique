@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
-const localHost = 'http://127.0.0.1:3000';
+const localHost = '';
 
 const cloudinary_name = 'flightfulkiwi';
 const cloudinary_url = 'https://api.cloudinary.com/v1_1/flightfulkiwi/image/upload';

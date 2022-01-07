@@ -10,7 +10,7 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:3000/reviews/meta';
+    const url = '/reviews/meta';
     const params = {product_id: productId};
 
     const fetchMeta = async () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-const localHost = 'http://127.0.0.1:3000';
+const localHost = '';
 
 const HelpfulTracker = ({ questionOrAnswer_id, helpful, usage, reported }) => {
   const [yesCount, setYesCount] = useState(helpful);

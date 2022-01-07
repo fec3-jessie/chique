@@ -17,7 +17,7 @@ class QuestionsList extends React.Component {
   }
 
   getAllQuestions() {
-    axios.get('http://127.0.0.1:3000/qa/questions', {params: { product_id: this.props.product_id, count: 50 }})
+    axios.get('/qa/questions', {params: { product_id: this.props.product_id, count: 50 }})
       .then(returnedQuestions => {
         this.setState({
           questions: returnedQuestions.data.results,

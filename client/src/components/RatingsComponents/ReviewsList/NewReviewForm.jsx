@@ -77,7 +77,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       characteristics: characters
     };
 
-    Axios.post('http://127.0.0.1:3000/reviews', body)
+    Axios.post('/reviews', body)
       .then((response) => {
         setReviewsCount(prevState => prevState + 1);
       })
