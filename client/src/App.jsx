@@ -50,6 +50,12 @@ class App extends React.Component {
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
   }
 
+  addToOutfit () {
+    this.setState((state) => ({
+      outfit: []
+    }));
+  }
+
   handleProductNameChange (name) {
     this.setState({product_name: name});
   }
