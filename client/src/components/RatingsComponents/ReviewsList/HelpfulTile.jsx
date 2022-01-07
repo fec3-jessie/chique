@@ -1,42 +1,32 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { token } from '/config.js';
-// switch to dynamic data after testing...
-
+const { localhost } = require('/config.js');
 
 function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
   const [yesCount, setYesCount] = useState(helpfulnessCount);
   const [yesClicked, setYesClicked] = useState(false);
   const [reported, setReported] = useState(false);
-  const localHost = 'http://127.0.0.1:3000';
 
-  const reviewUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/helpful?review_id=${reviewId}`;
 
-  const postYesVote = async () => {
+  const postYesVote = () => {
     const body = {
       'helpfulness': yesCount
     };
-    const postHelpfullness = await Axios.put(reviewUrl, body, {
-      headers: {
-        'Authorization': token
+    Axios.put(`${localhost}/reviews/${reviewId}/helpful`, body, {
+      params: {
+        review_id: reviewId
       }
-    });
+    })
+      .catch((err) => console.error('error putting helpful::::', err));
   };
 
   const handleReported = () => {
-    Axios({
-      method: 'put',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${reviewId}/report?review_id=${reviewId}`,
-      headers: {
-        'Authorization': token
-      }
-    })
-    .then(() => console.log('you have reported review # ', reviewId))
-    .catch((err) => console.log('error reporting review', err));
-    setReviewsCount(prevState => prevState -1);
+    Axios.put(`${localhost}/reviews/${reviewId}/report`, {}, { params: { review_id: reviewId }})
+      .then(() => console.log('you have reported review # ', reviewId))
+      .catch((err) => console.log('error reporting review', err));
+    setReviewsCount(prevState => prevState - 1);
   };
-
 
   const handleYesClick = (e) => {
     e.preventDefault();
@@ -53,7 +43,7 @@ function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
 
   const nonReportedStyles = {
     'textDecoration': 'none'
-  }
+  };
 
   return (
     <div className='helpful-tile'>
@@ -65,17 +55,17 @@ function HelpfulTile ({helpfulnessCount, reviewId, setReviewsCount}) {
       </button>
       <p>{`( ${yesCount} ) | `}
         <span
-        className='reported'
-        onClick={() => {
-          setReported(true);
-          handleReported();
-        }}
-        style={reported ? reportedStyles : nonReportedStyles}>
+          className='reported'
+          onClick={() => {
+            setReported(true);
+            handleReported();
+          }}
+          style={reported ? reportedStyles : nonReportedStyles}>
         Report
         </span>
       </p>
     </div>
-  )
+  );
 }
 
 export default HelpfulTile;

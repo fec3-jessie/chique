@@ -4,10 +4,38 @@ import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
 import QandA from './components/QandA.jsx';
 import axios from 'axios';
-import { token, url } from '/config.js';
+const { localhost } = require('/config.js');
 
-const headers = {
-  'Authorization': token
+const findId = (element) => {
+  let id;
+  let moduleIds = {
+    'Overview': true,
+    'Related': true,
+    'QandA': true,
+    'Ratings': true,
+  };
+
+  const recurseNodeTree = (node) => {
+    if (node === null) {
+      return;
+    } else if (node.id === 'thumbnail-portal') {
+      id = 'Modal';
+    } else if (moduleIds[node.id] !== undefined) {
+      id = node.id;
+      return;
+    } else if (node.parentElement) {
+      recurseNodeTree(node.parentElement);
+    }
+  };
+  recurseNodeTree(element);
+
+  if (id === undefined && element.outerHTML.indexOf('button') > -1) {
+    id = 'Modal';
+  } else if (id === undefined && element.outerHTML.indexOf('img') > -1) {
+    id = 'Overview';
+  }
+
+  return id;
 };
 
 class App extends React.Component {
@@ -20,7 +48,6 @@ class App extends React.Component {
     this.handleProductNameChange = this.handleProductNameChange.bind(this);
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
   }
-
 
   handleProductNameChange (name) {
     this.setState({product_name: name});
@@ -36,25 +63,40 @@ class App extends React.Component {
   }
 
   render () {
+    window.addEventListener('click', function (e) {
+      let element;
+      if (e.target.parentNode === null) {
+        element = e.target;
+      } else {
+        element = e.target.parentNode;
+      }
+      let time = new Date().toLocaleString();
+      let body = {
+        time: time,
+        element: e.target.outerHTML,
+        widget: findId(element)
+      };
+
+      axios.post(`${localhost}/interactions`, body)
+        .catch((err) => console.error('this is the interactions error', err));
+
+    });
+
     return (
       <div>
-        <h1>Overview</h1>
         <Overview
           product_Id={this.state.product_Id}
           handleProductNameChange={this.handleProductNameChange}
         />
-        <h1>Related</h1>
         <Related
           product_Id={this.state.product_Id}
           product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
         />
-        <h1>QandA</h1>
         <QandA
           product_id={this.state.product_Id}
           product_name={this.state.product_name}
         />
-        <h1>Ratings</h1>
         <Ratings
           product_Id={this.state.product_Id}
           productName={this.state.product_name}

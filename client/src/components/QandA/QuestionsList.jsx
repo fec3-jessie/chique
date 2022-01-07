@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { token, url } from '/config.js';
 import QuestionCard from './QuestionsList/QuestionCard.jsx';
 import AddQuestionOrAnswer from './QuestionsList/QuestionCard/AddQuestionOrAnswer.jsx';
+const { localhost } = require('/config.js');
 
 class QuestionsList extends React.Component {
   constructor(props) {
@@ -14,17 +14,22 @@ class QuestionsList extends React.Component {
     };
     this.onMoreQuestionsClick = this.onMoreQuestionsClick.bind(this);
     this.onCollapseQuestionsClick = this.onCollapseQuestionsClick.bind(this);
+    this.onAorQAddition = this.onAorQAddition.bind(this);
   }
 
-  componentDidMount() {
-    axios.get('http://127.0.0.1:3000/qa/questions', {params: { product_id: this.props.product_id }})
+  getAllQuestions() {
+    axios.get(`${localhost}/qa/questions`, {params: { product_id: this.props.product_id, count: 50 }})
       .then(returnedQuestions => {
         this.setState({
           questions: returnedQuestions.data.results,
-          questionCounter: 2
+          questionCounter: 4
         });
       })
       .catch(err => console.error('Error receiving response (QuestionsList.jsx): ', err));
+  }
+
+  componentDidMount() {
+    this.getAllQuestions();
   }
 
   componentDidUpdate() {
@@ -49,8 +54,13 @@ class QuestionsList extends React.Component {
 
   onCollapseQuestionsClick() {
     this.setState({
-      questionCounter: 2
+      questionCounter: 4
     });
+  }
+
+  onAorQAddition() {
+    console.log('Message received. Spin the wheel again from QL.jsx L62');
+    this.getAllQuestions();
   }
 
   render() {
@@ -86,13 +96,14 @@ class QuestionsList extends React.Component {
                   reported={item.reported}
                   question_id={item.question_id}
                   product_name={this.props.product_name}
+                  onAorQAddition={this.onAorQAddition}
                 />
               );
             }
           })}
         </div>
-        <div id='QA-qestionsBtns-container'>
-          {this.state.questions.length <= 2
+        <div id='QA-questionsBtns-container'>
+          {this.state.questions.length <= 4
             ? null :
             this.state.questions.length === this.state.questionCounter
               ? <button id='QA-q-display-btn' onClick={this.onCollapseQuestionsClick}>Collapse Answered Questions</button>
@@ -103,6 +114,7 @@ class QuestionsList extends React.Component {
             questionOrProduct_id={this.props.product_id}
             product_name={this.props.product_name}
             usage={'addQuestion'}
+            onAorQAddition={this.onAorQAddition}
           />
         </div>
       </>

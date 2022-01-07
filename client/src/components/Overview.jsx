@@ -2,12 +2,13 @@ import React from 'react';
 import StarRating from './OverviewComponents/StarRating.jsx';
 import Reviews from './OverviewComponents/Reviews.jsx';
 import axios from 'axios';
-import {token} from '/config.js';
 import StyleSelector from './OverviewComponents/StyleSelector.jsx';
 import AddToCart from './OverviewComponents/AddToCart.jsx';
 import ProductDescription from './OverviewComponents/ProductDescription.jsx';
 import ImageGallery from './OverviewComponents/ImageGallery.jsx';
 import MainImage from './OverviewComponents/MainImage.jsx';
+import ExpandedView from './OverviewComponents/ExpandedView.jsx';
+const { localhost } = require('/config.js');
 
 class Overview extends React.Component {
   constructor(props) {
@@ -30,17 +31,14 @@ class Overview extends React.Component {
       validATC: null,
       productDescription: null,
       productSlogan: null,
-      salePrice: null
+      salePrice: null,
+      expandedView: null
 
     };
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40349', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get(`${localhost}/reviews`, { params: { product_id: this.props.product_Id }})
       .then(res => {
         this.setState({numberOfReviews: res.data.results.length});
 
@@ -52,11 +50,7 @@ class Overview extends React.Component {
         this.setState({rating: rating});
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get(`${localhost}/products/${this.props.product_Id}`)
       .then(res => {
         this.setState({productName: res.data.name});
         this.setState({productCategory: res.data.category});
@@ -66,11 +60,7 @@ class Overview extends React.Component {
 
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349/styles', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get(`${localhost}/products/${this.props.product_Id}/styles`)
       .then(res => {
         // maintain styles API results in state, so that I can use it later in lifecycle
         this.setState({results: res.data.results});
@@ -188,21 +178,39 @@ class Overview extends React.Component {
     }
   }
 
+  showExpandedView() {
+    this.setState({expandedView: true});
+  }
 
+  handleCircleClick() {
+    console.log('a');
 
+  }
+
+  handleExpandedImageClose(e) {
+    this.setState({expandedView: null});
+  }
 
   render () {
 
     return (
-      <div>
+      <div id='Overview'>
 
         <div className = 'overview-container'>
 
           <div className = 'image-gallery-container'>
-            <ImageGallery
+            <ImageGallery expandedView = {this.state.expandedView}
+              showExpandedView = {this.showExpandedView.bind(this)}
               length = {this.state.images ? this.state.images[Number(this.state.selectedStyle)].length : ''}
-              selectedStyle = {this.state.selectedStyle} images = {this.state.images} />
+              selectedStyle = {this.state.selectedStyle}
+              images = {this.state.images} />
           </div>
+
+          <ExpandedView images = {this.state.images}
+            handleExpandedImageClose = {this.handleExpandedImageClose.bind(this)}
+            handleCircleClick = {this.handleCircleClick.bind(this)}
+            selectedStyle = {this.state.selectedStyle}
+            expandedView = {this.state.expandedView}/>
 
           <div className = 'info-container'>
             <StarRating rating ={this.state.rating}/>

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import ReviewsSidebar from './RatingsComponents/ReviewsSidebar/ReviewsSidebar.jsx';
 import ReviewsList from '../components/RatingsComponents/ReviewsList/ReviewsList.jsx';
+const { localhost } = require('/config.js');
 
 function Ratings ({product_Id, productName}) {
   const [productReviews, setProductReviews] = useState({});
@@ -21,7 +22,7 @@ function Ratings ({product_Id, productName}) {
 
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/reviews`;
+    const url = `${localhost}/reviews`;
     const params = {product_id: product_Id, count: 50, sort: sort};
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
@@ -38,7 +39,7 @@ function Ratings ({product_Id, productName}) {
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:3000/reviews/meta';
+    const url = `${localhost}/reviews/meta`;
     const params = {product_id: product_Id};
 
     const fetchMeta = async () => {
@@ -78,12 +79,9 @@ function Ratings ({product_Id, productName}) {
     }
   }, [starsFilter]);
 
-  const handleChangeSort = (sortedBy) => {
-    setSort(sortedBy);
-  };
 
   return (
-    <div id = 'reviews'>
+    <div id='Ratings'>
       <div className='reviews'>
         <h3>{`Ratings & Reviews`}</h3>
         <div className='reviews-features'>
@@ -93,6 +91,7 @@ function Ratings ({product_Id, productName}) {
               setStarsClicked={setStarsClicked}
               starsClicked={starsClicked}
               reviewsCount={reviewsCount}
+              reviews={reviews}
               productId={productReviews.product}/> : null}
           <ReviewsList
             starsClicked={starsClicked}
@@ -103,7 +102,8 @@ function Ratings ({product_Id, productName}) {
             reviews={reviews}
             characteristics={characteristics}
             product_Id={product_Id}
-            handleChangeSort={handleChangeSort}
+            sort={sort}
+            setSort={setSort}
             setReviewsCount={setReviewsCount}
             reviewsCount={reviewsCount}/>
         </div>

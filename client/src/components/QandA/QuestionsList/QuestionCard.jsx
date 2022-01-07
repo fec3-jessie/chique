@@ -74,9 +74,9 @@ class QuestionCard extends React.Component {
 
   render() {
     return (
-      <div id='QA-question-card'>
-        <div id='QA-question-card-question'>
-          <div className='QA-symbol'>Q:&nbsp;&nbsp;</div>
+      <div className='QA-question-card'>
+        <div className='QA-question-card-question'>
+          <div className='QA-symbol'>Q:</div>
           <QuestionBody
             body={this.props.body}
             onAccordionClick={this.onAccordionClick}
@@ -88,16 +88,17 @@ class QuestionCard extends React.Component {
             reported={this.props.reported}
             question_id={this.props.question_id}
             product_name={this.props.product_name}
+            onAorQAddition={this.props.onAorQAddition}
           />
         </div>
 
-        <div id='QA-question-card-answers'>
+        <div className='QA-question-card-answers'>
           {
             (this.state.accordionDisplay &&
             Object.keys(this.props.answers).length > 0) &&
               <>
                 <div className='QA-symbol-and-answers'>
-                  <div className='QA-symbol QA-answer-symbol'>A:&nbsp;&nbsp;</div>
+                  <div className='QA-symbol'>A:</div>
                   <Answers
                     answers={this.props.answers}
                     key={this.props.question_id * 3}

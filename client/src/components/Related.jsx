@@ -8,7 +8,7 @@ class Related extends React.Component {
   }
 
   render () {
-    return (<div>
+    return (<div id='Related'>
       <RelatedProducts
         relatedClickHandler = {this.props.relatedClickHandler}
         product_Id = {this.props.product_Id}
