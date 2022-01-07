@@ -52,9 +52,9 @@ class ExpandedView extends React.Component {
 
   render () {
 
-    if (this.props.images) {
-      this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
-    }
+    // if (this.props.images) {
+    //   this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
+    // }
 
 
     return ReactDom.createPortal(
