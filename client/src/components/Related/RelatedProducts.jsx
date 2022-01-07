@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {token} from '/config.js';
 import ProductCard from './ProductCard.jsx';
 const url = 'http://localhost:3000';
 
