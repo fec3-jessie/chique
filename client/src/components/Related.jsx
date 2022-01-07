@@ -15,7 +15,7 @@ class Related extends React.Component {
         mainProductName = {this.props.product_name}/>
       <YourOutfit
         outfit = {this.props.outfit}
-        addToOutfit = {this.state.addToOutfit}
+        addToOutfit = {this.props.addToOutfit}
       />
     </div>);
   }
