@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
+const { localhost } = require('/config.js');
 
 function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id, reviewsCount, setReviewsCount}) {
   const factorGrades = {
@@ -77,7 +78,7 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       characteristics: characters
     };
 
-    Axios.post('http://127.0.0.1:3000/reviews', body)
+    Axios.post(`${localhost}/reviews`, body)
       .then((response) => {
         setReviewsCount(prevState => prevState + 1);
       })
