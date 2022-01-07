@@ -16,9 +16,9 @@ class ImageGallery extends React.Component {
 
   handleLeftArrow() {
 
-    if (this.state.currentIndex === 0) {
-      return;
-    }
+    // if (this.state.currentIndex === 0) {
+    //   return;
+    // }
 
     var length = this.props.images[Number(this.props.selectedStyle)].length;
     if (this.state.currentIndex === 0) {
