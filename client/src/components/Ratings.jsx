@@ -38,7 +38,7 @@ function Ratings ({product_Id, productName}) {
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = '/reviews/meta';
+    const url = 'http://127.0.0.1:3000/reviews/meta';
     const params = {product_id: product_Id};
 
     const fetchMeta = async () => {

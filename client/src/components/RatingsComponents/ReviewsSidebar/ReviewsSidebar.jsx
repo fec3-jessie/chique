@@ -10,7 +10,7 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
-    const url = '/reviews/meta';
+    const url = 'http://127.0.0.1:3000/reviews/meta';
     const params = {product_id: productId};
 
     const fetchMeta = async () => {
@@ -23,25 +23,25 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount
     fetchMeta();
   }, [reviewsCount, reviews]);
 
-    const renderComponents = () => {
-      return (
-        <div className='sidebar-components'>
-          <AverageRating ratings={productMetaData.ratings}/>
-          <PercentRecommended recommended={productMetaData.recommended}/>
-          <RatingBreakdown ratings={productMetaData.ratings}
-            setStarsClicked={setStarsClicked}
-            starsClicked={starsClicked}/>
-          <RatingFactors characteristics={productMetaData.characteristics} />
-        </div>
-      )
-    };
+  const renderComponents = () => {
+    return (
+      <div className='sidebar-components'>
+        <AverageRating ratings={productMetaData.ratings}/>
+        <PercentRecommended recommended={productMetaData.recommended}/>
+        <RatingBreakdown ratings={productMetaData.ratings}
+          setStarsClicked={setStarsClicked}
+          starsClicked={starsClicked}/>
+        <RatingFactors characteristics={productMetaData.characteristics} />
+      </div>
+    );
+  };
 
   return (
     <div className='reviews-sidebar'>
       {productMetaData.ratings !== undefined ?
         renderComponents() : null}
     </div>
-  )
+  );
 }
 
 export default ReviewsSidebar;
