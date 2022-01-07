@@ -38,7 +38,6 @@ const findId = (element) => {
 
   return id;
 };
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -74,7 +73,7 @@ class App extends React.Component {
       let time = new Date().toLocaleString();
       let body = {
         time: time,
-        element: e.target.outerHTML,
+        element: e.target.outerHTML.slice(0, 25),
         widget: findId(element)
       };
 
@@ -92,6 +91,7 @@ class App extends React.Component {
         />
         <Related
           product_Id={this.state.product_Id}
+          product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
         />
         <QandA
