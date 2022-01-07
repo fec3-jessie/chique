@@ -4,7 +4,7 @@ import HelpfulTracker from '../HelpfulTracker.jsx';
 
 const options = { month: 'long', day: 'numeric', year: 'numeric' };
 
-const QuestionDetails = ({ asker, date, helpful, reported, question_id, product_name }) => {
+const QuestionDetails = ({ asker, date, helpful, reported, question_id, product_name, onAorQAddition }) => {
   const newDate = new Date(date).toLocaleDateString('default', options);
 
   return (
@@ -15,6 +15,7 @@ const QuestionDetails = ({ asker, date, helpful, reported, question_id, product_
         questionOrProduct_id={question_id}
         product_name={product_name}
         usage={'addAnswer'}
+        onAorQAddition={onAorQAddition}
       />
     </section>
   );

@@ -6,7 +6,7 @@ import PercentRecommended from './PercentRecommended.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import RatingFactors from './RatingFactors.jsx';
 
-function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount}) {
+function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount, reviews}) {
   const [productMetaData, setProductMetaData] = useState({});
 
   useEffect(() => {
@@ -21,27 +21,27 @@ function ReviewsSidebar ({productId, starsClicked, setStarsClicked, reviewsCount
       setProductMetaData(data);
     };
     fetchMeta();
-  }, [reviewsCount]);
+  }, [reviewsCount, reviews]);
 
-    const renderComponents = () => {
-      return (
-        <div className='sidebar-components'>
-          <AverageRating ratings={productMetaData.ratings}/>
-          <PercentRecommended recommended={productMetaData.recommended}/>
-          <RatingBreakdown ratings={productMetaData.ratings}
-            setStarsClicked={setStarsClicked}
-            starsClicked={starsClicked}/>
-          <RatingFactors characteristics={productMetaData.characteristics} />
-        </div>
-      )
-    };
+  const renderComponents = () => {
+    return (
+      <div className='sidebar-components'>
+        <AverageRating ratings={productMetaData.ratings}/>
+        <PercentRecommended recommended={productMetaData.recommended}/>
+        <RatingBreakdown ratings={productMetaData.ratings}
+          setStarsClicked={setStarsClicked}
+          starsClicked={starsClicked}/>
+        <RatingFactors characteristics={productMetaData.characteristics} />
+      </div>
+    );
+  };
 
   return (
     <div className='reviews-sidebar'>
       {productMetaData.ratings !== undefined ?
         renderComponents() : null}
     </div>
-  )
+  );
 }
 
 export default ReviewsSidebar;

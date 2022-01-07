@@ -2,7 +2,6 @@ import React from 'react';
 import StarRating from './OverviewComponents/StarRating.jsx';
 import Reviews from './OverviewComponents/Reviews.jsx';
 import axios from 'axios';
-import {token} from '/config.js';
 import StyleSelector from './OverviewComponents/StyleSelector.jsx';
 import AddToCart from './OverviewComponents/AddToCart.jsx';
 import ProductDescription from './OverviewComponents/ProductDescription.jsx';
@@ -38,11 +37,7 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40349', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get('http://127.0.0.1:3000/reviews', { params: { product_id: this.props.product_Id }})
       .then(res => {
         this.setState({numberOfReviews: res.data.results.length});
 
@@ -54,11 +49,7 @@ class Overview extends React.Component {
         this.setState({rating: rating});
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get(`http://127.0.0.1:3000/products/${this.props.product_Id}`)
       .then(res => {
         this.setState({productName: res.data.name});
         this.setState({productCategory: res.data.category});
@@ -68,11 +59,7 @@ class Overview extends React.Component {
 
       });
 
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40349/styles', {
-      headers: {
-        authorization: token
-      }
-    })
+    axios.get(`http://127.0.0.1:3000/products/${this.props.product_Id}/styles`)
       .then(res => {
         // maintain styles API results in state, so that I can use it later in lifecycle
         this.setState({results: res.data.results});
@@ -206,7 +193,7 @@ class Overview extends React.Component {
   render () {
 
     return (
-      <div>
+      <div id='Overview'>
 
         <div className = 'overview-container'>
 

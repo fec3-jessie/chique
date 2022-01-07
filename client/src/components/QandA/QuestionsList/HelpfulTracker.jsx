@@ -20,13 +20,6 @@ const HelpfulTracker = ({ questionOrAnswer_id, helpful, usage, reported }) => {
     if (yesClicked === false) {
       endpoint = `/qa/${usage}s/${questionOrAnswer_id}/helpful`;
       body = { question_helpfulness: yesCount + 1 };
-      // if (usage === 'answer') {
-      //   endpoint = `/qa/answers/${questionOrAnswer_id}/helpful`;
-      //   body = { helpfulness: yesCount + 1 };
-      // } else if (usage === 'question') {
-      //   endpoint = `/qa/questions/${questionOrAnswer_id}/helpful`;
-      //   body = { question_helpfulness: yesCount + 1 };
-      // }
       setYesCount(prevYesCount => prevYesCount + 1);
       setYesClicked(true);
       updateYesOrReport(endpoint, body);
@@ -39,13 +32,6 @@ const HelpfulTracker = ({ questionOrAnswer_id, helpful, usage, reported }) => {
     if (reportClicked === false) {
       endpoint = `/qa/${usage}s/${questionOrAnswer_id}/report`;
       body = { reported: 'Reported' };
-      // if (usage === 'question') {
-      //   endpoint = `/qa/questions/${questionOrAnswer_id}/report`;
-      //   body = { reported: 'Reported' };
-      // } else if (usage === 'answer') {
-      //   endpoint = `/qa/answers/${questionOrAnswer_id}/report`;
-      //   body = { reported: 'Reported' };
-      // }
       setReportState('Reported');
       setReportClicked(true);
       updateYesOrReport(endpoint, body);

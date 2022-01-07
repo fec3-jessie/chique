@@ -590,10 +590,29 @@ img.related-img {
 }
 
 /* ---------- SEARCH BAR ---------- */
-#QA-search-bar, #QA-section-title {
+#QA-section-title {
+  text-align: center;
+}
+
+#QA-search-bar {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+}
+input.QA-search-bar {
+  text-align: center;
+  border-radius: 0.6em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  margin: 15px;
+  width: 45vw;
+  padding: 5px 5px 5px 5px;
+  font-size: 16px;
+  border: transparent;
+  height: 34px;
+}
+::placeholder {
+  color: #000;
 }
 
 /* ---------- MODAL Handler ---------- */
@@ -609,7 +628,6 @@ img.related-img {
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
-
 .QA-modal-content {
   z-index: 1;
   width: 35%;
@@ -623,8 +641,7 @@ img.related-img {
   position: relative;
   animation: animate 0.3s;
 }
-
-.QA-modal-content button {
+.QA-modal-content .QA-Modal-X-btn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -637,10 +654,16 @@ img.related-img {
   border-radius: 2px; */
   cursor: pointer;
 }
-
 #QA-modal-disclaimer {
   font-size: smaller;
   margin: 0;
+}
+.QA-modal-required-input {
+  color: red;
+  font-weight: bold;
+}
+.QA-modal-img-error {
+  color: red;
 }
 
 /* ---------- QUESTIONSLIST ---------- */
@@ -689,7 +712,7 @@ img.related-img {
   font-size: smaller;
   margin: auto 1em 1em;
 }
-#QA-qestionsBtns-container {
+#QA-questionsBtns-container {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
@@ -711,22 +734,27 @@ img.related-img {
   padding-left: 5px;
   padding-top: 5px;
 }
+.reviews h3 {
+  padding-left: 2%;
+}
 .reviews-features{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .reviews-sidebar {
 max-width: 36%;
 flex-grow: 1;
+margin-left: 2%;
 }
 .reviews-list {
 max-width: 64%;
 flex-grow: 3;
+margin-left: 2%;
 }
 .sorted-drop-down{
   padding-bottom: 10px;
-  padding-left: 5px;
+  padding-left: 45px;
 }
 div.sorted-drop-down label {
   font-weight: 700;
@@ -762,9 +790,14 @@ div.sorted-drop-down label {
   align-items: baseline;
 }
 .body-tile {
+  display: flex;
+  flex-direction: column;
   text-align:justify;
-  text-justify: distribute-all-lines;
+  width: 100%;
   color: rgb(12, 12, 12);
+}
+.body-tile p{
+  align-items: flex-end;
 }
 .body-summary-tile {
   font-weight: bold;
@@ -821,12 +854,7 @@ div.sorted-drop-down label {
   border-radius: 0.6em;
   color: #131111;
   cursor: pointer;
-  /* display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox; */
   display: flex;
-  /* -webkit-align-self: center;
-      -ms-flex-item-align: center; */
   align-self: center;
   font-size: 1rem;
   font-weight: 400;
@@ -855,17 +883,20 @@ div.sorted-drop-down label {
 /* -------------------------
     Thumbnail & Modal
 --------------------------- */
-
-.review-thumbnail .img-container {
+.review-thumbnail-container {
+  display: flex;
+  flex-direction: row;
+}
+.img-container {
   float: left;
-  width: 12%;
+  width: 45%;
   margin: 0.83%;
   overflow: hidden;
 }
-.img-container{
-  width: 75%;
-  height: 75%;
-}
+/* .img-container{
+  width: 65%;
+  height: 65%;
+} */
 .img-container:hover {
   cursor: zoom-in;
 }
@@ -954,13 +985,6 @@ div.sorted-drop-down label {
 --------------------------- */
 
 .yes-button {
-  /*
-  border-radius: 10%;
-  padding-right: 5px;
-  padding-left: 5px;
-  margin-right: 3px;
-  margin-left: 3px;
-  font-weight:600; */
   background-color: rgba(255, 255, 255, 0.90);
   border-radius: 0.6em;
   font-family: 'Raleway', sans-serif;
@@ -1013,7 +1037,6 @@ div.sorted-drop-down label {
   width: 70%;
 }
 .form-modal button {
-  /* position:relative; */
   padding: 8px 11px;
   background: crimson;
   color: white;
@@ -1053,6 +1076,7 @@ button.modal-close {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2%;
 }
 .form__title {
   font-size: 40px;
@@ -1134,17 +1158,20 @@ button.modal-close {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 2%;
 }
 #submit-review {
   margin-top: 8%;
   margin-left: 4%;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
+  border-radius: 0.6em;
 }
 #submit-photo {
   margin-top: 8%;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
+  border-radius: 0.6em;
 }
 #characteristics {
   margin-top: 0;
@@ -1168,6 +1195,43 @@ button.modal-close {
 .factor__label {
   margin-right: 5px;
 }
+.upload-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2px;
+  margin-bottom: 5px;;
+}
+button.upload  {
+  font-family: 'Raleway', sans-serif;
+  padding: 8px 11px;
+  background: crimson;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 0.6em;
+  cursor: pointer;
+  width: 20vw;
+  height: 3.3vh;
+}
+.photo-upload {
+  text-align: baseline;
+  /* justify-content: center; */
+  margin-right: 2%;
+  font-family: 'Raleway', sans-serif;
+  padding: 8px 11px;
+  background: crimson;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  width: 10vw;
+  height: 2vh;
+  cursor: pointer;
+  border-radius: 0.6em;
+}
+
 
 /* -------------------------
     Ratings & Reviews SideBar
@@ -1181,18 +1245,24 @@ button.modal-close {
 }
 .numerical-rating {
   order:1;
-  align-self: flex-start;
+  align-self: center;
   padding-right: 5px;
   font-weight:600;
   font-size: 6em;
+}
+.sidebar-components .stars-tile {
+  order: 2;
+  font-size: 28px;
+  align-self: center;
+  padding-left: 10px;
 }
 .stars-average {
   order: 2;
   align-content: center;
 }
 .percent-recommendation {
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding-top: 4%;
+  padding-bottom: 4%;
 }
 .stars-breakdown-container {
   padding-bottom: 5%;
@@ -1201,9 +1271,10 @@ button.modal-close {
 .stars-bar-container {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
   gap: 5px;
+  padding-bottom: 2%;
 }
 
 .factors-breakdown-container {
