@@ -14,9 +14,25 @@ class ExpandedView extends React.Component {
     };
   }
 
-  componentDidMount() {
+  // componentWillUpdate() {
 
-  }
+  //   if (this.props.images) {
+  //     this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
+  //   }
+
+
+  // }
+
+  // componentWillUpdate() {
+
+  //   if (this.props.images) {
+  //     this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
+  //   }
+
+
+  // }
+
+
 
   handleLeftArrowExpanded() {
     var length = this.props.images[Number(this.props.selectedStyle)].length;
@@ -52,9 +68,6 @@ class ExpandedView extends React.Component {
 
   render () {
 
-    // if (this.props.images) {
-    //   this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
-    // }
 
 
     return ReactDom.createPortal(

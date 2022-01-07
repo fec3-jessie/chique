@@ -31,7 +31,8 @@ class Overview extends React.Component {
       productDescription: null,
       productSlogan: null,
       salePrice: null,
-      expandedView: null
+      expandedView: null,
+      currentIndex: 0
 
     };
   }
@@ -199,6 +200,7 @@ class Overview extends React.Component {
 
           <div className = 'image-gallery-container'>
             <ImageGallery expandedView = {this.state.expandedView}
+              currentIndex = {this.state.currentIndex}
               showExpandedView = {this.showExpandedView.bind(this)}
               length = {this.state.images ? this.state.images[Number(this.state.selectedStyle)].length : ''}
               selectedStyle = {this.state.selectedStyle}
@@ -206,6 +208,7 @@ class Overview extends React.Component {
           </div>
 
           <ExpandedView images = {this.state.images}
+            currentIndex = {this.state.currentIndex}
             handleExpandedImageClose = {this.handleExpandedImageClose.bind(this)}
             handleCircleClick = {this.handleCircleClick.bind(this)}
             selectedStyle = {this.state.selectedStyle}
