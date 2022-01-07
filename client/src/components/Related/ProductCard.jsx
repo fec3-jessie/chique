@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {token} from '/config.js';
 import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import PriceLine from './PriceLine.jsx';
-const url = 'http://localhost:3000';
+const { localhost } = require('/config.js');
 
 const ProductCard = (props) => {
   const item = props.product;
@@ -21,14 +20,14 @@ const ProductCard = (props) => {
     }
   };
   useEffect(() => {
-    axios.get(`${url}/products/${item.id}/styles`)
+    axios.get(`${localhost}/products/${item.id}/styles`)
       .then(res => {
         let styles = res.data.results;
         const [style] = styles.filter(style => style['default?'] === true);
         setDefaultStyle(style);
       })
       .then(() => {
-        axios.get(`${url}/reviews/meta?product_id=${item.id}`)
+        axios.get(`${localhost}/reviews/meta?product_id=${item.id}`)
           .then(res => {
             const ratings = res.data.ratings;
             let [score, reviews] = [0, 0];
@@ -41,7 +40,7 @@ const ProductCard = (props) => {
           });
       })
       .then(() => {
-        axios.get(`${url}/products/${item.id}`)
+        axios.get(`${localhost}/products/${item.id}`)
           .then(res => setFeatures(res.data.features));
       });
   }, []);

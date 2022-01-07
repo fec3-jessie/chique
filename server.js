@@ -13,7 +13,6 @@ const headers = {
 app.use(express.static(path.join(__dirname, '..', 'client/dist')));
 app.use(cors());
 app.use(express.json());
-// app.use(upload.array());
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -24,14 +23,15 @@ const axiosGet = (path, response) => {
     .catch(err => console.error('Error executing Axios GET from API: ', err));
 };
 
-const axiosPut = (path, body) => {
+const axiosPut = (path, body, res) => {
   axios.put(`${url}${path}`, body, { headers })
+    .then(() => res.status(204).send(''))
     .catch(err => console.error('Error submitting PUT req (server.js): ', err));
 };
 
 const axiosPost = (path, body, res) => {
   axios.post(`${url}${path}`, body, { headers })
-    .then(() => res.status(201).send('success'))
+    .then(() => res.status(201).send('Success'))
     .catch(err => console.error('Error completing POST req (server.js): ', err));
 };
 // ----- END OF HELPER FUNCTIONS ----- //
@@ -75,26 +75,26 @@ app.get('/qa/questions', (req, res) => {
 // ---------- API PUT REQUESTS ---------- //
 /* ----- Questions & Answers ----- */
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/questions/:question_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 /* ----- Ratings ----- */
 app.put('/reviews/:review_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 app.put('/reviews/:review_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 // ---------- END OF PUT REQUESTS ---------- //
 

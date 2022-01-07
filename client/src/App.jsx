@@ -4,6 +4,7 @@ import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
 import QandA from './components/QandA.jsx';
 import axios from 'axios';
+const { localhost } = require('/config.js');
 
 const findId = (element) => {
   let id;
@@ -76,7 +77,7 @@ class App extends React.Component {
         widget: findId(element)
       };
 
-      axios.post('http://127.0.0.1:3000/interactions', body)
+      axios.post(`${localhost}/interactions`, body)
         .then(() => console.log('posted to interactions'))
         .catch((err) => console.error('this is the interactions error', err));
 
