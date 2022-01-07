@@ -9,8 +9,13 @@ class ExpandedView extends React.Component {
     super(props);
     this.state = {
       currentIndex: 0,
-      zoomView: null
+      zoomView: null,
+      imageURL: null
     };
+  }
+
+  componentDidMount() {
+
   }
 
   handleLeftArrowExpanded() {
@@ -46,8 +51,9 @@ class ExpandedView extends React.Component {
 
 
   render () {
-    if (this.props.images) {
 
+    if (this.props.images) {
+      this.setState({imageURL: this.props.images[Number(this.props.selectedStyle)][this.state.currentIndex].url});
     }
 
 
