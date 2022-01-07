@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
-const { url, token } = require('/config.js');
 
 function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristics, product_Id, reviewsCount, setReviewsCount}) {
   const factorGrades = {
@@ -38,10 +37,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
     const formData = new FormData();
     formData.append('file', imageSelected);
     formData.append('upload_preset', 'kbc6kwjc');
-    // console.log('clicked');
     Axios.post('https://api.cloudinary.com/v1_1/dg6a907c2/image/upload', formData)
       .then((res) => {
-        // console.log('this is the cloudinary post response', res.data.secure_url);
         setPhotos(prevState => [res.data.secure_url, ...prevState]);
         e.target.innerText = 'Loaded';
         e.target.style.backgroundColor = 'green';
@@ -80,16 +77,8 @@ function NewReviewForm ({factors, productName, closeModalOnSubmit, characteristi
       characteristics: characters
     };
 
-    Axios({
-      url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
-      method: 'post',
-      headers: {
-        'Authorization': token,
-      },
-      data: body,
-    })
+    Axios.post('http://127.0.0.1:3000/reviews', body)
       .then((response) => {
-        // console.log('this is the post reponse::', response);
         setReviewsCount(prevState => prevState + 1);
       })
       .catch((err) => console.log('oops, couldnt post form', err));

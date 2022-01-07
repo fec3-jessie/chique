@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {token} from '/config.js';
 import StarsTile from '/client/src/components/RatingsComponents/ReviewsList/StarsTile.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
 import PriceLine from './PriceLine.jsx';
