@@ -43,7 +43,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       product_Id: 40344,
-      product_name: 'Camo Onesie'
+      product_name: 'Camo Onesie',
+      outfit: [40344],
     };
     this.handleProductNameChange = this.handleProductNameChange.bind(this);
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
@@ -76,6 +77,7 @@ class App extends React.Component {
         element: e.target.outerHTML.slice(0, 25),
         widget: findId(element)
       };
+      // console.log('this is your click event', body);
 
       axios.post(`${localhost}/interactions`, body)
         .catch((err) => console.error('this is the interactions error', err));
@@ -93,6 +95,7 @@ class App extends React.Component {
           product_Id={this.state.product_Id}
           product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
+          outfit={this.state.outfit}
         />
         <QandA
           product_id={this.state.product_Id}
