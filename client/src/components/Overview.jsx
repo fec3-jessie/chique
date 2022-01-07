@@ -59,7 +59,7 @@ class Overview extends React.Component {
 
       });
 
-    axios.get(`/products/${this.props.product_Id}/styles`)
+    axios.get(`http://127.0.0.1:3000/products/${this.props.product_Id}/styles`)
       .then(res => {
         // maintain styles API results in state, so that I can use it later in lifecycle
         this.setState({results: res.data.results});
