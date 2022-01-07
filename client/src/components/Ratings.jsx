@@ -21,7 +21,7 @@ function Ratings ({product_Id, productName}) {
 
 
   useEffect(() => {
-    const url = `/reviews`;
+    const url = `http://127.0.0.1:3000/reviews`;
     const params = {product_id: product_Id, count: 50, sort: sort};
     const fetchReviews = async () => {
       const getReviews = await Axios.get(url, {
@@ -38,7 +38,7 @@ function Ratings ({product_Id, productName}) {
   const [factors, setFactors] = useState([]);
 
   useEffect(() => {
-    const url = '/reviews/meta';
+    const url = 'http://127.0.0.1:3000/reviews/meta';
     const params = {product_id: product_Id};
 
     const fetchMeta = async () => {
