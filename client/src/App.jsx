@@ -78,7 +78,6 @@ class App extends React.Component {
       };
 
       axios.post(`${localhost}/interactions`, body)
-        .then(() => console.log('posted to interactions'))
         .catch((err) => console.error('this is the interactions error', err));
 
     });
