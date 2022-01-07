@@ -29,8 +29,9 @@ const axiosGet = (path, response) => {
     .catch(err => console.error('Error executing Axios GET from API: ', err));
 };
 
-const axiosPut = (path, body) => {
+const axiosPut = (path, body, res) => {
   axios.put(`${url}${path}`, body, { headers })
+    .then(() => res.status(204).send('Success'))
     .catch(err => console.error('Error submitting PUT req (server.js): ', err));
 };
 
@@ -95,10 +96,10 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
 });
 /* ----- Ratings ----- */
 app.put('/reviews/:review_id/report', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 app.put('/reviews/:review_id/helpful', (req, res) => {
-  axiosPut(req.url, req.body);
+  axiosPut(req.url, req.body, res);
 });
 // ---------- END OF PUT REQUESTS ---------- //
 
