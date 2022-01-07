@@ -13,9 +13,8 @@ const ComparisonModal = (props) => {
   return ReactDom.createPortal(
     <div className='pic-modal-container' ref ={modalRef}
       onClick={closeModal}>
-      {/* <button onClick={closeModal}>X</button> */}
       <div className='comparison-modal'>
-        <ComparisonTable mainFeatures = {props.mainFeatures} comparisonFeatures = {props.comparisonFeatures} />
+        <ComparisonTable mainFeatures = {props.mainFeatures} comparisonFeatures = {props.comparisonFeatures} mainProductName = {props.mainProductName}/>
       </div>
     </div>,
     document.getElementById('thumbnail-portal')

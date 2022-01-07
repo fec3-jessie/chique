@@ -90,6 +90,7 @@ class App extends React.Component {
         />
         <Related
           product_Id={this.state.product_Id}
+          product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
         />
         <QandA
