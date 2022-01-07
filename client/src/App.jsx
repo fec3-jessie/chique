@@ -1,9 +1,11 @@
 import React from 'react';
+import Title from './components/Title.jsx';
 import Overview from './components/Overview.jsx';
 import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
 import QandA from './components/QandA.jsx';
 import axios from 'axios';
+const { localhost } = require('/config.js');
 
 const findId = (element) => {
   let id;
@@ -15,7 +17,11 @@ const findId = (element) => {
   };
 
   const recurseNodeTree = (node) => {
-    if (moduleIds[node.id] !== undefined) {
+    if (node === null) {
+      return;
+    } else if (node.id === 'thumbnail-portal') {
+      id = 'Modal';
+    } else if (moduleIds[node.id] !== undefined) {
       id = node.id;
       return;
     } else if (node.parentElement) {
@@ -23,9 +29,15 @@ const findId = (element) => {
     }
   };
   recurseNodeTree(element);
+
+  if (id === undefined && element.outerHTML.indexOf('button') > -1) {
+    id = 'Modal';
+  } else if (id === undefined && element.outerHTML.indexOf('img') > -1) {
+    id = 'Overview';
+  }
+
   return id;
 };
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -52,25 +64,35 @@ class App extends React.Component {
 
   render () {
     window.addEventListener('click', function (e) {
+      let element;
+      if (e.target.parentNode === null) {
+        element = e.target;
+      } else {
+        element = e.target.parentNode;
+      }
       let time = new Date().toLocaleString();
       let body = {
         time: time,
-        module: findId(e.target.parentNode),
-        element: e.target.outerHTML
+        element: e.target.outerHTML.slice(0, 25),
+        widget: findId(element)
       };
       // console.log('this is your click event', body);
 
-      // create axios post to /interactions here
+      axios.post(`${localhost}/interactions`, body)
+        .catch((err) => console.error('this is the interactions error', err));
+
     });
 
     return (
       <div>
+        <Title />
         <Overview
           product_Id={this.state.product_Id}
           handleProductNameChange={this.handleProductNameChange}
         />
         <Related
           product_Id={this.state.product_Id}
+          product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
         />
         <QandA
