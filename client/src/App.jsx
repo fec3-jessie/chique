@@ -1,4 +1,5 @@
 import React from 'react';
+import Title from './components/Title.jsx';
 import Overview from './components/Overview.jsx';
 import Ratings from './components/Ratings.jsx';
 import Related from './components/Related.jsx';
@@ -37,7 +38,6 @@ const findId = (element) => {
 
   return id;
 };
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +73,7 @@ class App extends React.Component {
       let time = new Date().toLocaleString();
       let body = {
         time: time,
-        element: e.target.outerHTML,
+        element: e.target.outerHTML.slice(0, 25),
         widget: findId(element)
       };
 
@@ -84,6 +84,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <Title />
         <Overview
           product_Id={this.state.product_Id}
           handleProductNameChange={this.handleProductNameChange}
