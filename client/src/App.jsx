@@ -37,7 +37,6 @@ const findId = (element) => {
 
   return id;
 };
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +72,7 @@ class App extends React.Component {
       let time = new Date().toLocaleString();
       let body = {
         time: time,
-        element: e.target.outerHTML,
+        element: e.target.outerHTML.slice(0, 25),
         widget: findId(element)
       };
 
