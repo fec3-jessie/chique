@@ -18,9 +18,23 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
+              '@babel/preset-react',
+              {
+                plugins: ['@babel/plugin-transform-runtime']
+              }
             ]
           }
+        }
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|)$/i,
+        use: {
+            loader: 'file-loader'
         }
       }
     ]

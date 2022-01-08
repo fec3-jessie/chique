@@ -7,13 +7,25 @@ bin-release/
 # Other files and folders
 .settings/
 node_modules
-
+bundle.js
+config.js
+env.js
+.env
 # Executables
 *.swf
 *.air
 *.ipa
 *.apk
 
+# Security
+config.js
+bundle.js*
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+
+config.js
+client/dist/bundle.js
+bundle.js
+client/dist/bundle.js.LICENSE.txt:
