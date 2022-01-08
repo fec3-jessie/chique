@@ -48,6 +48,14 @@ class App extends React.Component {
     };
     this.handleProductNameChange = this.handleProductNameChange.bind(this);
     this.relatedClickHandler = this.relatedClickHandler.bind(this);
+    this.addToOutfit = this.addToOutfit.bind(this);
+  }
+
+  addToOutfit () {
+    console.log('adding to outfit');
+    this.setState((state) => ({
+      outfit: [...state.outfit, state.product_Id]
+    }));
   }
 
   handleProductNameChange (name) {
@@ -96,6 +104,7 @@ class App extends React.Component {
           product_name={this.state.product_name}
           relatedClickHandler={this.relatedClickHandler}
           outfit={this.state.outfit}
+          addToOutfit={this.addToOutfit}
         />
         <QandA
           product_id={this.state.product_Id}
