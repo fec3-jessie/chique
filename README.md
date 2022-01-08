@@ -8,7 +8,7 @@ Our team was tasked with designing and creating a functioning e-commerce web app
 - Optimization
 - Technologies Used
 
-## Getting Started (GH link to section here)
+## [Getting Started](https://github.com/fec3-jessie/fec3/blob/staging/getting-started.md)
 
 ## Widgets
 ### [Overview](https://github.com/fec3-jessie/fec3/blob/staging/product-overview.md)
