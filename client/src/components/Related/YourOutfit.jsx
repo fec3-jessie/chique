@@ -18,7 +18,7 @@ const YourOutfit = (props) => {
     <h3>
     Your Outfit
     </h3>
-    <button>Add to Outfit</button>
+    <button addToOutfit={props.addToOutfit}>Add to Outfit</button>
     <div className='related-products' >
       {products.length !== 0 ?
         products.map(product => (
