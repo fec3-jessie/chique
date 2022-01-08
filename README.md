@@ -1,3 +1,4 @@
+![](chique.gif)
 # Project #Chique! - Team Jessie
 
 Our team was tasked with designing and creating a functioning e-commerce web application using the client's pre-existing API and design schema. We followed guidelines provided in a Business Design Requirements (BDR) document. Our approach included wireframing of the individual widgets, initializing server routing to protect clients' API data, and creating a framework for managing state across components. The completed design aimed for a modern look and feel based on a "chique" theme and aesthetics.
