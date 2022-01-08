@@ -1,5 +1,5 @@
 # Project #Chique! - Questions & Answers
-by Wisdom Ibole [BADGE1] [BADGE2]
+by Wisdom Ibole [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/kevinzhugao/)](https://www.linkedin.com/in/wisdom-ibole/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/kevinzhugao)](https://github.com/FlightfulKiwi)
 
 The Q&A widget consists of two (2) main parts: a Search Bar and a List of Questions.
 
