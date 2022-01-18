@@ -13,7 +13,7 @@ Our team was tasked with designing and creating a functioning e-commerce web app
 
 ## Widgets
 ### [Overview](https://github.com/fec3-jessie/fec3/blob/staging/product-overview.md)
-- Daniel Ghaly [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/kevinzhugao/)](https://www.linkedin.com/in/Daniel-Ghaly/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/Daniel-Ghaly)](https://github.com/Daniel-Ghaly)
+- Daniel Ghaly [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/kevinzhugao/)](https://www.linkedin.com/in/danielghaly) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/Daniel-Ghaly)](https://github.com/Daniel-Ghaly)
 
 ### [Related Products](https://github.com/fec3-jessie/fec3/blob/staging/relatedproducts.md)
 - Kavita Poduri [![Linkedin: LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white&link=https://www.linkedin.com/in/kevinzhugao/)](https://www.linkedin.com/in/kvpoduri/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white&link=https://github.com/kevinzhugao)](https://github.com/yrgirlkv)
